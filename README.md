@@ -23,6 +23,8 @@ RFID Gate - Alex/Corey
 
 ## Resources
 [Beginner guide] (https://git-scm.com/docs/gittutorial)
+
 [Commiting and pushing changes] (https://www.geeksforgeeks.org/git/difference-between-git-commit-and-git-push/)
+
 [Useful commands] (https://git-scm.com/cheat-sheet)
 
