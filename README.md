@@ -14,8 +14,11 @@ Utilise branches when experimenting with new changes, so we can get some milage 
 *Roles are not final
 
 Alien Frequency - Corey/Adam
+
 Laser Turret Defense - Ahmed/Alex
+
 Line Tracking - Adam/Ahmed
+
 RFID Gate - Alex/Corey
 
 ## Resources
