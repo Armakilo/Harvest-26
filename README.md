@@ -13,13 +13,13 @@ Utilise branches when experimenting with new changes, so we can get some milage 
 
 *Roles are not final
 
-Alien Frequency - Corey/Adam
+Alien Frequency - Alex/Corey
 
-Laser Turret Defense - Ahmed/Alex
+Laser Turret Defense - Corey/Adam
 
 Line Tracking - Adam/Ahmed
 
-RFID Gate - Alex/Corey
+RFID Gate - Ahmed/Alex
 
 ## Resources
 [Beginner guide] (https://git-scm.com/docs/gittutorial)
@@ -28,3 +28,10 @@ RFID Gate - Alex/Corey
 
 [Useful commands] (https://git-scm.com/cheat-sheet)
 
+# Current Code Status
+
+Functionality:
+Rover has skid steering capabilities
+Embedded System can communicate with PCU
+Embedded System can recieve channel data from the FlySky
+Embedded System can send motor commands to PCU
