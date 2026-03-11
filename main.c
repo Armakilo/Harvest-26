@@ -46,6 +46,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
+#include "harvest_tasks.h"
 
 uint8_t control_data[26] = {};
 int data_type;
