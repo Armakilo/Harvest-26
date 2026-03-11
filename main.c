@@ -48,7 +48,11 @@
 #include <xc.h>
 
 uint8_t control_data[26] = {};
+int data_type;
+int data_size = 10;
 int data_index = 0;
+int receive_ready = 0;
+int receive_flag = 0;
 
 
 void sendit(char it[], int it_size) //function to send the data
@@ -85,7 +89,7 @@ void motor(char data[26]){
     int ldirec = 0;
     char msg[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
         mry = (data[8]+(data[9]<<8) - 1000)/5; //mry goes from 0 to 200
-        mly = (data[10]+(data[11]<<8) - 1000)/5;
+        mly = (data[10]+(data[11]<<8) - 1000)/5; //mly goes from 0 to 200
         if (mry < 110 && mry > 90){rdirec = 0;}
         else if (mry > 110)
         {
@@ -118,23 +122,59 @@ void motor(char data[26]){
         sendit(msg, 10);
 }
 
+//void data_recive(void)
+//{
+//    control_data[data_index] = RC1REG;
+//    data_index++;
+//}
 
 void __interrupt() ISR(void)
 {
     if (PIR3bits.RCIF) {
-        //while (RC1STAbits.OERR == 0){}
-        control_data[data_index] = RC1REG;
+        control_data[data_index] = RC1REG; 
         data_index++;
-        if (data_index >= 26){
+        
+        if (RC1STAbits.OERR) // clear overrun if needed
+        {
+            RC1STAbits.CREN = 0;
+            RC1STAbits.CREN = 1;
+        }
+        
+        if (data_index == 4)
+        {
+            data_type = (control_data[3]<<8) + control_data[2];
+            if (data_type == 0x0300)
+            {
+                data_size = 6;
+            }
+            else if (data_type == 0x0402)
+            {
+                data_size = 12;
+            }
+            else if (data_type == 0x0502)
+            {
+                data_size = 26;
+            }
+        }
+        if (data_index >= data_size && data_size == 6)
+        {
             data_index = 0;
-            motor(control_data);
-            flyskyask();
+            receive_ready = 1;
+            receive_flag = 1;
+        }
+        else if (data_index >= data_size && data_size == 12)
+        {
+            data_index = 0;
+            receive_ready = 1;
+            receive_flag = 2;
+        }
+        else if (data_index >= data_size && data_size == 26)
+        {
+            data_index = 0;
+            receive_ready = 1;
+            receive_flag = 3;
         }
     }
-//    if (RC1STAbits.OERR){
-//        RC1STAbits.CREN = 0;
-//        RC1STAbits.CREN = 1;
-//    }
 }
 
 void main(void) {
@@ -176,6 +216,7 @@ void main(void) {
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
     int x = 1;
     
+    
     while(1)
     {              
         // check to make sure things are working
@@ -188,6 +229,24 @@ void main(void) {
         else
         {
             LATA = 0;
+        }
+        
+        if (receive_ready)
+        {
+            if (receive_flag == 1)
+            {
+                receive_ready = 0;
+            }
+            else if (receive_flag == 2)
+            {
+                receive_ready = 0;
+            }
+            else if (receive_flag == 3)
+            {
+                receive_ready = 0;
+                motor(control_data);
+                flyskyask();
+            }
         }
     
     }
