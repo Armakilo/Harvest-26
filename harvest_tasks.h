@@ -42,6 +42,8 @@
 
 void follow();
 
+void RFID(void);
+
 // Comment a function and leverage automatic documentation with slash star star
 /**
     <p><b>Function prototype:</b></p>
