@@ -1,0 +1,315 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F18855 ]
+[d frameptr 6 ]
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"14 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+[v _rd_adc rd_adc `(us  1 e 2 0 ]
+"36
+[v _sendit sendit `(v  1 e 1 0 ]
+"46
+[v _runmotor runmotor `(v  1 e 1 0 ]
+"75
+[v _follow follow `(v  1 e 1 0 ]
+"71 C:\Users\w7yf6\Documents\Harvest-26\main.c
+[v _flyskyask flyskyask `(v  1 e 1 0 ]
+"88
+[v _motor motor `(v  1 e 1 0 ]
+"135
+[v _ISR ISR `II(v  1 e 1 0 ]
+"184
+[v _main main `(v  1 e 1 0 ]
+[s S155 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"364 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
+[u S160 . 1 `S155 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES160  1 e 1 @11 ]
+[s S187 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"401
+[u S196 . 1 `S187 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES196  1 e 1 @12 ]
+"591
+[v _TRISA TRISA `VEuc  1 e 1 @17 ]
+"653
+[v _TRISB TRISB `VEuc  1 e 1 @18 ]
+[s S90 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"732
+[u S99 . 1 `S90 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES99  1 e 1 @19 ]
+"777
+[v _LATA LATA `VEuc  1 e 1 @22 ]
+"1538
+[v _ADRESL ADRESL `VEuc  1 e 1 @140 ]
+"1558
+[v _ADRESH ADRESH `VEuc  1 e 1 @141 ]
+[s S312 . 1 `uc 1 ADGO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM 1 0 :2:2 
+`uc 1 ADCS 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 ADCONT 1 0 :1:6 
+`uc 1 ADON 1 0 :1:7 
+]
+"1895
+[s S320 . 1 `uc 1 DONE 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFRM 1 0 :2:2 
+]
+[s S324 . 1 `uc 1 nDONE 1 0 :1:0 
+]
+[s S326 . 1 `uc 1 GO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM0 1 0 :1:2 
+`uc 1 ADFM1 1 0 :1:3 
+]
+[s S331 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFRM0 1 0 :1:2 
+`uc 1 ADFRM1 1 0 :1:3 
+]
+[u S336 . 1 `S312 1 . 1 0 `S320 1 . 1 0 `S324 1 . 1 0 `S326 1 . 1 0 `S331 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES336  1 e 1 @147 ]
+"2227
+[v _ADCLK ADCLK `VEuc  1 e 1 @152 ]
+[s S385 . 1 `uc 1 ADPREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADNREF 1 0 :1:4 
+]
+"2353
+[s S389 . 1 `uc 1 ADPREF0 1 0 :1:0 
+`uc 1 ADPREF1 1 0 :1:1 
+]
+[u S392 . 1 `S385 1 . 1 0 `S389 1 . 1 0 ]
+[v _ADREFbits ADREFbits `VES392  1 e 1 @154 ]
+"2500
+[v _ADACQ ADACQ `VEuc  1 e 1 @157 ]
+"2570
+[v _ADPCH ADPCH `VEuc  1 e 1 @158 ]
+"3503
+[v _RC1REG RC1REG `VEuc  1 e 1 @281 ]
+"3557
+[v _TX1REG TX1REG `VEuc  1 e 1 @282 ]
+"3631
+[v _SPBRGL SPBRGL `VEuc  1 e 1 @283 ]
+"3693
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @284 ]
+[s S46 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3768
+[u S55 . 1 `S46 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES55  1 e 1 @285 ]
+[s S69 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"3948
+[u S78 . 1 `S69 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES78  1 e 1 @286 ]
+[s S132 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"4269
+[u S141 . 1 `S132 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES141  1 e 1 @287 ]
+[s S28 . 1 `uc 1 SSP1IF 1 0 :1:0 
+`uc 1 BCL1IF 1 0 :1:1 
+`uc 1 SSP2IF 1 0 :1:2 
+`uc 1 BCL2IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+]
+"21120
+[u S35 . 1 `S28 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES35  1 e 1 @1807 ]
+[s S168 . 1 `uc 1 SSP1IE 1 0 :1:0 
+`uc 1 BCL1IE 1 0 :1:1 
+`uc 1 SSP2IE 1 0 :1:2 
+`uc 1 BCL2IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+]
+"21542
+[u S175 . 1 `S168 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES175  1 e 1 @1817 ]
+"31566
+[v _RXPPS RXPPS `VEuc  1 e 1 @3787 ]
+"32770
+[v _RC6PPS RC6PPS `VEuc  1 e 1 @3878 ]
+"32870
+[v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
+"33490
+[v _ANSELB ANSELB `VEuc  1 e 1 @3907 ]
+[s S111 . 1 `uc 1 ANSC0 1 0 :1:0 
+`uc 1 ANSC1 1 0 :1:1 
+`uc 1 ANSC2 1 0 :1:2 
+`uc 1 ANSC3 1 0 :1:3 
+`uc 1 ANSC4 1 0 :1:4 
+`uc 1 ANSC5 1 0 :1:5 
+`uc 1 ANSC6 1 0 :1:6 
+`uc 1 ANSC7 1 0 :1:7 
+]
+"34127
+[u S120 . 1 `S111 1 . 1 0 ]
+"34127
+"34127
+[v _ANSELCbits ANSELCbits `VES120  1 e 1 @3918 ]
+"51 C:\Users\w7yf6\Documents\Harvest-26\main.c
+[v _control_data control_data `[26]uc  1 e 26 0 ]
+"52
+[v _data_type data_type `i  1 e 2 0 ]
+"53
+[v _data_size data_size `i  1 e 2 0 ]
+"54
+[v _data_index data_index `i  1 e 2 0 ]
+"55
+[v _receive_ready receive_ready `i  1 e 2 0 ]
+"56
+[v _receive_flag receive_flag `i  1 e 2 0 ]
+"58
+[v _swa swa `VEi  1 e 2 0 ]
+"184
+[v _main main `(v  1 e 1 0 ]
+{
+"220
+[v main@message message `[10]uc  1 a 10 0 ]
+"219
+[v main@F11731 F11731 `[10]uc  1 s 10 F11731 ]
+"265
+} 0
+"88
+[v _motor motor `(v  1 e 1 0 ]
+{
+"94
+[v motor@msg msg `[10]uc  1 a 10 6 ]
+"91
+[v motor@mly mly `i  1 a 2 22 ]
+"90
+[v motor@mry mry `i  1 a 2 20 ]
+"93
+[v motor@ldirec ldirec `i  1 a 2 18 ]
+"92
+[v motor@rdirec rdirec `i  1 a 2 16 ]
+"88
+[v motor@data data `*.4uc  1 p 1 4 ]
+"93
+[v motor@F11726 F11726 `[10]uc  1 s 10 F11726 ]
+"127
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 2 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 1 ]
+[v ___awdiv@counter counter `uc  1 a 1 0 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 3 ]
+[v ___awdiv@dividend dividend `i  1 p 2 5 ]
+"41
+} 0
+"75 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+[v _follow follow `(v  1 e 1 0 ]
+{
+"78
+[v follow@wlvl wlvl `DVECus  1 s 2 wlvl ]
+"79
+[v follow@blvl blvl `DVECus  1 s 2 blvl ]
+"139
+} 0
+"46
+[v _runmotor runmotor `(v  1 e 1 0 ]
+{
+[v runmotor@select select `uc  1 p 1 wreg ]
+"49
+[v runmotor@msg msg `[10]uc  1 a 10 1 ]
+"46
+[v runmotor@select select `uc  1 p 1 wreg ]
+[v runmotor@F11714 F11714 `[10]uc  1 s 10 F11714 ]
+"49
+[v runmotor@select select `uc  1 p 1 11 ]
+"73
+} 0
+"14
+[v _rd_adc rd_adc `(us  1 e 2 0 ]
+{
+[v rd_adc@select select `uc  1 p 1 wreg ]
+"32
+[v rd_adc@output output `us  1 a 2 5 ]
+"14
+[v rd_adc@select select `uc  1 p 1 wreg ]
+"18
+[v rd_adc@select select `uc  1 p 1 7 ]
+"34
+} 0
+"71 C:\Users\w7yf6\Documents\Harvest-26\main.c
+[v _flyskyask flyskyask `(v  1 e 1 0 ]
+{
+"73
+[v flyskyask@ask ask `[6]uc  1 a 6 1 ]
+"72
+[v flyskyask@F11718 F11718 `[6]uc  1 s 6 F11718 ]
+"76
+} 0
+"36 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+[v _sendit sendit `(v  1 e 1 0 ]
+{
+"38
+[v sendit@i i `i  1 a 2 7 ]
+"36
+[v sendit@it it `*.4uc  1 p 1 3 ]
+[v sendit@it_size it_size `i  1 p 2 4 ]
+"44
+} 0
+"135 C:\Users\w7yf6\Documents\Harvest-26\main.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"182
+} 0

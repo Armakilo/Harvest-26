@@ -55,15 +55,18 @@ int data_index = 0;
 int receive_ready = 0;
 int receive_flag = 0;
 
+volatile int swa = 0;
 
-void sendit(char it[], int it_size) //function to send the data
-{
-    for(int i = 0; i < it_size; i++){
-        while(TX1STAbits.TRMT == 0){} //waits until register can send data
-        TX1REG = it[i];
-        
-    }
-}
+
+
+//void sendit(char it[], int it_size) //function to send the data
+//{
+//    for(int i = 0; i < it_size; i++){
+//        while(TX1STAbits.TRMT == 0){} //waits until register can send data
+//        TX1REG = it[i];
+//        
+//    }
+//}
 
 void flyskyask()
 {
@@ -248,6 +251,11 @@ void main(void) {
                 motor(control_data);
                 flyskyask();
             }
+        }
+        
+        swa = control_data[15] + (control_data[16] << 8);
+        if(swa == 2000){
+            follow();
         }
     
     }
