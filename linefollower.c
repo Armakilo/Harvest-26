@@ -7,8 +7,10 @@
 
 
 #include <xc.h>
+#include "harvest_tasks.h"
 //I use pins RB0, RB1, and RB2 for my ADC inputs
 //Still need to debug this
+extern uint8_t control_data[26] = {};
 
 
 uint16_t rd_adc(uint8_t select){
@@ -28,20 +30,21 @@ uint16_t rd_adc(uint8_t select){
     }
     
     ADCON0bits.ADGO = 1; //ADC ready, can now start a conversion
+    while(ADCON0bits.ADGO == 1);
     
     uint16_t output = (uint16_t)ADRESL + ((uint16_t)ADRESH << 8);
     return output;
 }
 
-void sendit(char it[], int it_size) // *** could we make a master file with these sorts of functions?
-{
-    for(int i = 0; i < it_size; i++){
-        while(TX1STAbits.TRMT == 0){} //waits until register can send data
-        TX1REG = it[i];
-        
-    }
-    return;
-}
+//void sendit(char it[], int it_size) // *** could we make a master file with these sorts of functions?
+//{
+//    for(int i = 0; i < it_size; i++){
+//        while(TX1STAbits.TRMT == 0){} //waits until register can send data
+//        TX1REG = it[i];
+//        
+//    }
+//    return;
+//}
 
 void runmotor(uint8_t select){ //Motor 1 -> Left motor
     //select takes 1, 2, or 3 which corresponds to turn left, right, or straight
@@ -72,7 +75,7 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
     return;
 }
 
-void follow(){
+void follow(uint8_t sw){
     //ADC ouputs a 10-bit value, which has a maximum of 0x3FF or 1023.
     //Use same threshold values as example code for now
     volatile const uint16_t wlvl = 600; //white if adc reads < 600
@@ -98,10 +101,7 @@ void follow(){
     ADCON0bits.ADFRM0 = 1; // data right justified
     
     ADCON0bits.ADON = 1; //ADC on
-    
-    
-    
-    
+        
     while(1){ // change to watch for switch position
         //case 1: L-W C-B R-W
         if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
@@ -133,7 +133,18 @@ void follow(){
         else{
             runmotor(4);
         }
+        
+        flyskyask();
+        
+        
+        
+        if(sw == 2000){
+                                    
+            return;
+        }
+        
+        sw = control_data[15] + (control_data[16] << 8);
+        
     }
     
-    return;
 }

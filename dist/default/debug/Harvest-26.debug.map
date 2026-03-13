@@ -4,12 +4,12 @@ Linker command line:
 
 -W-3 \
   --edf=C:\Program Files\Microchip\xc8\v3.00\pic\dat\20241204225717_en.msgs \
-  -cn -h+dist/default/production\Harvest-26.production.sym \
-  --cmf=dist/default/production\Harvest-26.production.cmf -z -Q16F18855 \
-  -oC:\Users\w7yf6\AppData\Local\Temp\xcAsk1c.\driver_tmp_3.o \
+  -cn -h+dist/default/debug\Harvest-26.debug.sym \
+  --cmf=dist/default/debug\Harvest-26.debug.cmf -z -Q16F18855 \
+  -oC:\Users\w7yf6\AppData\Local\Temp\xcAslu4.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
-  -Mdist/default/production/Harvest-26.production.map \
-  --md=C:\Users\w7yf6\AppData\Local\Temp\xcAsk1c.\driver_tmp_0.dat -E1 \
+  -Mdist/default/debug/Harvest-26.debug.map \
+  --md=C:\Users\w7yf6\AppData\Local\Temp\xcAslu4.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh \
   -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 \
   -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
@@ -34,8 +34,8 @@ Linker command line:
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
   -DENTRY=2 -preset_vec=00h,intentry=04h,sivt,init,end_init -ppowerup=CODE \
   -pcinit=CODE -pfunctab=ENTRY -k \
-  C:\Users\w7yf6\AppData\Local\Temp\xcAsk1c.\driver_tmp_15.o \
-  dist/default/production\Harvest-26.production.o 
+  C:\Users\w7yf6\AppData\Local\Temp\xcAslu4.\driver_tmp_15.o \
+  dist/default/debug\Harvest-26.debug.o 
 
 Object code version is 3.11
 
@@ -44,35 +44,35 @@ Machine type is 16F18855
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\w7yf6\AppData\Local\Temp\xcAsk1c.\driver_tmp_15.o
+C:\Users\w7yf6\AppData\Local\Temp\xcAslu4.\driver_tmp_15.o
                 end_init                             C3       C3        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        5        0       4
-dist/default/production\Harvest-26.production.o
+dist/default/debug\Harvest-26.debug.o
                 cinit                                C5       C5       28        8       0
                 intentry                              4        4       BF        8       0
                 config                             8007     8007        5        0       4
-                text7                               50F      50F       21        8       0
-                text6                               530      530       19        8       0
-                text5                               4BF      4BF       2C        8       0
-                text4                               47A      47A       45        8       0
+                text7                               50C      50C       21        8       0
+                text6                               52D      52D       19        8       0
+                text5                               4BC      4BC       2C        8       0
+                text4                               477      477       45        8       0
                 text3                                ED       ED      18C        8       0
-                text2                               41E      41E       5C        8       0
+                text2                               41B      41B       5C        8       0
                 text1                               279      279      107        8       0
-                maintext                            380      380       9E        8       0
+                maintext                            380      380       9B        8       0
                 cstackBANK0                          44       44       1B       20       1
                 cstackCOMMON                         70       70        9       70       1
                 cstackBANK1                          BA       BA        A       A0       1
-                clrtext                             54F      54F        6        8       0
-                inittext                            549      549        6        8       0
+                clrtext                             54C      54C        6        8       0
+                inittext                            546      546        6        8       0
                 bssBANK1                             A0       A0       1A       A0       1
                 dataBANK0                            20       20       24       20       1
                 bssBANK0                             5F       5F        A       20       1
                 dataCOMMON                           79       79        2       70       1
-                stringtext2                         559      559        2      AAE       0
-                stringtext1                         557      557        2      AAE       0
-                idataBANK0                          4EB      4EB       24        8       0
-                idataCOMMON                         555      555        2        8       0
+                stringtext2                         556      556        2      AA8       0
+                stringtext1                         554      554        2      AA8       0
+                idataBANK0                          4E8      4E8       24        8       0
+                idataCOMMON                         552      552        2        8       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
@@ -80,22 +80,22 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                C5       C5       28         0
                 intentry                              4        4       BF         0
                 reset_vec                             0        0        2         0
-                text7                               50F      50F       21         0
-                text6                               530      530       19         0
-                text5                               4BF      4BF       2C         0
-                text4                               47A      47A       45         0
+                text7                               50C      50C       21         0
+                text6                               52D      52D       19         0
+                text5                               4BC      4BC       2C         0
+                text4                               477      477       45         0
                 text3                                ED       ED      18C         0
-                text2                               41E      41E       5C         0
+                text2                               41B      41B       5C         0
                 text1                               279      279      107         0
-                maintext                            380      380       9E         0
-                clrtext                             54F      54F        6         0
-                inittext                            549      549        6         0
-                idataBANK0                          4EB      4EB       24         0
-                idataCOMMON                         555      555        2         0
+                maintext                            380      380       9B         0
+                clrtext                             54C      54C        6         0
+                inittext                            546      546        6         0
+                idataBANK0                          4E8      4E8       24         0
+                idataCOMMON                         552      552        2         0
 
         CLASS   STRCODE        
-                stringtext2                         559      559        2         0
-                stringtext1                         557      557        2         0
+                stringtext2                         556      556        2         0
+                stringtext1                         554      554        2         0
 
         CLASS   STRING         
 
@@ -263,11 +263,11 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000002  000002         0       0  CODE        2
-                intentry                       000004  000553  000557         8       0  CODE        2
+                intentry                       000004  000550  000554         8       0  CODE        2
                 dataBANK0                      000020  000049  000069        20       1  BANK0       1
                 cstackCOMMON                   000070  00000B  00007B        70       1  COMMON      1
                 bssBANK1                       0000A0  000024  0000C4        A0       1  BANK1       1
-                stringtext1                    000557  000004  00055B       AAE       0  STRCODE     2
+                stringtext1                    000554  000004  000558       AA8       0  STRCODE     2
 
 
 UNUSED ADDRESS RANGES
@@ -288,13 +288,13 @@ UNUSED ADDRESS RANGES
         BANK9            004A0-004EF              50           1
         BIGRAM           02000-023EF             3F0           1
         CODE             00002-00003               2           2
-                         0055B-01FFF             800
+                         00558-01FFF             800
         COMMON           0007B-0007D               3           1
         CONST            00002-00003               2           2
-                         0055B-01FFF             100
+                         00558-01FFF             100
         EEDATA           0F000-0F0FF             100           2
         ENTRY            00002-00003               2           2
-                         0055B-01FFF             100
+                         00558-01FFF             100
         IDLOC            08000-08003               4           2
         RAM              00069-0006F               7           1
                          000C4-000EF              2C
@@ -342,9 +342,9 @@ UNUSED ADDRESS RANGES
         SFR8             00400-0041F              20           1
         SFR9             00480-0049F              20           1
         STRCODE          00002-00003               2           2
-                         0055B-01FFF            1AA5
+                         00558-01FFF            1AA8
         STRING           00002-00003               2           2
-                         0055B-01FFF             100
+                         00558-01FFF             100
 
                                   Symbol Table
 
@@ -474,7 +474,7 @@ __Hsfr7                  sfr7         00000
 __Hsfr8                  sfr8         00000
 __Hsfr9                  sfr9         00000
 __Hsivt                  sivt         000C3
-__Hspace_0               (abs)        0055B
+__Hspace_0               (abs)        00558
 __Hspace_1               (abs)        000C4
 __Hspace_2               (abs)        00000
 __Hspace_3               (abs)        00000
@@ -587,10 +587,10 @@ __Lstrings               strings      00000
 __Lstringtext1           stringtext1  00000
 __Lstringtext2           stringtext2  00000
 __Ltext                  text         00000
-__S0                     (abs)        0055B
+__S0                     (abs)        00558
 __S1                     (abs)        000C4
 __S3                     (abs)        00000
-___awdiv                 text2        0041E
+___awdiv                 text2        0041B
 ___awdiv@counter         cstackBANK0  00044
 ___awdiv@dividend        cstackCOMMON 00075
 ___awdiv@divisor         cstackCOMMON 00073
@@ -608,17 +608,17 @@ ___stack_lo              stack        00000
 ___stackhi               (abs)        00000
 ___stacklo               (abs)        00000
 __end_of_ISR             intentry     000C3
-__end_of___awdiv         text2        0047A
+__end_of___awdiv         text2        00477
 __end_of__initialization cinit        000E9
-__end_of_flyskyask       text6        00549
+__end_of_flyskyask       text6        00546
 __end_of_follow          text3        00279
-__end_of_main            maintext     0041E
+__end_of_main            maintext     0041B
 __end_of_motor           text1        00380
-__end_of_rd_adc          text5        004EB
-__end_of_runmotor        text4        004BF
-__end_of_sendit          text7        00530
-__end_offollow@blvl      stringtext1  00559
-__end_offollow@wlvl      stringtext2  0055B
+__end_of_rd_adc          text5        004E8
+__end_of_runmotor        text4        004BC
+__end_of_sendit          text7        0052D
+__end_offollow@blvl      stringtext1  00556
+__end_offollow@wlvl      stringtext2  00558
 __initialization         cinit        000C5
 __pbssBANK0              bssBANK0     0005F
 __pbssBANK1              bssBANK1     000A0
@@ -627,42 +627,42 @@ __pcstackBANK1           cstackBANK1  000BA
 __pcstackCOMMON          cstackCOMMON 00070
 __pdataBANK0             dataBANK0    00020
 __pdataCOMMON            dataCOMMON   00079
-__pidataBANK0            idataBANK0   004EB
-__pidataCOMMON           idataCOMMON  00555
+__pidataBANK0            idataBANK0   004E8
+__pidataCOMMON           idataCOMMON  00552
 __pintentry              intentry     00004
 __pmaintext              maintext     00380
-__pstringtext1           stringtext1  00557
-__pstringtext2           stringtext2  00559
+__pstringtext1           stringtext1  00554
+__pstringtext2           stringtext2  00556
 __ptext1                 text1        00279
-__ptext2                 text2        0041E
+__ptext2                 text2        0041B
 __ptext3                 text3        000ED
-__ptext4                 text4        0047A
-__ptext5                 text5        004BF
-__ptext6                 text6        00530
-__ptext7                 text7        0050F
+__ptext4                 text4        00477
+__ptext5                 text5        004BC
+__ptext6                 text6        0052D
+__ptext7                 text7        0050C
 _control_data            bssBANK1     000A0
 _data_index              bssBANK0     00065
 _data_size               dataCOMMON   00079
 _data_type               bssBANK0     00067
-_flyskyask               text6        00530
+_flyskyask               text6        0052D
 _follow                  text3        000ED
 _main                    maintext     00380
 _motor                   text1        00279
-_rd_adc                  text5        004BF
+_rd_adc                  text5        004BC
 _receive_flag            bssBANK0     00061
 _receive_ready           bssBANK0     00063
-_runmotor                text4        0047A
-_sendit                  text7        0050F
+_runmotor                text4        00477
+_sendit                  text7        0050C
 _swa                     bssBANK0     0005F
 btemp                    (abs)        0007E
-clear_ram0               clrtext      0054F
+clear_ram0               clrtext      0054C
 end_of_initialization    cinit        000E9
 flyskyask@F11710         dataBANK0    0003E
 flyskyask@ask            cstackBANK0  00045
-follow@blvl              stringtext1  00557
+follow@blvl              stringtext1  00554
 follow@sw                cstackBANK0  00052
-follow@wlvl              stringtext2  00559
-init_ram                 inittext     00549
+follow@wlvl              stringtext2  00556
+init_ram                 inittext     00546
 int$flags                (abs)        0007E
 intlevel0                functab      00000
 intlevel1                functab      00000
@@ -697,34 +697,34 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 linefollower.c
-		_rd_adc        		CODE           	04BF	0000	44
-		_runmotor      		CODE           	047A	0000	69
+		_rd_adc        		CODE           	04BC	0000	44
+		_runmotor      		CODE           	0477	0000	69
 		_follow        		CODE           	00ED	0000	396
 
 linefollower.c estimated size: 509
 
 misc_funcs.c
-		_flyskyask     		CODE           	0530	0000	25
-		_sendit        		CODE           	050F	0000	33
+		_flyskyask     		CODE           	052D	0000	25
+		_sendit        		CODE           	050C	0000	33
 
 misc_funcs.c estimated size: 58
 
 shared
-		follow@wlvl    		STRCODE        	0559	0000	2
+		follow@wlvl    		STRCODE        	0556	0000	2
 		__initialization		CODE           	00C5	0000	36
-		follow@blvl    		STRCODE        	0557	0000	2
+		follow@blvl    		STRCODE        	0554	0000	2
 
 shared estimated size: 40
 
 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
-		___awdiv       		CODE           	041E	0000	92
+		___awdiv       		CODE           	041B	0000	92
 
 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c estimated size: 92
 
 main.c
 		_ISR           		CODE           	0004	0000	191
-		_main          		CODE           	0380	0000	158
+		_main          		CODE           	0380	0000	155
 		_motor         		CODE           	0279	0000	263
 
-main.c estimated size: 612
+main.c estimated size: 609
 

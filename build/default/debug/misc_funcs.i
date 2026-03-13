@@ -1,4 +1,4 @@
-# 1 "linefollower.c"
+# 1 "misc_funcs.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "linefollower.c" 2
+# 1 "misc_funcs.c" 2
 
 
 
@@ -19810,146 +19810,24 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 10 "linefollower.c" 2
-# 1 "./harvest_tasks.h" 1
-# 42 "./harvest_tasks.h"
-void sendit(char it[], int it_size);
+# 10 "misc_funcs.c" 2
 
-void flyskyask();
-
-void follow(uint8_t sw);
-
-void sendit(char it[], int it_size);
-
-void RFID(void);
-# 11 "linefollower.c" 2
-
-
-extern uint8_t control_data[26] = {};
-
-
-uint16_t rd_adc(uint8_t select){
+void sendit(char it[], int it_size)
+{
+    for(int i = 0; i < it_size; i++){
+        while(TX1STAbits.TRMT == 0){}
+        TX1REG = it[i];
 
 
 
-    if (select == 1){
-        ADPCH = 0b001000;
     }
-
-    else if (select == 2){
-        ADPCH = 0b001001;
-    }
-
-    else if (select == 3){
-        ADPCH = 0b001010;
-    }
-
-    ADCON0bits.ADGO = 1;
-    while(ADCON0bits.ADGO == 1);
-
-    uint16_t output = (uint16_t)ADRESL + ((uint16_t)ADRESH << 8);
-    return output;
-}
-# 49 "linefollower.c"
-void runmotor(uint8_t select){
-
-
-    char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
-    if (select == 1){
-        msg[6] = 1;
-        msg[7] = 50;
-        msg[8] = 1;
-        msg[9] = 10;
-    }
-
-    else if (select == 2){
-        msg[6] = 1;
-        msg[7] = 10;
-        msg[8] = 1;
-        msg[9] = 50;
-    }
-
-    else if (select == 3){
-        msg[6] = 1;
-        msg[7] = 50;
-        msg[8] = 1;
-        msg[9] = 50;
-    }
-
-    sendit(msg, 10);
     return;
 }
 
-void follow(uint8_t sw){
 
-
-    volatile const uint16_t wlvl = 600;
-    volatile const uint16_t blvl = 850;
-
-
-    ANSELB = 0b0111;
-    TRISB = 0b0111;
-
-
-
-
-
-    ADCLK = 0b11111;
-
-    ADREFbits.ADPREF = 0b00;
-    ADREFbits.ADNREF = 0;
-
-
-
-    ADACQ = 0b001;
-
-    ADCON0bits.ADFRM0 = 1;
-
-    ADCON0bits.ADON = 1;
-
-    while(1){
-
-        if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
-            runmotor(3);
-        }
-
-
-        else if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) > blvl){
-            runmotor(2);
-        }
-
-
-
-        else if (rd_adc(1) < wlvl && rd_adc(3) < wlvl && rd_adc(2) > blvl){
-            runmotor(2);
-        }
-
-
-
-        else if (rd_adc(1) > blvl && rd_adc(3) < wlvl && rd_adc(2) < wlvl){
-            runmotor(1);
-        }
-
-
-        else if (rd_adc(1) > blvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
-            runmotor(1);
-        }
-
-        else{
-            runmotor(4);
-        }
-
-        flyskyask();
-
-
-
-        if(sw == 2000){
-
-            return;
-        }
-
-        sw = control_data[15] + (control_data[16] << 8);
-
-    }
-
+void flyskyask()
+{
+    char ask[6] = {0xFE,0x19,0x01,0x05,0x00,0x00};
+    sendit(ask,6);
+    return;
 }

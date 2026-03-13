@@ -19839,13 +19839,19 @@ extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
 # 49 "main.c" 2
 # 1 "./harvest_tasks.h" 1
-# 43 "./harvest_tasks.h"
-void follow();
+# 42 "./harvest_tasks.h"
+void sendit(char it[], int it_size);
+
+void flyskyask();
+
+void follow(uint8_t sw);
 
 void sendit(char it[], int it_size);
 
 void RFID(void);
 # 50 "main.c" 2
+
+
 
 uint8_t control_data[26] = {};
 int data_type;
@@ -19855,14 +19861,7 @@ int receive_ready = 0;
 int receive_flag = 0;
 
 volatile int swa = 0;
-# 71 "main.c"
-void flyskyask()
-{
-    char ask[6] = {0xFE,0x19,0x01,0x05,0x00,0x00};
-    sendit(ask,6);
-
-}
-# 88 "main.c"
+# 90 "main.c"
 void motor(char data[26]){
 
     int mry = 0;
@@ -19994,6 +19993,11 @@ void main(void) {
 
 
 
+
+    TRISAbits.TRISA2 = 0;
+    ANSELAbits.ANSA2 = 0;
+
+
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
     int x = 1;
@@ -20031,9 +20035,14 @@ void main(void) {
             }
         }
 
+
+        flyskyask();
         swa = control_data[15] + (control_data[16] << 8);
         if(swa == 2000){
-            follow();
+            LATAbits.LATA2 = 1;
+            _delay((unsigned long)((1000)*(32000000/4000.0)));
+            follow(swa);
+            LATAbits.LATA2 = 0;
         }
 
     }

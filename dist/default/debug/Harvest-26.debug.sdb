@@ -19,15 +19,15 @@
 [v _runmotor runmotor `(v  1 e 1 0 ]
 "78
 [v _follow follow `(v  1 e 1 0 ]
-"90 C:\Users\w7yf6\Documents\Harvest-26\main.c
+"76 C:\Users\w7yf6\Documents\Harvest-26\main.c
 [v _motor motor `(v  1 e 1 0 ]
-"137
+"123
 [v _ISR ISR `II(v  1 e 1 0 ]
-"186
+"172
 [v _main main `(v  1 e 1 0 ]
 "11 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _sendit sendit `(v  1 e 1 0 ]
-"22
+"24
 [v _flyskyask flyskyask `(v  1 e 1 0 ]
 [s S155 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
@@ -252,33 +252,33 @@
 [v _receive_flag receive_flag `i  1 e 2 0 ]
 "60
 [v _swa swa `VEi  1 e 2 0 ]
-"186
+"172
 [v _main main `(v  1 e 1 0 ]
 {
-"227
+"213
 [v main@message message `[10]uc  1 a 10 0 ]
-"226
+"212
 [v main@F11733 F11733 `[10]uc  1 s 10 F11733 ]
-"277
+"263
 } 0
-"90
+"76
 [v _motor motor `(v  1 e 1 0 ]
 {
-"96
+"82
 [v motor@msg msg `[10]uc  1 a 10 6 ]
-"93
+"79
 [v motor@mly mly `i  1 a 2 22 ]
-"92
+"78
 [v motor@mry mry `i  1 a 2 20 ]
-"95
+"81
 [v motor@ldirec ldirec `i  1 a 2 18 ]
-"94
+"80
 [v motor@rdirec rdirec `i  1 a 2 16 ]
-"90
+"76
 [v motor@data data `*.4uc  1 p 1 4 ]
-"95
+"81
 [v motor@F11728 F11728 `[10]uc  1 s 10 F11728 ]
-"129
+"115
 } 0
 "5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -329,14 +329,14 @@
 [v rd_adc@select select `uc  1 p 1 7 ]
 "37
 } 0
-"22 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+"24 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _flyskyask flyskyask `(v  1 e 1 0 ]
 {
-"24
+"26
 [v flyskyask@ask ask `[6]uc  1 a 6 1 ]
-"23
+"25
 [v flyskyask@F11710 F11710 `[6]uc  1 s 6 F11710 ]
-"27
+"29
 } 0
 "11
 [v _sendit sendit `(v  1 e 1 0 ]
@@ -346,10 +346,10 @@
 "11
 [v sendit@it it `*.4uc  1 p 1 3 ]
 [v sendit@it_size it_size `i  1 p 2 4 ]
-"19
+"21
 } 0
-"137 C:\Users\w7yf6\Documents\Harvest-26\main.c
+"123 C:\Users\w7yf6\Documents\Harvest-26\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"184
+"170
 } 0

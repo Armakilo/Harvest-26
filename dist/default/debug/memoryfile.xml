@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\Harvest-26.production.hex">
+  <executable name="dist/default/debug\Harvest-26.debug.hex">
     <memory name="program">
       <units>words</units>
       <length>8192</length>
-      <used>1369</used>
-      <free>6823</free>
+      <used>1366</used>
+      <free>6826</free>
     </memory>
     <memory name="data">
       <units>bytes</units>

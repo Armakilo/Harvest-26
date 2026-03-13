@@ -1,4 +1,4 @@
-# 1 "linefollower.c"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,15 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "linefollower.c" 2
-
-
-
-
-
-
-
-
+# 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -19810,146 +19802,183 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 10 "linefollower.c" 2
-# 1 "./harvest_tasks.h" 1
-# 42 "./harvest_tasks.h"
-void sendit(char it[], int it_size);
-
-void flyskyask();
-
-void follow(uint8_t sw);
-
-void sendit(char it[], int it_size);
-
-void RFID(void);
-# 11 "linefollower.c" 2
-
-
-extern uint8_t control_data[26] = {};
-
-
-uint16_t rd_adc(uint8_t select){
+# 2 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c" 2
 
 
 
-    if (select == 1){
-        ADPCH = 0b001000;
-    }
-
-    else if (select == 2){
-        ADPCH = 0b001001;
-    }
-
-    else if (select == 3){
-        ADPCH = 0b001010;
-    }
-
-    ADCON0bits.ADGO = 1;
-    while(ADCON0bits.ADGO == 1);
-
-    uint16_t output = (uint16_t)ADRESL + ((uint16_t)ADRESH << 8);
-    return output;
-}
-# 49 "linefollower.c"
-void runmotor(uint8_t select){
+void
+__eecpymem(volatile unsigned char *to, __eeprom unsigned char * from, unsigned char size)
+{
+ volatile unsigned char *cp = to;
+# 22 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c"
+ while (NVMCON1bits.WR) {
+  continue;
+ }
+ NVMCON1bits.NVMREGS = 1;
+ NVMADRL = (unsigned char) from;
+ NVMADRH = 0x70;
+ while (size--) {
+  NVMCON1bits.RD = 1;
+  *cp++ = NVMDATL;
+  NVMADRL++;
+ }
 
 
-    char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
-    if (select == 1){
-        msg[6] = 1;
-        msg[7] = 50;
-        msg[8] = 1;
-        msg[9] = 10;
-    }
 
-    else if (select == 2){
-        msg[6] = 1;
-        msg[7] = 10;
-        msg[8] = 1;
-        msg[9] = 50;
-    }
-
-    else if (select == 3){
-        msg[6] = 1;
-        msg[7] = 50;
-        msg[8] = 1;
-        msg[9] = 50;
-    }
-
-    sendit(msg, 10);
-    return;
 }
 
-void follow(uint8_t sw){
-
-
-    volatile const uint16_t wlvl = 600;
-    volatile const uint16_t blvl = 850;
-
-
-    ANSELB = 0b0111;
-    TRISB = 0b0111;
-
-
-
-
-
-    ADCLK = 0b11111;
-
-    ADREFbits.ADPREF = 0b00;
-    ADREFbits.ADNREF = 0;
-
-
-
-    ADACQ = 0b001;
-
-    ADCON0bits.ADFRM0 = 1;
-
-    ADCON0bits.ADON = 1;
-
-    while(1){
-
-        if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
-            runmotor(3);
-        }
-
-
-        else if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) > blvl){
-            runmotor(2);
-        }
+void
+__memcpyee(__eeprom unsigned char * to, const unsigned char *from, unsigned char size)
+{
+ const unsigned char *ptr =from;
+# 69 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\sources\\c99\\pic\\__eeprom.c"
+ while (NVMCON1bits.WR) {
+  continue;
+ }
+ NVMCON1bits.NVMREGS = 1;
+ NVMADRL = (unsigned char) to - 1U;
+ NVMADRH = 0x70;
+ NVMDATH = 0;
+ while (size--) {
+  while (NVMCON1bits.WR) {
+   continue;
+  }
+  NVMDATL = *ptr++;
+  NVMADRL++;
+  STATUSbits.CARRY = 0;
+  if (INTCONbits.GIE) {
+   STATUSbits.CARRY = 1;
+  }
+  NVMCON1bits.WREN = 1;
+  NVMCON2 = 0x55;
+  NVMCON2 = 0xAA;
+  NVMCON1bits.WR = 1;
+  while (NVMCON1bits.WR) {
+   continue;
+  }
+  NVMCON1bits.WREN = 0;
+  if (STATUSbits.CARRY) {
+   INTCONbits.GIE = 1;
+  }
+ }
 
 
 
-        else if (rd_adc(1) < wlvl && rd_adc(3) < wlvl && rd_adc(2) > blvl){
-            runmotor(2);
-        }
+}
 
+unsigned char
+__eetoc(__eeprom void *addr)
+{
+ unsigned char data;
+ __eecpymem((unsigned char *) &data,addr,1);
+ return data;
+}
 
+unsigned int
+__eetoi(__eeprom void *addr)
+{
+ unsigned int data;
+ __eecpymem((unsigned char *) &data,addr,2);
+ return data;
+}
 
-        else if (rd_adc(1) > blvl && rd_adc(3) < wlvl && rd_adc(2) < wlvl){
-            runmotor(1);
-        }
+#pragma warning push
+#pragma warning disable 2040
+__uint24
+__eetom(__eeprom void *addr)
+{
+ __uint24 data;
+ __eecpymem((unsigned char *) &data,addr,3);
+ return data;
+}
+#pragma warning pop
 
+unsigned long
+__eetol(__eeprom void *addr)
+{
+ unsigned long data;
+ __eecpymem((unsigned char *) &data,addr,4);
+ return data;
+}
 
-        else if (rd_adc(1) > blvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
-            runmotor(1);
-        }
+#pragma warning push
+#pragma warning disable 1516
+unsigned long long
+__eetoo(__eeprom void *addr)
+{
+ unsigned long long data;
+ __eecpymem((unsigned char *) &data,addr,8);
+ return data;
+}
+#pragma warning pop
 
-        else{
-            runmotor(4);
-        }
+unsigned char
+__ctoee(__eeprom void *addr, unsigned char data)
+{
+ __memcpyee(addr,(unsigned char *) &data,1);
+ return data;
+}
 
-        flyskyask();
+unsigned int
+__itoee(__eeprom void *addr, unsigned int data)
+{
+ __memcpyee(addr,(unsigned char *) &data,2);
+ return data;
+}
 
+#pragma warning push
+#pragma warning disable 2040
+__uint24
+__mtoee(__eeprom void *addr, __uint24 data)
+{
+ __memcpyee(addr,(unsigned char *) &data,3);
+ return data;
+}
+#pragma warning pop
 
+unsigned long
+__ltoee(__eeprom void *addr, unsigned long data)
+{
+ __memcpyee(addr,(unsigned char *) &data,4);
+ return data;
+}
 
-        if(sw == 2000){
+#pragma warning push
+#pragma warning disable 1516
+unsigned long long
+__otoee(__eeprom void *addr, unsigned long long data)
+{
+ __memcpyee(addr,(unsigned char *) &data,8);
+ return data;
+}
+#pragma warning pop
 
-            return;
-        }
+float
+__eetoft(__eeprom void *addr)
+{
+ float data;
+ __eecpymem((unsigned char *) &data,addr,3);
+ return data;
+}
 
-        sw = control_data[15] + (control_data[16] << 8);
+double
+__eetofl(__eeprom void *addr)
+{
+ double data;
+ __eecpymem((unsigned char *) &data,addr,4);
+ return data;
+}
 
-    }
+float
+__fttoee(__eeprom void *addr, float data)
+{
+ __memcpyee(addr,(unsigned char *) &data,3);
+ return data;
+}
 
+double
+__fltoee(__eeprom void *addr, double data)
+{
+ __memcpyee(addr,(unsigned char *) &data,4);
+ return data;
 }

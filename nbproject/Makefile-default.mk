@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c linefollower.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c linefollower.c misc_funcs.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/linefollower.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/linefollower.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/linefollower.p1 ${OBJECTDIR}/misc_funcs.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/linefollower.p1.d ${OBJECTDIR}/misc_funcs.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/linefollower.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/linefollower.p1 ${OBJECTDIR}/misc_funcs.p1
 
 # Source Files
-SOURCEFILES=main.c linefollower.c
+SOURCEFILES=main.c linefollower.c misc_funcs.c
 
 
 
@@ -104,6 +104,14 @@ ${OBJECTDIR}/linefollower.p1: linefollower.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/linefollower.d ${OBJECTDIR}/linefollower.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/linefollower.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/misc_funcs.p1: misc_funcs.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/misc_funcs.p1.d 
+	@${RM} ${OBJECTDIR}/misc_funcs.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/misc_funcs.p1 misc_funcs.c 
+	@-${MV} ${OBJECTDIR}/misc_funcs.d ${OBJECTDIR}/misc_funcs.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/misc_funcs.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
@@ -120,6 +128,14 @@ ${OBJECTDIR}/linefollower.p1: linefollower.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/linefollower.p1 linefollower.c 
 	@-${MV} ${OBJECTDIR}/linefollower.d ${OBJECTDIR}/linefollower.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/linefollower.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/misc_funcs.p1: misc_funcs.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/misc_funcs.p1.d 
+	@${RM} ${OBJECTDIR}/misc_funcs.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/misc_funcs.p1 misc_funcs.c 
+	@-${MV} ${OBJECTDIR}/misc_funcs.d ${OBJECTDIR}/misc_funcs.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/misc_funcs.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

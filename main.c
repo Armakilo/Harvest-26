@@ -48,6 +48,8 @@
 #include <xc.h>
 #include "harvest_tasks.h"
 
+#define _XTAL_FREQ 32000000
+
 uint8_t control_data[26] = {};
 int data_type;
 int data_size = 10;
@@ -59,21 +61,7 @@ volatile int swa = 0;
 
 
 
-//void sendit(char it[], int it_size) //function to send the data
-//{
-//    for(int i = 0; i < it_size; i++){
-//        while(TX1STAbits.TRMT == 0){} //waits until register can send data
-//        TX1REG = it[i];
-//        
-//    }
-//}
 
-void flyskyask()
-{
-    char ask[6] = {0xFE,0x19,0x01,0x05,0x00,0x00};
-    sendit(ask,6);
-        
-}
 
 //void convert(char data[], char size){ //change int to short int.
 //    int output[10];
@@ -216,6 +204,11 @@ void main(void) {
     //loop for tx data
     
     
+    //setup status LEDs
+    TRISAbits.TRISA2 = 0; //output
+    ANSELAbits.ANSA2 = 0; //digital
+    
+    
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
     int x = 1;
@@ -253,9 +246,14 @@ void main(void) {
             }
         }
         
+        
+        
         swa = control_data[15] + (control_data[16] << 8);
         if(swa == 2000){
-            follow();
+            LATAbits.LATA2 = 1; //LED on
+            __delay_ms(1000);
+            follow(swa);
+            LATAbits.LATA2 = 0; //LED off
         }
     
     }

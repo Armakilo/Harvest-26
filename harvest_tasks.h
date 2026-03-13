@@ -39,8 +39,11 @@
 // TODO Insert C++ class definitions if appropriate
 
 // TODO Insert declarations
+void sendit(char it[], int it_size);
 
-void follow();
+void flyskyask();
+
+void follow(uint8_t sw);
 
 void sendit(char it[], int it_size);
 
