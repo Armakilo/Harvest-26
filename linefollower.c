@@ -7,10 +7,10 @@
 
 
 #include <xc.h>
-#include "harvest_tasks.h"
+#include "harvest.h"
 //I use pins RB0, RB1, and RB2 for my ADC inputs
 //Still need to debug this
-extern uint8_t control_data[26] = {};
+
 
 
 uint16_t rd_adc(uint8_t select){
@@ -52,26 +52,28 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
     char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
     if (select == 1){ //go left
         msg[6] = 1;
-        msg[7] = 50;
+        msg[7] = 70;
         msg[8] = 1;
-        msg[9] = 10;
+        msg[9] = 20;
     }
     
     else if (select == 2){ // go right
         msg[6] = 1;
-        msg[7] = 10;
+        msg[7] = 20;
         msg[8] = 1;
-        msg[9] = 50;
+        msg[9] = 70;
     }
     
     else if (select == 3){ //go straight
         msg[6] = 1;
-        msg[7] = 50;
+        msg[7] = 70;
         msg[8] = 1;
-        msg[9] = 50;
+        msg[9] = 70;
     }
     
     sendit(msg, 10);
+    
+    __delay_ms(50);
     return;
 }
 
@@ -134,11 +136,11 @@ void follow(uint8_t sw){
             runmotor(4);
         }
         
-        flyskyask();
+        GetInfoController();
         
         
         
-        if(sw == 2000){
+        if((control_data[15] << 8) + (control_data[16]) <= 1999){
                                     
             return;
         }

@@ -1,4 +1,4 @@
-# 1 "misc_funcs.c"
+# 1 "newmain.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,11 +6,38 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "misc_funcs.c" 2
+# 1 "newmain.c" 2
+# 14 "newmain.c"
+#pragma config FEXTOSC = ECH
+#pragma config RSTOSC = HFINT32
+#pragma config CLKOUTEN = OFF
+#pragma config CSWEN = ON
+#pragma config FCMEN = ON
 
 
+#pragma config MCLRE = ON
+#pragma config PWRTE = OFF
+#pragma config LPBOREN = OFF
+#pragma config BOREN = ON
+#pragma config BORV = LO
+#pragma config ZCD = OFF
+#pragma config PPS1WAY = ON
+#pragma config STVREN = ON
 
 
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
+#pragma config WDTCWS = WDTCWS_7
+#pragma config WDTCCS = SC
+
+
+#pragma config WRT = OFF
+#pragma config SCANE = available
+#pragma config LVP = ON
+
+
+#pragma config CP = OFF
+#pragma config CPD = OFF
 
 
 
@@ -19810,67 +19837,212 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 10 "misc_funcs.c" 2
+# 49 "newmain.c" 2
+# 1 "./harvest.h" 1
+# 37 "./harvest.h"
+extern volatile uint8_t control_data[26];
+extern volatile int data_type;
+extern volatile int data_size;
+extern volatile int data_index;
+extern volatile int receive_ready;
+extern volatile int receive_flag;
+extern volatile int SWA;
+extern volatile int SWB;
+extern volatile int SWC;
+extern volatile int SWD;
+extern volatile uint8_t shield_code_flag;
+extern volatile uint8_t repair_code_flag;
 
-void sendit(char it[], int it_size)
+
+
+
+void ShootShield();
+
+void ShootAttack();
+
+void ShootRepair();
+
+void ShootLaser();
+
+void sendit(char it[], int it_size);
+
+void GetInfoController();
+
+void GetInfoPCU();
+
+void motor(char data[26]);
+
+void follow(uint8_t sw);
+
+void sendit(char it[], int it_size);
+
+void RFID(void);
+# 50 "newmain.c" 2
+
+
+volatile uint8_t control_data[26] = {};
+volatile int data_type;
+volatile int data_size = 10;
+volatile int data_index = 0;
+volatile int receive_ready = 0;
+volatile int receive_flag = 0;
+volatile int SWA = 0;
+volatile int SWB = 0;
+volatile int SWC = 0;
+volatile int SWD = 0;
+volatile uint8_t shield_code_flag = 0;
+volatile uint8_t repair_code_flag = 0;
+
+
+
+void __attribute__((picinterrupt(("")))) ISR(void)
 {
-    for(int i = 0; i < it_size; i++){
-        while(TX1STAbits.TRMT == 0){}
-        TX1REG = it[i];
+    if (PIR3bits.RCIF) {
+        control_data[data_index] = RC1REG;
+        data_index++;
 
+        if (RC1STAbits.OERR)
+        {
+            RC1STAbits.CREN = 0;
+            RC1STAbits.CREN = 1;
+        }
+
+        if (data_index == 4)
+        {
+            data_type = (control_data[3]<<8) + control_data[2];
+            if (data_type == 0x0300)
+            {
+                data_size = 6;
+            }
+            else if (data_type == 0x0402)
+            {
+                data_size = 12;
+            }
+            else if (data_type == 0x0502)
+            {
+                data_size = 26;
+            }
+        }
+        if (data_index >= data_size && data_size == 6)
+        {
+            data_index = 0;
+            receive_ready = 1;
+            receive_flag = 1;
+        }
+        else if (data_index >= data_size && data_size == 12)
+        {
+            data_index = 0;
+            receive_ready = 1;
+            receive_flag = 2;
+        }
+        else if (data_index >= data_size && data_size == 26)
+        {
+            data_index = 0;
+            receive_ready = 1;
+            receive_flag = 3;
+        }
     }
 }
-
-void GetInfoController()
+# 123 "newmain.c"
+void main(void)
 {
-    char ask[6] = {0xFE,0x19,0x01,0x05,0x00,0x00};
-    sendit(ask,6);
 
-}
 
-void GetInfoPCU()
-{
-    char ask[6] = {0xFE,0x19,0x01,0x04,0x00,0x00};
-    sendit(ask,6);
-}
+    TRISA = 0b00100000;
+    ANSELA = 0;
 
-void motor(char data[26]){
 
-    int mry = 0;
-    int mly = 0;
-    int rdirec = 0;
-    int ldirec = 0;
-    char msg[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
-        mry = (data[8]+(data[9]<<8) - 1000)/5;
-        mly = (data[10]+(data[11]<<8) - 1000)/5;
-        if (mry < 110 && mry > 90){rdirec = 0;}
-        else if (mry > 110)
+    TRISCbits.TRISC6 = 0;
+    ANSELCbits.ANSC6 = 0;
+
+
+    TX1STAbits.TXEN = 1;
+    TX1STAbits.SYNC = 0;
+
+    RC1STAbits.SPEN = 0;
+    RC1STAbits.SPEN = 1;
+
+    RC1STAbits.CREN = 1;
+    TRISCbits.TRISC5 = 1;
+    ANSELCbits.ANSC5 = 0;
+
+
+
+    BAUDCONbits.BRG16 = 1;
+    TX1STAbits.BRGH = 1;
+
+
+    SPBRGH = 0x0;
+    SPBRGL = 0x44;
+
+
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
+    PIE3bits.RCIE = 1;
+
+
+    RC6PPS = 0x10;
+    RXPPS = 0x15;
+
+
+
+    int msize = 10;
+    char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
+    int x = 1;
+
+
+    while(1)
+    {
+
+        if(PORTAbits.RA5 == 0)
         {
-            rdirec = 1;
-            mry = mry - 100;
+            LATA = 0xF;
+            GetInfoController();
+            while(PORTAbits.RA5 == 0){}
+
         }
-        else if (mry < 90)
+        else
         {
-            rdirec = 2;
-            mry = 100 - mry;
+            LATA = 0;
         }
 
-        if (mly < 110 && mly > 90){ldirec = 0;}
-        else if (mly > 110)
+        if (receive_ready)
         {
-            ldirec = 1;
-            mly = mly - 100;
-        }
-        else if (mly < 90)
-        {
-            ldirec = 2;
-            mly = 100 - mly;
+            if (receive_flag == 1)
+            {
+                receive_ready = 0;
+            }
+            else if (receive_flag == 2)
+            {
+                receive_ready = 0;
+                shield_code_flag = control_data[10];
+                repair_code_flag = control_data[11];
+                GetInfoController();
+            }
+            else if (receive_flag == 3)
+            {
+                receive_ready = 0;
+                motor(control_data);
+                SWD = ((control_data[21] << 8) + control_data[20]);
+                SWC = ((control_data[19] << 8) + control_data[18]);
+                SWA = (control_data[15] << 8) + (control_data[16]);
+                ShootLaser();
+                GetInfoPCU();
+            }
         }
 
-        msg[6] = ldirec;
-        msg[7] = mly;
-        msg[8] = rdirec;
-        msg[9] = mry;
 
-        sendit(msg, 10);
+        if(SWA >= 2000){
+            LATAbits.LATA2 = 1;
+            _delay((unsigned long)((1000)*(32000000/4000.0)));
+            follow(SWA);
+            LATAbits.LATA2 = 0;
+        }
+
+
+
+    }
+
+
+    return;
 }

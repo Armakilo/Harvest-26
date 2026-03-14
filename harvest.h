@@ -28,20 +28,43 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef HARVEST_TASKS_H
-#define	HARVEST_TASKS_H
+#ifndef HARVEST_H
+#define	HARVEST_H
 
 #include <xc.h> // include processor files - each processor file is guarded. 
+#define _XTAL_FREQ 32000000
+
+extern volatile uint8_t control_data[26];
+extern volatile int data_type;
+extern volatile int data_size;
+extern volatile int data_index;
+extern volatile int receive_ready;
+extern volatile int receive_flag;
+extern volatile int SWA;
+extern volatile int SWB;
+extern volatile int SWC;
+extern volatile int SWD;
+extern volatile uint8_t shield_code_flag;
+extern volatile uint8_t repair_code_flag;
 
 
-// TODO Insert appropriate #include <>
+// Insert declarations
 
-// TODO Insert C++ class definitions if appropriate
+void ShootShield();
 
-// TODO Insert declarations
+void ShootAttack();
+
+void ShootRepair();
+
+void ShootLaser();
+
 void sendit(char it[], int it_size);
 
-void flyskyask();
+void GetInfoController();
+
+void GetInfoPCU();
+
+void motor(char data[26]);
 
 void follow(uint8_t sw);
 

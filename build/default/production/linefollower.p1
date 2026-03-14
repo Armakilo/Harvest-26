@@ -35,9 +35,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1558
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 1558: extern volatile unsigned char ADRESH __attribute__((address(0x08D)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@141 ]
-"48 ./harvest_tasks.h
-[; ;./harvest_tasks.h: 48: void sendit(char it[], int it_size);
+"71 ./harvest.h
+[; ;./harvest.h: 71: void sendit(char it[], int it_size);
 [v _sendit `(v ~T0 @X0 0 ef2`*uc`i ]
+[v F202 `(v ~T0 @X0 1 tf1`ul ]
+"20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
+[v __delay `JF202 ~T0 @X0 0 e ]
+[p i __delay ]
 "33490 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 33490: extern volatile unsigned char ANSELB __attribute__((address(0xF43)));
 [v _ANSELB `Vuc ~T0 @X0 0 e@3907 ]
@@ -65,9 +69,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2500
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 2500: extern volatile unsigned char ADACQ __attribute__((address(0x09D)));
 [v _ADACQ `Vuc ~T0 @X0 0 e@157 ]
-"44 ./harvest_tasks.h
-[; ;./harvest_tasks.h: 44: void flyskyask();
-[v _flyskyask `(v ~T0 @X0 0 e? ]
+"63 ./harvest.h
+[; ;./harvest.h: 63: void GetInfoController();
+[v _GetInfoController `(v ~T0 @X0 0 e? ]
+"37
+[; ;./harvest.h: 37: extern volatile uint8_t control_data[26];
+[v _control_data `Vuc ~T0 @X0 -> 0 `x e ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1622,14 +1629,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35049
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 35049: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"13 linefollower.c
-[; ;linefollower.c: 13: extern uint8_t control_data[26] = {};
-[v _control_data `uc ~T0 @X0 -> 26 `i e ]
-[i _control_data
-:U ..
-..
-]
-"16
+"16 linefollower.c
 [; ;linefollower.c: 16: uint16_t rd_adc(uint8_t select){
 [v _rd_adc `(us ~T0 @X0 1 ef1`uc ]
 {
@@ -1702,8 +1702,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _runmotor ]
 [v _select `uc ~T0 @X0 1 r1 ]
 [f ]
-[v F11721 `uc ~T0 @X0 -> 10 `i s ]
-[i F11721
+[v F11739 `uc ~T0 @X0 -> 10 `i s ]
+[i F11739
 :U ..
 "52
 [; ;linefollower.c: 52:     char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
@@ -1720,7 +1720,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _msg `uc ~T0 @X0 -> 10 `i a ]
-[e = _msg F11721 ]
+[e = _msg F11739 ]
 "53
 [; ;linefollower.c: 53:     if (select == 1){
 [e $ ! == -> _select `i -> 1 `i 1574  ]
@@ -1729,14 +1729,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 54:         msg[6] = 1;
 [e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "55
-[; ;linefollower.c: 55:         msg[7] = 50;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 55:         msg[7] = 70;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 70 `i `uc ]
 "56
 [; ;linefollower.c: 56:         msg[8] = 1;
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "57
-[; ;linefollower.c: 57:         msg[9] = 10;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 10 `i `uc ]
+[; ;linefollower.c: 57:         msg[9] = 20;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 20 `i `uc ]
 "58
 [; ;linefollower.c: 58:     }
 }
@@ -1750,14 +1750,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 61:         msg[6] = 1;
 [e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "62
-[; ;linefollower.c: 62:         msg[7] = 10;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 10 `i `uc ]
+[; ;linefollower.c: 62:         msg[7] = 20;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 20 `i `uc ]
 "63
 [; ;linefollower.c: 63:         msg[8] = 1;
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "64
-[; ;linefollower.c: 64:         msg[9] = 50;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 64:         msg[9] = 70;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 70 `i `uc ]
 "65
 [; ;linefollower.c: 65:     }
 }
@@ -1771,14 +1771,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 68:         msg[6] = 1;
 [e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "69
-[; ;linefollower.c: 69:         msg[7] = 50;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 69:         msg[7] = 70;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 70 `i `uc ]
 "70
 [; ;linefollower.c: 70:         msg[8] = 1;
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "71
-[; ;linefollower.c: 71:         msg[9] = 50;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 71:         msg[9] = 70;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 70 `i `uc ]
 "72
 [; ;linefollower.c: 72:     }
 }
@@ -1788,158 +1788,161 @@ Version 4.0 HI-TECH Software Intermediate Code
 "74
 [; ;linefollower.c: 74:     sendit(msg, 10);
 [e ( _sendit (2 , &U _msg -> 10 `i ]
-"75
-[; ;linefollower.c: 75:     return;
-[e $UE 1573  ]
 "76
-[; ;linefollower.c: 76: }
+[; ;linefollower.c: 76:     _delay((unsigned long)((50)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"77
+[; ;linefollower.c: 77:     return;
+[e $UE 1573  ]
+"78
+[; ;linefollower.c: 78: }
 [e :UE 1573 ]
 }
-"78
-[; ;linefollower.c: 78: void follow(uint8_t sw){
+"80
+[; ;linefollower.c: 80: void follow(uint8_t sw){
 [v _follow `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _follow ]
 [v _sw `uc ~T0 @X0 1 r1 ]
 [f ]
-"81
-[; ;linefollower.c: 81:     volatile const uint16_t wlvl = 600;
-[v F11725 `CVus ~T0 @X0 1 s wlvl ]
-[i F11725
+"83
+[; ;linefollower.c: 83:     volatile const uint16_t wlvl = 600;
+[v F11743 `CVus ~T0 @X0 1 s wlvl ]
+[i F11743
 -> -> 600 `i `us
 ]
-"82
-[; ;linefollower.c: 82:     volatile const uint16_t blvl = 850;
-[v F11726 `CVus ~T0 @X0 1 s blvl ]
-[i F11726
+"84
+[; ;linefollower.c: 84:     volatile const uint16_t blvl = 850;
+[v F11744 `CVus ~T0 @X0 1 s blvl ]
+[i F11744
 -> -> 850 `i `us
 ]
-"85
-[; ;linefollower.c: 85:     ANSELB = 0b0111;
+"87
+[; ;linefollower.c: 87:     ANSELB = 0b0111;
 [e = _ANSELB -> -> 7 `i `uc ]
-"86
-[; ;linefollower.c: 86:     TRISB = 0b0111;
+"88
+[; ;linefollower.c: 88:     TRISB = 0b0111;
 [e = _TRISB -> -> 7 `i `uc ]
-"92
-[; ;linefollower.c: 92:     ADCLK = 0b11111;
-[e = _ADCLK -> -> 31 `i `uc ]
 "94
-[; ;linefollower.c: 94:     ADREFbits.ADPREF = 0b00;
+[; ;linefollower.c: 94:     ADCLK = 0b11111;
+[e = _ADCLK -> -> 31 `i `uc ]
+"96
+[; ;linefollower.c: 96:     ADREFbits.ADPREF = 0b00;
 [e = . . _ADREFbits 0 0 -> -> 0 `i `uc ]
-"95
-[; ;linefollower.c: 95:     ADREFbits.ADNREF = 0;
+"97
+[; ;linefollower.c: 97:     ADREFbits.ADNREF = 0;
 [e = . . _ADREFbits 0 2 -> -> 0 `i `uc ]
-"99
-[; ;linefollower.c: 99:     ADACQ = 0b001;
-[e = _ADACQ -> -> 1 `i `uc ]
 "101
-[; ;linefollower.c: 101:     ADCON0bits.ADFRM0 = 1;
-[e = . . _ADCON0bits 4 2 -> -> 1 `i `uc ]
+[; ;linefollower.c: 101:     ADACQ = 0b001;
+[e = _ADACQ -> -> 1 `i `uc ]
 "103
-[; ;linefollower.c: 103:     ADCON0bits.ADON = 1;
-[e = . . _ADCON0bits 0 6 -> -> 1 `i `uc ]
+[; ;linefollower.c: 103:     ADCON0bits.ADFRM0 = 1;
+[e = . . _ADCON0bits 4 2 -> -> 1 `i `uc ]
 "105
-[; ;linefollower.c: 105:     while(1){
+[; ;linefollower.c: 105:     ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 6 -> -> 1 `i `uc ]
+"107
+[; ;linefollower.c: 107:     while(1){
 [e :U 1581 ]
 {
-"107
-[; ;linefollower.c: 107:         if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
-[e $ ! && && < -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11725 `ui > -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11726 `ui < -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11725 `ui 1583  ]
-{
-"108
-[; ;linefollower.c: 108:             runmotor(3);
-[e ( _runmotor (1 -> -> 3 `i `uc ]
 "109
-[; ;linefollower.c: 109:         }
+[; ;linefollower.c: 109:         if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
+[e $ ! && && < -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11743 `ui > -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11744 `ui < -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11743 `ui 1583  ]
+{
+"110
+[; ;linefollower.c: 110:             runmotor(3);
+[e ( _runmotor (1 -> -> 3 `i `uc ]
+"111
+[; ;linefollower.c: 111:         }
 }
 [e $U 1584  ]
-"112
-[; ;linefollower.c: 112:         else if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) > blvl){
-[e :U 1583 ]
-[e $ ! && && < -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11725 `ui > -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11726 `ui > -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11726 `ui 1585  ]
-{
-"113
-[; ;linefollower.c: 113:             runmotor(2);
-[e ( _runmotor (1 -> -> 2 `i `uc ]
 "114
-[; ;linefollower.c: 114:         }
+[; ;linefollower.c: 114:         else if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) > blvl){
+[e :U 1583 ]
+[e $ ! && && < -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11743 `ui > -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11744 `ui > -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11744 `ui 1585  ]
+{
+"115
+[; ;linefollower.c: 115:             runmotor(2);
+[e ( _runmotor (1 -> -> 2 `i `uc ]
+"116
+[; ;linefollower.c: 116:         }
 }
 [e $U 1586  ]
-"118
-[; ;linefollower.c: 118:         else if (rd_adc(1) < wlvl && rd_adc(3) < wlvl && rd_adc(2) > blvl){
-[e :U 1585 ]
-[e $ ! && && < -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11725 `ui < -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11725 `ui > -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11726 `ui 1587  ]
-{
-"119
-[; ;linefollower.c: 119:             runmotor(2);
-[e ( _runmotor (1 -> -> 2 `i `uc ]
 "120
-[; ;linefollower.c: 120:         }
+[; ;linefollower.c: 120:         else if (rd_adc(1) < wlvl && rd_adc(3) < wlvl && rd_adc(2) > blvl){
+[e :U 1585 ]
+[e $ ! && && < -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11743 `ui < -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11743 `ui > -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11744 `ui 1587  ]
+{
+"121
+[; ;linefollower.c: 121:             runmotor(2);
+[e ( _runmotor (1 -> -> 2 `i `uc ]
+"122
+[; ;linefollower.c: 122:         }
 }
 [e $U 1588  ]
-"124
-[; ;linefollower.c: 124:         else if (rd_adc(1) > blvl && rd_adc(3) < wlvl && rd_adc(2) < wlvl){
-[e :U 1587 ]
-[e $ ! && && > -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11726 `ui < -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11725 `ui < -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11725 `ui 1589  ]
-{
-"125
-[; ;linefollower.c: 125:             runmotor(1);
-[e ( _runmotor (1 -> -> 1 `i `uc ]
 "126
-[; ;linefollower.c: 126:         }
+[; ;linefollower.c: 126:         else if (rd_adc(1) > blvl && rd_adc(3) < wlvl && rd_adc(2) < wlvl){
+[e :U 1587 ]
+[e $ ! && && > -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11744 `ui < -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11743 `ui < -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11743 `ui 1589  ]
+{
+"127
+[; ;linefollower.c: 127:             runmotor(1);
+[e ( _runmotor (1 -> -> 1 `i `uc ]
+"128
+[; ;linefollower.c: 128:         }
 }
 [e $U 1590  ]
-"129
-[; ;linefollower.c: 129:         else if (rd_adc(1) > blvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
-[e :U 1589 ]
-[e $ ! && && > -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11726 `ui > -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11726 `ui < -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11725 `ui 1591  ]
-{
-"130
-[; ;linefollower.c: 130:             runmotor(1);
-[e ( _runmotor (1 -> -> 1 `i `uc ]
 "131
-[; ;linefollower.c: 131:         }
+[; ;linefollower.c: 131:         else if (rd_adc(1) > blvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
+[e :U 1589 ]
+[e $ ! && && > -> ( _rd_adc (1 -> -> 1 `i `uc `ui -> F11744 `ui > -> ( _rd_adc (1 -> -> 3 `i `uc `ui -> F11744 `ui < -> ( _rd_adc (1 -> -> 2 `i `uc `ui -> F11743 `ui 1591  ]
+{
+"132
+[; ;linefollower.c: 132:             runmotor(1);
+[e ( _runmotor (1 -> -> 1 `i `uc ]
+"133
+[; ;linefollower.c: 133:         }
 }
 [e $U 1592  ]
-"133
-[; ;linefollower.c: 133:         else{
+"135
+[; ;linefollower.c: 135:         else{
 [e :U 1591 ]
 {
-"134
-[; ;linefollower.c: 134:             runmotor(4);
+"136
+[; ;linefollower.c: 136:             runmotor(4);
 [e ( _runmotor (1 -> -> 4 `i `uc ]
-"135
-[; ;linefollower.c: 135:         }
+"137
+[; ;linefollower.c: 137:         }
 }
 [e :U 1592 ]
 [e :U 1590 ]
 [e :U 1588 ]
 [e :U 1586 ]
 [e :U 1584 ]
-"137
-[; ;linefollower.c: 137:         flyskyask();
-[e ( _flyskyask ..  ]
-"141
-[; ;linefollower.c: 141:         if(sw == 2000){
-[e $ ! == -> _sw `i -> 2000 `i 1593  ]
-{
+"139
+[; ;linefollower.c: 139:         GetInfoController();
+[e ( _GetInfoController ..  ]
 "143
-[; ;linefollower.c: 143:             return;
+[; ;linefollower.c: 143:         if((control_data[15] << 8) + (control_data[16]) <= 1999){
+[e $ ! <= + << -> *U + &U _control_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 1999 `i 1593  ]
+{
+"145
+[; ;linefollower.c: 145:             return;
 [e $UE 1579  ]
-"144
-[; ;linefollower.c: 144:         }
+"146
+[; ;linefollower.c: 146:         }
 }
 [e :U 1593 ]
-"146
-[; ;linefollower.c: 146:         sw = control_data[15] + (control_data[16] << 8);
-[e = _sw -> + -> *U + &U _control_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i << -> *U + &U _control_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i `uc ]
 "148
-[; ;linefollower.c: 148:     }
+[; ;linefollower.c: 148:         sw = control_data[15] + (control_data[16] << 8);
+[e = _sw -> + -> *U + &U _control_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i << -> *U + &U _control_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i `uc ]
+"150
+[; ;linefollower.c: 150:     }
 }
 [e :U 1580 ]
 [e $U 1581  ]
 [e :U 1582 ]
-"150
-[; ;linefollower.c: 150: }
+"152
+[; ;linefollower.c: 152: }
 [e :UE 1579 ]
 }

@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "laser.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 285 "<built-in>" 3
@@ -6,39 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 14 "main.c"
-#pragma config FEXTOSC = ECH
-#pragma config RSTOSC = HFINT32
-#pragma config CLKOUTEN = OFF
-#pragma config CSWEN = ON
-#pragma config FCMEN = ON
-
-
-#pragma config MCLRE = ON
-#pragma config PWRTE = OFF
-#pragma config LPBOREN = OFF
-#pragma config BOREN = ON
-#pragma config BORV = LO
-#pragma config ZCD = OFF
-#pragma config PPS1WAY = ON
-#pragma config STVREN = ON
-
-
-#pragma config WDTCPS = WDTCPS_31
-#pragma config WDTE = OFF
-#pragma config WDTCWS = WDTCWS_7
-#pragma config WDTCCS = SC
-
-
-#pragma config WRT = OFF
-#pragma config SCANE = available
-#pragma config LVP = ON
-
-
-#pragma config CP = OFF
-#pragma config CPD = OFF
-
+# 1 "laser.c" 2
 
 
 
@@ -19837,216 +19805,87 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
-# 49 "main.c" 2
-# 1 "./harvest_tasks.h" 1
-# 42 "./harvest_tasks.h"
+# 5 "laser.c" 2
+# 1 "./harvest.h" 1
+# 37 "./harvest.h"
+extern volatile uint8_t control_data[26];
+extern volatile int data_type;
+extern volatile int data_size;
+extern volatile int data_index;
+extern volatile int receive_ready;
+extern volatile int receive_flag;
+extern volatile int SWA;
+extern volatile int SWB;
+extern volatile int SWC;
+extern volatile int SWD;
+extern volatile uint8_t shield_code_flag;
+extern volatile uint8_t repair_code_flag;
+
+
+
+
+void ShootShield();
+
+void ShootAttack();
+
+void ShootRepair();
+
+void ShootLaser();
+
 void sendit(char it[], int it_size);
 
-void flyskyask();
+void GetInfoController();
+
+void GetInfoPCU();
+
+void motor(char data[26]);
 
 void follow(uint8_t sw);
 
 void sendit(char it[], int it_size);
 
 void RFID(void);
-# 50 "main.c" 2
+# 6 "laser.c" 2
 
-
-
-uint8_t control_data[26] = {};
-int data_type;
-int data_size = 10;
-int data_index = 0;
-int receive_ready = 0;
-int receive_flag = 0;
-
-volatile int swa = 0;
-# 76 "main.c"
-void motor(char data[26]){
-
-    int mry = 0;
-    int mly = 0;
-    int rdirec = 0;
-    int ldirec = 0;
-    char msg[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
-        mry = (data[8]+(data[9]<<8) - 1000)/5;
-        mly = (data[10]+(data[11]<<8) - 1000)/5;
-        if (mry < 110 && mry > 90){rdirec = 0;}
-        else if (mry > 110)
-        {
-            rdirec = 1;
-            mry = mry - 100;
-        }
-        else if (mry < 90)
-        {
-            rdirec = 2;
-            mry = 100 - mry;
-        }
-
-        if (mly < 110 && mly > 90){ldirec = 0;}
-        else if (mly > 110)
-        {
-            ldirec = 1;
-            mly = mly - 100;
-        }
-        else if (mly < 90)
-        {
-            ldirec = 2;
-            mly = 100 - mly;
-        }
-
-        msg[6] = ldirec;
-        msg[7] = mly;
-        msg[8] = rdirec;
-        msg[9] = mry;
-
-        sendit(msg, 10);
-}
-
-
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void)
+void ShootShield()
 {
-    if (PIR3bits.RCIF) {
-        control_data[data_index] = RC1REG;
-        data_index++;
-
-        if (RC1STAbits.OERR)
-        {
-            RC1STAbits.CREN = 0;
-            RC1STAbits.CREN = 1;
-        }
-
-        if (data_index == 4)
-        {
-            data_type = (control_data[3]<<8) + control_data[2];
-            if (data_type == 0x0300)
-            {
-                data_size = 6;
-            }
-            else if (data_type == 0x0402)
-            {
-                data_size = 12;
-            }
-            else if (data_type == 0x0502)
-            {
-                data_size = 26;
-            }
-        }
-        if (data_index >= data_size && data_size == 6)
-        {
-            data_index = 0;
-            receive_ready = 1;
-            receive_flag = 1;
-        }
-        else if (data_index >= data_size && data_size == 12)
-        {
-            data_index = 0;
-            receive_ready = 1;
-            receive_flag = 2;
-        }
-        else if (data_index >= data_size && data_size == 26)
-        {
-            data_index = 0;
-            receive_ready = 1;
-            receive_flag = 3;
-        }
-    }
+    char tosend[6] = {0xFE, 0x19, 0x02, 0x09, 0x00, 0x00};
+    sendit(tosend, 6);
 }
 
-void main(void) {
+void ShootAttack()
+{
+    char tosend[7] = {0xFE, 0x19, 0x01, 0x09, 0x01, 0x00, 1};
+    sendit(tosend, 7);
+}
 
+void ShootRepair()
+{
+    char tosend[6] = {0xFE, 0x19, 0x04, 0x09, 0x00, 0x00};
+    sendit(tosend, 6);
+}
 
-    TRISA = 0b00100000;
-    ANSELA = 0;
-
-
-    TX1STAbits.TXEN = 1;
-    TX1STAbits.SYNC = 0;
-    RC1STAbits.SPEN = 1;
-
-    RC1STAbits.CREN = 1;
-    TRISCbits.TRISC5 = 1;
-    ANSELCbits.ANSC5 = 0;
-
-
-
-    BAUDCONbits.BRG16 = 1;
-    TX1STAbits.BRGH = 1;
-
-
-    SPBRGH = 0x0;
-    SPBRGL = 0x44;
-
-
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    PIE3bits.RCIE = 1;
-
-
-    RC6PPS = 0x10;
-    RXPPS = 0x15;
-
-
-
-
-    TRISAbits.TRISA2 = 0;
-    ANSELAbits.ANSA2 = 0;
-
-
-    int msize = 10;
-    char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
-    int x = 1;
-
-
-    while(1)
-    {
-
-        if(PORTAbits.RA5 == 0){
-            LATA = 0xF;
-            flyskyask();
-            while(PORTAbits.RA5 == 0){}
-
-        }
-        else
+void ShootLaser()
+{
+    if (SWD > 1600)
         {
-            LATA = 0;
-        }
-
-        if (receive_ready)
-        {
-            if (receive_flag == 1)
+            if (SWC > 1800)
             {
-                receive_ready = 0;
+                if (!shield_code_flag)
+                {
+                    ShootShield();
+                }
             }
-            else if (receive_flag == 2)
+            else if (SWC > 1300 && SWC < 1700)
             {
-                receive_ready = 0;
+                ShootAttack();
             }
-            else if (receive_flag == 3)
+            else if (SWC < 200)
             {
-                receive_ready = 0;
-                motor(control_data);
-                flyskyask();
+                if (!repair_code_flag);
+                {
+                    ShootRepair();
+                }
             }
         }
-
-
-
-        swa = control_data[15] + (control_data[16] << 8);
-        if(swa == 2000){
-            LATAbits.LATA2 = 1;
-            _delay((unsigned long)((1000)*(32000000/4000.0)));
-            follow(swa);
-            LATAbits.LATA2 = 0;
-        }
-
-    }
-
-
-    return;
 }

@@ -13,31 +13,41 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"7 C:\Users\w7yf6\Documents\Harvest-26\laser.c
+[v _ShootShield ShootShield `(v  1 e 1 0 ]
+"13
+[v _ShootAttack ShootAttack `(v  1 e 1 0 ]
+"19
+[v _ShootRepair ShootRepair `(v  1 e 1 0 ]
+"25
+[v _ShootLaser ShootLaser `(v  1 e 1 0 ]
 "16 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 [v _rd_adc rd_adc `(us  1 e 2 0 ]
 "49
 [v _runmotor runmotor `(v  1 e 1 0 ]
-"78
+"80
 [v _follow follow `(v  1 e 1 0 ]
-"76 C:\Users\w7yf6\Documents\Harvest-26\main.c
-[v _motor motor `(v  1 e 1 0 ]
-"123
-[v _ISR ISR `II(v  1 e 1 0 ]
-"172
-[v _main main `(v  1 e 1 0 ]
 "11 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _sendit sendit `(v  1 e 1 0 ]
-"24
-[v _flyskyask flyskyask `(v  1 e 1 0 ]
-[s S155 . 1 `uc 1 INTEDG 1 0 :1:0 
+"20
+[v _GetInfoController GetInfoController `(v  1 e 1 0 ]
+"27
+[v _GetInfoPCU GetInfoPCU `(v  1 e 1 0 ]
+"33
+[v _motor motor `(v  1 e 1 0 ]
+"67 C:\Users\w7yf6\Documents\Harvest-26\newmain.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+"116
+[v _main main `(v  1 e 1 0 ]
+[s S330 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "364 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
-[u S160 . 1 `S155 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES160  1 e 1 @11 ]
-[s S229 . 1 `uc 1 RA0 1 0 :1:0 
+[u S335 . 1 `S330 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES335  1 e 1 @11 ]
+[s S362 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -47,25 +57,13 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "401
-[u S238 . 1 `S229 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES238  1 e 1 @12 ]
+[u S371 . 1 `S362 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES371  1 e 1 @12 ]
 "591
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
-[s S187 . 1 `uc 1 TRISA0 1 0 :1:0 
-`uc 1 TRISA1 1 0 :1:1 
-`uc 1 TRISA2 1 0 :1:2 
-`uc 1 TRISA3 1 0 :1:3 
-`uc 1 TRISA4 1 0 :1:4 
-`uc 1 TRISA5 1 0 :1:5 
-`uc 1 TRISA6 1 0 :1:6 
-`uc 1 TRISA7 1 0 :1:7 
-]
-"608
-[u S196 . 1 `S187 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES196  1 e 1 @17 ]
 "653
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
-[s S90 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S253 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -75,11 +73,11 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "732
-[u S99 . 1 `S90 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES99  1 e 1 @19 ]
+[u S262 . 1 `S253 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES262  1 e 1 @19 ]
 "777
 [v _LATA LATA `VEuc  1 e 1 @22 ]
-[s S255 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S388 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -89,13 +87,13 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "794
-[u S264 . 1 `S255 1 . 1 0 ]
-[v _LATAbits LATAbits `VES264  1 e 1 @22 ]
+[u S397 . 1 `S388 1 . 1 0 ]
+[v _LATAbits LATAbits `VES397  1 e 1 @22 ]
 "1538
 [v _ADRESL ADRESL `VEuc  1 e 1 @140 ]
 "1558
 [v _ADRESH ADRESH `VEuc  1 e 1 @141 ]
-[s S406 . 1 `uc 1 ADGO 1 0 :1:0 
+[s S23 . 1 `uc 1 ADGO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM 1 0 :2:2 
 `uc 1 ADCS 1 0 :1:4 
@@ -104,36 +102,36 @@
 `uc 1 ADON 1 0 :1:7 
 ]
 "1895
-[s S414 . 1 `uc 1 DONE 1 0 :1:0 
+[s S31 . 1 `uc 1 DONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM 1 0 :2:2 
 ]
-[s S418 . 1 `uc 1 nDONE 1 0 :1:0 
+[s S35 . 1 `uc 1 nDONE 1 0 :1:0 
 ]
-[s S420 . 1 `uc 1 GO 1 0 :1:0 
+[s S37 . 1 `uc 1 GO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM0 1 0 :1:2 
 `uc 1 ADFM1 1 0 :1:3 
 ]
-[s S425 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+[s S42 . 1 `uc 1 GO_nDONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM0 1 0 :1:2 
 `uc 1 ADFRM1 1 0 :1:3 
 ]
-[u S430 . 1 `S406 1 . 1 0 `S414 1 . 1 0 `S418 1 . 1 0 `S420 1 . 1 0 `S425 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES430  1 e 1 @147 ]
+[u S47 . 1 `S23 1 . 1 0 `S31 1 . 1 0 `S35 1 . 1 0 `S37 1 . 1 0 `S42 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES47  1 e 1 @147 ]
 "2227
 [v _ADCLK ADCLK `VEuc  1 e 1 @152 ]
-[s S467 . 1 `uc 1 ADPREF 1 0 :2:0 
+[s S95 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADNREF 1 0 :1:4 
 ]
 "2353
-[s S471 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[s S99 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 ]
-[u S474 . 1 `S467 1 . 1 0 `S471 1 . 1 0 ]
-[v _ADREFbits ADREFbits `VES474  1 e 1 @154 ]
+[u S102 . 1 `S95 1 . 1 0 `S99 1 . 1 0 ]
+[v _ADREFbits ADREFbits `VES102  1 e 1 @154 ]
 "2500
 [v _ADACQ ADACQ `VEuc  1 e 1 @157 ]
 "2570
@@ -146,7 +144,7 @@
 [v _SPBRGL SPBRGL `VEuc  1 e 1 @283 ]
 "3693
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @284 ]
-[s S46 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S230 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -156,9 +154,9 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3768
-[u S55 . 1 `S46 1 . 1 0 ]
-[v _RC1STAbits RC1STAbits `VES55  1 e 1 @285 ]
-[s S69 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S239 . 1 `S230 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES239  1 e 1 @285 ]
+[s S164 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -168,9 +166,9 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "3948
-[u S78 . 1 `S69 1 . 1 0 ]
-[v _TX1STAbits TX1STAbits `VES78  1 e 1 @286 ]
-[s S132 . 1 `uc 1 ABDEN 1 0 :1:0 
+[u S173 . 1 `S164 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES173  1 e 1 @286 ]
+[s S307 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -180,9 +178,9 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "4269
-[u S141 . 1 `S132 1 . 1 0 ]
-[v _BAUDCONbits BAUDCONbits `VES141  1 e 1 @287 ]
-[s S28 . 1 `uc 1 SSP1IF 1 0 :1:0 
+[u S316 . 1 `S307 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES316  1 e 1 @287 ]
+[s S212 . 1 `uc 1 SSP1IF 1 0 :1:0 
 `uc 1 BCL1IF 1 0 :1:1 
 `uc 1 SSP2IF 1 0 :1:2 
 `uc 1 BCL2IF 1 0 :1:3 
@@ -190,9 +188,9 @@
 `uc 1 RCIF 1 0 :1:5 
 ]
 "21120
-[u S35 . 1 `S28 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES35  1 e 1 @1807 ]
-[s S168 . 1 `uc 1 SSP1IE 1 0 :1:0 
+[u S219 . 1 `S212 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES219  1 e 1 @1807 ]
+[s S343 . 1 `uc 1 SSP1IE 1 0 :1:0 
 `uc 1 BCL1IE 1 0 :1:1 
 `uc 1 SSP2IE 1 0 :1:2 
 `uc 1 BCL2IE 1 0 :1:3 
@@ -200,31 +198,17 @@
 `uc 1 RCIE 1 0 :1:5 
 ]
 "21542
-[u S175 . 1 `S168 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES175  1 e 1 @1817 ]
+[u S350 . 1 `S343 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES350  1 e 1 @1817 ]
 "31566
 [v _RXPPS RXPPS `VEuc  1 e 1 @3787 ]
 "32770
 [v _RC6PPS RC6PPS `VEuc  1 e 1 @3878 ]
 "32870
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
-[s S208 . 1 `uc 1 ANSA0 1 0 :1:0 
-`uc 1 ANSA1 1 0 :1:1 
-`uc 1 ANSA2 1 0 :1:2 
-`uc 1 ANSA3 1 0 :1:3 
-`uc 1 ANSA4 1 0 :1:4 
-`uc 1 ANSA5 1 0 :1:5 
-`uc 1 ANSA6 1 0 :1:6 
-`uc 1 ANSA7 1 0 :1:7 
-]
-"32887
-[u S217 . 1 `S208 1 . 1 0 ]
-"32887
-"32887
-[v _ANSELAbits ANSELAbits `VES217  1 e 1 @3896 ]
 "33490
 [v _ANSELB ANSELB `VEuc  1 e 1 @3907 ]
-[s S111 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S274 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -234,122 +218,173 @@
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "34127
-[u S120 . 1 `S111 1 . 1 0 ]
+[u S283 . 1 `S274 1 . 1 0 ]
 "34127
 "34127
-[v _ANSELCbits ANSELCbits `VES120  1 e 1 @3918 ]
-"13 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-[v _control_data control_data `[26]uc  1 e 26 0 ]
-"54 C:\Users\w7yf6\Documents\Harvest-26\main.c
-[v _data_type data_type `i  1 e 2 0 ]
+[v _ANSELCbits ANSELCbits `VES283  1 e 1 @3918 ]
+"52 C:\Users\w7yf6\Documents\Harvest-26\newmain.c
+[v _control_data control_data `VE[26]uc  1 e 26 0 ]
+"53
+[v _data_type data_type `VEi  1 e 2 0 ]
+"54
+[v _data_size data_size `VEi  1 e 2 0 ]
 "55
-[v _data_size data_size `i  1 e 2 0 ]
+[v _data_index data_index `VEi  1 e 2 0 ]
 "56
-[v _data_index data_index `i  1 e 2 0 ]
+[v _receive_ready receive_ready `VEi  1 e 2 0 ]
 "57
-[v _receive_ready receive_ready `i  1 e 2 0 ]
+[v _receive_flag receive_flag `VEi  1 e 2 0 ]
 "58
-[v _receive_flag receive_flag `i  1 e 2 0 ]
+[v _SWA SWA `VEi  1 e 2 0 ]
+"59
+[v _SWB SWB `VEi  1 e 2 0 ]
 "60
-[v _swa swa `VEi  1 e 2 0 ]
-"172
+[v _SWC SWC `VEi  1 e 2 0 ]
+"61
+[v _SWD SWD `VEi  1 e 2 0 ]
+"62
+[v _shield_code_flag shield_code_flag `VEuc  1 e 1 0 ]
+"63
+[v _repair_code_flag repair_code_flag `VEuc  1 e 1 0 ]
+"116
 [v _main main `(v  1 e 1 0 ]
 {
-"213
-[v main@message message `[10]uc  1 a 10 0 ]
-"212
-[v main@F11733 F11733 `[10]uc  1 s 10 F11733 ]
-"263
+"157
+[v main@message message `[10]uc  1 a 10 20 ]
+"156
+[v main@F11749 F11749 `[10]uc  1 s 10 F11749 ]
+"215
 } 0
-"76
+"33 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _motor motor `(v  1 e 1 0 ]
 {
-"82
-[v motor@msg msg `[10]uc  1 a 10 6 ]
-"79
-[v motor@mly mly `i  1 a 2 22 ]
-"78
-[v motor@mry mry `i  1 a 2 20 ]
-"81
-[v motor@ldirec ldirec `i  1 a 2 18 ]
-"80
-[v motor@rdirec rdirec `i  1 a 2 16 ]
-"76
-[v motor@data data `*.4uc  1 p 1 4 ]
-"81
-[v motor@F11728 F11728 `[10]uc  1 s 10 F11728 ]
-"115
+"39
+[v motor@msg msg `[10]uc  1 a 10 0 ]
+"36
+[v motor@mly mly `i  1 a 2 16 ]
+"35
+[v motor@mry mry `i  1 a 2 14 ]
+"38
+[v motor@ldirec ldirec `i  1 a 2 12 ]
+"37
+[v motor@rdirec rdirec `i  1 a 2 10 ]
+"33
+[v motor@data data `*.4uc  1 p 1 9 ]
+"38
+[v motor@F11721 F11721 `[10]uc  1 s 10 F11721 ]
+"72
 } 0
 "5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 2 ]
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 1 ]
-[v ___awdiv@counter counter `uc  1 a 1 0 ]
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 3 ]
-[v ___awdiv@dividend dividend `i  1 p 2 5 ]
+[v ___awdiv@divisor divisor `i  1 p 2 1 ]
+[v ___awdiv@dividend dividend `i  1 p 2 3 ]
 "41
 } 0
-"78 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+"80 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 [v _follow follow `(v  1 e 1 0 ]
 {
 [v follow@sw sw `uc  1 p 1 wreg ]
 [v follow@sw sw `uc  1 p 1 wreg ]
-"81
+"83
 [v follow@wlvl wlvl `DVECus  1 s 2 wlvl ]
-"82
+"84
 [v follow@blvl blvl `DVECus  1 s 2 blvl ]
-"150
+"152
 } 0
 "49
 [v _runmotor runmotor `(v  1 e 1 0 ]
 {
 [v runmotor@select select `uc  1 p 1 wreg ]
 "52
-[v runmotor@msg msg `[10]uc  1 a 10 1 ]
+[v runmotor@msg msg `[10]uc  1 a 10 0 ]
 "49
 [v runmotor@select select `uc  1 p 1 wreg ]
-[v runmotor@F11721 F11721 `[10]uc  1 s 10 F11721 ]
+[v runmotor@F11739 F11739 `[10]uc  1 s 10 F11739 ]
 "52
-[v runmotor@select select `uc  1 p 1 11 ]
-"76
+[v runmotor@select select `uc  1 p 1 10 ]
+"78
 } 0
 "16
 [v _rd_adc rd_adc `(us  1 e 2 0 ]
 {
 [v rd_adc@select select `uc  1 p 1 wreg ]
 "35
-[v rd_adc@output output `us  1 a 2 5 ]
+[v rd_adc@output output `us  1 a 2 3 ]
 "16
 [v rd_adc@select select `uc  1 p 1 wreg ]
 "20
-[v rd_adc@select select `uc  1 p 1 7 ]
+[v rd_adc@select select `uc  1 p 1 5 ]
 "37
 } 0
-"24 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-[v _flyskyask flyskyask `(v  1 e 1 0 ]
+"20 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+[v _GetInfoController GetInfoController `(v  1 e 1 0 ]
 {
-"26
-[v flyskyask@ask ask `[6]uc  1 a 6 1 ]
+"22
+[v GetInfoController@ask ask `[6]uc  1 a 6 0 ]
+"21
+[v GetInfoController@F11710 F11710 `[6]uc  1 s 6 F11710 ]
 "25
-[v flyskyask@F11710 F11710 `[6]uc  1 s 6 F11710 ]
+} 0
+"25 C:\Users\w7yf6\Documents\Harvest-26\laser.c
+[v _ShootLaser ShootLaser `(v  1 e 1 0 ]
+{
+"48
+} 0
+"7
+[v _ShootShield ShootShield `(v  1 e 1 0 ]
+{
+"9
+[v ShootShield@tosend tosend `[6]uc  1 a 6 0 ]
+"8
+[v ShootShield@F11735 F11735 `[6]uc  1 s 6 F11735 ]
+"11
+} 0
+"19
+[v _ShootRepair ShootRepair `(v  1 e 1 0 ]
+{
+"21
+[v ShootRepair@tosend tosend `[6]uc  1 a 6 0 ]
+"20
+[v ShootRepair@F11741 F11741 `[6]uc  1 s 6 F11741 ]
+"23
+} 0
+"13
+[v _ShootAttack ShootAttack `(v  1 e 1 0 ]
+{
+"15
+[v ShootAttack@tosend tosend `[7]uc  1 a 7 0 ]
+"14
+[v ShootAttack@F11738 F11738 `[7]uc  1 s 7 F11738 ]
+"17
+} 0
+"27 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+[v _GetInfoPCU GetInfoPCU `(v  1 e 1 0 ]
+{
 "29
+[v GetInfoPCU@ask ask `[6]uc  1 a 6 0 ]
+"28
+[v GetInfoPCU@F11713 F11713 `[6]uc  1 s 6 F11713 ]
+"31
 } 0
 "11
 [v _sendit sendit `(v  1 e 1 0 ]
 {
 "13
-[v sendit@i i `i  1 a 2 7 ]
+[v sendit@i i `i  1 a 2 5 ]
 "11
-[v sendit@it it `*.4uc  1 p 1 3 ]
-[v sendit@it_size it_size `i  1 p 2 4 ]
-"21
+[v sendit@it it `*.4uc  1 p 1 1 ]
+[v sendit@it_size it_size `i  1 p 2 2 ]
+"18
 } 0
-"123 C:\Users\w7yf6\Documents\Harvest-26\main.c
+"67 C:\Users\w7yf6\Documents\Harvest-26\newmain.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"170
+"114
 } 0

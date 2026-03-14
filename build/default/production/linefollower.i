@@ -19811,11 +19811,39 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
 # 10 "linefollower.c" 2
-# 1 "./harvest_tasks.h" 1
-# 42 "./harvest_tasks.h"
+# 1 "./harvest.h" 1
+# 37 "./harvest.h"
+extern volatile uint8_t control_data[26];
+extern volatile int data_type;
+extern volatile int data_size;
+extern volatile int data_index;
+extern volatile int receive_ready;
+extern volatile int receive_flag;
+extern volatile int SWA;
+extern volatile int SWB;
+extern volatile int SWC;
+extern volatile int SWD;
+extern volatile uint8_t shield_code_flag;
+extern volatile uint8_t repair_code_flag;
+
+
+
+
+void ShootShield();
+
+void ShootAttack();
+
+void ShootRepair();
+
+void ShootLaser();
+
 void sendit(char it[], int it_size);
 
-void flyskyask();
+void GetInfoController();
+
+void GetInfoPCU();
+
+void motor(char data[26]);
 
 void follow(uint8_t sw);
 
@@ -19825,7 +19853,7 @@ void RFID(void);
 # 11 "linefollower.c" 2
 
 
-extern uint8_t control_data[26] = {};
+
 
 
 uint16_t rd_adc(uint8_t select){
@@ -19857,26 +19885,28 @@ void runmotor(uint8_t select){
     char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
     if (select == 1){
         msg[6] = 1;
-        msg[7] = 50;
+        msg[7] = 70;
         msg[8] = 1;
-        msg[9] = 10;
+        msg[9] = 20;
     }
 
     else if (select == 2){
         msg[6] = 1;
-        msg[7] = 10;
+        msg[7] = 20;
         msg[8] = 1;
-        msg[9] = 50;
+        msg[9] = 70;
     }
 
     else if (select == 3){
         msg[6] = 1;
-        msg[7] = 50;
+        msg[7] = 70;
         msg[8] = 1;
-        msg[9] = 50;
+        msg[9] = 70;
     }
 
     sendit(msg, 10);
+
+    _delay((unsigned long)((50)*(32000000/4000.0)));
     return;
 }
 
@@ -19939,11 +19969,11 @@ void follow(uint8_t sw){
             runmotor(4);
         }
 
-        flyskyask();
+        GetInfoController();
 
 
 
-        if(sw == 2000){
+        if((control_data[15] << 8) + (control_data[16]) <= 1999){
 
             return;
         }
