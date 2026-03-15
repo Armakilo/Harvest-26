@@ -50,6 +50,10 @@ extern volatile uint8_t repair_code_flag;
 
 // Insert declarations
 
+void RFID_SPIsetup();
+
+void RFID_Rx();
+
 void ShootShield();
 
 void ShootAttack();

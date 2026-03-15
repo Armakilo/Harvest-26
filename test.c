@@ -1,9 +1,14 @@
 /*
- * File:   RFID.c
- * Author: s8n93
+ * File:   main.c
+ * Author: w7yf6
  *
- * Created on March 11, 2026, 3:42 PM
+ * Created on February 24, 2026, 2:35 PM
  */
+
+
+// PIC16F18855 Configuration Bit Settings
+
+// 'C' source line config statements
 
 // CONFIG1
 #pragma config FEXTOSC = ECH    // External Oscillator mode selection bits (EC above 8MHz; PFM set to high power)
@@ -37,34 +42,29 @@
 #pragma config CP = OFF         // UserNVM Program memory code protection bit (Program Memory code protection disabled)
 #pragma config CPD = OFF        // DataNVM code protection bit (Data EEPROM code protection disabled)
 
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
-#define _XTAL_FREQ 32000000
-
-// RB4, RB5, RB3, are used, and we will use pin RC7 as our chip select
-
-
 
 void SPIWriteByte(uint8_t data)
 {
     SSP1BUF = data;
     while(SSP1STATbits.BF == 0){}; //data transmit in pragress
     
-    __delay_ms(1);
     return;
 }
 
 void writeRegister(uint8_t address, uint8_t data)
 {
-    LATCbits.LATC7 = 0;//1. redundant, but good to include the step just incase
+    LATBbits.LATB3 = 0;//1. redundant, but good to include the step just incase
     
-    uint8_t controlByte = (address << 1) & 0b01111110; //steps 2 & 3
-       
+    uint8_t controlByte = address & 0b01111111; //steps 2 & 3
     
     SPIWriteByte(controlByte);
     SPIWriteByte(data);
     
-    LATCbits.LATC7 = 0; //cs high, stop transmission
+    LATBbits.LATB3 = 0; //cs high, stop transmission
     //can put /CS high to end, or start a new ctrl byte.
       
     return;
@@ -80,126 +80,71 @@ uint8_t SPIReadByte()
 uint8_t readRegister(uint8_t address)
 {
     
-    SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;//control byte, edited for MFRC522
+    SPIWriteByte(0x80 | address);//control byte
         
     return SPIReadByte();
 }
 
-void tranceive(){
-    
-
-
-}
-
-// we must scan the tag, and then send it back
-
-void main(){//RFID_SPIsetup() { //might have to 
+void main(void) {
     
     
+    //SDI - RB3 - Input
+    ANSELBbits.ANSB0 = 0;
+    TRISBbits.TRISB0 = 1;
+    SSP1DATPPS = 0x08; //RB0
     
-    //OSC_Init(){
-    
-    SSP2CON1bits.SSPEN = 0;
-    
-    // RB4 = SDI
-    
-    TRISBbits.TRISB4 = 1;
-    ANSELBbits.ANSB4 = 0;
-    SSP1DATPPS = 0x0C;
-    
-    // RB5 = SDO
-    
-    TRISBbits.TRISB5 = 0;
-    ANSELBbits.ANSB5 = 0;
-    RB5PPS = 0x15;
-    
-    //RB3 = SCK
-    
-    TRISBbits.TRISB3 = 0;
-    ANSELBbits.ANSB3 = 0;
-    RB3PPS = 0x14;
-    
-    //RC7 = /CS
-    
-    TRISCbits.TRISC7 = 0;
-    ANSELCbits.ANSC7 = 0; //remember to set up PORT bits
-    LATCbits.LATC7 = 1;
-    
-    SSP1CON1bits.CKP = 0; //clock idles low
-    SSP1STATbits.CKE = 0; //data is transmitted on idle -> active
-    SSP1STATbits.SMP = 1; // might be wrong, change later?
-        
-    // set clock to 50 kbits/sec or 50 kHz
-    
-    SSP1CON1bits.SSPM = 0b1010;
-    SSP1ADD = 159;
-    SSP1CON1bits.SSPEN = 1; //ready
+    //SDO - RB4
+    ANSELBbits.ANSB1 = 0;
+    TRISBbits.TRISB1 = 0;
+    RB1PPS = 0x15; //SDO
     
     
-     //setup S2 (RA5)
+    //SCK - RB5
+    ANSELBbits.ANSB2 = 0;
+    TRISBbits.TRISB2 = 0;
+    RB2PPS = 0x14; //SCK1
+    
+    //add CS Stuff later
+    
+    SSP1CON1bits.CKP = 1; //sensor clock idles high
+    SSP1STATbits.CKE = 0; //data is changed at the falling edge
+    SSP1STATbits.SMP = 1; //as specified
+    
+    
+    SSP1CON1bits.SSPM=0b1010;
+    SSP1ADD = 7; //from calculation, Fclock = 1Meg
+    SSP1CON1bits.SSPEN = 1; //SPI on
+    
+    //setup S2 (RA5)
     ANSELAbits.ANSA5 = 0;
     TRISAbits.TRISA5 = 1; //input
     
-        __delay_ms(50);
+    //writeRegister(0xF4, 0x27); //put device in normal power mode
     
-    writeRegister(0x13, 0b00001000); //RxModeReg, it will recive all data frames. (bit 3 = 0))
-    writeRegister(0x0A, 0b10000000); //clear the FIFO using the FIFOLevelReg
     
-    writeRegister(0x0D, 0x7); // BitFramingReg, 7 bits of the byte recived will be transmitted
-    writeRegister(0x09, 0x26); // write the REQA command to the FIFO
+    writeRegister(0xF4, 0x27);
     
-    writeRegister(0x01, 0x0C); //Command register
     
-    //need to set a bit to leverage property
-    
-    //implement error detection later
-    
-    //writeRegister(0x01, 0b00110000); //starts the recieve
-    
-    while(1){
-        if(PORTAbits.RA5 == 0){
-            readRegister(0x09);
+    while(1)
+    {
+        if (PORTAbits.RA5 == 0) //switch pressed
+        {
+            while(PORTAbits.RA5 == 0){}//wait until switch released
+            uint8_t msb = readRegister(0xFA);
+            uint8_t lsb = readRegister (0xFB);
+            uint8_t xlsb = readRegister (0xFC);
+            uint32_t raw_temp = ((uint32_t)msb << 12) | ((uint32_t)lsb << 4) | ((uint32_t)xlsb >> 4);
+            uint16_t temp = (uint16_t)raw_temp/16;
+        }
+        else
+        {
+            
         
         }
-    
-    }          
-   
-       
-    return;
-}
-
-void RFID_Rx(){
-    
-    //int data[64] = {0};
-    
-    writeRegister(0x13, 0b00001000); //RxModeReg, it will recive all data frames. (bit 3 = 0))
-    writeRegister(0x0A, 0b10000000); //clear the FIFO using the FIFOLevelReg
-    writeRegister(0x01, 0b00110000); //starts the recieve
-    // read from the FIFO buffer
-    
-    // Nothing connected to pin MFIN? 
-    // Modulation signal coming from internal part. to change this, look at reg 0x17.
-    // ISO ..A uses Manchester coding?
-    // UID is 4 bytes.
-    // All MIFARE ICs are compliant to ISO 1443
-    // Got a length byte, format byte, 
-    
-//    for (int i=0; i<=63; i++){
-//        data[i] = readRegister(0x09);
-//    }
-
+    }
     
     
     
-    return;
     
-
-
-}
-
-void RFID_Tx(){
-    
-    
-
     return;
 }

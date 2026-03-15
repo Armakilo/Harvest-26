@@ -1,4 +1,4 @@
-# 1 "laser.c"
+# 1 "RFID.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 295 "<built-in>" 3
@@ -6,8 +6,45 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "laser.c" 2
+# 1 "RFID.c" 2
 
+
+
+
+
+
+
+
+#pragma config FEXTOSC = ECH
+#pragma config RSTOSC = HFINT32
+#pragma config CLKOUTEN = OFF
+#pragma config CSWEN = ON
+#pragma config FCMEN = ON
+
+
+#pragma config MCLRE = ON
+#pragma config PWRTE = OFF
+#pragma config LPBOREN = OFF
+#pragma config BOREN = ON
+#pragma config BORV = LO
+#pragma config ZCD = OFF
+#pragma config PPS1WAY = ON
+#pragma config STVREN = ON
+
+
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
+#pragma config WDTCWS = WDTCWS_7
+#pragma config WDTCCS = SC
+
+
+#pragma config WRT = OFF
+#pragma config SCANE = available
+#pragma config LVP = ON
+
+
+#pragma config CP = OFF
+#pragma config CPD = OFF
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.h" 1 3
@@ -19805,91 +19842,139 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.h" 2 3
-# 5 "laser.c" 2
-# 1 "./harvest.h" 1
-# 37 "./harvest.h"
-extern volatile uint8_t control_data[26];
-extern volatile int data_type;
-extern volatile int data_size;
-extern volatile int data_index;
-extern volatile int receive_ready;
-extern volatile int receive_flag;
-extern volatile int SWA;
-extern volatile int SWB;
-extern volatile int SWC;
-extern volatile int SWD;
-extern volatile uint8_t shield_code_flag;
-extern volatile uint8_t repair_code_flag;
+# 42 "RFID.c" 2
 
 
 
 
-void RFID_SPIsetup();
 
-void RFID_Rx();
 
-void ShootShield();
-
-void ShootAttack();
-
-void ShootRepair();
-
-void ShootLaser();
-
-void sendit(char it[], int it_size);
-
-void GetInfoController();
-
-void GetInfoPCU();
-
-void motor(char data[26]);
-
-void follow(uint8_t sw);
-
-void sendit(char it[], int it_size);
-
-void RFID(void);
-# 6 "laser.c" 2
-
-void ShootShield()
+void SPIWriteByte(uint8_t data)
 {
-    char tosend[6] = {0xFE, 0x19, 0x02, 0x09, 0x00, 0x00};
-    sendit(tosend, 6);
+    SSP1BUF = data;
+    while(SSP1STATbits.BF == 0){};
+
+    _delay((unsigned long)((1)*(32000000/4000.0)));
+    return;
 }
 
-void ShootAttack()
+void writeRegister(uint8_t address, uint8_t data)
 {
-    char tosend[7] = {0xFE, 0x19, 0x01, 0x09, 0x01, 0x00, 1};
-    sendit(tosend, 7);
+    LATCbits.LATC7 = 0;
+
+    uint8_t controlByte = (address << 1) & 0b01111110;
+
+
+    SPIWriteByte(controlByte);
+    SPIWriteByte(data);
+
+    LATCbits.LATC7 = 0;
+
+
+    return;
 }
 
-void ShootRepair()
+uint8_t SPIReadByte()
 {
-    char tosend[6] = {0xFE, 0x19, 0x04, 0x09, 0x00, 0x00};
-    sendit(tosend, 6);
+
+    SPIWriteByte(0xFF);
+    return SSP1BUF;
 }
 
-void ShootLaser()
+uint8_t readRegister(uint8_t address)
 {
-    if (SWD > 1600)
-        {
-            if (SWC > 1800)
-            {
-                if (!shield_code_flag)
-                {
-                    ShootShield();
-                }
-            }
-            else if (SWC > 1300 && SWC < 1700)
-            {
-                ShootAttack();
-            }
-            else if (SWC < 200)
-            {
-                if (!repair_code_flag);
-                {
-                    ShootRepair();
-                }
-            }
+
+    SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;
+
+    return SPIReadByte();
+}
+
+
+
+void main(){
+
+
+
+
+
+    SSP2CON1bits.SSPEN = 0;
+
+
+
+    TRISBbits.TRISB4 = 1;
+    ANSELBbits.ANSB4 = 0;
+    SSP1DATPPS = 0x0C;
+
+
+
+    TRISBbits.TRISB5 = 0;
+    ANSELBbits.ANSB5 = 0;
+    RB5PPS = 0x15;
+
+
+
+    TRISBbits.TRISB3 = 0;
+    ANSELBbits.ANSB3 = 0;
+    RB3PPS = 0x14;
+
+
+
+    TRISCbits.TRISC7 = 0;
+    ANSELCbits.ANSC7 = 0;
+    LATCbits.LATC7 = 0;
+
+    SSP1CON1bits.CKP = 0;
+    SSP1STATbits.CKE = 0;
+    SSP1STATbits.SMP = 1;
+
+
+
+    SSP1CON1bits.SSPM = 0b1010;
+    SSP1ADD = 159;
+    SSP1CON1bits.SSPEN = 1;
+
+
+
+    ANSELAbits.ANSA5 = 0;
+    TRISAbits.TRISA5 = 1;
+
+    writeRegister(0x01, 0b010000);
+
+    while((readRegister(0x01) & 0b0010000) == 0);
+
+    writeRegister(0x13, 0b00001000);
+    writeRegister(0x0A, 0b10000000);
+    writeRegister(0x01, 0b00110000);
+
+    while(1){
+        if(PORTAbits.RA5 == 0){
+            readRegister(0x09);
+
         }
+
+    }
+
+
+    return;
+}
+
+void RFID_Rx(){
+
+
+
+    writeRegister(0x13, 0b00001000);
+    writeRegister(0x0A, 0b10000000);
+    writeRegister(0x01, 0b00110000);
+# 180 "RFID.c"
+    return;
+
+
+
+}
+
+void RFID_Tx(){
+
+
+
+    return;
 }

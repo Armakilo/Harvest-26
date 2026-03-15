@@ -1,4 +1,4 @@
-# 1 "laser.c"
+# 1 "test.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 295 "<built-in>" 3
@@ -6,7 +6,39 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "laser.c" 2
+# 1 "test.c" 2
+# 14 "test.c"
+#pragma config FEXTOSC = ECH
+#pragma config RSTOSC = HFINT32
+#pragma config CLKOUTEN = OFF
+#pragma config CSWEN = ON
+#pragma config FCMEN = ON
+
+
+#pragma config MCLRE = ON
+#pragma config PWRTE = OFF
+#pragma config LPBOREN = OFF
+#pragma config BOREN = ON
+#pragma config BORV = LO
+#pragma config ZCD = OFF
+#pragma config PPS1WAY = ON
+#pragma config STVREN = ON
+
+
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
+#pragma config WDTCWS = WDTCWS_7
+#pragma config WDTCCS = SC
+
+
+#pragma config WRT = OFF
+#pragma config SCANE = available
+#pragma config LVP = ON
+
+
+#pragma config CP = OFF
+#pragma config CPD = OFF
+
 
 
 
@@ -19805,7 +19837,13 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.h" 2 3
-# 5 "laser.c" 2
+# 49 "test.c" 2
+
+
+
+
+
+
 # 1 "./harvest.h" 1
 # 37 "./harvest.h"
 extern volatile uint8_t control_data[26];
@@ -19849,47 +19887,25 @@ void follow(uint8_t sw);
 void sendit(char it[], int it_size);
 
 void RFID(void);
-# 6 "laser.c" 2
+# 56 "test.c" 2
 
-void ShootShield()
-{
-    char tosend[6] = {0xFE, 0x19, 0x02, 0x09, 0x00, 0x00};
-    sendit(tosend, 6);
-}
+void main(void) {
 
-void ShootAttack()
-{
-    char tosend[7] = {0xFE, 0x19, 0x01, 0x09, 0x01, 0x00, 1};
-    sendit(tosend, 7);
-}
+    TRISAbits.TRISA5 = 1;
+    ANSELAbits.ANSA5 = 0;
 
-void ShootRepair()
-{
-    char tosend[6] = {0xFE, 0x19, 0x04, 0x09, 0x00, 0x00};
-    sendit(tosend, 6);
-}
 
-void ShootLaser()
-{
-    if (SWD > 1600)
+    while(1){
+
+        RFID_SPIsetup();
+        if(PORTAbits.RA5 == 0)
         {
-            if (SWC > 1800)
-            {
-                if (!shield_code_flag)
-                {
-                    ShootShield();
-                }
-            }
-            else if (SWC > 1300 && SWC < 1700)
-            {
-                ShootAttack();
-            }
-            else if (SWC < 200)
-            {
-                if (!repair_code_flag);
-                {
-                    ShootRepair();
-                }
-            }
+
         }
+
+
+    }
+
+
+    return;
 }
