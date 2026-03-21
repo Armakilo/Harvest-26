@@ -173,6 +173,7 @@ void main(void)
         if(PORTAbits.RA5 == 0)
         {
             LATA = 0xF;
+			SetPCUInfo();
             GetInfoController();
             while(PORTAbits.RA5 == 0){}
             

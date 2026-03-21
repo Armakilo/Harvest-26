@@ -68,6 +68,8 @@ void GetInfoController();
 
 void GetInfoPCU();
 
+void SetPCUInfo();
+
 void motor(char data[26]);
 
 void follow(uint8_t sw);
