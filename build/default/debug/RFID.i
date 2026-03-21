@@ -19851,16 +19851,17 @@ extern __bank0 __bit __timeout;
 
 void SPIWriteByte(uint8_t data)
 {
+    LATCbits.LATC7 = 0;
     SSP1BUF = data;
     while(SSP1STATbits.BF == 0){};
-
+    LATCbits.LATC7 = 1;
     _delay((unsigned long)((1)*(32000000/4000.0)));
     return;
 }
 
 void writeRegister(uint8_t address, uint8_t data)
 {
-    LATCbits.LATC7 = 0;
+
 
     uint8_t controlByte = (address << 1) & 0b01111110;
 
@@ -19868,7 +19869,7 @@ void writeRegister(uint8_t address, uint8_t data)
     SPIWriteByte(controlByte);
     SPIWriteByte(data);
 
-    LATCbits.LATC7 = 0;
+
 
 
     return;
@@ -19877,7 +19878,10 @@ void writeRegister(uint8_t address, uint8_t data)
 uint8_t SPIReadByte()
 {
 
-    SPIWriteByte(0xFF);
+
+
+    SPIWriteByte(0xFE);
+
     return SSP1BUF;
 }
 
@@ -19886,7 +19890,14 @@ uint8_t readRegister(uint8_t address)
 
     SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;
 
+
     return SPIReadByte();
+}
+
+void tranceive(){
+
+
+
 }
 
 
@@ -19921,7 +19932,7 @@ void main(){
 
     TRISCbits.TRISC7 = 0;
     ANSELCbits.ANSC7 = 0;
-    LATCbits.LATC7 = 0;
+    LATCbits.LATC7 = 1;
 
     SSP1CON1bits.CKP = 0;
     SSP1STATbits.CKE = 0;
@@ -19938,13 +19949,32 @@ void main(){
     ANSELAbits.ANSA5 = 0;
     TRISAbits.TRISA5 = 1;
 
-    writeRegister(0x01, 0b010000);
 
-    while((readRegister(0x01) & 0b0010000) == 0);
 
-    writeRegister(0x13, 0b00001000);
-    writeRegister(0x0A, 0b10000000);
-    writeRegister(0x01, 0b00110000);
+    writeRegister(0x01, 0b00011111);
+
+    _delay((unsigned long)((50)*(32000000/4000.0)));
+
+
+
+    volatile uint8_t test = readRegister(0x30);
+
+    writeRegister(0x0D, 0x07);
+    writeRegister(0x09, 0x26);
+
+
+
+
+    writeRegister(0x01, 0x0C);
+    writeRegister(0x0D, 0x87);
+
+    int buffbytes = readRegister(0x0A);
+
+    uint8_t response[2];
+
+    for (int i = 0; i < buffbytes; i++){
+      response[i] = readRegister(0x09);
+    }
 
     while(1){
         if(PORTAbits.RA5 == 0){
@@ -19953,27 +19983,6 @@ void main(){
         }
 
     }
-
-
-    return;
-}
-
-void RFID_Rx(){
-
-
-
-    writeRegister(0x13, 0b00001000);
-    writeRegister(0x0A, 0b10000000);
-    writeRegister(0x01, 0b00110000);
-# 180 "RFID.c"
-    return;
-
-
-
-}
-
-void RFID_Tx(){
-
 
 
     return;

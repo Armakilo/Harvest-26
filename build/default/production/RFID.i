@@ -19851,16 +19851,17 @@ extern __bank0 __bit __timeout;
 
 void SPIWriteByte(uint8_t data)
 {
+    LATCbits.LATC7 = 0;
     SSP1BUF = data;
     while(SSP1STATbits.BF == 0){};
-
+    LATCbits.LATC7 = 1;
     _delay((unsigned long)((1)*(32000000/4000.0)));
     return;
 }
 
 void writeRegister(uint8_t address, uint8_t data)
 {
-    LATCbits.LATC7 = 0;
+
 
     uint8_t controlByte = (address << 1) & 0b01111110;
 
@@ -19868,7 +19869,7 @@ void writeRegister(uint8_t address, uint8_t data)
     SPIWriteByte(controlByte);
     SPIWriteByte(data);
 
-    LATCbits.LATC7 = 0;
+
 
 
     return;
@@ -19877,7 +19878,10 @@ void writeRegister(uint8_t address, uint8_t data)
 uint8_t SPIReadByte()
 {
 
-    SPIWriteByte(0xFF);
+
+
+    SPIWriteByte(0xFE);
+
     return SSP1BUF;
 }
 
@@ -19886,8 +19890,23 @@ uint8_t readRegister(uint8_t address)
 
     SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;
 
+
     return SPIReadByte();
 }
+
+void tranceive(){
+
+
+
+}
+
+uint8_t rdFIFO(){
+
+    uint8_t info = readRegister(0x09);
+    return info;
+
+}
+
 
 
 
@@ -19937,42 +19956,61 @@ void main(){
 
     ANSELAbits.ANSA5 = 0;
     TRISAbits.TRISA5 = 1;
+# 165 "RFID.c"
+    uint8_t response[10];
 
-    writeRegister(0x01, 0b010000);
+    writeRegister(0x01, 0b0001111);
+
+    writeRegister(0x2A,0x84);
+    writeRegister(0x2B,0x00);
+    writeRegister(0x2C,0x01);
+    writeRegister(0x2D,0x49);
+    writeRegister(0x11,0b00101001);
+    writeRegister(0x15,0b01000000);
+
+    uint8_t TxControl = readRegister(0x14);
+    writeRegister(0x14, TxControl | 0b01000);
 
 
-    _delay((unsigned long)((50)*(32000000/4000.0)));
 
 
 
-    while(1){
-        if(PORTAbits.RA5 == 0){
-            readRegister(0x09);
+    writeRegister(0x09, 0x26);
 
-        }
+    writeRegister(0x01, 0x0C);
+    writeRegister(0x0D, 0x87);
 
+    int buffbytes = readRegister(0x0A);
+
+    for (int i = 0; i < buffbytes; i++){
+      response[i] = rdFIFO();
     }
 
 
-    return;
-}
+    uint8_t errorRegValue = readRegister(0x06);
+    uint8_t controlRegValue = readRegister(0x0C);
 
-void RFID_Rx(){
-
-
-
-    writeRegister(0x13, 0b00001000);
-    writeRegister(0x0A, 0b10000000);
-    writeRegister(0x01, 0b00110000);
-# 179 "RFID.c"
-    return;
+    writeRegister(0x09, 0x93);
+    writeRegister(0x09, 0x20);
 
 
 
-}
 
-void RFID_Tx(){
+    writeRegister(0x01, 0x0C);
+    writeRegister(0x0D, 0x80);
 
+    writeRegister(0x01, 0x0C);
+    writeRegister(0x0D, 0x80);
+
+
+    buffbytes = readRegister(0x0A);
+
+    for (int i = 0; i < buffbytes; i++){
+      response[i] = rdFIFO();
+    }
+
+    while(1){
+    }
 
 
     return;
