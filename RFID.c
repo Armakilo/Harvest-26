@@ -139,7 +139,7 @@ void main(){//RFID_SPIsetup() { //might have to
     LATCbits.LATC7 = 1;
     
     SSP1CON1bits.CKP = 0; //clock idles low
-    SSP1STATbits.CKE = 0; //data is transmitted on idle -> active
+    SSP1STATbits.CKE = 1; //data is transmitted on active -> idle
     SSP1STATbits.SMP = 1; // might be wrong, change later?
         
     // set clock to 50 kbits/sec or 50 kHz
@@ -161,10 +161,12 @@ void main(){//RFID_SPIsetup() { //might have to
 //    LATCbits.LATC2 = 1;
     
     
-    
     uint8_t response[10];
             
     writeRegister(0x01, 0b0001111); //resets could also use a Hard Reset by writing a 0 then a 1 to the RST pin
+    
+    
+    readRegister(0x3E);
     
     writeRegister(0x2A,0x84);//Tmode, TpreHi = 0x4, Tauto = 1
     writeRegister(0x2B,0x00);//Tprescaler
@@ -179,15 +181,17 @@ void main(){//RFID_SPIsetup() { //might have to
     
     
     
-    
+    __delay_ms(50);
     writeRegister(0x09, 0x26); // write the REQA command to the FIFO
+    
+    rdFIFO();
      
     writeRegister(0x01, 0x0C); //Command register, tranceive
     writeRegister(0x0D, 0x87); //bitframing reg will now tranceive. bitmasked
     
     int buffbytes = readRegister(0x0A);
     
-    for (int i = 0; i < buffbytes; i++){
+    for (int i = 0; i <= buffbytes; i++){
       response[i] = rdFIFO();
     }
     
@@ -210,7 +214,7 @@ void main(){//RFID_SPIsetup() { //might have to
     
     buffbytes = readRegister(0x0A);
        
-    for (int i = 0; i < buffbytes; i++){
+    for (int i = 0; i <= buffbytes; i++){
       response[i] = rdFIFO();
     }
     
