@@ -112,7 +112,7 @@ void main(){//RFID_SPIsetup() { //might have to
     
     //OSC_Init(){
     
-    SSP2CON1bits.SSPEN = 0;
+    SSP1CON1bits.SSPEN = 0;
     
     // RB4 = SDI
     
