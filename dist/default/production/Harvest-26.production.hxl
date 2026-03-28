@@ -1,30 +1,35 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\w7yf6\AppData\Local\Temp\xcAsma8.0\driver_tmp_3.o
+ C:\Users\w7yf6\AppData\Local\Temp\xcAscak.\driver_tmp_3.o
  -Odist/default/production\Harvest-26.production.hex
  -logfile=dist/default/production\Harvest-26.production.hxl
  -addressing=2
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 7h		(C:\Users\w7yf6\AppData\Local\Temp\xcAsma8.0\driver_tmp_3.o)
-  D9Ah - FFFh		(C:\Users\w7yf6\AppData\Local\Temp\xcAsma8.0\driver_tmp_3.o)
-  1000Eh - 10017h		(C:\Users\w7yf6\AppData\Local\Temp\xcAsma8.0\driver_tmp_3.o)
+  0h - 7h		(C:\Users\w7yf6\AppData\Local\Temp\xcAscak.\driver_tmp_3.o)
+  D44h - FFFh		(C:\Users\w7yf6\AppData\Local\Temp\xcAscak.\driver_tmp_3.o)
+  1000Eh - 10017h		(C:\Users\w7yf6\AppData\Local\Temp\xcAscak.\driver_tmp_3.o)
  Unused ranges:
-  8h - D99h
+  8h - D43h
   1000h - 1000Dh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\w7yf6\AppData\Local\Temp\xcAsma8.0\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\w7yf6\AppData\Local\Temp\xcAscak.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
 00000000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-00000D90 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
+00000D40 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000D50 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000D60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000D70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000D80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000D90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000DA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000DB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000DC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

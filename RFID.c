@@ -39,7 +39,12 @@
 
 
 #include <xc.h>
+#include "harvest.h"
 #define _XTAL_FREQ 32000000
+#define FIFO_LVL_REG 0x0A
+#define FIFO_DATA_REG 0x09
+#define BIT_FRAME_REG 0x0D
+#define CMD_REG 0x01
 
 // RB4, RB5, RB3, are used, and we will use pin RC7 as our chip select
 
@@ -47,24 +52,22 @@
 
 void SPIWriteByte(uint8_t data)
 {
-    LATCbits.LATC7 = 0;
+    
     SSP1BUF = data;
-    while(SSP1STATbits.BF == 0){}; //data transmit in pragress
-    LATCbits.LATC7 = 1;
-    __delay_ms(1);
+    while(SSP1STATbits.BF == 0){}; //data transmit in pragress   
     return;
 }
 
 void writeRegister(uint8_t address, uint8_t data)
-{
-    
-    
+{   
     uint8_t controlByte = (address << 1) & 0b01111110; //steps 2 & 3
        
-    
+    LATCbits.LATC7 = 0;
     SPIWriteByte(controlByte);
     SPIWriteByte(data);
+    LATCbits.LATC7 = 1;
     
+    __delay_ms(1); //could take this out
     
     //can put /CS high to end, or start a new ctrl byte.
       
@@ -73,8 +76,7 @@ void writeRegister(uint8_t address, uint8_t data)
 
 uint8_t SPIReadByte()
 {
-    
-    
+       
     //dummy byte = 0xFE
     SPIWriteByte(0xFE);
     
@@ -83,17 +85,12 @@ uint8_t SPIReadByte()
 
 uint8_t readRegister(uint8_t address)
 {
-    
+    LATCbits.LATC7 = 0;
     SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;//control byte, edited for MFRC522
     
-    
-    return SPIReadByte();
-}
-
-void tranceive(){
-    
-
-
+    uint8_t stuff = SPIReadByte();
+    LATCbits.LATC7 = 1;
+    return stuff;
 }
 
 uint8_t rdFIFO(){
@@ -103,14 +100,23 @@ uint8_t rdFIFO(){
 
 }
 
+void BitmaskOR(uint8_t addr, uint8_t mask)
+{
+    uint8_t preval = readRegister(addr);
+    uint8_t postval = preval | mask;
+    writeRegister(addr, postval);
+    return;
+}
 
-// we must scan the tag, and then send it back
+void tranceive(){
+    writeRegister(CMD_REG, 0x0C); //Command register, tranceive
+    BitmaskOR(BIT_FRAME_REG, 0x80);
+    return;    
+}
 
-void main(){//RFID_SPIsetup() { //might have to 
-    
-    
-    
-    //OSC_Init(){
+void SPISetup()
+{
+     //OSC_Init(){
     
     SSP1CON1bits.SSPEN = 0;
     
@@ -147,80 +153,81 @@ void main(){//RFID_SPIsetup() { //might have to
     SSP1CON1bits.SSPM = 0b1010;
     SSP1ADD = 159;
     SSP1CON1bits.SSPEN = 1; //ready
+
+}
+// we must scan the tag, and then send it back
+
+void GetUID(){//RFID_SPIsetup() { //might have to  
     
     
-     //setup S2 (RA5)
-    ANSELAbits.ANSA5 = 0;
-    TRISAbits.TRISA5 = 1; //input
+     //setup status LED
+    ANSELAbits.ANSA1 = 0;
+    TRISAbits.TRISA1 = 1; //input
     
-//    //hard reset code - we are using a soft reset
-//    TRISCbits.TRISC2 = 0; //output
-//    ANSELCbits.ANSC2 = 0; //digital
-//    
-//    LATCbits.LATC2 = 0;
-//    LATCbits.LATC2 = 1;
-    
-    
+   
     uint8_t response[10];
-            
-    writeRegister(0x01, 0b0001111); //resets could also use a Hard Reset by writing a 0 then a 1 to the RST pin
+    do{
     
+        writeRegister(0x01, 0b0001111); //resets could also use a Hard Reset by writing a 0 then a 1 to the RST pin
+
+
+        //readRegister(0x3E); test that returns a constant number
+
+        writeRegister(0x2A,0x84);//Tmode, TpreHi = 0x4, Tauto = 1
+        writeRegister(0x2B,0x00);//Tprescaler
+        writeRegister(0x2C,0x01);//TreloadH
+        writeRegister(0x2D,0x49);//TreloadL
+        writeRegister(0x11,0b00101001); //ModeReg
+        writeRegister(0x15,0b01000000);//TxASKReg, force 100 ASK on
+
+        BitmaskOR(0x14, 0x03);
+
+
+        //we put a delay here to check things
+        
+        //REQA cmd.
+
+        writeRegister(FIFO_LVL_REG, 0x80); //intializing FIFO
+        writeRegister(BIT_FRAME_REG, 0x07);
+        writeRegister(FIFO_DATA_REG, 0x26); // write the REQA command to the FIFO   
+
+        tranceive();
+
+        uint8_t buffbytes = readRegister(0x0A);
+
+        for (int i = 0; i < buffbytes; i++){
+          response[i] = rdFIFO();
+        }
+
+        //REQA error checking and sending ANTICOLLISION cmd.
+
+        if (buffbytes == 2 && response[0] == 0x04 && response[1] == 0x00)
+        {
+            // get UID
+
+            writeRegister(FIFO_LVL_REG, 0x80);
+            writeRegister(BIT_FRAME_REG, 0x00);
+
+            writeRegister(FIFO_DATA_REG, 0x93); //anticollision part 1
+            writeRegister(FIFO_DATA_REG, 0x20); //anticollision part 2
+
+            tranceive();
+        } 
+
+        buffbytes = readRegister(0x0A);
+
+        for (int i = 0; i <= buffbytes; i++){
+          response[i] = rdFIFO();
+        }
+
+    }while(response[4] != (response[0] ^ response[1] ^ response[2] ^ response[3]));
     
-    readRegister(0x3E);
+    uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 1, 0, 0, 0};
+    msg[8] = response[3];
+    msg[9] = response[2];
+    sendit(msg, 10);   
     
-    writeRegister(0x2A,0x84);//Tmode, TpreHi = 0x4, Tauto = 1
-    writeRegister(0x2B,0x00);//Tprescaler
-    writeRegister(0x2C,0x01);//TreloadH
-    writeRegister(0x2D,0x49);//TreloadL
-    writeRegister(0x11,0b00101001); //ModeReg
-    writeRegister(0x15,0b01000000);//TxASKReg, force 100 ASK on
+    LATAbits.LATA1 = 1;
     
-    uint8_t TxControl = readRegister(0x14);
-    writeRegister(0x14, TxControl | 0b01000); //bitmask the Tx2CW bit not super sure about this one
-    
-    
-    
-    
-    __delay_ms(50);
-    writeRegister(0x09, 0x26); // write the REQA command to the FIFO
-    
-    rdFIFO();
-     
-    writeRegister(0x01, 0x0C); //Command register, tranceive
-    writeRegister(0x0D, 0x87); //bitframing reg will now tranceive. bitmasked
-    
-    int buffbytes = readRegister(0x0A);
-    
-    for (int i = 0; i <= buffbytes; i++){
-      response[i] = rdFIFO();
-    }
-    
-   
-    uint8_t errorRegValue = readRegister(0x06); //0x06 = error reg
-    uint8_t controlRegValue = readRegister(0x0C); //0x0C = controlReg
-    
-    writeRegister(0x09, 0x93); //anticollision part 1
-    writeRegister(0x09, 0x20); //anticollision part 2
-    
-    
-    //need to do 2 reps to send all data
-    
-    writeRegister(0x01, 0x0C); //Command register, tranceive
-    writeRegister(0x0D, 0x80); //bitframing reg will now tranceive. command is not 7 bits
-    
-    writeRegister(0x01, 0x0C); //Command register, tranceive
-    writeRegister(0x0D, 0x80); //bitframing reg will now tranceive. command is not 7 bits
-    
-    
-    buffbytes = readRegister(0x0A);
-       
-    for (int i = 0; i <= buffbytes; i++){
-      response[i] = rdFIFO();
-    }
-    
-    while(1){    
-    }          
-   
-       
     return;
 }

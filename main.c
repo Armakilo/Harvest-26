@@ -161,6 +161,8 @@ void main(void)
     RXPPS = 0x15; //rx
     //loop for tx data
     
+    SPISetup();
+    
     
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
@@ -194,6 +196,16 @@ void main(void)
                 receive_ready = 0;
                 shield_code_flag = control_data[10];
                 repair_code_flag = control_data[11];
+                
+                 if (shield_code_flag != 0)
+                {
+                    LATAbits.LATA0 = 1;  // Turn on LED to show shield code received
+                }
+                else
+                {
+                    LATAbits.LATA0 = 0;
+                }
+                
                 GetInfoController();
             }
             else if (receive_flag == 3)
@@ -214,6 +226,10 @@ void main(void)
             __delay_ms(1000);
             follow(SWA);
             LATAbits.LATA2 = 0; //LED off
+        }
+        
+        if(SWB >= 2000){
+            RFID();
         }
      
         

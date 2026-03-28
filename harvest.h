@@ -49,6 +49,9 @@ extern volatile uint8_t repair_code_flag;
 
 
 // Insert declarations
+void GetUID();
+
+void SPISetup();
 
 void RFID_SPIsetup();
 

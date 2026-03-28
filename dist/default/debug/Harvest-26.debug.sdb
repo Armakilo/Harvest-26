@@ -3,37 +3,31 @@
 [d edition pro ]
 [d chip 16F18855 ]
 [d frameptr 6 ]
-"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+"6 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"48 C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+"52 C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 [v _SPIWriteByte SPIWriteByte `(v  1 e 1 0 ]
-"58
+"62
 [v _writeRegister writeRegister `(v  1 e 1 0 ]
-"74
+"80
 [v _SPIReadByte SPIReadByte `(uc  1 e 1 0 ]
-"84
+"90
 [v _readRegister readRegister `(uc  1 e 1 0 ]
-"101
+"102
+[v _rdFIFO rdFIFO `(uc  1 e 1 0 ]
+"109
+[v _BitmaskOR BitmaskOR `(v  1 e 1 0 ]
+"117
+[v _tranceive tranceive `(v  1 e 1 0 ]
+"126
 [v _main main `(v  1 e 1 0 ]
-[s S461 . 1 `uc 1 RA0 1 0 :1:0 
-`uc 1 RA1 1 0 :1:1 
-`uc 1 RA2 1 0 :1:2 
-`uc 1 RA3 1 0 :1:3 
-`uc 1 RA4 1 0 :1:4 
-`uc 1 RA5 1 0 :1:5 
-`uc 1 RA6 1 0 :1:6 
-`uc 1 RA7 1 0 :1:7 
-]
-"401 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
-[u S470 . 1 `S461 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES470  1 e 1 @12 ]
-[s S440 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S395 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -42,9 +36,9 @@
 `uc 1 TRISA6 1 0 :1:6 
 `uc 1 TRISA7 1 0 :1:7 
 ]
-"608
-[u S449 . 1 `S440 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES449  1 e 1 @17 ]
+"608 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
+[u S404 . 1 `S395 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES404  1 e 1 @17 ]
 [s S286 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
@@ -69,7 +63,7 @@
 "732
 [u S340 . 1 `S331 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES340  1 e 1 @19 ]
-[s S22 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S214 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -79,13 +73,13 @@
 `uc 1 LATC7 1 0 :1:7 
 ]
 "918
-[u S31 . 1 `S22 1 . 1 0 ]
-[v _LATCbits LATCbits `VES31  1 e 1 @24 ]
+[u S223 . 1 `S214 1 . 1 0 ]
+[v _LATCbits LATCbits `VES223  1 e 1 @24 ]
 "4348
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @396 ]
 "4368
 [v _SSP1ADD SSP1ADD `VEuc  1 e 1 @397 ]
-[s S44 . 1 `uc 1 BF 1 0 :1:0 
+[s S23 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -95,33 +89,33 @@
 `uc 1 SMP 1 0 :1:7 
 ]
 "4667
-[s S53 . 1 `uc 1 . 1 0 :2:0 
+[s S32 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S58 . 1 `uc 1 . 1 0 :2:0 
+[s S37 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S63 . 1 `uc 1 . 1 0 :2:0 
+[s S42 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S68 . 1 `uc 1 . 1 0 :2:0 
+[s S47 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S73 . 1 `uc 1 . 1 0 :2:0 
+[s S52 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S79 . 1 `uc 1 BF1 1 0 :1:0 
+[s S58 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 R 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -130,51 +124,51 @@
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S88 . 1 `uc 1 . 1 0 :2:0 
+[s S67 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S94 . 1 `uc 1 . 1 0 :2:0 
+[s S73 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 I2C_START1 1 0 :1:3 
 `uc 1 I2C_STOP2 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S100 . 1 `uc 1 . 1 0 :2:0 
+[s S79 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ1 1 0 :1:2 
 `uc 1 S2 1 0 :1:3 
 `uc 1 P2 1 0 :1:4 
 `uc 1 DATA_ADDRESS1 1 0 :1:5 
 ]
-[s S106 . 1 `uc 1 . 1 0 :2:0 
+[s S85 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A1 1 0 :1:5 
 ]
-[s S111 . 1 `uc 1 . 1 0 :2:0 
+[s S90 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_nA1 1 0 :1:5 
 ]
-[s S116 . 1 `uc 1 . 1 0 :2:0 
+[s S95 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_nW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT1 1 0 :1:5 
 ]
-[s S121 . 1 `uc 1 . 1 0 :2:0 
+[s S100 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA2 1 0 :1:5 
 ]
-[s S126 . 1 `uc 1 . 1 0 :2:0 
+[s S105 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS1 1 0 :1:5 
 ]
-[u S131 . 1 `S44 1 . 1 0 `S53 1 . 1 0 `S58 1 . 1 0 `S63 1 . 1 0 `S68 1 . 1 0 `S73 1 . 1 0 `S79 1 . 1 0 `S88 1 . 1 0 `S94 1 . 1 0 `S100 1 . 1 0 `S106 1 . 1 0 `S111 1 . 1 0 `S116 1 . 1 0 `S121 1 . 1 0 `S126 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES131  1 e 1 @399 ]
+[u S110 . 1 `S23 1 . 1 0 `S32 1 . 1 0 `S37 1 . 1 0 `S42 1 . 1 0 `S47 1 . 1 0 `S52 1 . 1 0 `S58 1 . 1 0 `S67 1 . 1 0 `S73 1 . 1 0 `S79 1 . 1 0 `S85 1 . 1 0 `S90 1 . 1 0 `S95 1 . 1 0 `S100 1 . 1 0 `S105 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES110  1 e 1 @399 ]
 [s S241 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
@@ -187,7 +181,7 @@
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S384 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S252 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -196,27 +190,15 @@
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S393 . 1 `S241 1 . 1 0 `S247 1 . 1 0 `S384 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES393  1 e 1 @400 ]
-"5895
-[s S252 . 1 `uc 1 SSPM02 1 0 :1:0 
-`uc 1 SSPM12 1 0 :1:1 
-`uc 1 SSPM22 1 0 :1:2 
-`uc 1 SSPM32 1 0 :1:3 
-`uc 1 CKP2 1 0 :1:4 
-`uc 1 SSPEN2 1 0 :1:5 
-`uc 1 SSPOV2 1 0 :1:6 
-`uc 1 WCOL2 1 0 :1:7 
-]
 [u S261 . 1 `S241 1 . 1 0 `S247 1 . 1 0 `S252 1 . 1 0 ]
-[v _SSP2CON1bits SSP2CON1bits `VES261  1 e 1 @410 ]
+[v _SSP1CON1bits SSP1CON1bits `VES261  1 e 1 @400 ]
 "31306
 [v _SSP1DATPPS SSP1DATPPS `VEuc  1 e 1 @3782 ]
 "32220
 [v _RB3PPS RB3PPS `VEuc  1 e 1 @3867 ]
 "32320
 [v _RB5PPS RB5PPS `VEuc  1 e 1 @3869 ]
-[s S419 . 1 `uc 1 ANSA0 1 0 :1:0 
+[s S374 . 1 `uc 1 ANSA0 1 0 :1:0 
 `uc 1 ANSA1 1 0 :1:1 
 `uc 1 ANSA2 1 0 :1:2 
 `uc 1 ANSA3 1 0 :1:3 
@@ -226,10 +208,10 @@
 `uc 1 ANSA7 1 0 :1:7 
 ]
 "32887
-[u S428 . 1 `S419 1 . 1 0 ]
+[u S383 . 1 `S374 1 . 1 0 ]
 "32887
 "32887
-[v _ANSELAbits ANSELAbits `VES428  1 e 1 @3896 ]
+[v _ANSELAbits ANSELAbits `VES383  1 e 1 @3896 ]
 [s S307 . 1 `uc 1 ANSB0 1 0 :1:0 
 `uc 1 ANSB1 1 0 :1:1 
 `uc 1 ANSB2 1 0 :1:2 
@@ -258,52 +240,82 @@
 "34127
 "34127
 [v _ANSELCbits ANSELCbits `VES361  1 e 1 @3918 ]
-"101 C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+"126 C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 [v _main main `(v  1 e 1 0 ]
 {
-"171
-[v main@i i `i  1 a 2 12 ]
-"169
-[v main@response response `[2]uc  1 a 2 7 ]
-"167
-[v main@buffbytes buffbytes `i  1 a 2 9 ]
-"156
-[v main@test test `VEuc  1 a 1 11 ]
-"185
+"230
+[v main@i_518 i `i  1 a 2 12 ]
+"204
+[v main@i i `i  1 a 2 10 ]
+"174
+[v main@response response `[10]uc  1 a 10 0 ]
+"202
+[v main@buffbytes buffbytes `uc  1 a 1 14 ]
+"239
 } 0
-"58
+"117
+[v _tranceive tranceive `(v  1 e 1 0 ]
+{
+"122
+} 0
+"109
+[v _BitmaskOR BitmaskOR `(v  1 e 1 0 ]
+{
+[v BitmaskOR@addr addr `uc  1 p 1 wreg ]
+"112
+[v BitmaskOR@postval postval `uc  1 a 1 7 ]
+"111
+[v BitmaskOR@preval preval `uc  1 a 1 6 ]
+"109
+[v BitmaskOR@addr addr `uc  1 p 1 wreg ]
+[v BitmaskOR@mask mask `uc  1 p 1 5 ]
+"111
+[v BitmaskOR@addr addr `uc  1 p 1 8 ]
+"115
+} 0
+"62
 [v _writeRegister writeRegister `(v  1 e 1 0 ]
 {
 [v writeRegister@address address `uc  1 p 1 wreg ]
-"62
+"66
 [v writeRegister@controlByte controlByte `uc  1 a 1 4 ]
-"58
-[v writeRegister@address address `uc  1 p 1 wreg ]
-[v writeRegister@data data `uc  1 p 1 2 ]
 "62
+[v writeRegister@address address `uc  1 p 1 wreg ]
+[v writeRegister@data data `uc  1 p 1 1 ]
+"66
 [v writeRegister@address address `uc  1 p 1 3 ]
-"72
-} 1
-"84
+"78
+} 0
+"102
+[v _rdFIFO rdFIFO `(uc  1 e 1 0 ]
+{
+"104
+[v rdFIFO@info info `uc  1 a 1 3 ]
+"107
+} 0
+"90
 [v _readRegister readRegister `(uc  1 e 1 0 ]
 {
 [v readRegister@address address `uc  1 p 1 wreg ]
+"95
+[v readRegister@stuff stuff `uc  1 a 1 2 ]
+"90
 [v readRegister@address address `uc  1 p 1 wreg ]
-"87
-[v readRegister@address address `uc  1 p 1 2 ]
-"91
-} 1
-"74
+"92
+[v readRegister@address address `uc  1 p 1 1 ]
+"98
+} 0
+"80
 [v _SPIReadByte SPIReadByte `(uc  1 e 1 0 ]
 {
-"82
+"88
 } 0
-"48
+"52
 [v _SPIWriteByte SPIWriteByte `(v  1 e 1 0 ]
 {
 [v SPIWriteByte@data data `uc  1 p 1 wreg ]
 [v SPIWriteByte@data data `uc  1 p 1 wreg ]
-"50
-[v SPIWriteByte@data data `uc  1 p 1 1 ]
-"56
-} 1
+"55
+[v SPIWriteByte@data data `uc  1 p 1 0 ]
+"60
+} 0
