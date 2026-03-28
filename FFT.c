@@ -55,20 +55,41 @@ typedef struct
     double imaginary;
 } Complex; // stores the real and imaginary components of complex numbers
 
-void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void)
-{
-    
-
-    IFS0bits.U1TXIF = 0; 
-}
+int samples = 40000;
+int fs = 0;
+Complex* signal[samples];
 
 void sendByte(uint8_t data)
 {
-    
+    SPI1BUF = data;
+    while(SPI1STATbits.SPITBF = 0);
 }
 
-int samples = 40000;
-Complex* signal[samples];
+int fundFreq(Complex* FFT)
+{
+    int* magnitudes[samples];
+    
+    for (int i = 0; i < samples; i++)
+    {
+        magnitudes[i] = sqrt((FFT[i].real)*(FFT[i].real)+(FFT[i].imaginary)*(FFT[i].imaginary));
+    }
+    int max = 0;
+    int index = 0;
+    for (int j = 1; j < samples; j++)
+    {
+        if (magnitudes[j] > max)
+        {
+            index = j;
+        }
+    }
+    int freq = index * fs/samples;
+}
+
+void sendFFT()
+{
+    fundFreq(FFT());
+    sendByte(fundFreq);
+}
 
 Complex compAdd(Complex a, Complex b) // complex addition
 {
@@ -134,24 +155,15 @@ void main(void) {
     PLLFBD = 38;                // M = 40 for 40MHz Clock
     CLKDIVbits.PLLPRE = 0;      // N1 = 2
     CLKDIVbits.PLLPOST = 0;     // N2 = 2
+  
+    SPI1STATbits.SPIEN = 0;
     
-    U1MODE = 0;
-    U1STA = 0;
+    SPI1CON1bits.MSTEN = 0;
+    SPI1CON1bits.SSEN = 1;
+    SPI1CON1bits.CKP = 0;
+    SPI1CON1bits.CKE = 1;
     
-    U1BRG = int(40000000 / (16*9600)) - 1;
-    
-    U1MODEbits.UEN = 0b00;
-    U1MODEbits.UARTEN = 1;
-    U1MODEbits.STSEL = 0;
-    U1MODEbits.PDSEL = 0b00;
-    
-    U1STAbits.UTXEN = 1;
-    
-    IPC3bits.U1TXIP = 4;
-    IFS0bits.U1TXIF = 0;
-    IEC0bits.U1TXIE = 0;
-    
-    
+    SPI1STATbits.SPIEN = 1;
     
     while(1)
     {
