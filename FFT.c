@@ -30,12 +30,12 @@
 #pragma config POSCMD = HS              // Primary Oscillator Mode Select bits (HS Crystal Oscillator Mode)
 #pragma config OSCIOFNC = OFF           // OSC2 Pin Function bit (OSC2 is clock output)
 #pragma config IOL1WAY = ON             // Peripheral pin select configuration (Allow only one reconfiguration)
-#pragma config FCKSM = CSDCMD           // Clock Switching Mode bits (Both Clock switching and Fail-safe Clock Monitor are disabled)
+#pragma config FCKSM = CSECMD           // Clock Switching Mode bits (Both Clock switching and Fail-safe Clock Monitor are disabled)
 
 // FOSCSEL
 #pragma config FNOSC = FRC              // Oscillator Source Selection (Internal Fast RC (FRC))
 #pragma config PWMLOCK = ON             // PWM Lock Enable bit (Certain PWM registers may only be written after key sequence)
-#pragma config IESO = ON                // Two-speed Oscillator Start-up Enable bit (Start up device with FRC, then switch to user-selected oscillator source)
+#pragma config IESO = OFF                // Two-speed Oscillator Start-up Enable bit (Start up device with FRC, then switch to user-selected oscillator source)
 
 // FGS
 #pragma config GWRP = OFF               // General Segment Write-Protect bit (General Segment may be written)
@@ -55,7 +55,19 @@ typedef struct
     double imaginary;
 } Complex; // stores the real and imaginary components of complex numbers
 
-int samples = 200;
+void __attribute__((interrupt, no_auto_psv)) _U1TXInterrupt(void)
+{
+    
+
+    IFS0bits.U1TXIF = 0; 
+}
+
+void sendByte(uint8_t data)
+{
+    
+}
+
+int samples = 40000;
 Complex* signal[samples];
 
 Complex compAdd(Complex a, Complex b) // complex addition
@@ -117,12 +129,36 @@ Complex* FFT(Complex* samples, int size)
     return output;
 }
 
-void pollExpress()
-{
-    
-}
 
 void main(void) {
-    UART1 = 0b1000000000011000; //set uart1 register
+    PLLFBD = 38;                // M = 40 for 40MHz Clock
+    CLKDIVbits.PLLPRE = 0;      // N1 = 2
+    CLKDIVbits.PLLPOST = 0;     // N2 = 2
+    
+    U1MODE = 0;
+    U1STA = 0;
+    
+    U1BRG = int(40000000 / (16*9600)) - 1;
+    
+    U1MODEbits.UEN = 0b00;
+    U1MODEbits.UARTEN = 1;
+    U1MODEbits.STSEL = 0;
+    U1MODEbits.PDSEL = 0b00;
+    
+    U1STAbits.UTXEN = 1;
+    
+    IPC3bits.U1TXIP = 4;
+    IFS0bits.U1TXIF = 0;
+    IEC0bits.U1TXIE = 0;
+    
+    
+    
+    while(1)
+    {
+        
+        
+    }
+    
+    
     return;
 }
