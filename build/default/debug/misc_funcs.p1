@@ -1674,33 +1674,66 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1573 ]
 }
 "33
-[; ;misc_funcs.c: 33: void motor(char data[26]){
+[; ;misc_funcs.c: 33: void SetPCUInfo()
+[v _SetPCUInfo `(v ~T0 @X0 1 ef ]
+"34
+[; ;misc_funcs.c: 34: {
+{
+[e :U _SetPCUInfo ]
+[f ]
+[v F11716 `uc ~T0 @X0 -> 9 `i s ]
+[i F11716
+:U ..
+"35
+[; ;misc_funcs.c: 35:     char data[9] = {0xFE,0x19,0x03,0x04,0x03,0x00,4,17,1};
+-> -> 254 `i `uc
+-> -> 25 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 3 `i `uc
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 17 `i `uc
+-> -> 1 `i `uc
+..
+]
+[v _data `uc ~T0 @X0 -> 9 `i a ]
+[e = _data F11716 ]
+"36
+[; ;misc_funcs.c: 36:     sendit(data,9);
+[e ( _sendit (2 , &U _data -> 9 `i ]
+"37
+[; ;misc_funcs.c: 37: }
+[e :UE 1574 ]
+}
+"39
+[; ;misc_funcs.c: 39: void motor(char data[26]){
 [v _motor `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _motor ]
 [v _data `*uc ~T0 @X0 1 r1 ]
 [f ]
-"35
-[; ;misc_funcs.c: 35:     int mry = 0;
+"41
+[; ;misc_funcs.c: 41:     int mry = 0;
 [v _mry `i ~T0 @X0 1 a ]
 [e = _mry -> 0 `i ]
-"36
-[; ;misc_funcs.c: 36:     int mly = 0;
+"42
+[; ;misc_funcs.c: 42:     int mly = 0;
 [v _mly `i ~T0 @X0 1 a ]
 [e = _mly -> 0 `i ]
-"37
-[; ;misc_funcs.c: 37:     int rdirec = 0;
+"43
+[; ;misc_funcs.c: 43:     int rdirec = 0;
 [v _rdirec `i ~T0 @X0 1 a ]
 [e = _rdirec -> 0 `i ]
-"38
-[; ;misc_funcs.c: 38:     int ldirec = 0;
+"44
+[; ;misc_funcs.c: 44:     int ldirec = 0;
 [v _ldirec `i ~T0 @X0 1 a ]
 [e = _ldirec -> 0 `i ]
-[v F11721 `uc ~T0 @X0 -> 10 `i s ]
-[i F11721
+[v F11724 `uc ~T0 @X0 -> 10 `i s ]
+[i F11724
 :U ..
-"39
-[; ;misc_funcs.c: 39:     char msg[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
+"45
+[; ;misc_funcs.c: 45:     char msg[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
 -> -> 254 `i `uc
 -> -> 25 `i `uc
 -> -> 1 `i `uc
@@ -1714,115 +1747,115 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _msg `uc ~T0 @X0 -> 10 `i a ]
-[e = _msg F11721 ]
-"40
-[; ;misc_funcs.c: 40:         mry = (data[8]+(data[9]<<8) - 1000)/5;
+[e = _msg F11724 ]
+"46
+[; ;misc_funcs.c: 46:         mry = (data[8]+(data[9]<<8) - 1000)/5;
 [e = _mry / - + -> *U + _data * -> -> 8 `i `x -> -> # *U _data `i `x `i << -> *U + _data * -> -> 9 `i `x -> -> # *U _data `i `x `i -> 8 `i -> 1000 `i -> 5 `i ]
-"41
-[; ;misc_funcs.c: 41:         mly = (data[10]+(data[11]<<8) - 1000)/5;
+"47
+[; ;misc_funcs.c: 47:         mly = (data[10]+(data[11]<<8) - 1000)/5;
 [e = _mly / - + -> *U + _data * -> -> 10 `i `x -> -> # *U _data `i `x `i << -> *U + _data * -> -> 11 `i `x -> -> # *U _data `i `x `i -> 8 `i -> 1000 `i -> 5 `i ]
-"42
-[; ;misc_funcs.c: 42:         if (mry < 110 && mry > 90){rdirec = 0;}
-[e $ ! && < _mry -> 110 `i > _mry -> 90 `i 1575  ]
+"48
+[; ;misc_funcs.c: 48:         if (mry < 110 && mry > 90){rdirec = 0;}
+[e $ ! && < _mry -> 110 `i > _mry -> 90 `i 1576  ]
 {
 [e = _rdirec -> 0 `i ]
 }
-[e $U 1576  ]
-"43
-[; ;misc_funcs.c: 43:         else if (mry > 110)
-[e :U 1575 ]
-[e $ ! > _mry -> 110 `i 1577  ]
-"44
-[; ;misc_funcs.c: 44:         {
-{
-"45
-[; ;misc_funcs.c: 45:             rdirec = 1;
-[e = _rdirec -> 1 `i ]
-"46
-[; ;misc_funcs.c: 46:             mry = mry - 100;
-[e = _mry - _mry -> 100 `i ]
-"47
-[; ;misc_funcs.c: 47:         }
-}
-[e $U 1578  ]
-"48
-[; ;misc_funcs.c: 48:         else if (mry < 90)
-[e :U 1577 ]
-[e $ ! < _mry -> 90 `i 1579  ]
+[e $U 1577  ]
 "49
-[; ;misc_funcs.c: 49:         {
-{
-"50
-[; ;misc_funcs.c: 50:             rdirec = 2;
-[e = _rdirec -> 2 `i ]
-"51
-[; ;misc_funcs.c: 51:             mry = 100 - mry;
-[e = _mry - -> 100 `i _mry ]
-"52
-[; ;misc_funcs.c: 52:         }
-}
-[e :U 1579 ]
-[e :U 1578 ]
+[; ;misc_funcs.c: 49:         else if (mry > 110)
 [e :U 1576 ]
+[e $ ! > _mry -> 110 `i 1578  ]
+"50
+[; ;misc_funcs.c: 50:         {
+{
+"51
+[; ;misc_funcs.c: 51:             rdirec = 1;
+[e = _rdirec -> 1 `i ]
+"52
+[; ;misc_funcs.c: 52:             mry = mry - 100;
+[e = _mry - _mry -> 100 `i ]
+"53
+[; ;misc_funcs.c: 53:         }
+}
+[e $U 1579  ]
 "54
-[; ;misc_funcs.c: 54:         if (mly < 110 && mly > 90){ldirec = 0;}
-[e $ ! && < _mly -> 110 `i > _mly -> 90 `i 1580  ]
+[; ;misc_funcs.c: 54:         else if (mry < 90)
+[e :U 1578 ]
+[e $ ! < _mry -> 90 `i 1580  ]
+"55
+[; ;misc_funcs.c: 55:         {
+{
+"56
+[; ;misc_funcs.c: 56:             rdirec = 2;
+[e = _rdirec -> 2 `i ]
+"57
+[; ;misc_funcs.c: 57:             mry = 100 - mry;
+[e = _mry - -> 100 `i _mry ]
+"58
+[; ;misc_funcs.c: 58:         }
+}
+[e :U 1580 ]
+[e :U 1579 ]
+[e :U 1577 ]
+"60
+[; ;misc_funcs.c: 60:         if (mly < 110 && mly > 90){ldirec = 0;}
+[e $ ! && < _mly -> 110 `i > _mly -> 90 `i 1581  ]
 {
 [e = _ldirec -> 0 `i ]
 }
-[e $U 1581  ]
-"55
-[; ;misc_funcs.c: 55:         else if (mly > 110)
-[e :U 1580 ]
-[e $ ! > _mly -> 110 `i 1582  ]
-"56
-[; ;misc_funcs.c: 56:         {
-{
-"57
-[; ;misc_funcs.c: 57:             ldirec = 1;
-[e = _ldirec -> 1 `i ]
-"58
-[; ;misc_funcs.c: 58:             mly = mly - 100;
-[e = _mly - _mly -> 100 `i ]
-"59
-[; ;misc_funcs.c: 59:         }
-}
-[e $U 1583  ]
-"60
-[; ;misc_funcs.c: 60:         else if (mly < 90)
-[e :U 1582 ]
-[e $ ! < _mly -> 90 `i 1584  ]
+[e $U 1582  ]
 "61
-[; ;misc_funcs.c: 61:         {
-{
-"62
-[; ;misc_funcs.c: 62:             ldirec = 2;
-[e = _ldirec -> 2 `i ]
-"63
-[; ;misc_funcs.c: 63:             mly = 100 - mly;
-[e = _mly - -> 100 `i _mly ]
-"64
-[; ;misc_funcs.c: 64:         }
-}
-[e :U 1584 ]
-[e :U 1583 ]
+[; ;misc_funcs.c: 61:         else if (mly > 110)
 [e :U 1581 ]
+[e $ ! > _mly -> 110 `i 1583  ]
+"62
+[; ;misc_funcs.c: 62:         {
+{
+"63
+[; ;misc_funcs.c: 63:             ldirec = 1;
+[e = _ldirec -> 1 `i ]
+"64
+[; ;misc_funcs.c: 64:             mly = mly - 100;
+[e = _mly - _mly -> 100 `i ]
+"65
+[; ;misc_funcs.c: 65:         }
+}
+[e $U 1584  ]
 "66
-[; ;misc_funcs.c: 66:         msg[6] = ldirec;
-[e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _ldirec `uc ]
+[; ;misc_funcs.c: 66:         else if (mly < 90)
+[e :U 1583 ]
+[e $ ! < _mly -> 90 `i 1585  ]
 "67
-[; ;misc_funcs.c: 67:         msg[7] = mly;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _mly `uc ]
+[; ;misc_funcs.c: 67:         {
+{
 "68
-[; ;misc_funcs.c: 68:         msg[8] = rdirec;
-[e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _rdirec `uc ]
+[; ;misc_funcs.c: 68:             ldirec = 2;
+[e = _ldirec -> 2 `i ]
 "69
-[; ;misc_funcs.c: 69:         msg[9] = mry;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _mry `uc ]
-"71
-[; ;misc_funcs.c: 71:         sendit(msg, 10);
-[e ( _sendit (2 , &U _msg -> 10 `i ]
+[; ;misc_funcs.c: 69:             mly = 100 - mly;
+[e = _mly - -> 100 `i _mly ]
+"70
+[; ;misc_funcs.c: 70:         }
+}
+[e :U 1585 ]
+[e :U 1584 ]
+[e :U 1582 ]
 "72
-[; ;misc_funcs.c: 72: }
-[e :UE 1574 ]
+[; ;misc_funcs.c: 72:         msg[6] = ldirec;
+[e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _ldirec `uc ]
+"73
+[; ;misc_funcs.c: 73:         msg[7] = mly;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _mly `uc ]
+"74
+[; ;misc_funcs.c: 74:         msg[8] = rdirec;
+[e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _rdirec `uc ]
+"75
+[; ;misc_funcs.c: 75:         msg[9] = mry;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> _mry `uc ]
+"77
+[; ;misc_funcs.c: 77:         sendit(msg, 10);
+[e ( _sendit (2 , &U _msg -> 10 `i ]
+"78
+[; ;misc_funcs.c: 78: }
+[e :UE 1575 ]
 }

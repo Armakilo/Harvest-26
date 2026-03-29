@@ -19834,6 +19834,12 @@ void GetInfoPCU()
     sendit(ask,6);
 }
 
+void SetPCUInfo()
+{
+    char data[9] = {0xFE,0x19,0x03,0x04,0x03,0x00,4,17,1};
+    sendit(data,9);
+}
+
 void motor(char data[26]){
 
     int mry = 0;

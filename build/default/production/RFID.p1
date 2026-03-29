@@ -84,7 +84,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
 [v __delay `JF202 ~T0 @X0 0 e ]
 [p i __delay ]
-[p mainexit ]
 "4928 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 4928:     struct {
 [s S238 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -182,6 +181,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "608
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 608: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x011)));
 [v _TRISAbits `VS40 ~T0 @X0 0 e@17 ]
+"76 ./harvest.h
+[; ;./harvest.h: 76: void sendit(char it[], int it_size);
+[v _sendit `(v ~T0 @X0 0 ef2`*uc`i ]
+"783 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 783:     struct {
+[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S47 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"782
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 782: typedef union {
+[u S46 `S47 1 ]
+[n S46 . . ]
+"794
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 794: extern volatile LATAbits_t LATAbits __attribute__((address(0x016)));
+[v _LATAbits `VS46 ~T0 @X0 0 e@22 ]
 "9 RFID.c
 [p x FEXTOSC  =  ECH     ]
 "10
@@ -1780,24 +1793,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35049
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 35049: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"51 RFID.c
-[; ;RFID.c: 51: void SPIWriteByte(uint8_t data)
+"53 RFID.c
+[; ;RFID.c: 53: void SPIWriteByte(uint8_t data)
 [v _SPIWriteByte `(v ~T0 @X0 1 ef1`uc ]
-"52
-[; ;RFID.c: 52: {
+"54
+[; ;RFID.c: 54: {
 {
 [e :U _SPIWriteByte ]
-"51
-[; ;RFID.c: 51: void SPIWriteByte(uint8_t data)
+"53
+[; ;RFID.c: 53: void SPIWriteByte(uint8_t data)
 [v _data `uc ~T0 @X0 1 r1 ]
-"52
-[; ;RFID.c: 52: {
-[f ]
 "54
-[; ;RFID.c: 54:     SSP1BUF = data;
+[; ;RFID.c: 54: {
+[f ]
+"56
+[; ;RFID.c: 56:     SSP1BUF = data;
 [e = _SSP1BUF _data ]
-"55
-[; ;RFID.c: 55:     while(SSP1STATbits.BF == 0){};
+"57
+[; ;RFID.c: 57:     while(SSP1STATbits.BF == 0){};
 [e $U 1565  ]
 [e :U 1566 ]
 {
@@ -1826,345 +1839,388 @@ Version 4.0 HI-TECH Software Intermediate Code
 "62
 [; ;RFID.c: 62: {
 [f ]
-"65
-[; ;RFID.c: 65:     uint8_t controlByte = (address << 1) & 0b01111110;
+"63
+[; ;RFID.c: 63:     uint8_t controlByte = (address << 1) & 0b01111110;
 [v _controlByte `uc ~T0 @X0 1 a ]
 [e = _controlByte -> & << -> _address `i -> 1 `i -> 126 `i `uc ]
-"67
-[; ;RFID.c: 67:     LATCbits.LATC7 = 0;
+"65
+[; ;RFID.c: 65:     LATCbits.LATC7 = 0;
 [e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"68
-[; ;RFID.c: 68:     SPIWriteByte(controlByte);
+"66
+[; ;RFID.c: 66:     SPIWriteByte(controlByte);
 [e ( _SPIWriteByte (1 _controlByte ]
-"69
-[; ;RFID.c: 69:     SPIWriteByte(data);
+"67
+[; ;RFID.c: 67:     SPIWriteByte(data);
 [e ( _SPIWriteByte (1 _data ]
-"70
-[; ;RFID.c: 70:     LATCbits.LATC7 = 1;
+"68
+[; ;RFID.c: 68:     LATCbits.LATC7 = 1;
 [e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-"72
-[; ;RFID.c: 72:     _delay((unsigned long)((1)*(32000000/4000.0)));
+"70
+[; ;RFID.c: 70:     _delay((unsigned long)((1)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"76
-[; ;RFID.c: 76:     return;
+"74
+[; ;RFID.c: 74:     return;
 [e $UE 1568  ]
-"77
-[; ;RFID.c: 77: }
+"75
+[; ;RFID.c: 75: }
 [e :UE 1568 ]
 }
-"79
-[; ;RFID.c: 79: uint8_t SPIReadByte()
+"77
+[; ;RFID.c: 77: uint8_t SPIReadByte()
 [v _SPIReadByte `(uc ~T0 @X0 1 ef ]
-"80
-[; ;RFID.c: 80: {
+"78
+[; ;RFID.c: 78: {
 {
 [e :U _SPIReadByte ]
 [f ]
-"84
-[; ;RFID.c: 84:     SPIWriteByte(0xFE);
+"81
+[; ;RFID.c: 81:     SPIWriteByte(0xFE);
 [e ( _SPIWriteByte (1 -> -> 254 `i `uc ]
-"86
-[; ;RFID.c: 86:     return SSP1BUF;
+"83
+[; ;RFID.c: 83:     return SSP1BUF;
 [e ) _SSP1BUF ]
 [e $UE 1569  ]
-"87
-[; ;RFID.c: 87: }
+"84
+[; ;RFID.c: 84: }
 [e :UE 1569 ]
 }
-"89
-[; ;RFID.c: 89: uint8_t readRegister(uint8_t address)
+"86
+[; ;RFID.c: 86: uint8_t readRegister(uint8_t address)
 [v _readRegister `(uc ~T0 @X0 1 ef1`uc ]
-"90
-[; ;RFID.c: 90: {
+"87
+[; ;RFID.c: 87: {
 {
 [e :U _readRegister ]
-"89
-[; ;RFID.c: 89: uint8_t readRegister(uint8_t address)
+"86
+[; ;RFID.c: 86: uint8_t readRegister(uint8_t address)
 [v _address `uc ~T0 @X0 1 r1 ]
-"90
-[; ;RFID.c: 90: {
+"87
+[; ;RFID.c: 87: {
 [f ]
-"91
-[; ;RFID.c: 91:     LATCbits.LATC7 = 0;
+"88
+[; ;RFID.c: 88:     LATCbits.LATC7 = 0;
 [e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"92
-[; ;RFID.c: 92:     SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;
+"89
+[; ;RFID.c: 89:     SPIWriteByte((0x80 | (address << 1)& 0xFE)) ;
 [e ( _SPIWriteByte (1 -> | -> 128 `i & << -> _address `i -> 1 `i -> 254 `i `uc ]
-"94
-[; ;RFID.c: 94:     uint8_t stuff = SPIReadByte();
+"91
+[; ;RFID.c: 91:     uint8_t stuff = SPIReadByte();
 [v _stuff `uc ~T0 @X0 1 a ]
 [e = _stuff ( _SPIReadByte ..  ]
-"95
-[; ;RFID.c: 95:     LATCbits.LATC7 = 1;
+"92
+[; ;RFID.c: 92:     LATCbits.LATC7 = 1;
 [e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-"96
-[; ;RFID.c: 96:     return stuff;
+"93
+[; ;RFID.c: 93:     return stuff;
 [e ) _stuff ]
 [e $UE 1570  ]
-"97
-[; ;RFID.c: 97: }
+"94
+[; ;RFID.c: 94: }
 [e :UE 1570 ]
 }
-"99
-[; ;RFID.c: 99: void tranceive(){
-[v _tranceive `(v ~T0 @X0 1 ef ]
-{
-[e :U _tranceive ]
-[f ]
-"103
-[; ;RFID.c: 103: }
-[e :UE 1571 ]
-}
-"105
-[; ;RFID.c: 105: uint8_t rdFIFO(){
+"96
+[; ;RFID.c: 96: uint8_t rdFIFO(){
 [v _rdFIFO `(uc ~T0 @X0 1 ef ]
 {
 [e :U _rdFIFO ]
 [f ]
-"107
-[; ;RFID.c: 107:     uint8_t info = readRegister(0x09);
+"98
+[; ;RFID.c: 98:     uint8_t info = readRegister(0x09);
 [v _info `uc ~T0 @X0 1 a ]
 [e = _info ( _readRegister (1 -> -> 9 `i `uc ]
-"108
-[; ;RFID.c: 108:     return info;
+"99
+[; ;RFID.c: 99:     return info;
 [e ) _info ]
-[e $UE 1572  ]
-"110
-[; ;RFID.c: 110: }
-[e :UE 1572 ]
+[e $UE 1571  ]
+"101
+[; ;RFID.c: 101: }
+[e :UE 1571 ]
 }
-"112
-[; ;RFID.c: 112: void BitmaskOR(uint8_t addr, uint8_t mask)
+"103
+[; ;RFID.c: 103: void BitmaskOR(uint8_t addr, uint8_t mask)
 [v _BitmaskOR `(v ~T0 @X0 1 ef2`uc`uc ]
-"113
-[; ;RFID.c: 113: {
+"104
+[; ;RFID.c: 104: {
 {
 [e :U _BitmaskOR ]
-"112
-[; ;RFID.c: 112: void BitmaskOR(uint8_t addr, uint8_t mask)
+"103
+[; ;RFID.c: 103: void BitmaskOR(uint8_t addr, uint8_t mask)
 [v _addr `uc ~T0 @X0 1 r1 ]
 [v _mask `uc ~T0 @X0 1 r2 ]
-"113
-[; ;RFID.c: 113: {
+"104
+[; ;RFID.c: 104: {
 [f ]
-"114
-[; ;RFID.c: 114:     uint8_t preval = readRegister(addr);
+"105
+[; ;RFID.c: 105:     uint8_t preval = readRegister(addr);
 [v _preval `uc ~T0 @X0 1 a ]
 [e = _preval ( _readRegister (1 _addr ]
-"115
-[; ;RFID.c: 115:     uint8_t postval = preval | mask;
+"106
+[; ;RFID.c: 106:     uint8_t postval = preval | mask;
 [v _postval `uc ~T0 @X0 1 a ]
 [e = _postval -> | -> _preval `i -> _mask `i `uc ]
-"116
-[; ;RFID.c: 116:     writeRegister(addr, postval);
+"107
+[; ;RFID.c: 107:     writeRegister(addr, postval);
 [e ( _writeRegister (2 , _addr _postval ]
-"117
-[; ;RFID.c: 117:     return;
+"108
+[; ;RFID.c: 108:     return;
+[e $UE 1572  ]
+"109
+[; ;RFID.c: 109: }
+[e :UE 1572 ]
+}
+"111
+[; ;RFID.c: 111: void tranceive(){
+[v _tranceive `(v ~T0 @X0 1 ef ]
+{
+[e :U _tranceive ]
+[f ]
+"112
+[; ;RFID.c: 112:     writeRegister(0x01, 0x0C);
+[e ( _writeRegister (2 , -> -> 1 `i `uc -> -> 12 `i `uc ]
+"113
+[; ;RFID.c: 113:     BitmaskOR(0x0D, 0x80);
+[e ( _BitmaskOR (2 , -> -> 13 `i `uc -> -> 128 `i `uc ]
+"114
+[; ;RFID.c: 114:     return;
 [e $UE 1573  ]
-"118
-[; ;RFID.c: 118: }
+"115
+[; ;RFID.c: 115: }
 [e :UE 1573 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"122
-[; ;RFID.c: 122: void main(){
-[v _main `(v ~T0 @X0 1 ef ]
+"117
+[; ;RFID.c: 117: void SPISetup()
+[v _SPISetup `(v ~T0 @X0 1 ef ]
+"118
+[; ;RFID.c: 118: {
 {
-[e :U _main ]
+[e :U _SPISetup ]
 [f ]
-"128
-[; ;RFID.c: 128:     SSP1CON1bits.SSPEN = 0;
+"121
+[; ;RFID.c: 121:     SSP1CON1bits.SSPEN = 0;
 [e = . . _SSP1CON1bits 0 2 -> -> 0 `i `uc ]
-"132
-[; ;RFID.c: 132:     TRISBbits.TRISB4 = 1;
+"125
+[; ;RFID.c: 125:     TRISBbits.TRISB4 = 1;
 [e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
-"133
-[; ;RFID.c: 133:     ANSELBbits.ANSB4 = 0;
+"126
+[; ;RFID.c: 126:     ANSELBbits.ANSB4 = 0;
 [e = . . _ANSELBbits 0 4 -> -> 0 `i `uc ]
-"134
-[; ;RFID.c: 134:     SSP1DATPPS = 0x0C;
+"127
+[; ;RFID.c: 127:     SSP1DATPPS = 0x0C;
 [e = _SSP1DATPPS -> -> 12 `i `uc ]
-"138
-[; ;RFID.c: 138:     TRISBbits.TRISB5 = 0;
+"131
+[; ;RFID.c: 131:     TRISBbits.TRISB5 = 0;
 [e = . . _TRISBbits 0 5 -> -> 0 `i `uc ]
-"139
-[; ;RFID.c: 139:     ANSELBbits.ANSB5 = 0;
+"132
+[; ;RFID.c: 132:     ANSELBbits.ANSB5 = 0;
 [e = . . _ANSELBbits 0 5 -> -> 0 `i `uc ]
-"140
-[; ;RFID.c: 140:     RB5PPS = 0x15;
+"133
+[; ;RFID.c: 133:     RB5PPS = 0x15;
 [e = _RB5PPS -> -> 21 `i `uc ]
-"144
-[; ;RFID.c: 144:     TRISBbits.TRISB3 = 0;
+"137
+[; ;RFID.c: 137:     TRISBbits.TRISB3 = 0;
 [e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-"145
-[; ;RFID.c: 145:     ANSELBbits.ANSB3 = 0;
+"138
+[; ;RFID.c: 138:     ANSELBbits.ANSB3 = 0;
 [e = . . _ANSELBbits 0 3 -> -> 0 `i `uc ]
-"146
-[; ;RFID.c: 146:     RB3PPS = 0x14;
+"139
+[; ;RFID.c: 139:     RB3PPS = 0x14;
 [e = _RB3PPS -> -> 20 `i `uc ]
-"150
-[; ;RFID.c: 150:     TRISCbits.TRISC7 = 0;
+"143
+[; ;RFID.c: 143:     TRISCbits.TRISC7 = 0;
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"151
-[; ;RFID.c: 151:     ANSELCbits.ANSC7 = 0;
+"144
+[; ;RFID.c: 144:     ANSELCbits.ANSC7 = 0;
 [e = . . _ANSELCbits 0 7 -> -> 0 `i `uc ]
-"152
-[; ;RFID.c: 152:     LATCbits.LATC7 = 1;
+"145
+[; ;RFID.c: 145:     LATCbits.LATC7 = 1;
 [e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-"154
-[; ;RFID.c: 154:     SSP1CON1bits.CKP = 0;
+"147
+[; ;RFID.c: 147:     SSP1CON1bits.CKP = 0;
 [e = . . _SSP1CON1bits 0 1 -> -> 0 `i `uc ]
-"155
-[; ;RFID.c: 155:     SSP1STATbits.CKE = 1;
+"148
+[; ;RFID.c: 148:     SSP1STATbits.CKE = 1;
 [e = . . _SSP1STATbits 0 6 -> -> 1 `i `uc ]
-"156
-[; ;RFID.c: 156:     SSP1STATbits.SMP = 1;
+"149
+[; ;RFID.c: 149:     SSP1STATbits.SMP = 1;
 [e = . . _SSP1STATbits 0 7 -> -> 1 `i `uc ]
-"160
-[; ;RFID.c: 160:     SSP1CON1bits.SSPM = 0b1010;
+"153
+[; ;RFID.c: 153:     SSP1CON1bits.SSPM = 0b1010;
 [e = . . _SSP1CON1bits 0 0 -> -> 10 `i `uc ]
-"161
-[; ;RFID.c: 161:     SSP1ADD = 159;
+"154
+[; ;RFID.c: 154:     SSP1ADD = 159;
 [e = _SSP1ADD -> -> 159 `i `uc ]
-"162
-[; ;RFID.c: 162:     SSP1CON1bits.SSPEN = 1;
+"155
+[; ;RFID.c: 155:     SSP1CON1bits.SSPEN = 1;
 [e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
-"166
-[; ;RFID.c: 166:     ANSELAbits.ANSA5 = 0;
-[e = . . _ANSELAbits 0 5 -> -> 0 `i `uc ]
-"167
-[; ;RFID.c: 167:     TRISAbits.TRISA5 = 1;
-[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
-"170
-[; ;RFID.c: 170:     uint8_t response[10];
+"157
+[; ;RFID.c: 157: }
+[e :UE 1574 ]
+}
+"160
+[; ;RFID.c: 160: void GetUID(){
+[v _GetUID `(v ~T0 @X0 1 ef ]
+{
+[e :U _GetUID ]
+[f ]
+"164
+[; ;RFID.c: 164:     ANSELAbits.ANSA1 = 0;
+[e = . . _ANSELAbits 0 1 -> -> 0 `i `uc ]
+"165
+[; ;RFID.c: 165:     TRISAbits.TRISA1 = 1;
+[e = . . _TRISAbits 0 1 -> -> 1 `i `uc ]
+"168
+[; ;RFID.c: 168:     uint8_t response[10];
 [v _response `uc ~T0 @X0 -> 10 `i a ]
-"172
-[; ;RFID.c: 172:     writeRegister(0x01, 0b0001111);
-[e ( _writeRegister (2 , -> -> 1 `i `uc -> -> 15 `i `uc ]
-"177
-[; ;RFID.c: 177:     writeRegister(0x2A,0x84);
-[e ( _writeRegister (2 , -> -> 42 `i `uc -> -> 132 `i `uc ]
-"178
-[; ;RFID.c: 178:     writeRegister(0x2B,0x00);
-[e ( _writeRegister (2 , -> -> 43 `i `uc -> -> 0 `i `uc ]
-"179
-[; ;RFID.c: 179:     writeRegister(0x2C,0x01);
-[e ( _writeRegister (2 , -> -> 44 `i `uc -> -> 1 `i `uc ]
-"180
-[; ;RFID.c: 180:     writeRegister(0x2D,0x49);
-[e ( _writeRegister (2 , -> -> 45 `i `uc -> -> 73 `i `uc ]
-"181
-[; ;RFID.c: 181:     writeRegister(0x11,0b00101001);
-[e ( _writeRegister (2 , -> -> 17 `i `uc -> -> 41 `i `uc ]
-"182
-[; ;RFID.c: 182:     writeRegister(0x15,0b01000000);
-[e ( _writeRegister (2 , -> -> 21 `i `uc -> -> 64 `i `uc ]
-"184
-[; ;RFID.c: 184:     BitmaskOR(0x14, 0x03);
-[e ( _BitmaskOR (2 , -> -> 20 `i `uc -> -> 3 `i `uc ]
-"188
-[; ;RFID.c: 188:     _delay((unsigned long)((50)*(32000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"192
-[; ;RFID.c: 192:     writeRegister(0x0A, 0x80);
-[e ( _writeRegister (2 , -> -> 10 `i `uc -> -> 128 `i `uc ]
-"193
-[; ;RFID.c: 193:     writeRegister(0x0D, 0x07);
-[e ( _writeRegister (2 , -> -> 13 `i `uc -> -> 7 `i `uc ]
-"194
-[; ;RFID.c: 194:     writeRegister(0x09, 0x26);
-[e ( _writeRegister (2 , -> -> 9 `i `uc -> -> 38 `i `uc ]
-"195
-[; ;RFID.c: 195:     writeRegister(0x01, 0x0C);
-[e ( _writeRegister (2 , -> -> 1 `i `uc -> -> 12 `i `uc ]
-"196
-[; ;RFID.c: 196:     BitmaskOR(0x0D, 0x80);
-[e ( _BitmaskOR (2 , -> -> 13 `i `uc -> -> 128 `i `uc ]
-"198
-[; ;RFID.c: 198:     int buffbytes = readRegister(0x0A);
-[v _buffbytes `i ~T0 @X0 1 a ]
-[e = _buffbytes -> ( _readRegister (1 -> -> 10 `i `uc `i ]
-"200
-[; ;RFID.c: 200:     for (int i = 0; i <= buffbytes; i++){
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 1578  ]
-[e :U 1575 ]
-{
-"201
-[; ;RFID.c: 201:       response[i] = rdFIFO();
-[e = *U + &U _response * -> -> _i `ui `ux -> -> # *U &U _response `ui `ux ( _rdFIFO ..  ]
-"202
-[; ;RFID.c: 202:     }
-}
-[e ++ _i -> 1 `i ]
+"169
+[; ;RFID.c: 169:     do{
 [e :U 1578 ]
-[e $ <= _i _buffbytes 1575  ]
-[e :U 1576 ]
-}
-"205
-[; ;RFID.c: 205:     volatile uint8_t errorRegValue = readRegister(0x06);
-[v _errorRegValue `Vuc ~T0 @X0 1 a ]
-[e = _errorRegValue ( _readRegister (1 -> -> 6 `i `uc ]
-"206
-[; ;RFID.c: 206:     volatile uint8_t controlRegValue = readRegister(0x0C);
-[v _controlRegValue `Vuc ~T0 @X0 1 a ]
-[e = _controlRegValue ( _readRegister (1 -> -> 12 `i `uc ]
-"208
-[; ;RFID.c: 208:     writeRegister(0x09, 0x93);
-[e ( _writeRegister (2 , -> -> 9 `i `uc -> -> 147 `i `uc ]
-"209
-[; ;RFID.c: 209:     writeRegister(0x09, 0x20);
-[e ( _writeRegister (2 , -> -> 9 `i `uc -> -> 32 `i `uc ]
-"214
-[; ;RFID.c: 214:     writeRegister(0x01, 0x0C);
-[e ( _writeRegister (2 , -> -> 1 `i `uc -> -> 12 `i `uc ]
-"215
-[; ;RFID.c: 215:     writeRegister(0x0D, 0x80);
-[e ( _writeRegister (2 , -> -> 13 `i `uc -> -> 128 `i `uc ]
-"217
-[; ;RFID.c: 217:     writeRegister(0x01, 0x0C);
-[e ( _writeRegister (2 , -> -> 1 `i `uc -> -> 12 `i `uc ]
-"218
-[; ;RFID.c: 218:     writeRegister(0x0D, 0x80);
-[e ( _writeRegister (2 , -> -> 13 `i `uc -> -> 128 `i `uc ]
-"221
-[; ;RFID.c: 221:     buffbytes = readRegister(0x0A);
-[e = _buffbytes -> ( _readRegister (1 -> -> 10 `i `uc `i ]
-"223
-[; ;RFID.c: 223:     for (int i = 0; i <= buffbytes; i++){
+{
+"171
+[; ;RFID.c: 171:         writeRegister(0x01, 0b0001111);
+[e ( _writeRegister (2 , -> -> 1 `i `uc -> -> 15 `i `uc ]
+"176
+[; ;RFID.c: 176:         writeRegister(0x2A,0x84);
+[e ( _writeRegister (2 , -> -> 42 `i `uc -> -> 132 `i `uc ]
+"177
+[; ;RFID.c: 177:         writeRegister(0x2B,0x00);
+[e ( _writeRegister (2 , -> -> 43 `i `uc -> -> 0 `i `uc ]
+"178
+[; ;RFID.c: 178:         writeRegister(0x2C,0x01);
+[e ( _writeRegister (2 , -> -> 44 `i `uc -> -> 1 `i `uc ]
+"179
+[; ;RFID.c: 179:         writeRegister(0x2D,0x49);
+[e ( _writeRegister (2 , -> -> 45 `i `uc -> -> 73 `i `uc ]
+"180
+[; ;RFID.c: 180:         writeRegister(0x11,0b00101001);
+[e ( _writeRegister (2 , -> -> 17 `i `uc -> -> 41 `i `uc ]
+"181
+[; ;RFID.c: 181:         writeRegister(0x15,0b01000000);
+[e ( _writeRegister (2 , -> -> 21 `i `uc -> -> 64 `i `uc ]
+"183
+[; ;RFID.c: 183:         BitmaskOR(0x14, 0x03);
+[e ( _BitmaskOR (2 , -> -> 20 `i `uc -> -> 3 `i `uc ]
+"190
+[; ;RFID.c: 190:         writeRegister(0x0A, 0x80);
+[e ( _writeRegister (2 , -> -> 10 `i `uc -> -> 128 `i `uc ]
+"191
+[; ;RFID.c: 191:         writeRegister(0x0D, 0x07);
+[e ( _writeRegister (2 , -> -> 13 `i `uc -> -> 7 `i `uc ]
+"192
+[; ;RFID.c: 192:         writeRegister(0x09, 0x26);
+[e ( _writeRegister (2 , -> -> 9 `i `uc -> -> 38 `i `uc ]
+"194
+[; ;RFID.c: 194:         tranceive();
+[e ( _tranceive ..  ]
+"196
+[; ;RFID.c: 196:         uint8_t buffbytes = readRegister(0x0A);
+[v _buffbytes `uc ~T0 @X0 1 a ]
+[e = _buffbytes ( _readRegister (1 -> -> 10 `i `uc ]
+"198
+[; ;RFID.c: 198:         for (int i = 0; i < buffbytes; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $U 1582  ]
 [e :U 1579 ]
 {
-"224
-[; ;RFID.c: 224:       response[i] = rdFIFO();
+"199
+[; ;RFID.c: 199:           response[i] = rdFIFO();
 [e = *U + &U _response * -> -> _i `ui `ux -> -> # *U &U _response `ui `ux ( _rdFIFO ..  ]
-"225
-[; ;RFID.c: 225:     }
+"200
+[; ;RFID.c: 200:         }
 }
 [e ++ _i -> 1 `i ]
 [e :U 1582 ]
-[e $ <= _i _buffbytes 1579  ]
+[e $ < _i -> _buffbytes `i 1579  ]
 [e :U 1580 ]
 }
-"227
-[; ;RFID.c: 227:     while(1){
-[e :U 1584 ]
+"204
+[; ;RFID.c: 204:         if (buffbytes == 2 && response[0] == 0x04 && response[1] == 0x00)
+[e $ ! && && == -> _buffbytes `i -> 2 `i == -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> 4 `i == -> *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> 0 `i 1583  ]
+"205
+[; ;RFID.c: 205:         {
 {
-"228
-[; ;RFID.c: 228:     }
+"208
+[; ;RFID.c: 208:             writeRegister(0x0A, 0x80);
+[e ( _writeRegister (2 , -> -> 10 `i `uc -> -> 128 `i `uc ]
+"209
+[; ;RFID.c: 209:             writeRegister(0x0D, 0x00);
+[e ( _writeRegister (2 , -> -> 13 `i `uc -> -> 0 `i `uc ]
+"211
+[; ;RFID.c: 211:             writeRegister(0x09, 0x93);
+[e ( _writeRegister (2 , -> -> 9 `i `uc -> -> 147 `i `uc ]
+"212
+[; ;RFID.c: 212:             writeRegister(0x09, 0x20);
+[e ( _writeRegister (2 , -> -> 9 `i `uc -> -> 32 `i `uc ]
+"214
+[; ;RFID.c: 214:             tranceive();
+[e ( _tranceive ..  ]
+"215
+[; ;RFID.c: 215:         }
 }
 [e :U 1583 ]
-[e $U 1584  ]
+"217
+[; ;RFID.c: 217:         buffbytes = readRegister(0x0A);
+[e = _buffbytes ( _readRegister (1 -> -> 10 `i `uc ]
+"219
+[; ;RFID.c: 219:         for (int i = 0; i <= buffbytes; i++){
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 1587  ]
+[e :U 1584 ]
+{
+"220
+[; ;RFID.c: 220:           response[i] = rdFIFO();
+[e = *U + &U _response * -> -> _i `ui `ux -> -> # *U &U _response `ui `ux ( _rdFIFO ..  ]
+"221
+[; ;RFID.c: 221:         }
+}
+[e ++ _i -> 1 `i ]
+[e :U 1587 ]
+[e $ <= _i -> _buffbytes `i 1584  ]
 [e :U 1585 ]
-"231
-[; ;RFID.c: 231:     return;
-[e $UE 1574  ]
+}
+"223
+[; ;RFID.c: 223:     }while(response[4] != (response[0] ^ response[1] ^ response[2] ^ response[3]));
+}
+[e $ != -> *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux `i ^ ^ ^ -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux `i 1578  ]
+[e :U 1577 ]
+[v F11761 `uc ~T0 @X0 -> 10 `i s ]
+[i F11761
+:U ..
+"225
+[; ;RFID.c: 225:     uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 1, 0, 0, 0};
+-> -> 254 `i `uc
+-> -> 25 `i `uc
+-> -> 1 `i `uc
+-> -> 10 `i `uc
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[v _msg `uc ~T0 @X0 -> 10 `i a ]
+[e = _msg F11761 ]
+"226
+[; ;RFID.c: 226:     msg[8] = response[3];
+[e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux ]
+"227
+[; ;RFID.c: 227:     msg[9] = response[2];
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux ]
+"228
+[; ;RFID.c: 228:     sendit(msg, 10);
+[e ( _sendit (2 , -> &U _msg `*uc -> 10 `i ]
+"230
+[; ;RFID.c: 230:     LATAbits.LATA1 = 1;
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 "232
-[; ;RFID.c: 232: }
-[e :UE 1574 ]
+[; ;RFID.c: 232:     return;
+[e $UE 1575  ]
+"233
+[; ;RFID.c: 233: }
+[e :UE 1575 ]
 }

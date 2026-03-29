@@ -19823,6 +19823,9 @@ extern volatile uint8_t repair_code_flag;
 
 
 
+void GetUID();
+
+void SPISetup();
 
 void ShootShield();
 
@@ -19837,6 +19840,8 @@ void sendit(char it[], int it_size);
 void GetInfoController();
 
 void GetInfoPCU();
+
+void SetPCUInfo();
 
 void motor(char data[26]);
 

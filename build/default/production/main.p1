@@ -111,7 +111,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31566
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 31566: extern volatile unsigned char RXPPS __attribute__((address(0xECB)));
 [v _RXPPS `Vuc ~T0 @X0 0 e@3787 ]
-"390
+"54 ./harvest.h
+[; ;./harvest.h: 54: void SPISetup();
+[v _SPISetup `(v ~T0 @X0 0 e? ]
+"390 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 390:     struct {
 [s S33 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S33 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
@@ -125,18 +128,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "777
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 777: extern volatile unsigned char LATA __attribute__((address(0x016)));
 [v _LATA `Vuc ~T0 @X0 0 e@22 ]
-"63 ./harvest.h
-[; ;./harvest.h: 63: void GetInfoController();
+"70 ./harvest.h
+[; ;./harvest.h: 70: void SetPCUInfo();
+[v _SetPCUInfo `(v ~T0 @X0 0 e? ]
+"66
+[; ;./harvest.h: 66: void GetInfoController();
 [v _GetInfoController `(v ~T0 @X0 0 e? ]
-"67
-[; ;./harvest.h: 67: void motor(char data[26]);
-[v _motor `(v ~T0 @X0 0 ef1`*uc ]
-"59
-[; ;./harvest.h: 59: void ShootLaser();
-[v _ShootLaser `(v ~T0 @X0 0 e? ]
-"65
-[; ;./harvest.h: 65: void GetInfoPCU();
-[v _GetInfoPCU `(v ~T0 @X0 0 e? ]
 "783 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 783:     struct {
 [s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -148,14 +145,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 "794
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 794: extern volatile LATAbits_t LATAbits __attribute__((address(0x016)));
 [v _LATAbits `VS46 ~T0 @X0 0 e@22 ]
+"72 ./harvest.h
+[; ;./harvest.h: 72: void motor(char data[26]);
+[v _motor `(v ~T0 @X0 0 ef1`*uc ]
+"62
+[; ;./harvest.h: 62: void ShootLaser();
+[v _ShootLaser `(v ~T0 @X0 0 e? ]
+"68
+[; ;./harvest.h: 68: void GetInfoPCU();
+[v _GetInfoPCU `(v ~T0 @X0 0 e? ]
 [v F202 `(v ~T0 @X0 1 tf1`ul ]
 "20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
 [v __delay `JF202 ~T0 @X0 0 e ]
 [p i __delay ]
-"69 ./harvest.h
-[; ;./harvest.h: 69: void follow(uint8_t sw);
+"74 ./harvest.h
+[; ;./harvest.h: 74: void follow(uint8_t sw);
 [v _follow `(v ~T0 @X0 0 ef1`uc ]
-"14 newmain.c
+"14 main.c
 [p x FEXTOSC  =  ECH     ]
 "15
 [p x RSTOSC  =  HFINT32    ]
@@ -1753,314 +1759,317 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35049
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 35049: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"52 newmain.c
-[; ;newmain.c: 52: volatile uint8_t control_data[26] = {};
+"52 main.c
+[; ;main.c: 52: volatile uint8_t control_data[26] = {};
 [v _control_data `Vuc ~T0 @X0 -> 26 `i e ]
 [i _control_data
 :U ..
 ..
 ]
 "53
-[; ;newmain.c: 53: volatile int data_type;
+[; ;main.c: 53: volatile int data_type;
 [v _data_type `Vi ~T0 @X0 1 e ]
 "54
-[; ;newmain.c: 54: volatile int data_size = 10;
+[; ;main.c: 54: volatile int data_size = 10;
 [v _data_size `Vi ~T0 @X0 1 e ]
 [i _data_size
 -> 10 `i
 ]
 "55
-[; ;newmain.c: 55: volatile int data_index = 0;
+[; ;main.c: 55: volatile int data_index = 0;
 [v _data_index `Vi ~T0 @X0 1 e ]
 [i _data_index
 -> 0 `i
 ]
 "56
-[; ;newmain.c: 56: volatile int receive_ready = 0;
+[; ;main.c: 56: volatile int receive_ready = 0;
 [v _receive_ready `Vi ~T0 @X0 1 e ]
 [i _receive_ready
 -> 0 `i
 ]
 "57
-[; ;newmain.c: 57: volatile int receive_flag = 0;
+[; ;main.c: 57: volatile int receive_flag = 0;
 [v _receive_flag `Vi ~T0 @X0 1 e ]
 [i _receive_flag
 -> 0 `i
 ]
 "58
-[; ;newmain.c: 58: volatile int SWA = 0;
+[; ;main.c: 58: volatile int SWA = 0;
 [v _SWA `Vi ~T0 @X0 1 e ]
 [i _SWA
 -> 0 `i
 ]
 "59
-[; ;newmain.c: 59: volatile int SWB = 0;
+[; ;main.c: 59: volatile int SWB = 0;
 [v _SWB `Vi ~T0 @X0 1 e ]
 [i _SWB
 -> 0 `i
 ]
 "60
-[; ;newmain.c: 60: volatile int SWC = 0;
+[; ;main.c: 60: volatile int SWC = 0;
 [v _SWC `Vi ~T0 @X0 1 e ]
 [i _SWC
 -> 0 `i
 ]
 "61
-[; ;newmain.c: 61: volatile int SWD = 0;
+[; ;main.c: 61: volatile int SWD = 0;
 [v _SWD `Vi ~T0 @X0 1 e ]
 [i _SWD
 -> 0 `i
 ]
 "62
-[; ;newmain.c: 62: volatile uint8_t shield_code_flag = 0;
+[; ;main.c: 62: volatile uint8_t shield_code_flag = 0;
 [v _shield_code_flag `Vuc ~T0 @X0 1 e ]
 [i _shield_code_flag
 -> -> 0 `i `uc
 ]
 "63
-[; ;newmain.c: 63: volatile uint8_t repair_code_flag = 0;
+[; ;main.c: 63: volatile uint8_t repair_code_flag = 0;
 [v _repair_code_flag `Vuc ~T0 @X0 1 e ]
 [i _repair_code_flag
 -> -> 0 `i `uc
 ]
 [v $root$_ISR `(v ~T0 @X0 0 e ]
 "67
-[; ;newmain.c: 67: void __attribute__((picinterrupt(("")))) ISR(void)
+[; ;main.c: 67: void __attribute__((picinterrupt(("")))) ISR(void)
 [v _ISR `(v ~T1 @X0 1 ef ]
 "68
-[; ;newmain.c: 68: {
+[; ;main.c: 68: {
 {
 [e :U _ISR ]
 [f ]
 "69
-[; ;newmain.c: 69:     if (PIR3bits.RCIF) {
+[; ;main.c: 69:     if (PIR3bits.RCIF) {
 [e $ ! != -> . . _PIR3bits 0 5 `i -> 0 `i 1565  ]
 {
 "70
-[; ;newmain.c: 70:         control_data[data_index] = RC1REG;
+[; ;main.c: 70:         control_data[data_index] = RC1REG;
 [e = *U + &U _control_data * -> -> _data_index `Vui `ux -> -> # *U &U _control_data `ui `ux _RC1REG ]
 "71
-[; ;newmain.c: 71:         data_index++;
+[; ;main.c: 71:         data_index++;
 [e ++ _data_index -> -> 1 `i `Vi ]
 "73
-[; ;newmain.c: 73:         if (RC1STAbits.OERR)
+[; ;main.c: 73:         if (RC1STAbits.OERR)
 [e $ ! != -> . . _RC1STAbits 0 1 `i -> 0 `i 1566  ]
 "74
-[; ;newmain.c: 74:         {
+[; ;main.c: 74:         {
 {
 "75
-[; ;newmain.c: 75:             RC1STAbits.CREN = 0;
+[; ;main.c: 75:             RC1STAbits.CREN = 0;
 [e = . . _RC1STAbits 0 4 -> -> 0 `i `uc ]
 "76
-[; ;newmain.c: 76:             RC1STAbits.CREN = 1;
+[; ;main.c: 76:             RC1STAbits.CREN = 1;
 [e = . . _RC1STAbits 0 4 -> -> 1 `i `uc ]
 "77
-[; ;newmain.c: 77:         }
+[; ;main.c: 77:         }
 }
 [e :U 1566 ]
 "79
-[; ;newmain.c: 79:         if (data_index == 4)
+[; ;main.c: 79:         if (data_index == 4)
 [e $ ! == _data_index -> 4 `i 1567  ]
 "80
-[; ;newmain.c: 80:         {
+[; ;main.c: 80:         {
 {
 "81
-[; ;newmain.c: 81:             data_type = (control_data[3]<<8) + control_data[2];
+[; ;main.c: 81:             data_type = (control_data[3]<<8) + control_data[2];
 [e = _data_type + << -> *U + &U _control_data * -> -> -> 3 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 2 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
 "82
-[; ;newmain.c: 82:             if (data_type == 0x0300)
+[; ;main.c: 82:             if (data_type == 0x0300)
 [e $ ! == _data_type -> 768 `i 1568  ]
 "83
-[; ;newmain.c: 83:             {
+[; ;main.c: 83:             {
 {
 "84
-[; ;newmain.c: 84:                 data_size = 6;
+[; ;main.c: 84:                 data_size = 6;
 [e = _data_size -> 6 `i ]
 "85
-[; ;newmain.c: 85:             }
+[; ;main.c: 85:             }
 }
 [e $U 1569  ]
 "86
-[; ;newmain.c: 86:             else if (data_type == 0x0402)
+[; ;main.c: 86:             else if (data_type == 0x0402)
 [e :U 1568 ]
 [e $ ! == _data_type -> 1026 `i 1570  ]
 "87
-[; ;newmain.c: 87:             {
+[; ;main.c: 87:             {
 {
 "88
-[; ;newmain.c: 88:                 data_size = 12;
+[; ;main.c: 88:                 data_size = 12;
 [e = _data_size -> 12 `i ]
 "89
-[; ;newmain.c: 89:             }
+[; ;main.c: 89:             }
 }
 [e $U 1571  ]
 "90
-[; ;newmain.c: 90:             else if (data_type == 0x0502)
+[; ;main.c: 90:             else if (data_type == 0x0502)
 [e :U 1570 ]
 [e $ ! == _data_type -> 1282 `i 1572  ]
 "91
-[; ;newmain.c: 91:             {
+[; ;main.c: 91:             {
 {
 "92
-[; ;newmain.c: 92:                 data_size = 26;
+[; ;main.c: 92:                 data_size = 26;
 [e = _data_size -> 26 `i ]
 "93
-[; ;newmain.c: 93:             }
+[; ;main.c: 93:             }
 }
 [e :U 1572 ]
 [e :U 1571 ]
 [e :U 1569 ]
 "94
-[; ;newmain.c: 94:         }
+[; ;main.c: 94:         }
 }
 [e :U 1567 ]
 "95
-[; ;newmain.c: 95:         if (data_index >= data_size && data_size == 6)
+[; ;main.c: 95:         if (data_index >= data_size && data_size == 6)
 [e $ ! && >= _data_index _data_size == _data_size -> 6 `i 1573  ]
 "96
-[; ;newmain.c: 96:         {
+[; ;main.c: 96:         {
 {
 "97
-[; ;newmain.c: 97:             data_index = 0;
+[; ;main.c: 97:             data_index = 0;
 [e = _data_index -> 0 `i ]
 "98
-[; ;newmain.c: 98:             receive_ready = 1;
+[; ;main.c: 98:             receive_ready = 1;
 [e = _receive_ready -> 1 `i ]
 "99
-[; ;newmain.c: 99:             receive_flag = 1;
+[; ;main.c: 99:             receive_flag = 1;
 [e = _receive_flag -> 1 `i ]
 "100
-[; ;newmain.c: 100:         }
+[; ;main.c: 100:         }
 }
 [e $U 1574  ]
 "101
-[; ;newmain.c: 101:         else if (data_index >= data_size && data_size == 12)
+[; ;main.c: 101:         else if (data_index >= data_size && data_size == 12)
 [e :U 1573 ]
 [e $ ! && >= _data_index _data_size == _data_size -> 12 `i 1575  ]
 "102
-[; ;newmain.c: 102:         {
+[; ;main.c: 102:         {
 {
 "103
-[; ;newmain.c: 103:             data_index = 0;
+[; ;main.c: 103:             data_index = 0;
 [e = _data_index -> 0 `i ]
 "104
-[; ;newmain.c: 104:             receive_ready = 1;
+[; ;main.c: 104:             receive_ready = 1;
 [e = _receive_ready -> 1 `i ]
 "105
-[; ;newmain.c: 105:             receive_flag = 2;
+[; ;main.c: 105:             receive_flag = 2;
 [e = _receive_flag -> 2 `i ]
 "106
-[; ;newmain.c: 106:         }
+[; ;main.c: 106:         }
 }
 [e $U 1576  ]
 "107
-[; ;newmain.c: 107:         else if (data_index >= data_size && data_size == 26)
+[; ;main.c: 107:         else if (data_index >= data_size && data_size == 26)
 [e :U 1575 ]
 [e $ ! && >= _data_index _data_size == _data_size -> 26 `i 1577  ]
 "108
-[; ;newmain.c: 108:         {
+[; ;main.c: 108:         {
 {
 "109
-[; ;newmain.c: 109:             data_index = 0;
+[; ;main.c: 109:             data_index = 0;
 [e = _data_index -> 0 `i ]
 "110
-[; ;newmain.c: 110:             receive_ready = 1;
+[; ;main.c: 110:             receive_ready = 1;
 [e = _receive_ready -> 1 `i ]
 "111
-[; ;newmain.c: 111:             receive_flag = 3;
+[; ;main.c: 111:             receive_flag = 3;
 [e = _receive_flag -> 3 `i ]
 "112
-[; ;newmain.c: 112:         }
+[; ;main.c: 112:         }
 }
 [e :U 1577 ]
 [e :U 1576 ]
 [e :U 1574 ]
 "113
-[; ;newmain.c: 113:     }
+[; ;main.c: 113:     }
 }
 [e :U 1565 ]
 "114
-[; ;newmain.c: 114: }
+[; ;main.c: 114: }
 [e :UE 1564 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
 "123
-[; ;newmain.c: 123: void main(void)
+[; ;main.c: 123: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
 "124
-[; ;newmain.c: 124: {
+[; ;main.c: 124: {
 {
 [e :U _main ]
 [f ]
 "127
-[; ;newmain.c: 127:     TRISA = 0b00100000;
+[; ;main.c: 127:     TRISA = 0b00100000;
 [e = _TRISA -> -> 32 `i `uc ]
 "128
-[; ;newmain.c: 128:     ANSELA = 0;
+[; ;main.c: 128:     ANSELA = 0;
 [e = _ANSELA -> -> 0 `i `uc ]
 "131
-[; ;newmain.c: 131:     TRISCbits.TRISC6 = 0;
+[; ;main.c: 131:     TRISCbits.TRISC6 = 0;
 [e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
 "132
-[; ;newmain.c: 132:     ANSELCbits.ANSC6 = 0;
+[; ;main.c: 132:     ANSELCbits.ANSC6 = 0;
 [e = . . _ANSELCbits 0 6 -> -> 0 `i `uc ]
 "135
-[; ;newmain.c: 135:     TX1STAbits.TXEN = 1;
+[; ;main.c: 135:     TX1STAbits.TXEN = 1;
 [e = . . _TX1STAbits 0 5 -> -> 1 `i `uc ]
 "136
-[; ;newmain.c: 136:     TX1STAbits.SYNC = 0;
+[; ;main.c: 136:     TX1STAbits.SYNC = 0;
 [e = . . _TX1STAbits 0 4 -> -> 0 `i `uc ]
 "138
-[; ;newmain.c: 138:     RC1STAbits.SPEN = 0;
+[; ;main.c: 138:     RC1STAbits.SPEN = 0;
 [e = . . _RC1STAbits 0 7 -> -> 0 `i `uc ]
 "139
-[; ;newmain.c: 139:     RC1STAbits.SPEN = 1;
+[; ;main.c: 139:     RC1STAbits.SPEN = 1;
 [e = . . _RC1STAbits 0 7 -> -> 1 `i `uc ]
 "141
-[; ;newmain.c: 141:     RC1STAbits.CREN = 1;
+[; ;main.c: 141:     RC1STAbits.CREN = 1;
 [e = . . _RC1STAbits 0 4 -> -> 1 `i `uc ]
 "142
-[; ;newmain.c: 142:     TRISCbits.TRISC5 = 1;
+[; ;main.c: 142:     TRISCbits.TRISC5 = 1;
 [e = . . _TRISCbits 0 5 -> -> 1 `i `uc ]
 "143
-[; ;newmain.c: 143:     ANSELCbits.ANSC5 = 0;
+[; ;main.c: 143:     ANSELCbits.ANSC5 = 0;
 [e = . . _ANSELCbits 0 5 -> -> 0 `i `uc ]
 "147
-[; ;newmain.c: 147:     BAUDCONbits.BRG16 = 1;
+[; ;main.c: 147:     BAUDCONbits.BRG16 = 1;
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
 "148
-[; ;newmain.c: 148:     TX1STAbits.BRGH = 1;
+[; ;main.c: 148:     TX1STAbits.BRGH = 1;
 [e = . . _TX1STAbits 0 2 -> -> 1 `i `uc ]
 "151
-[; ;newmain.c: 151:     SPBRGH = 0x0;
+[; ;main.c: 151:     SPBRGH = 0x0;
 [e = _SPBRGH -> -> 0 `i `uc ]
 "152
-[; ;newmain.c: 152:     SPBRGL = 0x44;
+[; ;main.c: 152:     SPBRGL = 0x44;
 [e = _SPBRGL -> -> 68 `i `uc ]
 "155
-[; ;newmain.c: 155:     INTCONbits.GIE = 1;
+[; ;main.c: 155:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
 "156
-[; ;newmain.c: 156:     INTCONbits.PEIE = 1;
+[; ;main.c: 156:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
 "157
-[; ;newmain.c: 157:     PIE3bits.RCIE = 1;
+[; ;main.c: 157:     PIE3bits.RCIE = 1;
 [e = . . _PIE3bits 0 5 -> -> 1 `i `uc ]
 "160
-[; ;newmain.c: 160:     RC6PPS = 0x10;
+[; ;main.c: 160:     RC6PPS = 0x10;
 [e = _RC6PPS -> -> 16 `i `uc ]
 "161
-[; ;newmain.c: 161:     RXPPS = 0x15;
+[; ;main.c: 161:     RXPPS = 0x15;
 [e = _RXPPS -> -> 21 `i `uc ]
-"165
-[; ;newmain.c: 165:     int msize = 10;
+"164
+[; ;main.c: 164:     SPISetup();
+[e ( _SPISetup ..  ]
+"167
+[; ;main.c: 167:     int msize = 10;
 [v _msize `i ~T0 @X0 1 a ]
 [e = _msize -> 10 `i ]
-[v F11749 `uc ~T0 @X0 -> 10 `i s ]
-[i F11749
+[v F11752 `uc ~T0 @X0 -> 10 `i s ]
+[i F11752
 :U ..
-"166
-[; ;newmain.c: 166:     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
+"168
+[; ;main.c: 168:     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
 -> -> 254 `i `uc
 -> -> 25 `i `uc
 -> -> 1 `i `uc
@@ -2074,31 +2083,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _message `uc ~T0 @X0 -> 10 `i a ]
-[e = _message F11749 ]
-"167
-[; ;newmain.c: 167:     int x = 1;
+[e = _message F11752 ]
+"169
+[; ;main.c: 169:     int x = 1;
 [v _x `i ~T0 @X0 1 a ]
 [e = _x -> 1 `i ]
-"170
-[; ;newmain.c: 170:     while(1)
+"172
+[; ;main.c: 172:     while(1)
 [e :U 1580 ]
-"171
-[; ;newmain.c: 171:     {
-{
 "173
-[; ;newmain.c: 173:         if(PORTAbits.RA5 == 0)
-[e $ ! == -> . . _PORTAbits 0 5 `i -> 0 `i 1582  ]
-"174
-[; ;newmain.c: 174:         {
+[; ;main.c: 173:     {
 {
 "175
-[; ;newmain.c: 175:             LATA = 0xF;
-[e = _LATA -> -> 15 `i `uc ]
+[; ;main.c: 175:         if(PORTAbits.RA5 == 0)
+[e $ ! == -> . . _PORTAbits 0 5 `i -> 0 `i 1582  ]
 "176
-[; ;newmain.c: 176:             GetInfoController();
-[e ( _GetInfoController ..  ]
+[; ;main.c: 176:         {
+{
 "177
-[; ;newmain.c: 177:             while(PORTAbits.RA5 == 0){}
+[; ;main.c: 177:             LATA = 0xF;
+[e = _LATA -> -> 15 `i `uc ]
+"178
+[; ;main.c: 178:    SetPCUInfo();
+[e ( _SetPCUInfo ..  ]
+"179
+[; ;main.c: 179:             GetInfoController();
+[e ( _GetInfoController ..  ]
+"180
+[; ;main.c: 180:             while(PORTAbits.RA5 == 0){}
 [e $U 1583  ]
 [e :U 1584 ]
 {
@@ -2106,133 +2118,167 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1583 ]
 [e $ == -> . . _PORTAbits 0 5 `i -> 0 `i 1584  ]
 [e :U 1585 ]
-"179
-[; ;newmain.c: 179:         }
+"182
+[; ;main.c: 182:         }
 }
 [e $U 1586  ]
-"180
-[; ;newmain.c: 180:         else
-[e :U 1582 ]
-"181
-[; ;newmain.c: 181:         {
-{
-"182
-[; ;newmain.c: 182:             LATA = 0;
-[e = _LATA -> -> 0 `i `uc ]
 "183
-[; ;newmain.c: 183:         }
+[; ;main.c: 183:         else
+[e :U 1582 ]
+"184
+[; ;main.c: 184:         {
+{
+"185
+[; ;main.c: 185:             LATA = 0;
+[e = _LATA -> -> 0 `i `uc ]
+"186
+[; ;main.c: 186:         }
 }
 [e :U 1586 ]
-"185
-[; ;newmain.c: 185:         if (receive_ready)
-[e $ ! != _receive_ready -> 0 `i 1587  ]
-"186
-[; ;newmain.c: 186:         {
-{
-"187
-[; ;newmain.c: 187:             if (receive_flag == 1)
-[e $ ! == _receive_flag -> 1 `i 1588  ]
 "188
-[; ;newmain.c: 188:             {
-{
+[; ;main.c: 188:         if (receive_ready)
+[e $ ! != _receive_ready -> 0 `i 1587  ]
 "189
-[; ;newmain.c: 189:                 receive_ready = 0;
-[e = _receive_ready -> 0 `i ]
+[; ;main.c: 189:         {
+{
 "190
-[; ;newmain.c: 190:             }
+[; ;main.c: 190:             if (receive_flag == 1)
+[e $ ! == _receive_flag -> 1 `i 1588  ]
+"191
+[; ;main.c: 191:             {
+{
+"192
+[; ;main.c: 192:                 receive_ready = 0;
+[e = _receive_ready -> 0 `i ]
+"193
+[; ;main.c: 193:             }
 }
 [e $U 1589  ]
-"191
-[; ;newmain.c: 191:             else if (receive_flag == 2)
+"194
+[; ;main.c: 194:             else if (receive_flag == 2)
 [e :U 1588 ]
 [e $ ! == _receive_flag -> 2 `i 1590  ]
-"192
-[; ;newmain.c: 192:             {
-{
-"193
-[; ;newmain.c: 193:                 receive_ready = 0;
-[e = _receive_ready -> 0 `i ]
-"194
-[; ;newmain.c: 194:                 shield_code_flag = control_data[10];
-[e = _shield_code_flag *U + &U _control_data * -> -> -> 10 `i `ui `ux -> -> # *U &U _control_data `ui `ux ]
 "195
-[; ;newmain.c: 195:                 repair_code_flag = control_data[11];
-[e = _repair_code_flag *U + &U _control_data * -> -> -> 11 `i `ui `ux -> -> # *U &U _control_data `ui `ux ]
-"196
-[; ;newmain.c: 196:                 GetInfoController();
-[e ( _GetInfoController ..  ]
-"197
-[; ;newmain.c: 197:             }
-}
-[e $U 1591  ]
-"198
-[; ;newmain.c: 198:             else if (receive_flag == 3)
-[e :U 1590 ]
-[e $ ! == _receive_flag -> 3 `i 1592  ]
-"199
-[; ;newmain.c: 199:             {
+[; ;main.c: 195:             {
 {
-"200
-[; ;newmain.c: 200:                 receive_ready = 0;
+"196
+[; ;main.c: 196:                 receive_ready = 0;
 [e = _receive_ready -> 0 `i ]
+"197
+[; ;main.c: 197:                 shield_code_flag = control_data[10];
+[e = _shield_code_flag *U + &U _control_data * -> -> -> 10 `i `ui `ux -> -> # *U &U _control_data `ui `ux ]
+"198
+[; ;main.c: 198:                 repair_code_flag = control_data[11];
+[e = _repair_code_flag *U + &U _control_data * -> -> -> 11 `i `ui `ux -> -> # *U &U _control_data `ui `ux ]
+"200
+[; ;main.c: 200:                  if (shield_code_flag != 0)
+[e $ ! != -> _shield_code_flag `i -> 0 `i 1591  ]
 "201
-[; ;newmain.c: 201:                 motor(control_data);
-[e ( _motor (1 -> &U _control_data `*uc ]
+[; ;main.c: 201:                 {
+{
 "202
-[; ;newmain.c: 202:                 SWD = ((control_data[21] << 8) + control_data[20]);
-[e = _SWD + << -> *U + &U _control_data * -> -> -> 21 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 20 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
+[; ;main.c: 202:                     LATAbits.LATA0 = 1;
+[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
 "203
-[; ;newmain.c: 203:                 SWC = ((control_data[19] << 8) + control_data[18]);
-[e = _SWC + << -> *U + &U _control_data * -> -> -> 19 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 18 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
+[; ;main.c: 203:                 }
+}
+[e $U 1592  ]
 "204
-[; ;newmain.c: 204:                 SWA = (control_data[15] << 8) + (control_data[16]);
-[e = _SWA + << -> *U + &U _control_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
+[; ;main.c: 204:                 else
+[e :U 1591 ]
 "205
-[; ;newmain.c: 205:                 ShootLaser();
-[e ( _ShootLaser ..  ]
+[; ;main.c: 205:                 {
+{
 "206
-[; ;newmain.c: 206:                 GetInfoPCU();
-[e ( _GetInfoPCU ..  ]
+[; ;main.c: 206:                     LATAbits.LATA0 = 0;
+[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
 "207
-[; ;newmain.c: 207:             }
+[; ;main.c: 207:                 }
 }
 [e :U 1592 ]
-[e :U 1591 ]
+"209
+[; ;main.c: 209:                 GetInfoController();
+[e ( _GetInfoController ..  ]
+"210
+[; ;main.c: 210:             }
+}
+[e $U 1593  ]
+"211
+[; ;main.c: 211:             else if (receive_flag == 3)
+[e :U 1590 ]
+[e $ ! == _receive_flag -> 3 `i 1594  ]
+"212
+[; ;main.c: 212:             {
+{
+"213
+[; ;main.c: 213:                 receive_ready = 0;
+[e = _receive_ready -> 0 `i ]
+"214
+[; ;main.c: 214:                 motor(control_data);
+[e ( _motor (1 -> &U _control_data `*uc ]
+"215
+[; ;main.c: 215:                 SWD = ((control_data[21] << 8) + control_data[20]);
+[e = _SWD + << -> *U + &U _control_data * -> -> -> 21 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 20 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
+"216
+[; ;main.c: 216:                 SWC = ((control_data[19] << 8) + control_data[18]);
+[e = _SWC + << -> *U + &U _control_data * -> -> -> 19 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 18 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
+"217
+[; ;main.c: 217:                 SWA = (control_data[15] << 8) + (control_data[16]);
+[e = _SWA + << -> *U + &U _control_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
+"218
+[; ;main.c: 218:                 ShootLaser();
+[e ( _ShootLaser ..  ]
+"219
+[; ;main.c: 219:                 GetInfoPCU();
+[e ( _GetInfoPCU ..  ]
+"220
+[; ;main.c: 220:             }
+}
+[e :U 1594 ]
+[e :U 1593 ]
 [e :U 1589 ]
-"208
-[; ;newmain.c: 208:         }
+"221
+[; ;main.c: 221:         }
 }
 [e :U 1587 ]
-"211
-[; ;newmain.c: 211:         if(SWA >= 2000){
-[e $ ! >= _SWA -> 2000 `i 1593  ]
+"224
+[; ;main.c: 224:         if(SWA >= 2000){
+[e $ ! >= _SWA -> 2000 `i 1595  ]
 {
-"212
-[; ;newmain.c: 212:             LATAbits.LATA2 = 1;
+"225
+[; ;main.c: 225:             LATAbits.LATA2 = 1;
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
-"213
-[; ;newmain.c: 213:             _delay((unsigned long)((1000)*(32000000/4000.0)));
+"226
+[; ;main.c: 226:             _delay((unsigned long)((1000)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"214
-[; ;newmain.c: 214:             follow(SWA);
+"227
+[; ;main.c: 227:             follow(SWA);
 [e ( _follow (1 -> _SWA `uc ]
-"215
-[; ;newmain.c: 215:             LATAbits.LATA2 = 0;
+"228
+[; ;main.c: 228:             LATAbits.LATA2 = 0;
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
-"216
-[; ;newmain.c: 216:         }
+"229
+[; ;main.c: 229:         }
 }
-[e :U 1593 ]
-"220
-[; ;newmain.c: 220:     }
+[e :U 1595 ]
+"231
+[; ;main.c: 231:         if(SWB >= 2000){
+[e $ ! >= _SWB -> 2000 `i 1596  ]
+{
+"233
+[; ;main.c: 233:         }
+}
+[e :U 1596 ]
+"237
+[; ;main.c: 237:     }
 }
 [e :U 1579 ]
 [e $U 1580  ]
 [e :U 1581 ]
-"223
-[; ;newmain.c: 223:     return;
+"240
+[; ;main.c: 240:     return;
 [e $UE 1578  ]
-"224
-[; ;newmain.c: 224: }
+"241
+[; ;main.c: 241: }
 [e :UE 1578 ]
 }

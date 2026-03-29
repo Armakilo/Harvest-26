@@ -229,7 +229,7 @@ void main(void)
         }
         
         if(SWB >= 2000){
-            RFID();
+            //RFID();
         }
      
         

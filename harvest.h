@@ -53,10 +53,6 @@ void GetUID();
 
 void SPISetup();
 
-void RFID_SPIsetup();
-
-void RFID_Rx();
-
 void ShootShield();
 
 void ShootAttack();

@@ -19843,21 +19843,62 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
 # 42 "RFID.c" 2
-# 52 "RFID.c"
+# 1 "./harvest.h" 1
+# 37 "./harvest.h"
+extern volatile uint8_t control_data[26];
+extern volatile int data_type;
+extern volatile int data_size;
+extern volatile int data_index;
+extern volatile int receive_ready;
+extern volatile int receive_flag;
+extern volatile int SWA;
+extern volatile int SWB;
+extern volatile int SWC;
+extern volatile int SWD;
+extern volatile uint8_t shield_code_flag;
+extern volatile uint8_t repair_code_flag;
+
+
+
+void GetUID();
+
+void SPISetup();
+
+void ShootShield();
+
+void ShootAttack();
+
+void ShootRepair();
+
+void ShootLaser();
+
+void sendit(char it[], int it_size);
+
+void GetInfoController();
+
+void GetInfoPCU();
+
+void SetPCUInfo();
+
+void motor(char data[26]);
+
+void follow(uint8_t sw);
+
+void sendit(char it[], int it_size);
+
+void RFID(void);
+# 43 "RFID.c" 2
+# 53 "RFID.c"
 void SPIWriteByte(uint8_t data)
 {
 
     SSP1BUF = data;
     while(SSP1STATbits.BF == 0){};
-
-
     return;
 }
 
 void writeRegister(uint8_t address, uint8_t data)
 {
-
-
     uint8_t controlByte = (address << 1) & 0b01111110;
 
     LATCbits.LATC7 = 0;
@@ -19876,7 +19917,6 @@ uint8_t SPIReadByte()
 {
 
 
-
     SPIWriteByte(0xFE);
 
     return SSP1BUF;
@@ -19891,8 +19931,6 @@ uint8_t readRegister(uint8_t address)
     LATCbits.LATC7 = 1;
     return stuff;
 }
-
-
 
 uint8_t rdFIFO(){
 
@@ -19913,15 +19951,10 @@ void tranceive(){
     writeRegister(0x01, 0x0C);
     BitmaskOR(0x0D, 0x80);
     return;
-
 }
 
-
-
-void main(){
-
-
-
+void SPISetup()
+{
 
 
     SSP1CON1bits.SSPEN = 0;
@@ -19960,75 +19993,80 @@ void main(){
     SSP1ADD = 159;
     SSP1CON1bits.SSPEN = 1;
 
+}
 
 
-    ANSELAbits.ANSA5 = 0;
-    TRISAbits.TRISA5 = 1;
+void GetUID(){
+
+
+
+    ANSELAbits.ANSA1 = 0;
+    TRISAbits.TRISA1 = 1;
 
 
     uint8_t response[10];
+    do{
 
-    writeRegister(0x01, 0b0001111);
-
-
-
-
-    writeRegister(0x2A,0x84);
-    writeRegister(0x2B,0x00);
-    writeRegister(0x2C,0x01);
-    writeRegister(0x2D,0x49);
-    writeRegister(0x11,0b00101001);
-    writeRegister(0x15,0b01000000);
-
-    BitmaskOR(0x14, 0x03);
+        writeRegister(0x01, 0b0001111);
 
 
 
-    _delay((unsigned long)((50)*(32000000/4000.0)));
+
+        writeRegister(0x2A,0x84);
+        writeRegister(0x2B,0x00);
+        writeRegister(0x2C,0x01);
+        writeRegister(0x2D,0x49);
+        writeRegister(0x11,0b00101001);
+        writeRegister(0x15,0b01000000);
+
+        BitmaskOR(0x14, 0x03);
 
 
 
-    writeRegister(0x0A, 0x80);
-    writeRegister(0x0D, 0x07);
-    writeRegister(0x09, 0x26);
 
-    tranceive();
-
-    uint8_t buffbytes = readRegister(0x0A);
-
-    for (int i = 0; i < buffbytes; i++){
-      response[i] = rdFIFO();
-    }
-
-
-
-    if (buffbytes == 2 && response[0] == 0x04 && response[1] == 0x00)
-    {
 
 
         writeRegister(0x0A, 0x80);
-        writeRegister(0x0D, 0x00);
-
-        writeRegister(0x09, 0x93);
-        writeRegister(0x09, 0x20);
+        writeRegister(0x0D, 0x07);
+        writeRegister(0x09, 0x26);
 
         tranceive();
-    }
+
+        uint8_t buffbytes = readRegister(0x0A);
+
+        for (int i = 0; i < buffbytes; i++){
+          response[i] = rdFIFO();
+        }
 
 
 
+        if (buffbytes == 2 && response[0] == 0x04 && response[1] == 0x00)
+        {
 
 
+            writeRegister(0x0A, 0x80);
+            writeRegister(0x0D, 0x00);
 
-    buffbytes = readRegister(0x0A);
+            writeRegister(0x09, 0x93);
+            writeRegister(0x09, 0x20);
 
-    for (int i = 0; i <= buffbytes; i++){
-      response[i] = rdFIFO();
-    }
+            tranceive();
+        }
 
-    while(1){
-    }
+        buffbytes = readRegister(0x0A);
 
+        for (int i = 0; i <= buffbytes; i++){
+          response[i] = rdFIFO();
+        }
+
+    }while(response[4] != (response[0] ^ response[1] ^ response[2] ^ response[3]));
+
+    uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 1, 0, 0, 0};
+    msg[8] = response[3];
+    msg[9] = response[2];
+    sendit(msg, 10);
+
+    LATAbits.LATA1 = 1;
 
     return;
 }

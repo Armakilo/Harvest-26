@@ -19828,6 +19828,9 @@ extern volatile uint8_t repair_code_flag;
 
 
 
+void GetUID();
+
+void SPISetup();
 
 void ShootShield();
 
@@ -19842,6 +19845,8 @@ void sendit(char it[], int it_size);
 void GetInfoController();
 
 void GetInfoPCU();
+
+void SetPCUInfo();
 
 void motor(char data[26]);
 
@@ -19872,13 +19877,16 @@ uint16_t rd_adc(uint8_t select){
         ADPCH = 0b001010;
     }
 
+    _delay((unsigned long)((1)*(32000000/4000.0)));
+
     ADCON0bits.ADGO = 1;
     while(ADCON0bits.ADGO == 1);
 
     uint16_t output = (uint16_t)ADRESL + ((uint16_t)ADRESH << 8);
     return output;
 }
-# 49 "linefollower.c"
+
+
 void runmotor(uint8_t select){
 
 
@@ -19903,6 +19911,8 @@ void runmotor(uint8_t select){
         msg[8] = 1;
         msg[9] = 70;
     }
+
+
 
     sendit(msg, 10);
 
@@ -19937,49 +19947,46 @@ void follow(uint8_t sw){
 
     ADCON0bits.ADON = 1;
 
+
+
+
     while(1){
 
-        if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
+
+        uint16_t left = rd_adc(1);
+        uint16_t right = rd_adc(2);
+        uint16_t center = rd_adc(3);
+
+        if (left < wlvl && center > blvl && right < wlvl){
             runmotor(3);
         }
 
 
-        else if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) > blvl){
+        else if (left < wlvl && center > blvl && right > blvl){
             runmotor(2);
         }
 
 
 
-        else if (rd_adc(1) < wlvl && rd_adc(3) < wlvl && rd_adc(2) > blvl){
+        else if (left < wlvl && center < wlvl && right > blvl){
             runmotor(2);
         }
 
 
 
-        else if (rd_adc(1) > blvl && rd_adc(3) < wlvl && rd_adc(2) < wlvl){
+        else if (left > blvl && center < wlvl && right < wlvl){
             runmotor(1);
         }
 
 
-        else if (rd_adc(1) > blvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
+        else if (left > blvl && center > blvl && right < wlvl){
             runmotor(1);
         }
 
         else{
-            runmotor(4);
+            runmotor(3);
         }
-
-        GetInfoController();
-
-
-
-        if((control_data[15] << 8) + (control_data[16]) <= 1999){
-
-            return;
-        }
-
-        sw = control_data[15] + (control_data[16] << 8);
-
+# 152 "linefollower.c"
     }
 
 }

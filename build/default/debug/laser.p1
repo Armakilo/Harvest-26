@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"71 ./harvest.h
-[; ;./harvest.h: 71: void sendit(char it[], int it_size);
+"76 ./harvest.h
+[; ;./harvest.h: 76: void sendit(char it[], int it_size);
 [v _sendit `(v ~T0 @X0 0 ef2`*uc`i ]
 "46
 [; ;./harvest.h: 46: extern volatile int SWD;
@@ -1576,8 +1576,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _ShootShield ]
 [f ]
-[v F11735 `uc ~T0 @X0 -> 6 `i s ]
-[i F11735
+[v F11738 `uc ~T0 @X0 -> 6 `i s ]
+[i F11738
 :U ..
 "9
 [; ;laser.c: 9:     char tosend[6] = {0xFE, 0x19, 0x02, 0x09, 0x00, 0x00};
@@ -1590,7 +1590,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _tosend `uc ~T0 @X0 -> 6 `i a ]
-[e = _tosend F11735 ]
+[e = _tosend F11738 ]
 "10
 [; ;laser.c: 10:     sendit(tosend, 6);
 [e ( _sendit (2 , &U _tosend -> 6 `i ]
@@ -1606,8 +1606,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _ShootAttack ]
 [f ]
-[v F11738 `uc ~T0 @X0 -> 7 `i s ]
-[i F11738
+[v F11741 `uc ~T0 @X0 -> 7 `i s ]
+[i F11741
 :U ..
 "15
 [; ;laser.c: 15:     char tosend[7] = {0xFE, 0x19, 0x01, 0x09, 0x01, 0x00, 1};
@@ -1621,7 +1621,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _tosend `uc ~T0 @X0 -> 7 `i a ]
-[e = _tosend F11738 ]
+[e = _tosend F11741 ]
 "16
 [; ;laser.c: 16:     sendit(tosend, 7);
 [e ( _sendit (2 , &U _tosend -> 7 `i ]
@@ -1637,8 +1637,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _ShootRepair ]
 [f ]
-[v F11741 `uc ~T0 @X0 -> 6 `i s ]
-[i F11741
+[v F11744 `uc ~T0 @X0 -> 6 `i s ]
+[i F11744
 :U ..
 "21
 [; ;laser.c: 21:     char tosend[6] = {0xFE, 0x19, 0x04, 0x09, 0x00, 0x00};
@@ -1651,7 +1651,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _tosend `uc ~T0 @X0 -> 6 `i a ]
-[e = _tosend F11741 ]
+[e = _tosend F11744 ]
 "22
 [; ;laser.c: 22:     sendit(tosend, 6);
 [e ( _sendit (2 , &U _tosend -> 6 `i ]

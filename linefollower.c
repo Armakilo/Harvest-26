@@ -29,6 +29,8 @@ uint16_t rd_adc(uint8_t select){
         ADPCH = 0b001010; //RB2 is OUT3
     }
     
+    __delay_ms(1);
+    
     ADCON0bits.ADGO = 1; //ADC ready, can now start a conversion
     while(ADCON0bits.ADGO == 1);
     
@@ -36,15 +38,6 @@ uint16_t rd_adc(uint8_t select){
     return output;
 }
 
-//void sendit(char it[], int it_size) // *** could we make a master file with these sorts of functions?
-//{
-//    for(int i = 0; i < it_size; i++){
-//        while(TX1STAbits.TRMT == 0){} //waits until register can send data
-//        TX1REG = it[i];
-//        
-//    }
-//    return;
-//}
 
 void runmotor(uint8_t select){ //Motor 1 -> Left motor
     //select takes 1, 2, or 3 which corresponds to turn left, right, or straight
@@ -53,13 +46,13 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
     if (select == 1){ //go left
         msg[6] = 1;
         msg[7] = 70;
-        msg[8] = 1;
-        msg[9] = 20;
+        msg[8] = 2;
+        msg[9] = 50;
     }
     
     else if (select == 2){ // go right
-        msg[6] = 1;
-        msg[7] = 20;
+        msg[6] = 2;
+        msg[7] = 50;
         msg[8] = 1;
         msg[9] = 70;
     }
@@ -71,6 +64,8 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
         msg[9] = 70;
     }
     
+    
+    
     sendit(msg, 10);
     
     __delay_ms(50);
@@ -80,7 +75,7 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
 void follow(uint8_t sw){
     //ADC ouputs a 10-bit value, which has a maximum of 0x3FF or 1023.
     //Use same threshold values as example code for now
-    volatile const uint16_t wlvl = 600; //white if adc reads < 600
+    volatile const uint16_t wlvl = 825; //white if adc reads < 600
     volatile const uint16_t blvl = 850; //black if adc reads > 850
     
     //setup pins RB0, RB1, and RB2
@@ -103,32 +98,40 @@ void follow(uint8_t sw){
     ADCON0bits.ADFRM0 = 1; // data right justified
     
     ADCON0bits.ADON = 1; //ADC on
+    
+    
+    
         
     while(1){ // change to watch for switch position
         //case 1: L-W C-B R-W
-        if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
+        
+        uint16_t left = rd_adc(1);
+        uint16_t right = rd_adc(2);
+        uint16_t center = rd_adc(3);
+        
+        if (right < wlvl && center > blvl && left < wlvl){
             runmotor(3);
         }
 
         //case 2: L-W C-B R-B
-        else if (rd_adc(1) < wlvl && rd_adc(3) > blvl && rd_adc(2) > blvl){
+        else if (right < wlvl && center > blvl && left > blvl){
             runmotor(2);        
         }
 
         //case 3: L-W C-W R-B
         
-        else if (rd_adc(1) < wlvl && rd_adc(3) < wlvl && rd_adc(2) > blvl){
+        else if (right < wlvl && center < wlvl && left > blvl){
             runmotor(2);
         }
 
         //case 4: L-B C-W R-W
         
-        else if (rd_adc(1) > blvl && rd_adc(3) < wlvl && rd_adc(2) < wlvl){
+        else if (right > blvl && center < wlvl && left < wlvl){
             runmotor(1);
         }
 
         //case 5: L-B C-B R-W
-        else if (rd_adc(1) > blvl && rd_adc(3) > blvl && rd_adc(2) < wlvl){
+        else if (right > blvl && center > blvl && left < wlvl){
             runmotor(1);        
         }
         
@@ -141,11 +144,11 @@ void follow(uint8_t sw){
         
         
         if((control_data[15] << 8) + (control_data[16]) <= 1999){
-                                    
+            runmotor(4);
+            __delay_ms(50);
             return;
         }
         
-        sw = control_data[15] + (control_data[16] << 8);
         
     }
     
