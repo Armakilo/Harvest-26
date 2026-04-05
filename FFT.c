@@ -11,7 +11,7 @@
 // 'C' source line config statements
 
 // FICD
-#pragma config ICS = PGD1               // ICD Communication Channel Select bits (Communicate on PGEC1 and PGED1)
+#pragma config ICS = PGD2               // ICD Communication Channel Select bits (Communicate on PGEC2 and PGED2)
 #pragma config JTAGEN = OFF             // JTAG Enable bit (JTAG is disabled)
 
 // FPOR
@@ -27,15 +27,15 @@
 #pragma config FWDTEN = OFF             // Watchdog Timer Enable bit (Watchdog timer enabled/disabled by user software)
 
 // FOSC
-#pragma config POSCMD = HS              // Primary Oscillator Mode Select bits (HS Crystal Oscillator Mode)
+#pragma config POSCMD = NONE            // Primary Oscillator Mode Select bits (Primary Oscillator disabled)
 #pragma config OSCIOFNC = OFF           // OSC2 Pin Function bit (OSC2 is clock output)
 #pragma config IOL1WAY = ON             // Peripheral pin select configuration (Allow only one reconfiguration)
-#pragma config FCKSM = CSECMD           // Clock Switching Mode bits (Both Clock switching and Fail-safe Clock Monitor are disabled)
+#pragma config FCKSM = CSDCMD           // Clock Switching Mode bits (Both Clock switching and Fail-safe Clock Monitor are disabled)
 
 // FOSCSEL
-#pragma config FNOSC = FRC              // Oscillator Source Selection (Internal Fast RC (FRC))
+#pragma config FNOSC = FRCPLL           // Oscillator Source Selection (Fast RC Oscillator with divide-by-N with PLL module (FRCPLL) )
 #pragma config PWMLOCK = ON             // PWM Lock Enable bit (Certain PWM registers may only be written after key sequence)
-#pragma config IESO = OFF                // Two-speed Oscillator Start-up Enable bit (Start up device with FRC, then switch to user-selected oscillator source)
+#pragma config IESO = ON                // Two-speed Oscillator Start-up Enable bit (Start up device with FRC, then switch to user-selected oscillator source)
 
 // FGS
 #pragma config GWRP = OFF               // General Segment Write-Protect bit (General Segment may be written)
@@ -44,8 +44,8 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
-
 #include <xc.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -55,40 +55,126 @@ typedef struct
     double imaginary;
 } Complex; // stores the real and imaginary components of complex numbers
 
-int samples = 40000;
-int fs = 0;
-Complex* signal[samples];
+#define samples 64
+Complex signal[samples];
+int fs = 1750000;
+int count = 0;
+Complex* FFT(Complex* sampleArr, int size);
+
+
+void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
+{
+    if (count != samples)
+    {
+        volatile unsigned int *adcPtr = &ADC1BUF0;
+
+        for (int i = 0; i < 16; i++)
+        {
+            if (count < samples) 
+            {
+                signal[count].real = (double)(adcPtr[i] - 2048);
+                signal[count].imaginary = 0;
+
+                count++;
+            } 
+        }
+    }
+    
+    IFS0bits.AD1IF = 0;
+}
+
+void ADC_setup()
+{
+    // oscillator 
+    CLKDIVbits.DOZEN = 0; // matches peripheral and processor clock
+    CLKDIVbits.FRCDIV = 0b000; // no FRC postscaler
+    
+    // sets Fp to 35 MHz - FIN/FRC = 7.37  MHz
+    // minimu requrements on pg-156
+    CLKDIVbits.PLLPOST = 0b00; // N2 = 2 (N2 = 2*(value + 1)) value can't = 2
+    CLKDIVbits.PLLPRE = 0b00000; // N1 = 2 (N1 = value + 2)
+    PLLFBDbits.PLLDIV = 36; // M = 38 (M = value + 2) value up to 511
+    
+    while(OSCCONbits.LOCK == 0); // waits until PLL timer is ready
+    
+    // control register 1
+    AD1CON1bits.ADSIDL = 0; // continuous operation while idle
+    AD1CON1bits.AD12B = 1; // 12 bit ADC
+    AD1CON1bits.FORM = 0b00; // unsigned int out
+    AD1CON1bits.SSRC = 0b111; // auto-convert, 0b010 for Timer 3 control
+    AD1CON1bits.SSRCG = 0; // for SSRC control
+    AD1CON1bits.ASAM = 1; // auto sample 
+    
+    // control register 2
+    AD1CON2bits.VCFG = 0b000; // Vref +/- is VDD and VSS
+    AD1CON2bits.CSCNA = 0; // does not scan other inputs
+    AD1CON2bits.SMPI = 0b1111; // Generates an interupt every conversion
+    AD1CON2bits.BUFM = 0; // Always fill buffer from start
+    AD1CON2bits.ALTS = 0; // always selects MUXA samples
+    
+    // control register 3
+    // minimum parameters on pg-469
+    AD1CON3bits.ADRC = 0; // uses system clock (Fp)
+    AD1CON3bits.ADCS = 4; // TAD = 142.83ns (TAD = Tp(value + 1)
+    AD1CON3bits.SAMC = 4; // sample time = value*TAD 
+    
+    // control register 4
+    AD1CON4bits.ADDMAEN = 0; // doesn't use DMA
+    
+    // additional 
+    // find on pg-335/336
+    AD1CHS0bits.CH0NA = 0; // CH0 negative input = VREFL
+    AD1CHS0bits.CH0SA = 0; // ADC input pin = AN0
+    
+    IFS0bits.AD1IF = 0;
+    IPC3bits.AD1IP = 4;
+    IEC0bits.AD1IE = 1;    
+    
+    // turns on ADC
+    AD1CON1bits.ADON = 1; 
+}
+
 
 void sendByte(uint8_t data)
 {
     SPI1BUF = data;
-    while(SPI1STATbits.SPITBF = 0);
+    while(SPI1STATbits.SPITBF =! 0);
 }
 
 int fundFreq(Complex* FFT)
 {
-    int* magnitudes[samples];
-    
+    double magnitudes[samples];
+
+    double max = 0;
+    int index = 0;
+
     for (int i = 0; i < samples; i++)
     {
-        magnitudes[i] = sqrt((FFT[i].real)*(FFT[i].real)+(FFT[i].imaginary)*(FFT[i].imaginary));
-    }
-    int max = 0;
-    int index = 0;
-    for (int j = 1; j < samples; j++)
-    {
-        if (magnitudes[j] > max)
+        magnitudes[i] = sqrt(FFT[i].real * FFT[i].real +
+                             FFT[i].imaginary * FFT[i].imaginary);
+
+        if (magnitudes[i] > max)
         {
-            index = j;
+            max = magnitudes[i];
+            index = i;
         }
     }
-    int freq = index * fs/samples;
+
+    return index * fs / samples;
+
 }
+
 
 void sendFFT()
 {
-    fundFreq(FFT());
-    sendByte(fundFreq);
+
+    Complex* result = FFT(signal, samples);
+    int freq = fundFreq(result);
+
+    sendByte((uint8_t)freq);
+
+    free(result);
+
 }
 
 Complex compAdd(Complex a, Complex b) // complex addition
@@ -109,23 +195,28 @@ Complex compMult(Complex a, Complex b) // complex multiplication
     return res;
 }
 
-Complex* FFT(Complex* samples, int size)
+Complex* FFT(Complex* sampleArr, int size)
 {
-    pollExpress(); // fills out signal variable with sampled signal  
+    
+
+    if (size == 1)
+    {
+            Complex* out = malloc(sizeof(Complex));
+            out[0] = sampleArr[0];
+            return out;
+    }
+
+  
     
     int half = size/2;
-    
-    Complex* arr = malloc(sizeof(Complex));
-    
-    arr[0] = samples[0];
     
     Complex* even = malloc(half * sizeof(Complex)); // create arrays for even and odd components of the signal
     Complex* odd = malloc(half * sizeof(Complex));
 
     for(int i = 0; i < half; i++)
     {
-        even[i] = samples[2*i];
-        odd[i] = samples[2*i+1];
+        even[i] = sampleArr[2*i];
+        odd[i] = sampleArr[2*i+1];
     }
     
     Complex* recEven = FFT(even, half); // recursive sample split into odd and even parts
@@ -151,10 +242,10 @@ Complex* FFT(Complex* samples, int size)
 }
 
 
-void main(void) {
-    PLLFBD = 38;                // M = 40 for 40MHz Clock
-    CLKDIVbits.PLLPRE = 0;      // N1 = 2
-    CLKDIVbits.PLLPOST = 0;     // N2 = 2
+int main(void) {
+    ADC_setup();
+    
+    
   
     SPI1STATbits.SPIEN = 0;
     
@@ -168,9 +259,14 @@ void main(void) {
     while(1)
     {
         
+        if(count == samples)
+        {
+            sendFFT();
+            count = 0;
+        }
         
     }
     
     
-    return;
+    return 1;
 }
