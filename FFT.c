@@ -55,32 +55,37 @@ typedef struct
     double imaginary;
 } Complex; // stores the real and imaginary components of complex numbers
 
-#define samples 64
+#define samples 128
 Complex signal[samples];
+int sampledVal[samples];
 int fs = 1750000;
 int count = 0;
 Complex* FFT(Complex* sampleArr, int size);
+int fund = 0;
 
 
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 {
-    if (count != samples)
+    if (count < samples)
     {
         volatile unsigned int *adcPtr = &ADC1BUF0;
 
         for (int i = 0; i < 16; i++)
         {
-            if (count < samples) 
-            {
-                signal[count].real = (double)(adcPtr[i] - 2048);
-                signal[count].imaginary = 0;
+            
+            signal[count].real = (double)(adcPtr[i]);
+            signal[count].imaginary = 0;
 
-                count++;
-            } 
+            count++;
+            
         }
     }
-    
+    else
+    {
+        IEC0bits.AD1IE = 0;
+    }
     IFS0bits.AD1IF = 0;
+    
 }
 
 void ADC_setup()
@@ -155,8 +160,11 @@ int fundFreq(Complex* FFT)
 
         if (magnitudes[i] > max)
         {
-            max = magnitudes[i];
-            index = i;
+            if (i =! 0)
+            {
+                max = magnitudes[i];
+                index = i;
+            }
         }
     }
 
@@ -169,10 +177,11 @@ void sendFFT()
 {
 
     Complex* result = FFT(signal, samples);
-    int freq = fundFreq(result);
-
-    sendByte((uint8_t)freq);
-
+    fund = fundFreq(result);
+    
+    sendByte((uint8_t)fund);
+    
+    count = 0;
     free(result);
 
 }
@@ -261,8 +270,10 @@ int main(void) {
         
         if(count == samples)
         {
+            
             sendFFT();
-            count = 0;
+            
+            IEC0bits.AD1IE = 0;
         }
         
     }
