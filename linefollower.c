@@ -143,7 +143,8 @@ void follow(uint8_t sw){
         
         
         
-        if((control_data[15] << 8) + (control_data[16]) <= 1999){
+        if((control_data[15] << 8) + (control_data[16]) <= 1999){ //this might be wrong, but it still somehow works. Gives us SWA
+            //(control_data[15] << 8) + (control_data[14]);
             runmotor(4);
             __delay_ms(50);
             return;

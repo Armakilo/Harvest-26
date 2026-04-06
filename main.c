@@ -61,6 +61,7 @@ volatile int SWC = 0;
 volatile int SWD = 0;
 volatile uint8_t shield_code_flag = 0;
 volatile uint8_t repair_code_flag = 0;
+volatile int VRA = 0;
 
 
 
@@ -171,6 +172,7 @@ void main(void)
     
     while(1)
     {              
+        int prev_SWB = SWB; // might go here?
         // check to make sure things are working
         if(PORTAbits.RA5 == 0)
         {
@@ -214,7 +216,10 @@ void main(void)
                 motor(control_data);
                 SWD = ((control_data[21] << 8) + control_data[20]);
                 SWC = ((control_data[19] << 8) + control_data[18]);
-                SWA = (control_data[15] << 8) + (control_data[16]);
+                SWA = (control_data[15] << 8) + (control_data[16]); //is this wrong?, check this out later. Yeah this is wrong but I want to wait till we have things assembled to test it
+                // Should be SWA = (control_data[15] << 8) + (control_data[14]);
+                SWB = (control_data[17] << 8) + control_data[16];
+                VRA = (control_data[23] << 8) + control_data[22];
                 ShootLaser();
                 GetInfoPCU();
             }
@@ -223,13 +228,24 @@ void main(void)
         
         if(SWA >= 2000){
             LATAbits.LATA2 = 1; //LED on
-            __delay_ms(1000);
+            __delay_ms(500);
             follow(SWA);
             LATAbits.LATA2 = 0; //LED off
         }
         
-        if(SWB >= 2000){
-            //RFID();
+        if((prev_SWB != SWB) && (VRA > 100) && (VRA <= 1200)){ //VRA Left -> RFID
+            LATAbits.LATA0 = 1;
+            __delay_ms(500);
+            RFID();
+            LATAbits.LATA0 = 0;
+                    
+        }
+        
+        if(prev_SWB != SWB && (VRA > 100) && (VRA >= 1800) ){ //check on the situation with what VRA reads, this is just a guess
+            LATAbits.LATA1 = 1;
+            __delay_ms(500);
+            //Alien Frequency Function goes here
+            LATAbits.LATA1 = 0;
         }
      
         
