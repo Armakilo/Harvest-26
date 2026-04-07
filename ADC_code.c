@@ -56,14 +56,12 @@ typedef struct
 
 #define samples 256
 Complex signal[samples];
-int sampledVal[samples];
-// uint32_t fs = 1750000;
 uint32_t fs = 10000;
 volatile int count = 0;
 void FFT(Complex *x, int N);
-uint16_t fund = 0;
-uint16_t prev_fund = 0;
-uint16_t final_fund = 0;
+volatile uint16_t fund = 0;
+volatile uint16_t prev_fund = 0;
+volatile uint16_t final_fund = 0;
 
 
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
@@ -110,7 +108,7 @@ void ADC_setup()
     // Timer 3 setup
     T3CON = 0;
     TMR3 = 0;
-    PR3 = 3499;
+    PR3 = 3499; 
     T3CONbits.TON = 1;
     
     // control register 2
@@ -142,75 +140,31 @@ void ADC_setup()
     AD1CON1bits.ADON = 1; 
 }
 
-
-void sendByte(uint8_t data)
-{
-    SPI1BUF = data;
-    while(SPI1STATbits.SPITBF != 0);
-}
-
 int fundFreq(Complex* FFT)
-{
+{   
     float magnitudes[samples];
 
     float max = 0;
+    int index = 0;
 
-    // --- Step 1: compute magnitudes and find global max ---
-    for (int i = 1; i < samples/2; i++)
+    for (int i = 2; i < samples/2; i++)
     {
-        magnitudes[i] = sqrt(FFT[i].real * FFT[i].real +
-                             FFT[i].imaginary * FFT[i].imaginary);
+        magnitudes[i] = sqrtf(FFT[i].real * FFT[i].real +
+                              FFT[i].imaginary * FFT[i].imaginary);
 
         if (magnitudes[i] > max)
         {
             max = magnitudes[i];
+            index = i;
         }
     }
 
-    // --- Step 2: find FIRST strong peak (not biggest) ---
-    float threshold = 0.3 * max;   // tune this (0.2?0.4 works well)
-
-    for (int i = 2; i < samples/4; i++)
-    {
-        if (magnitudes[i] > threshold)
-        {
-            return (uint32_t)((i * fs)/samples);
-        }
-    }
-
-    return 0; // fallback
+    return (int)((index * fs) / samples);
 }
-
-//int fundFreq(Complex* FFT)
-//{
-//    float magnitudes[samples];
-//
-//    float max = 0;
-//    int index = 0;
-//
-//    for (int i = 2; i < samples/4; i++)
-//    {
-//        magnitudes[i] = sqrt(FFT[i].real * FFT[i].real +
-//                             FFT[i].imaginary * FFT[i].imaginary);
-//
-//        if (magnitudes[i] > max)
-//        {
-//            if (i != 0)
-//            {
-//                max = magnitudes[i];
-//                index = i;
-//            }
-//        }
-//    }
-//
-//    return (uint32_t)((index * fs)/samples);
-//
-//}
-
 
 void sendFFT()
 {
-        // --- 1. Remove DC offset ---
+    // Remove DC offset
     float mean = 0;
     for (int i = 0; i < samples; i++)
         mean += signal[i].real;
@@ -220,7 +174,7 @@ void sendFFT()
     for (int i = 0; i < samples; i++)
         signal[i].real -= mean;
 
-    // --- 2. Apply Hann window ---
+    // Hann window
     for (int i = 0; i < samples; i++)
     {
         float w = 0.5 * (1 - cos(2 * M_PI * i / (samples - 1)));
@@ -302,7 +256,6 @@ void FFT(Complex *x, int N)
     }
 }
 
-
 int main(void) {
     ADC_setup();
     
@@ -327,20 +280,13 @@ int main(void) {
             prev_fund = fund;
             sendFFT();
             
-            if (prev_fund != fund)
+            if (prev_fund == fund)
             {
-                final_fund = 0xFFFF;
+                final_fund = fund;
             }
             else 
             {
-                if (fund == 0x138)
-                {
-                    final_fund = 0x64;
-                }
-                else
-                {
-                    final_fund = fund;
-                }
+                final_fund = 0xFFFF;
             }
        
             count = 0;
