@@ -61,37 +61,27 @@ int sampledVal[samples];
 uint32_t fs = 10000;
 volatile int count = 0;
 void FFT(Complex *x, int N);
-uint32_t fund = 0;
+uint16_t fund = 0;
+uint16_t prev_fund = 0;
+uint16_t final_fund = 0;
 
 
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 {
-    if (count < samples)
+    if (count <= samples - 16)
     {
         volatile unsigned int *adcPtr = &ADC1BUF0;
 
-        signal[count++] = (Complex){adcPtr[0], 0};
-        signal[count++] = (Complex){adcPtr[1], 0};
-        signal[count++] = (Complex){adcPtr[2], 0};
-        signal[count++] = (Complex){adcPtr[3], 0};
-        signal[count++] = (Complex){adcPtr[4], 0};
-        signal[count++] = (Complex){adcPtr[5], 0};
-        signal[count++] = (Complex){adcPtr[6], 0};
-        signal[count++] = (Complex){adcPtr[7], 0};
-        signal[count++] = (Complex){adcPtr[8], 0};
-        signal[count++] = (Complex){adcPtr[9], 0};
-        signal[count++] = (Complex){adcPtr[10], 0};
-        signal[count++] = (Complex){adcPtr[11], 0};
-        signal[count++] = (Complex){adcPtr[12], 0};
-        signal[count++] = (Complex){adcPtr[13], 0};
-        signal[count++] = (Complex){adcPtr[14], 0};
-        signal[count++] = (Complex){adcPtr[15], 0};
+        for (int i = 0; i < 16; i++)
+        {
+            signal[count++] = (Complex){adcPtr[i], 0};
+        }
     }
     else
     {
         IEC0bits.AD1IE = 0;
     }
-
+    
     IFS0bits.AD1IF = 0;
 }
 
@@ -164,37 +154,81 @@ int fundFreq(Complex* FFT)
     float magnitudes[samples];
 
     float max = 0;
-    int index = 0;
 
-    for (int i = 0; i < samples; i++)
+    // --- Step 1: compute magnitudes and find global max ---
+    for (int i = 1; i < samples/2; i++)
     {
         magnitudes[i] = sqrt(FFT[i].real * FFT[i].real +
                              FFT[i].imaginary * FFT[i].imaginary);
 
         if (magnitudes[i] > max)
         {
-            if (i != 0)
-            {
-                max = magnitudes[i];
-                index = i;
-            }
+            max = magnitudes[i];
         }
     }
 
-    return (uint32_t)((index * fs)/samples);
+    // --- Step 2: find FIRST strong peak (not biggest) ---
+    float threshold = 0.3 * max;   // tune this (0.2?0.4 works well)
 
+    for (int i = 2; i < samples/4; i++)
+    {
+        if (magnitudes[i] > threshold)
+        {
+            return (uint32_t)((i * fs)/samples);
+        }
+    }
+
+    return 0; // fallback
 }
+
+//int fundFreq(Complex* FFT)
+//{
+//    float magnitudes[samples];
+//
+//    float max = 0;
+//    int index = 0;
+//
+//    for (int i = 2; i < samples/4; i++)
+//    {
+//        magnitudes[i] = sqrt(FFT[i].real * FFT[i].real +
+//                             FFT[i].imaginary * FFT[i].imaginary);
+//
+//        if (magnitudes[i] > max)
+//        {
+//            if (i != 0)
+//            {
+//                max = magnitudes[i];
+//                index = i;
+//            }
+//        }
+//    }
+//
+//    return (uint32_t)((index * fs)/samples);
+//
+//}
 
 
 void sendFFT()
 {
+        // --- 1. Remove DC offset ---
+    float mean = 0;
+    for (int i = 0; i < samples; i++)
+        mean += signal[i].real;
+
+    mean /= samples;
+
+    for (int i = 0; i < samples; i++)
+        signal[i].real -= mean;
+
+    // --- 2. Apply Hann window ---
+    for (int i = 0; i < samples; i++)
+    {
+        float w = 0.5 * (1 - cos(2 * M_PI * i / (samples - 1)));
+        signal[i].real *= w;
+    }
+    
     FFT(signal, samples);
     fund = fundFreq(signal);
-    // fund = 1234;
-    
-    // sendByte((fund >> 8) & 0xFF);
-    // sendByte(fund & 0xFF);
-
 }
 
 Complex compAdd(Complex a, Complex b) // complex addition
@@ -290,7 +324,24 @@ int main(void) {
         {     
             IEC0bits.AD1IE = 0;
             
+            prev_fund = fund;
             sendFFT();
+            
+            if (prev_fund != fund)
+            {
+                final_fund = 0xFFFF;
+            }
+            else 
+            {
+                if (fund == 0x138)
+                {
+                    final_fund = 0x64;
+                }
+                else
+                {
+                    final_fund = fund;
+                }
+            }
        
             count = 0;
             IEC0bits.AD1IE = 1;
