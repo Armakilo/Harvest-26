@@ -121,8 +121,10 @@ void __interrupt() ISR(void)
 
 // we could try resetting various bits(SPEN, TXEN, etc if it becomes a problem in the future)
 
-uint32_t getfund()
+void getfund()
 {
+    LATCbits.LATC3 = 0;
+    
     fund_freq = 0;
     
     SSP1BUF = 0xff;
@@ -132,6 +134,16 @@ uint32_t getfund()
     SSP1BUF = 0xff;
     while(SSP1STATbits.BF == 0){};
     fund_freq = fund_freq | ((uint16_t)SSP1BUF);
+    
+    LATCbits.LATC3 = 1;
+}
+
+void sendfund()
+{
+    uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 2, 0, 0, 0};
+    msg[8] = fund_freq & 0xFF;
+    msg[9] = ((fund_freq & 0xFF00) >> 8);
+    sendit(msg, 10); 
 }
 
 void main(void) 
@@ -263,7 +275,8 @@ void main(void)
         if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){ //check on the situation with what VRA reads, this is just a guess
             LATAbits.LATA1 = 1;
             __delay_ms(500);
-            //Alien Frequency Function goes here
+            getfund();
+            sendfund();
             LATAbits.LATA1 = 0;
             vra_flag = 1;
         }
