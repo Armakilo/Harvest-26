@@ -27,9 +27,13 @@
 [v _runmotor runmotor `(v  1 e 1 0 ]
 "99
 [v _follow follow `(v  1 e 1 0 ]
-"68 C:\Users\w7yf6\Documents\Harvest-26\main.c
+"69 C:\Users\w7yf6\Documents\Harvest-26\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 "124
+[v _getfund getfund `(v  1 e 1 0 ]
+"141
+[v _sendfund sendfund `(v  1 e 1 0 ]
+"149
 [v _main main `(v  1 e 1 0 ]
 "11 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _sendit sendit `(v  1 e 1 0 ]
@@ -57,15 +61,17 @@
 [v _tranceive tranceive `(v  1 e 1 0 ]
 "117
 [v _SPISetup SPISetup `(v  1 e 1 0 ]
-[s S843 . 1 `uc 1 INTEDG 1 0 :1:0 
+"160
+[v _GetUID GetUID `(v  1 e 1 0 ]
+[s S961 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "364 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
-[u S848 . 1 `S843 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES848  1 e 1 @11 ]
-[s S876 . 1 `uc 1 RA0 1 0 :1:0 
+[u S966 . 1 `S961 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES966  1 e 1 @11 ]
+[s S994 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -75,8 +81,8 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "401
-[u S885 . 1 `S876 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES885  1 e 1 @12 ]
+[u S1003 . 1 `S994 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES1003  1 e 1 @12 ]
 "591
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 [s S590 . 1 `uc 1 TRISA0 1 0 :1:0 
@@ -222,7 +228,7 @@
 "3948
 [u S179 . 1 `S170 1 . 1 0 ]
 [v _TX1STAbits TX1STAbits `VES179  1 e 1 @286 ]
-[s S820 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S938 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -232,8 +238,8 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "4269
-[u S829 . 1 `S820 1 . 1 0 ]
-[v _BAUDCONbits BAUDCONbits `VES829  1 e 1 @287 ]
+[u S947 . 1 `S938 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES947  1 e 1 @287 ]
 "4348
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @396 ]
 "4368
@@ -361,7 +367,7 @@
 "21120
 [u S750 . 1 `S743 1 . 1 0 ]
 [v _PIR3bits PIR3bits `VES750  1 e 1 @1807 ]
-[s S856 . 1 `uc 1 SSP1IE 1 0 :1:0 
+[s S974 . 1 `uc 1 SSP1IE 1 0 :1:0 
 `uc 1 BCL1IE 1 0 :1:1 
 `uc 1 SSP2IE 1 0 :1:2 
 `uc 1 BCL2IE 1 0 :1:3 
@@ -369,8 +375,8 @@
 `uc 1 RCIE 1 0 :1:5 
 ]
 "21542
-[u S863 . 1 `S856 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES863  1 e 1 @1817 ]
+[u S981 . 1 `S974 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES981  1 e 1 @1817 ]
 "31306
 [v _SSP1DATPPS SSP1DATPPS `VEuc  1 e 1 @3782 ]
 "31566
@@ -453,16 +459,27 @@
 [v _repair_code_flag repair_code_flag `VEuc  1 e 1 0 ]
 "64
 [v _VRA VRA `VEi  1 e 2 0 ]
-"124
+"65
+[v _fund_freq fund_freq `VEus  1 e 2 0 ]
+"149
 [v _main main `(v  1 e 1 0 ]
 {
-"168
+"193
 [v main@message message `[10]uc  1 a 10 39 ]
-"126
+"151
 [v main@vra_flag vra_flag `uc  1 a 1 49 ]
-"167
-[v main@F11752 F11752 `[10]uc  1 s 10 F11752 ]
-"263
+"192
+[v main@F11757 F11757 `[10]uc  1 s 10 F11757 ]
+"292
+} 0
+"141
+[v _sendfund sendfund `(v  1 e 1 0 ]
+{
+"143
+[v sendfund@msg msg `[10]uc  1 a 10 0 ]
+"142
+[v sendfund@F11752 F11752 `[10]uc  1 s 10 F11752 ]
+"147
 } 0
 "39 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _motor motor `(v  1 e 1 0 ]
@@ -495,6 +512,11 @@
 [v ___awdiv@divisor divisor `i  1 p 2 1 ]
 [v ___awdiv@dividend dividend `i  1 p 2 3 ]
 "41
+} 0
+"124 C:\Users\w7yf6\Documents\Harvest-26\main.c
+[v _getfund getfund `(v  1 e 1 0 ]
+{
+"139
 } 0
 "99 C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 [v _follow follow `(v  1 e 1 0 ]
@@ -599,6 +621,89 @@
 {
 "157
 } 0
+"160
+[v _GetUID GetUID `(v  1 e 1 0 ]
+{
+"219
+[v GetUID@i_732 i `i  1 a 2 25 ]
+"198
+[v GetUID@i i `i  1 a 2 23 ]
+"196
+[v GetUID@buffbytes buffbytes `uc  1 a 1 27 ]
+"168
+[v GetUID@response response `[10]uc  1 a 10 13 ]
+"225
+[v GetUID@msg msg `[10]uc  1 a 10 3 ]
+"223
+[v GetUID@F11759 F11759 `[10]uc  1 s 10 F11759 ]
+"233
+} 0
+"111
+[v _tranceive tranceive `(v  1 e 1 0 ]
+{
+"115
+} 0
+"103
+[v _BitmaskOR BitmaskOR `(v  1 e 1 0 ]
+{
+[v BitmaskOR@addr addr `uc  1 p 1 wreg ]
+"106
+[v BitmaskOR@postval postval `uc  1 a 1 8 ]
+"105
+[v BitmaskOR@preval preval `uc  1 a 1 7 ]
+"103
+[v BitmaskOR@addr addr `uc  1 p 1 wreg ]
+[v BitmaskOR@mask mask `uc  1 p 1 6 ]
+"105
+[v BitmaskOR@addr addr `uc  1 p 1 9 ]
+"109
+} 1
+"61
+[v _writeRegister writeRegister `(v  1 e 1 0 ]
+{
+[v writeRegister@address address `uc  1 p 1 wreg ]
+"63
+[v writeRegister@controlByte controlByte `uc  1 a 1 5 ]
+"61
+[v writeRegister@address address `uc  1 p 1 wreg ]
+[v writeRegister@data data `uc  1 p 1 2 ]
+"63
+[v writeRegister@address address `uc  1 p 1 4 ]
+"75
+} 1
+"96
+[v _rdFIFO rdFIFO `(uc  1 e 1 0 ]
+{
+"98
+[v rdFIFO@info info `uc  1 a 1 4 ]
+"101
+} 0
+"86
+[v _readRegister readRegister `(uc  1 e 1 0 ]
+{
+[v readRegister@address address `uc  1 p 1 wreg ]
+"91
+[v readRegister@stuff stuff `uc  1 a 1 3 ]
+"86
+[v readRegister@address address `uc  1 p 1 wreg ]
+"88
+[v readRegister@address address `uc  1 p 1 2 ]
+"94
+} 1
+"77
+[v _SPIReadByte SPIReadByte `(uc  1 e 1 0 ]
+{
+"84
+} 0
+"53
+[v _SPIWriteByte SPIWriteByte `(v  1 e 1 0 ]
+{
+[v SPIWriteByte@data data `uc  1 p 1 wreg ]
+[v SPIWriteByte@data data `uc  1 p 1 wreg ]
+"56
+[v SPIWriteByte@data data `uc  1 p 1 1 ]
+"59
+} 1
 "27 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _GetInfoPCU GetInfoPCU `(v  1 e 1 0 ]
 {
@@ -618,8 +723,8 @@
 [v sendit@it_size it_size `i  1 p 2 2 ]
 "18
 } 0
-"68 C:\Users\w7yf6\Documents\Harvest-26\main.c
+"69 C:\Users\w7yf6\Documents\Harvest-26\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"115
+"116
 } 0

@@ -46,6 +46,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
+#include "harvest.h"
 #define _XTAL_FREQ 32000000
 
 volatile uint8_t control_data[26] = {};
@@ -60,113 +61,10 @@ volatile int SWC = 0;
 volatile int SWD = 0;
 volatile uint8_t shield_code_flag = 0;
 volatile uint8_t repair_code_flag = 0;
+volatile int VRA = 0;
+volatile uint16_t fund_freq = 0;
 
 
-void sendit(char it[], int it_size) //function to send the data
-{
-    for(int i = 0; i < it_size; i++){
-        while(TX1STAbits.TRMT == 0){} //waits until register can send data
-        TX1REG = it[i];
-        
-    }
-}
-
-void GetInfoController()
-{
-    char ask[6] = {0xFE,0x19,0x01,0x05,0x00,0x00};
-    sendit(ask,6);
-        
-}
-
-void GetInfoPCU()
-{
-    char ask[6] = {0xFE,0x19,0x01,0x04,0x00,0x00};
-    sendit(ask,6);
-}
-
-void motor(char data[26]){
-    //volatile int* command = output;
-    int mry = 0;
-    int mly = 0;
-    int rdirec = 0;
-    int ldirec = 0;
-    char msg[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
-        mry = (data[8]+(data[9]<<8) - 1000)/5; //mry goes from 0 to 200
-        mly = (data[10]+(data[11]<<8) - 1000)/5; //mly goes from 0 to 200
-        if (mry < 110 && mry > 90){rdirec = 0;}
-        else if (mry > 110)
-        {
-            rdirec = 1;
-            mry = mry - 100;
-        }        
-        else if (mry < 90)
-        {
-            rdirec = 2;
-            mry = 100 - mry;
-        }
-        
-        if (mly < 110 && mly > 90){ldirec = 0;}
-        else if (mly > 110)
-        {
-            ldirec = 1;
-            mly = mly - 100;
-        }        
-        else if (mly < 90)
-        {
-            ldirec = 2;
-            mly = 100 - mly;
-        }
-        
-        msg[6] = ldirec;
-        msg[7] = mly;
-        msg[8] = rdirec;
-        msg[9] = mry;
-        
-        sendit(msg, 10);
-}
-
-void ShootShield()
-{
-    char tosend[6] = {0xFE, 0x19, 0x02, 0x09, 0x00, 0x00};
-    sendit(tosend, 6);
-}
-
-void ShootAttack()
-{
-    char tosend[7] = {0xFE, 0x19, 0x01, 0x09, 0x01, 0x00, 1};
-    sendit(tosend, 7); 
-}
-
-void ShootRepair()
-{
-    char tosend[6] = {0xFE, 0x19, 0x04, 0x09, 0x00, 0x00};
-    sendit(tosend, 6);
-}
-
-void ShootLaser()
-{
-    if (SWD > 1600)
-        {
-            if (SWC > 1800)
-            {
-                if (!shield_code_flag)
-                {
-                    ShootShield();
-                }
-            }
-            else if (SWC > 1300 && SWC < 1700)
-            {
-                ShootAttack();
-            }
-            else if (SWC < 200)
-            {
-                if (!repair_code_flag);
-                {
-                    ShootRepair();
-                }
-            }
-        }
-}
 
 void __interrupt() ISR(void)
 {
@@ -217,16 +115,53 @@ void __interrupt() ISR(void)
     }
 }
 
+// A weird quirk of the code is that, sometimes, if you program the PIC with everything attached, the UART gets stuck and cant transmit data.
+// I just unplug everything and then press play again
+// Things usually get stuck at GetControllerInfo(), where the TRMT bit of TX1STA register never gets set
+
+// we could try resetting various bits(SPEN, TXEN, etc if it becomes a problem in the future)
+
+void getfund()
+{
+    LATCbits.LATC3 = 0;
+    
+    fund_freq = 0;
+    
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
+    
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF);
+    
+    LATCbits.LATC3 = 1;
+}
+
+void sendfund()
+{
+    uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 2, 0, 0, 0};
+    msg[8] = fund_freq & 0xFF;
+    msg[9] = ((fund_freq & 0xFF00) >> 8);
+    sendit(msg, 10); 
+}
+
 void main(void) 
 {
-    
+    uint8_t vra_flag = 0;
     //setup
     TRISA = 0b00100000;
     ANSELA = 0;
     
+    
+    TRISCbits.TRISC6 = 0; // Set TX pin as output
+    ANSELCbits.ANSC6 = 0; // Set as digital
+    
     //setup UART
     TX1STAbits.TXEN = 1;
     TX1STAbits.SYNC = 0;
+    
+    RC1STAbits.SPEN = 0; // reset the bit, as per my suggestions
     RC1STAbits.SPEN = 1;
     
     RC1STAbits.CREN = 1; //enables 
@@ -252,6 +187,7 @@ void main(void)
     RXPPS = 0x15; //rx
     //loop for tx data
     
+    SPISetup();
     
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
@@ -260,11 +196,16 @@ void main(void)
     
     while(1)
     {              
+        int prev_SWB = SWB; // might go here?
         // check to make sure things are working
         if(PORTAbits.RA5 == 0)
         {
             LATA = 0xF;
+			SetPCUInfo();
             GetInfoController();
+            LATCbits.LATC7 = 0;
+            getfund();
+            LATCbits.LATC7 = 1;
             while(PORTAbits.RA5 == 0){}
             
         }
@@ -284,6 +225,16 @@ void main(void)
                 receive_ready = 0;
                 shield_code_flag = control_data[10];
                 repair_code_flag = control_data[11];
+                
+                 if (shield_code_flag != 0)
+                {
+                    LATAbits.LATA0 = 1;  // Turn on LED to show shield code received
+                }
+                else
+                {
+                    LATAbits.LATA0 = 0;
+                }
+                
                 GetInfoController();
             }
             else if (receive_flag == 3)
@@ -292,12 +243,47 @@ void main(void)
                 motor(control_data);
                 SWD = ((control_data[21] << 8) + control_data[20]);
                 SWC = ((control_data[19] << 8) + control_data[18]);
+                // prev SWA = (control_data[15] << 8) + (control_data[16]); //is this wrong?, check this out later. Yeah this is wrong but I want to wait till we have things assembled to test it
+                SWA = (control_data[15] << 8) + (control_data[14]);
+                SWB = (control_data[17] << 8) + control_data[16];
+                VRA = (control_data[23] << 8) + control_data[22];
                 ShootLaser();
                 GetInfoPCU();
             }
         }
-              
         
+        
+        
+        
+        if(SWA > 1900){
+            LATAbits.LATA2 = 1; //LED on
+            __delay_ms(500);
+            follow();
+            LATAbits.LATA2 = 0; //LED off
+            
+        }
+        
+        if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){ //VRA Left -> RFID
+            LATAbits.LATA0 = 1;
+            __delay_ms(500);
+            GetUID();
+            LATAbits.LATA0 = 0;
+            vra_flag = 1;
+                    
+        }
+        
+        if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){ //check on the situation with what VRA reads, this is just a guess
+            LATAbits.LATA1 = 1;
+            __delay_ms(500);
+            getfund();
+            sendfund();
+            LATAbits.LATA1 = 0;
+            vra_flag = 1;
+        }
+     
+        if(SWB < 1100){
+            vra_flag = 0;
+        }
     
     }
     

@@ -19896,6 +19896,7 @@ volatile int SWD = 0;
 volatile uint8_t shield_code_flag = 0;
 volatile uint8_t repair_code_flag = 0;
 volatile int VRA = 0;
+volatile uint16_t fund_freq = 0;
 
 
 
@@ -19947,7 +19948,38 @@ void __attribute__((picinterrupt(("")))) ISR(void)
         }
     }
 }
-# 124 "main.c"
+
+
+
+
+
+
+
+void getfund()
+{
+    LATCbits.LATC3 = 0;
+
+    fund_freq = 0;
+
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
+
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF);
+
+    LATCbits.LATC3 = 1;
+}
+
+void sendfund()
+{
+    uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 2, 0, 0, 0};
+    msg[8] = fund_freq & 0xFF;
+    msg[9] = ((fund_freq & 0xFF00) >> 8);
+    sendit(msg, 10);
+}
+
 void main(void)
 {
     uint8_t vra_flag = 0;
@@ -20005,6 +20037,9 @@ void main(void)
             LATA = 0xF;
    SetPCUInfo();
             GetInfoController();
+            LATCbits.LATC7 = 0;
+            getfund();
+            LATCbits.LATC7 = 1;
             while(PORTAbits.RA5 == 0){}
 
         }
@@ -20065,7 +20100,7 @@ void main(void)
         if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){
             LATAbits.LATA0 = 1;
             _delay((unsigned long)((500)*(32000000/4000.0)));
-
+            GetUID();
             LATAbits.LATA0 = 0;
             vra_flag = 1;
 
@@ -20074,7 +20109,8 @@ void main(void)
         if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){
             LATAbits.LATA1 = 1;
             _delay((unsigned long)((500)*(32000000/4000.0)));
-
+            getfund();
+            sendfund();
             LATAbits.LATA1 = 0;
             vra_flag = 1;
         }
