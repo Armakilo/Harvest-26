@@ -19950,7 +19950,7 @@ void __attribute__((picinterrupt(("")))) ISR(void)
 # 124 "main.c"
 void main(void)
 {
-
+    uint8_t vra_flag = 0;
 
     TRISA = 0b00100000;
     ANSELA = 0;
@@ -19990,7 +19990,6 @@ void main(void)
 
 
     SPISetup();
-    GetUID();
 
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
@@ -20055,13 +20054,35 @@ void main(void)
 
 
 
-        if(SWA >= 2000){
+        if(SWA > 1900){
             LATAbits.LATA2 = 1;
             _delay((unsigned long)((500)*(32000000/4000.0)));
             follow();
             LATAbits.LATA2 = 0;
+
         }
-# 255 "main.c"
+
+        if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){
+            LATAbits.LATA0 = 1;
+            _delay((unsigned long)((500)*(32000000/4000.0)));
+
+            LATAbits.LATA0 = 0;
+            vra_flag = 1;
+
+        }
+
+        if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){
+            LATAbits.LATA1 = 1;
+            _delay((unsigned long)((500)*(32000000/4000.0)));
+
+            LATAbits.LATA1 = 0;
+            vra_flag = 1;
+        }
+
+        if(SWB < 1100){
+            vra_flag = 0;
+        }
+
     }
 
 

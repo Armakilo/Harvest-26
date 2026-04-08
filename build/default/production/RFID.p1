@@ -2163,10 +2163,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;RFID.c: 217:         buffbytes = readRegister(0x0A);
 [e = _buffbytes ( _readRegister (1 -> -> 10 `i `uc ]
 "219
-[; ;RFID.c: 219:         for (int i = 1; i < buffbytes; i++){
+[; ;RFID.c: 219:         for (int i = 0; i <= buffbytes; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
-[e = _i -> 1 `i ]
+[e = _i -> 0 `i ]
 [e $U 1587  ]
 [e :U 1584 ]
 {
@@ -2178,7 +2178,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e ++ _i -> 1 `i ]
 [e :U 1587 ]
-[e $ < _i -> _buffbytes `i 1584  ]
+[e $ <= _i -> _buffbytes `i 1584  ]
 [e :U 1585 ]
 }
 "223

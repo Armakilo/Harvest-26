@@ -2009,9 +2009,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1580 ]
 [e $U 1581  ]
 [e :U 1582 ]
-"185
-[; ;linefollower.c: 185:         GetInfoController();
-[e ( _GetInfoController ..  ]
 "192
 [; ;linefollower.c: 192:     }
 [e :UE 1579 ]

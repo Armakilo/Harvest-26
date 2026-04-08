@@ -182,7 +182,7 @@ void follow(){
         }
         }
         
-        GetInfoController();
+        //GetInfoController();
         
         
         

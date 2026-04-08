@@ -20013,12 +20013,5 @@ void follow(){
 
         }
         }
-
-        GetInfoController();
-
-
-
-
-
-
+# 192 "linefollower.c"
     }

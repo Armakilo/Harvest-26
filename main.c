@@ -123,7 +123,7 @@ void __interrupt() ISR(void)
 
 void main(void) 
 {
-    
+    uint8_t vra_flag = 0;
     //setup
     TRISA = 0b00100000;
     ANSELA = 0;
@@ -163,7 +163,6 @@ void main(void)
     //loop for tx data
     
     SPISetup();
-    GetUID();
     
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
@@ -228,29 +227,34 @@ void main(void)
         
         
         
-        if(SWA >= 2000){
+        if(SWA > 1900){
             LATAbits.LATA2 = 1; //LED on
             __delay_ms(500);
             follow();
             LATAbits.LATA2 = 0; //LED off
+            
         }
         
-//        if((prev_SWB != SWB) && (VRA > 100) && (VRA <= 1200)){ //VRA Left -> RFID
-//            LATAbits.LATA0 = 1;
-//            __delay_ms(500);
-//            GetUID();
-//            LATAbits.LATA0 = 0;
-//                    
-//        }
-//        
-//        if(prev_SWB != SWB && (VRA > 100) && (VRA >= 1800) ){ //check on the situation with what VRA reads, this is just a guess
-//            LATAbits.LATA1 = 1;
-//            __delay_ms(500);
-//            //Alien Frequency Function goes here
-//            LATAbits.LATA1 = 0;
-//        }
-     
+        if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){ //VRA Left -> RFID
+            LATAbits.LATA0 = 1;
+            __delay_ms(500);
+            //GetUID();
+            LATAbits.LATA0 = 0;
+            vra_flag = 1;
+                    
+        }
         
+        if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){ //check on the situation with what VRA reads, this is just a guess
+            LATAbits.LATA1 = 1;
+            __delay_ms(500);
+            //Alien Frequency Function goes here
+            LATAbits.LATA1 = 0;
+            vra_flag = 1;
+        }
+     
+        if(SWB < 1100){
+            vra_flag = 0;
+        }
     
     }
     

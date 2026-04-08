@@ -57,8 +57,6 @@
 [v _tranceive tranceive `(v  1 e 1 0 ]
 "117
 [v _SPISetup SPISetup `(v  1 e 1 0 ]
-"160
-[v _GetUID GetUID `(v  1 e 1 0 ]
 [s S843 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
@@ -67,7 +65,7 @@
 "364 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [u S848 . 1 `S843 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES848  1 e 1 @11 ]
-[s S877 . 1 `uc 1 RA0 1 0 :1:0 
+[s S876 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -77,8 +75,8 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "401
-[u S886 . 1 `S877 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES886  1 e 1 @12 ]
+[u S885 . 1 `S876 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES885  1 e 1 @12 ]
 "591
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 [s S590 . 1 `uc 1 TRISA0 1 0 :1:0 
@@ -458,11 +456,13 @@
 "124
 [v _main main `(v  1 e 1 0 ]
 {
-"169
-[v main@message message `[10]uc  1 a 10 39 ]
 "168
-[v main@F11751 F11751 `[10]uc  1 s 10 F11751 ]
-"259
+[v main@message message `[10]uc  1 a 10 39 ]
+"126
+[v main@vra_flag vra_flag `uc  1 a 1 49 ]
+"167
+[v main@F11752 F11752 `[10]uc  1 s 10 F11752 ]
+"263
 } 0
 "39 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _motor motor `(v  1 e 1 0 ]
@@ -599,89 +599,6 @@
 {
 "157
 } 0
-"160
-[v _GetUID GetUID `(v  1 e 1 0 ]
-{
-"219
-[v GetUID@i_732 i `i  1 a 2 25 ]
-"198
-[v GetUID@i i `i  1 a 2 23 ]
-"196
-[v GetUID@buffbytes buffbytes `uc  1 a 1 27 ]
-"168
-[v GetUID@response response `[10]uc  1 a 10 13 ]
-"225
-[v GetUID@msg msg `[10]uc  1 a 10 3 ]
-"223
-[v GetUID@F11759 F11759 `[10]uc  1 s 10 F11759 ]
-"233
-} 0
-"111
-[v _tranceive tranceive `(v  1 e 1 0 ]
-{
-"115
-} 0
-"103
-[v _BitmaskOR BitmaskOR `(v  1 e 1 0 ]
-{
-[v BitmaskOR@addr addr `uc  1 p 1 wreg ]
-"106
-[v BitmaskOR@postval postval `uc  1 a 1 8 ]
-"105
-[v BitmaskOR@preval preval `uc  1 a 1 7 ]
-"103
-[v BitmaskOR@addr addr `uc  1 p 1 wreg ]
-[v BitmaskOR@mask mask `uc  1 p 1 6 ]
-"105
-[v BitmaskOR@addr addr `uc  1 p 1 9 ]
-"109
-} 1
-"61
-[v _writeRegister writeRegister `(v  1 e 1 0 ]
-{
-[v writeRegister@address address `uc  1 p 1 wreg ]
-"63
-[v writeRegister@controlByte controlByte `uc  1 a 1 5 ]
-"61
-[v writeRegister@address address `uc  1 p 1 wreg ]
-[v writeRegister@data data `uc  1 p 1 2 ]
-"63
-[v writeRegister@address address `uc  1 p 1 4 ]
-"75
-} 1
-"96
-[v _rdFIFO rdFIFO `(uc  1 e 1 0 ]
-{
-"98
-[v rdFIFO@info info `uc  1 a 1 4 ]
-"101
-} 0
-"86
-[v _readRegister readRegister `(uc  1 e 1 0 ]
-{
-[v readRegister@address address `uc  1 p 1 wreg ]
-"91
-[v readRegister@stuff stuff `uc  1 a 1 3 ]
-"86
-[v readRegister@address address `uc  1 p 1 wreg ]
-"88
-[v readRegister@address address `uc  1 p 1 2 ]
-"94
-} 1
-"77
-[v _SPIReadByte SPIReadByte `(uc  1 e 1 0 ]
-{
-"84
-} 0
-"53
-[v _SPIWriteByte SPIWriteByte `(v  1 e 1 0 ]
-{
-[v SPIWriteByte@data data `uc  1 p 1 wreg ]
-[v SPIWriteByte@data data `uc  1 p 1 wreg ]
-"56
-[v SPIWriteByte@data data `uc  1 p 1 1 ]
-"59
-} 1
 "27 C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 [v _GetInfoPCU GetInfoPCU `(v  1 e 1 0 ]
 {

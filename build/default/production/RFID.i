@@ -20053,7 +20053,7 @@ void GetUID(){
 
         buffbytes = readRegister(0x0A);
 
-        for (int i = 1; i < buffbytes; i++){
+        for (int i = 0; i <= buffbytes; i++){
           response[i] = rdFIFO();
         }
 
