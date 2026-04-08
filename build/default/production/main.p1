@@ -2308,16 +2308,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 205:             GetInfoController();
 [e ( _GetInfoController ..  ]
 "206
-[; ;main.c: 206:             LATCbits.LATC7 = 0;
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-"207
-[; ;main.c: 207:             getfund();
-[e ( _getfund ..  ]
-"208
-[; ;main.c: 208:             LATCbits.LATC7 = 1;
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-"209
-[; ;main.c: 209:             while(PORTAbits.RA5 == 0){}
+[; ;main.c: 206:             while(PORTAbits.RA5 == 0){}
 [e $U 1591  ]
 [e :U 1592 ]
 {
@@ -2325,225 +2316,225 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1591 ]
 [e $ == -> . . _PORTAbits 0 5 `i -> 0 `i 1592  ]
 [e :U 1593 ]
-"211
-[; ;main.c: 211:         }
+"208
+[; ;main.c: 208:         }
 }
 [e $U 1594  ]
-"212
-[; ;main.c: 212:         else
+"209
+[; ;main.c: 209:         else
 [e :U 1590 ]
-"213
-[; ;main.c: 213:         {
+"210
+[; ;main.c: 210:         {
 {
-"214
-[; ;main.c: 214:             LATA = 0;
+"211
+[; ;main.c: 211:             LATA = 0;
 [e = _LATA -> -> 0 `i `uc ]
-"215
-[; ;main.c: 215:         }
+"212
+[; ;main.c: 212:         }
 }
 [e :U 1594 ]
-"217
-[; ;main.c: 217:         if (receive_ready)
+"214
+[; ;main.c: 214:         if (receive_ready)
 [e $ ! != _receive_ready -> 0 `i 1595  ]
-"218
-[; ;main.c: 218:         {
+"215
+[; ;main.c: 215:         {
 {
-"219
-[; ;main.c: 219:             if (receive_flag == 1)
+"216
+[; ;main.c: 216:             if (receive_flag == 1)
 [e $ ! == _receive_flag -> 1 `i 1596  ]
-"220
-[; ;main.c: 220:             {
+"217
+[; ;main.c: 217:             {
 {
-"221
-[; ;main.c: 221:                 receive_ready = 0;
+"218
+[; ;main.c: 218:                 receive_ready = 0;
 [e = _receive_ready -> 0 `i ]
-"222
-[; ;main.c: 222:             }
+"219
+[; ;main.c: 219:             }
 }
 [e $U 1597  ]
-"223
-[; ;main.c: 223:             else if (receive_flag == 2)
+"220
+[; ;main.c: 220:             else if (receive_flag == 2)
 [e :U 1596 ]
 [e $ ! == _receive_flag -> 2 `i 1598  ]
-"224
-[; ;main.c: 224:             {
+"221
+[; ;main.c: 221:             {
 {
-"225
-[; ;main.c: 225:                 receive_ready = 0;
+"222
+[; ;main.c: 222:                 receive_ready = 0;
 [e = _receive_ready -> 0 `i ]
-"226
-[; ;main.c: 226:                 shield_code_flag = control_data[10];
+"223
+[; ;main.c: 223:                 shield_code_flag = control_data[10];
 [e = _shield_code_flag *U + &U _control_data * -> -> -> 10 `i `ui `ux -> -> # *U &U _control_data `ui `ux ]
-"227
-[; ;main.c: 227:                 repair_code_flag = control_data[11];
+"224
+[; ;main.c: 224:                 repair_code_flag = control_data[11];
 [e = _repair_code_flag *U + &U _control_data * -> -> -> 11 `i `ui `ux -> -> # *U &U _control_data `ui `ux ]
-"229
-[; ;main.c: 229:                  if (shield_code_flag != 0)
+"226
+[; ;main.c: 226:                  if (shield_code_flag != 0)
 [e $ ! != -> _shield_code_flag `i -> 0 `i 1599  ]
-"230
-[; ;main.c: 230:                 {
+"227
+[; ;main.c: 227:                 {
 {
-"231
-[; ;main.c: 231:                     LATAbits.LATA0 = 1;
+"228
+[; ;main.c: 228:                     LATAbits.LATA0 = 1;
 [e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
-"232
-[; ;main.c: 232:                 }
+"229
+[; ;main.c: 229:                 }
 }
 [e $U 1600  ]
-"233
-[; ;main.c: 233:                 else
+"230
+[; ;main.c: 230:                 else
 [e :U 1599 ]
-"234
-[; ;main.c: 234:                 {
+"231
+[; ;main.c: 231:                 {
 {
-"235
-[; ;main.c: 235:                     LATAbits.LATA0 = 0;
+"232
+[; ;main.c: 232:                     LATAbits.LATA0 = 0;
 [e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
-"236
-[; ;main.c: 236:                 }
+"233
+[; ;main.c: 233:                 }
 }
 [e :U 1600 ]
-"238
-[; ;main.c: 238:                 GetInfoController();
+"235
+[; ;main.c: 235:                 GetInfoController();
 [e ( _GetInfoController ..  ]
-"239
-[; ;main.c: 239:             }
+"236
+[; ;main.c: 236:             }
 }
 [e $U 1601  ]
-"240
-[; ;main.c: 240:             else if (receive_flag == 3)
+"237
+[; ;main.c: 237:             else if (receive_flag == 3)
 [e :U 1598 ]
 [e $ ! == _receive_flag -> 3 `i 1602  ]
-"241
-[; ;main.c: 241:             {
+"238
+[; ;main.c: 238:             {
 {
-"242
-[; ;main.c: 242:                 receive_ready = 0;
+"239
+[; ;main.c: 239:                 receive_ready = 0;
 [e = _receive_ready -> 0 `i ]
-"243
-[; ;main.c: 243:                 motor(control_data);
+"240
+[; ;main.c: 240:                 motor(control_data);
 [e ( _motor (1 -> &U _control_data `*uc ]
-"244
-[; ;main.c: 244:                 SWD = ((control_data[21] << 8) + control_data[20]);
+"241
+[; ;main.c: 241:                 SWD = ((control_data[21] << 8) + control_data[20]);
 [e = _SWD + << -> *U + &U _control_data * -> -> -> 21 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 20 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
-"245
-[; ;main.c: 245:                 SWC = ((control_data[19] << 8) + control_data[18]);
+"242
+[; ;main.c: 242:                 SWC = ((control_data[19] << 8) + control_data[18]);
 [e = _SWC + << -> *U + &U _control_data * -> -> -> 19 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 18 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
-"247
-[; ;main.c: 247:                 SWA = (control_data[15] << 8) + (control_data[14]);
+"244
+[; ;main.c: 244:                 SWA = (control_data[15] << 8) + (control_data[14]);
 [e = _SWA + << -> *U + &U _control_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 14 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
-"248
-[; ;main.c: 248:                 SWB = (control_data[17] << 8) + control_data[16];
+"245
+[; ;main.c: 245:                 SWB = (control_data[17] << 8) + control_data[16];
 [e = _SWB + << -> *U + &U _control_data * -> -> -> 17 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
-"249
-[; ;main.c: 249:                 VRA = (control_data[23] << 8) + control_data[22];
+"246
+[; ;main.c: 246:                 VRA = (control_data[23] << 8) + control_data[22];
 [e = _VRA + << -> *U + &U _control_data * -> -> -> 23 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i -> 8 `i -> *U + &U _control_data * -> -> -> 22 `i `ui `ux -> -> # *U &U _control_data `ui `ux `i ]
-"250
-[; ;main.c: 250:                 ShootLaser();
+"247
+[; ;main.c: 247:                 ShootLaser();
 [e ( _ShootLaser ..  ]
-"251
-[; ;main.c: 251:                 GetInfoPCU();
+"248
+[; ;main.c: 248:                 GetInfoPCU();
 [e ( _GetInfoPCU ..  ]
-"252
-[; ;main.c: 252:             }
+"249
+[; ;main.c: 249:             }
 }
 [e :U 1602 ]
 [e :U 1601 ]
 [e :U 1597 ]
-"253
-[; ;main.c: 253:         }
+"250
+[; ;main.c: 250:         }
 }
 [e :U 1595 ]
-"258
-[; ;main.c: 258:         if(SWA > 1900){
+"255
+[; ;main.c: 255:         if(SWA > 1900){
 [e $ ! > _SWA -> 1900 `i 1603  ]
 {
-"259
-[; ;main.c: 259:             LATAbits.LATA2 = 1;
+"256
+[; ;main.c: 256:             LATAbits.LATA2 = 1;
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
-"260
-[; ;main.c: 260:             _delay((unsigned long)((500)*(32000000/4000.0)));
+"257
+[; ;main.c: 257:             _delay((unsigned long)((500)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"261
-[; ;main.c: 261:             follow();
+"258
+[; ;main.c: 258:             follow();
 [e ( _follow ..  ]
-"262
-[; ;main.c: 262:             LATAbits.LATA2 = 0;
+"259
+[; ;main.c: 259:             LATAbits.LATA2 = 0;
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
-"264
-[; ;main.c: 264:         }
+"261
+[; ;main.c: 261:         }
 }
 [e :U 1603 ]
-"266
-[; ;main.c: 266:         if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){
+"263
+[; ;main.c: 263:         if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){
 [e $ ! && && > _SWB -> 1900 `i > _VRA -> 1500 `i ! != -> _vra_flag `i -> 0 `i 1604  ]
 {
-"267
-[; ;main.c: 267:             LATAbits.LATA0 = 1;
+"264
+[; ;main.c: 264:             LATAbits.LATA0 = 1;
 [e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
-"268
-[; ;main.c: 268:             _delay((unsigned long)((500)*(32000000/4000.0)));
+"265
+[; ;main.c: 265:             _delay((unsigned long)((500)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"269
-[; ;main.c: 269:             GetUID();
+"266
+[; ;main.c: 266:             GetUID();
 [e ( _GetUID ..  ]
-"270
-[; ;main.c: 270:             LATAbits.LATA0 = 0;
+"267
+[; ;main.c: 267:             LATAbits.LATA0 = 0;
 [e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
-"271
-[; ;main.c: 271:             vra_flag = 1;
+"268
+[; ;main.c: 268:             vra_flag = 1;
 [e = _vra_flag -> -> 1 `i `uc ]
-"273
-[; ;main.c: 273:         }
+"270
+[; ;main.c: 270:         }
 }
 [e :U 1604 ]
-"275
-[; ;main.c: 275:         if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){
+"272
+[; ;main.c: 272:         if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){
 [e $ ! && && > _SWB -> 1900 `i < _VRA -> 1500 `i ! != -> _vra_flag `i -> 0 `i 1605  ]
 {
-"276
-[; ;main.c: 276:             LATAbits.LATA1 = 1;
+"273
+[; ;main.c: 273:             LATAbits.LATA1 = 1;
 [e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
-"277
-[; ;main.c: 277:             _delay((unsigned long)((500)*(32000000/4000.0)));
+"274
+[; ;main.c: 274:             _delay((unsigned long)((500)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"278
-[; ;main.c: 278:             getfund();
+"275
+[; ;main.c: 275:             getfund();
 [e ( _getfund ..  ]
-"279
-[; ;main.c: 279:             sendfund();
+"276
+[; ;main.c: 276:             sendfund();
 [e ( _sendfund ..  ]
-"280
-[; ;main.c: 280:             LATAbits.LATA1 = 0;
+"277
+[; ;main.c: 277:             LATAbits.LATA1 = 0;
 [e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
-"281
-[; ;main.c: 281:             vra_flag = 1;
+"278
+[; ;main.c: 278:             vra_flag = 1;
 [e = _vra_flag -> -> 1 `i `uc ]
-"282
-[; ;main.c: 282:         }
+"279
+[; ;main.c: 279:         }
 }
 [e :U 1605 ]
-"284
-[; ;main.c: 284:         if(SWB < 1100){
+"281
+[; ;main.c: 281:         if(SWB < 1100){
 [e $ ! < _SWB -> 1100 `i 1606  ]
 {
-"285
-[; ;main.c: 285:             vra_flag = 0;
+"282
+[; ;main.c: 282:             vra_flag = 0;
 [e = _vra_flag -> -> 0 `i `uc ]
-"286
-[; ;main.c: 286:         }
+"283
+[; ;main.c: 283:         }
 }
 [e :U 1606 ]
-"288
-[; ;main.c: 288:     }
+"285
+[; ;main.c: 285:     }
 }
 [e :U 1587 ]
 [e $U 1588  ]
 [e :U 1589 ]
-"291
-[; ;main.c: 291:     return;
+"288
+[; ;main.c: 288:     return;
 [e $UE 1586  ]
-"292
-[; ;main.c: 292: }
+"289
+[; ;main.c: 289: }
 [e :UE 1586 ]
 }

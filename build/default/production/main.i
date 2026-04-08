@@ -20037,9 +20037,6 @@ void main(void)
             LATA = 0xF;
    SetPCUInfo();
             GetInfoController();
-            LATCbits.LATC7 = 0;
-            getfund();
-            LATCbits.LATC7 = 1;
             while(PORTAbits.RA5 == 0){}
 
         }
