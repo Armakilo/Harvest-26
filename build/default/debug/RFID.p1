@@ -81,7 +81,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 918: extern volatile LATCbits_t LATCbits __attribute__((address(0x018)));
 [v _LATCbits `VS50 ~T0 @X0 0 e@24 ]
 [v F202 `(v ~T0 @X0 1 tf1`ul ]
-"20 C:\Program Files\Microchip\xc8\v3.00\pic\include/builtins.h
+"20 C:\Program Files\Microchip\xc8\v3.10\pic\include/builtins.h
 [v __delay `JF202 ~T0 @X0 0 e ]
 [p i __delay ]
 "4928 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
@@ -2163,10 +2163,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;RFID.c: 217:         buffbytes = readRegister(0x0A);
 [e = _buffbytes ( _readRegister (1 -> -> 10 `i `uc ]
 "219
-[; ;RFID.c: 219:         for (int i = 0; i <= buffbytes; i++){
+[; ;RFID.c: 219:         for (int i = 1; i < buffbytes; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
+[e = _i -> 1 `i ]
 [e $U 1587  ]
 [e :U 1584 ]
 {
@@ -2178,7 +2178,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e ++ _i -> 1 `i ]
 [e :U 1587 ]
-[e $ <= _i -> _buffbytes `i 1584  ]
+[e $ < _i -> _buffbytes `i 1584  ]
 [e :U 1585 ]
 }
 "223
@@ -2186,8 +2186,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $ != -> *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux `i ^ ^ ^ -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> *U + &U _response * -> -> -> 1 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> *U + &U _response * -> -> -> 2 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux `i 1578  ]
 [e :U 1577 ]
-[v F11761 `uc ~T0 @X0 -> 10 `i s ]
-[i F11761
+[v F11759 `uc ~T0 @X0 -> 10 `i s ]
+[i F11759
 :U ..
 "225
 [; ;RFID.c: 225:     uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 1, 0, 0, 0};
@@ -2204,7 +2204,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _msg `uc ~T0 @X0 -> 10 `i a ]
-[e = _msg F11761 ]
+[e = _msg F11759 ]
 "226
 [; ;RFID.c: 226:     msg[8] = response[3];
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux *U + &U _response * -> -> -> 3 `i `ui `ux -> -> # *U &U _response `ui `ux ]

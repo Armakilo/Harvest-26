@@ -42,10 +42,17 @@ uint16_t rd_adc(uint8_t select){
 void runmotor(uint8_t select){ //Motor 1 -> Left motor
     //select takes 1, 2, or 3 which corresponds to turn left, right, or straight
     // if a different value is given, the motor will automatically stop
+    
+    char stop[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
+    
+    sendit(stop, 10);
+    
+    __delay_ms(50);
+    
     char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
     if (select == 1){ //go left
         msg[6] = 1;
-        msg[7] = 70;
+        msg[7] = 80;
         msg[8] = 2;
         msg[9] = 50;
     }
@@ -54,25 +61,42 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
         msg[6] = 2;
         msg[7] = 50;
         msg[8] = 1;
-        msg[9] = 70;
+        msg[9] = 80;
     }
     
     else if (select == 3){ //go straight
         msg[6] = 1;
-        msg[7] = 70;
+        msg[7] = 50;
         msg[8] = 1;
-        msg[9] = 70;
+        msg[9] = 50;
     }
     
     
     
-    sendit(msg, 10);
     
-    __delay_ms(50);
+    sendit(msg, 10);
+    __delay_ms(220);
+    
+//    if (select == 1){
+//        __delay_ms(150);
+//    }
+//    
+//    else if (select == 2){
+//        __delay_ms(350);
+//    }
+//    
+//    else if (select == 3){
+//        __delay_ms(350);
+//        
+//    }
+    
+    
     return;
 }
 
-void follow(uint8_t sw){
+
+
+void follow(){
     //ADC ouputs a 10-bit value, which has a maximum of 0x3FF or 1023.
     //Use same threshold values as example code for now
     volatile const uint16_t wlvl = 825; //white if adc reads < 600
@@ -104,9 +128,26 @@ void follow(uint8_t sw){
         
     while(1){ // change to watch for switch position
         //case 1: L-W C-B R-W
+        GetInfoController();
+        
+        
+        
+        if((control_data[15] << 8) + (control_data[14]) <= 1999){ //this might be wrong, but it still somehow works. Gives us SWA
+            //(control_data[15] << 8) + (control_data[14]);
+            runmotor(4);
+            __delay_ms(50);
+            return;
+        }
+        
+        char stop[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
+    
+        sendit(stop, 10);
+    
+        __delay_ms(60);
+        
         
         uint16_t left = rd_adc(1);
-        uint16_t right = rd_adc(2);
+        uint16_t right = rd_adc(2); //i switched these up
         uint16_t center = rd_adc(3);
         
         if (right < wlvl && center > blvl && left < wlvl){
@@ -136,21 +177,18 @@ void follow(uint8_t sw){
         }
         
         else{
-            runmotor(4);
+            runmotor(3);
+            
+        }
         }
         
         GetInfoController();
         
         
         
-        if((control_data[15] << 8) + (control_data[16]) <= 1999){ //this might be wrong, but it still somehow works. Gives us SWA
-            //(control_data[15] << 8) + (control_data[14]);
-            runmotor(4);
-            __delay_ms(50);
-            return;
-        }
+        
         
         
     }
     
-}
+//}

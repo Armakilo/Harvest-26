@@ -163,7 +163,7 @@ void main(void)
     //loop for tx data
     
     SPISetup();
-    
+    GetUID();
     
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
@@ -216,8 +216,8 @@ void main(void)
                 motor(control_data);
                 SWD = ((control_data[21] << 8) + control_data[20]);
                 SWC = ((control_data[19] << 8) + control_data[18]);
-                SWA = (control_data[15] << 8) + (control_data[16]); //is this wrong?, check this out later. Yeah this is wrong but I want to wait till we have things assembled to test it
-                // Should be SWA = (control_data[15] << 8) + (control_data[14]);
+                // prev SWA = (control_data[15] << 8) + (control_data[16]); //is this wrong?, check this out later. Yeah this is wrong but I want to wait till we have things assembled to test it
+                SWA = (control_data[15] << 8) + (control_data[14]);
                 SWB = (control_data[17] << 8) + control_data[16];
                 VRA = (control_data[23] << 8) + control_data[22];
                 ShootLaser();
@@ -226,27 +226,29 @@ void main(void)
         }
         
         
+        
+        
         if(SWA >= 2000){
             LATAbits.LATA2 = 1; //LED on
             __delay_ms(500);
-            follow(SWA);
+            follow();
             LATAbits.LATA2 = 0; //LED off
         }
         
-        if((prev_SWB != SWB) && (VRA > 100) && (VRA <= 1200)){ //VRA Left -> RFID
-            LATAbits.LATA0 = 1;
-            __delay_ms(500);
-            RFID();
-            LATAbits.LATA0 = 0;
-                    
-        }
-        
-        if(prev_SWB != SWB && (VRA > 100) && (VRA >= 1800) ){ //check on the situation with what VRA reads, this is just a guess
-            LATAbits.LATA1 = 1;
-            __delay_ms(500);
-            //Alien Frequency Function goes here
-            LATAbits.LATA1 = 0;
-        }
+//        if((prev_SWB != SWB) && (VRA > 100) && (VRA <= 1200)){ //VRA Left -> RFID
+//            LATAbits.LATA0 = 1;
+//            __delay_ms(500);
+//            GetUID();
+//            LATAbits.LATA0 = 0;
+//                    
+//        }
+//        
+//        if(prev_SWB != SWB && (VRA > 100) && (VRA >= 1800) ){ //check on the situation with what VRA reads, this is just a guess
+//            LATAbits.LATA1 = 1;
+//            __delay_ms(500);
+//            //Alien Frequency Function goes here
+//            LATAbits.LATA1 = 0;
+//        }
      
         
     

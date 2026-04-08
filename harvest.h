@@ -71,11 +71,11 @@ void SetPCUInfo();
 
 void motor(char data[26]);
 
-void follow(uint8_t sw);
+void follow();
 
 void sendit(char it[], int it_size);
 
-void RFID(void);
+
 
 #endif	/* HARVEST_TASKS_H */
 
