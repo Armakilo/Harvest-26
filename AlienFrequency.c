@@ -62,11 +62,67 @@ void FFT(Complex *x, int N);
 volatile uint16_t fund = 0;
 volatile uint16_t prev_fund = 0;
 volatile uint16_t final_fund = 0;
+volatile int cs_flag = 0;
+volatile uint8_t byte[2];
+volatile uint8_t dummy = 0;
+volatile int index = 0;
+
+void __attribute__((__interrupt__, no_auto_psv)) _CNInterrupt(void)
+{
+    if (PORTBbits.RB0 == 0) // Falling CS
+    {
+        SPI1STATbits.SPIROV = 0;
+        dummy = SPI1BUF;     
+        index = 1;           
+        SPI1BUF = byte[0];   
+    }
+    else // Rising CS
+    {
+        index = 0;
+    }
+    IFS1bits.CNIF = 0;
+}
 
 void __attribute__((__interrupt__, no_auto_psv)) _SPI1Interrupt(void)
 {
+    SPI1STATbits.SPIROV = 0;
+    dummy = SPI1BUF;
+    SPI1BUF = byte[index];
+    index++;
+    if (index >= 2)
+        index = 0;
     IFS0bits.SPI1IF = 0;
 }
+
+//void __attribute__((__interrupt__, no_auto_psv)) _SPI1Interrupt(void)
+//{
+//    SPI1STATbits.SPIROV = 0;
+//    
+//    dummy = SPI1BUF;  
+//    SPI1BUF = byte[index]; 
+//    
+//    index = index + 1;
+//    if (index >= 2)
+//    {
+//        index = 0;
+//    }
+//    
+//    IFS0bits.SPI1IF = 0;
+//}
+//
+//void __attribute__((__interrupt__, no_auto_psv)) _CNInterrupt(void)
+//{
+//    if (PORTBbits.RB0 == 0)  // falling edge = CS asserted, transaction starting
+//    {
+//        index = 0;
+//        SPI1BUF = byte[0];   // preload first byte before master clocks
+//    }
+//    else  // rising edge = transaction done, just sanity reset
+//    {
+//        index = 0;
+//    }
+//    IFS1bits.CNIF = 0;
+//}
 
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 {
@@ -263,20 +319,30 @@ void FFT(Complex *x, int N)
 int main(void) {
     ADC_setup();
     
+    // CN interrupt setup
+    CNENBbits.CNIEB0 = 1;
+    IPC4bits.CNIP = 3;
+    IFS1bits.CNIF = 0;
+    IEC1bits.CNIE = 1;
+    
+    // SPI setup
     SPI1BUF = 0;
     IFS0bits.SPI1IF = 0;
     
     IEC0bits.SPI1IE = 0; 
     SPI1CON1bits.DISSCK = 0;
     SPI1CON1bits.DISSDO = 0; 
-    SPI1CON1bits.MODE16 = 1;
+    SPI1CON1bits.MODE16 = 0;
     SPI1CON1bits.SMP = 0;
     
+    IPC2bits.SPI1IP = 3; 
+    IFS0bits.SPI1IF = 0;
+    IEC0bits.SPI1IE = 1;
     
     SPI1CON1bits.CKE = 0; 
     SPI1CON1bits.CKP = 0; 
     SPI1CON1bits.MSTEN = 0; 
-    SPI1STATbits.SPIROV=0; 
+    SPI1STATbits.SPIROV = 0; 
     SPI1STATbits.SPIEN = 1; 
     
     
@@ -287,10 +353,7 @@ int main(void) {
     TRISBbits.TRISB0 = 1;
     
     while(1)
-    {
-
-        while(PORTBbits.RB0 == 0){}
-        
+    {        
         if(count == samples)
         {     
             IEC0bits.AD1IE = 0;
@@ -304,10 +367,18 @@ int main(void) {
             }
             else 
             {
-                final_fund = 0xFFFF;
+                final_fund = 0x8F37;
             }
+            
+            uint16_t final= final_fund;
        
-            count = 0;
+            IEC0bits.SPI1IE = 0;
+            byte[1] = (final) & 0xFF;
+            byte[0] = (final_fund >> 8) & 0xFF;
+            IEC0bits.SPI1IE = 1;
+
+                        
+            count = 0;       
             IEC0bits.AD1IE = 1;
         }
         
