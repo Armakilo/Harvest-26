@@ -63,6 +63,10 @@ volatile uint16_t fund = 0;
 volatile uint16_t prev_fund = 0;
 volatile uint16_t final_fund = 0;
 
+void __attribute__((__interrupt__, no_auto_psv)) _SPI1Interrupt(void)
+{
+    IFS0bits.SPI1IF = 0;
+}
 
 void __attribute__((interrupt, no_auto_psv)) _AD1Interrupt(void)
 {
@@ -259,19 +263,33 @@ void FFT(Complex *x, int N)
 int main(void) {
     ADC_setup();
     
+    SPI1BUF = 0;
+    IFS0bits.SPI1IF = 0;
     
-  
-    SPI1STATbits.SPIEN = 0;
+    IEC0bits.SPI1IE = 0; 
+    SPI1CON1bits.DISSCK = 0;
+    SPI1CON1bits.DISSDO = 0; 
+    SPI1CON1bits.MODE16 = 1;
+    SPI1CON1bits.SMP = 0;
     
-    SPI1CON1bits.MSTEN = 0;
-    SPI1CON1bits.SSEN = 1;
-    SPI1CON1bits.CKP = 0;
-    SPI1CON1bits.CKE = 1;
     
-    SPI1STATbits.SPIEN = 1;
+    SPI1CON1bits.CKE = 0; 
+    SPI1CON1bits.CKP = 0; 
+    SPI1CON1bits.MSTEN = 0; 
+    SPI1STATbits.SPIROV=0; 
+    SPI1STATbits.SPIEN = 1; 
+    
+    
+    IFS0bits.SPI1IF = 0; 
+    IEC0bits.SPI1IE = 1;
+
+    ANSELBbits.ANSB0 = 0;
+    TRISBbits.TRISB0 = 1;
     
     while(1)
     {
+
+        while(PORTBbits.RB0 == 0){}
         
         if(count == samples)
         {     
