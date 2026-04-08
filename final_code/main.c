@@ -62,6 +62,7 @@ volatile int SWD = 0;
 volatile uint8_t shield_code_flag = 0;
 volatile uint8_t repair_code_flag = 0;
 volatile int VRA = 0;
+volatile uint16_t fund_freq = 0;
 
 
 
@@ -120,6 +121,18 @@ void __interrupt() ISR(void)
 
 // we could try resetting various bits(SPEN, TXEN, etc if it becomes a problem in the future)
 
+uint32_t getfund()
+{
+    fund_freq = 0;
+    
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
+    
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF);
+}
 
 void main(void) 
 {
@@ -178,6 +191,9 @@ void main(void)
             LATA = 0xF;
 			SetPCUInfo();
             GetInfoController();
+            LATCbits.LATC7 = 0;
+            getfund();
+            LATCbits.LATC7 = 1;
             while(PORTAbits.RA5 == 0){}
             
         }
