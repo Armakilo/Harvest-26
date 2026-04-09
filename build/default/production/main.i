@@ -19965,9 +19965,9 @@ void getfund()
     while(SSP1STATbits.BF == 0){};
     fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
 
-
-
-
+    LATCbits.LATC3 = 1;
+    _delay((unsigned long)((5)*(32000000/4000.0)));
+    LATCbits.LATC3 = 0;
 
     SSP1BUF = 0xff;
     while(SSP1STATbits.BF == 0){};
@@ -20040,6 +20040,7 @@ void main(void)
         {
             LATA = 0xF;
    SetPCUInfo();
+            _delay((unsigned long)((5)*(32000000/4000.0)));
             GetInfoController();
             while(PORTAbits.RA5 == 0){}
 
@@ -20071,7 +20072,6 @@ void main(void)
                 }
 
                 GetInfoController();
-
             }
             else if (receive_flag == 3)
             {
@@ -20088,7 +20088,7 @@ void main(void)
             }
         }
 
-        SWD = ((control_data[21] << 8) + control_data[20]);
+
 
 
         if(SWA > 1900){
@@ -20099,33 +20099,33 @@ void main(void)
 
         }
 
-        if((SWB > 1900)){
+        if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){
             LATAbits.LATA0 = 1;
-
-            volatile uint8_t checksum = GetUID();
+            SPISetup();
             _delay((unsigned long)((500)*(32000000/4000.0)));
+            volatile uint8_t checksum = GetUID();
             LATAbits.LATA0 = 0;
-
-
+            vra_flag = 1;
 
         }
 
-        if((SWD > 1900)){
+        if((SWB > 1900) && (VRA < 1500) && (vra_flag == 0) ){
             LATAbits.LATA1 = 1;
-
+            _delay((unsigned long)((500)*(32000000/4000.0)));
             getfund();
 
             do{
                 getfund();
                 _delay((unsigned long)((50)*(32000000/4000.0)));
-            }while(fund_freq == 0xFFFF);
+            }while(fund_freq == 0x8F37);
             sendfund();
-            _delay((unsigned long)((1000)*(32000000/4000.0)));
             LATAbits.LATA1 = 0;
-
-
+            vra_flag = 1;
         }
 
+        if(SWB < 1100){
+            vra_flag = 0;
+        }
 
     }
 

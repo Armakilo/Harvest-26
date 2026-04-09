@@ -206,6 +206,7 @@ void main(void)
         {
             LATA = 0xF;
 			SetPCUInfo();
+            __delay_ms(5);
             GetInfoController();
             while(PORTAbits.RA5 == 0){}
             
@@ -266,6 +267,7 @@ void main(void)
         
         if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){ //VRA Left -> RFID
             LATAbits.LATA0 = 1;
+            SPISetup();
             __delay_ms(500);
             volatile uint8_t checksum = GetUID();
             LATAbits.LATA0 = 0;

@@ -43,6 +43,7 @@ void ShootLaser()
                 {
                     ShootRepair();
                 }
+                ShootRepair();
             }
         }
 }

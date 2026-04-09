@@ -19892,6 +19892,7 @@ void SPIWriteByte(uint8_t data)
 
     SSP1BUF = data;
     while(SSP1STATbits.BF == 0){};
+    _delay((unsigned long)((1)*(32000000/4000.0)));
     return;
 }
 
@@ -19904,7 +19905,7 @@ void writeRegister(uint8_t address, uint8_t data)
     SPIWriteByte(data);
     LATCbits.LATC7 = 1;
 
-    _delay((unsigned long)((1)*(32000000/4000.0)));
+
 
 
 
@@ -19998,8 +19999,7 @@ uint8_t GetUID(){
 
 
 
-    ANSELAbits.ANSA1 = 0;
-    TRISAbits.TRISA1 = 1;
+
 
 
     uint8_t response[10];
