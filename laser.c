@@ -24,8 +24,8 @@ void ShootRepair()
 
 void ShootLaser()
 {
-    //if (SWD > 1600)
-        
+    if (SWD > 1600)
+        {
             if (SWC > 1800)
             {
                 if (!shield_code_flag)
@@ -37,9 +37,12 @@ void ShootLaser()
             {
                 ShootAttack();
             }
-            else if (SWC < 1200)
+            else if (SWC < 200)
             {
-                
+                if (!repair_code_flag);
+                {
+                    ShootRepair();
+                }
             }
-        
+        }
 }

@@ -55,6 +55,7 @@ void SPIWriteByte(uint8_t data)
     
     SSP1BUF = data;
     while(SSP1STATbits.BF == 0){}; //data transmit in pragress   
+    __delay_ms(1);
     return;
 }
 
@@ -67,7 +68,7 @@ void writeRegister(uint8_t address, uint8_t data)
     SPIWriteByte(data);
     LATCbits.LATC7 = 1;
     
-    __delay_ms(1); //could take this out
+    //__delay_ms(1); //could take this out
     
     //can put /CS high to end, or start a new ctrl byte.
       
@@ -161,8 +162,7 @@ uint8_t GetUID(){//RFID_SPIsetup() { //might have to
     
     
      //setup status LED
-    ANSELAbits.ANSA1 = 0;
-    TRISAbits.TRISA1 = 1; //input
+    
     
    
     uint8_t response[10];
