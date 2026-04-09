@@ -131,6 +131,10 @@ void getfund()
     while(SSP1STATbits.BF == 0){};
     fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
     
+    LATCbits.LATC3 = 1;
+    __delay_ms(5);
+    LATCbits.LATC3 = 0;
+    
     SSP1BUF = 0xff;
     while(SSP1STATbits.BF == 0){};
     fund_freq = fund_freq | ((uint16_t)SSP1BUF);
@@ -260,19 +264,24 @@ void main(void)
             
         }
         
-        if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){ //VRA Left -> RFID
+        if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){ //VRA Left -> RFID
             LATAbits.LATA0 = 1;
             __delay_ms(500);
-            GetUID();
+            volatile uint8_t checksum = GetUID();
             LATAbits.LATA0 = 0;
             vra_flag = 1;
                     
         }
         
-        if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){ //check on the situation with what VRA reads, this is just a guess
+        if((SWB > 1900) && (VRA < 1500) && (vra_flag == 0) ){ //check on the situation with what VRA reads, this is just a guess
             LATAbits.LATA1 = 1;
             __delay_ms(500);
             getfund();
+            
+            do{
+                getfund();
+                __delay_ms(50);
+            }while(fund_freq == 0x8F37);
             sendfund();
             LATAbits.LATA1 = 0;
             vra_flag = 1;

@@ -19855,7 +19855,7 @@ extern volatile uint8_t repair_code_flag;
 
 
 
-void GetUID();
+uint8_t GetUID();
 
 void SPISetup();
 
@@ -20094,19 +20094,24 @@ void main(void)
 
         }
 
-        if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){
+        if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){
             LATAbits.LATA0 = 1;
             _delay((unsigned long)((500)*(32000000/4000.0)));
-            GetUID();
+            volatile uint8_t checksum = GetUID();
             LATAbits.LATA0 = 0;
             vra_flag = 1;
 
         }
 
-        if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){
+        if((SWB > 1900) && (VRA < 1500) && (vra_flag == 0) ){
             LATAbits.LATA1 = 1;
             _delay((unsigned long)((500)*(32000000/4000.0)));
             getfund();
+
+            do{
+                getfund();
+                _delay((unsigned long)((50)*(32000000/4000.0)));
+            }while(fund_freq == 0x8F37);
             sendfund();
             LATAbits.LATA1 = 0;
             vra_flag = 1;

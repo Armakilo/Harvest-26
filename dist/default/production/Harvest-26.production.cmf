@@ -11,54 +11,54 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
+$C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
 reset_vec CODE 0 0 0 2 2 1
 end_init CODE 0 C0 C0 2 2 1
 config CONFIG 4 8007 8007 5 2 1
 $dist/default/production\Harvest-26.production.o
 cinit CODE 0 C2 C2 40 2 1
-text1 CODE 0 FBC FBC 1D 2 1
-text2 CODE 0 3F7 3F7 107 2 1
-text3 CODE 0 65B 65B 5B 2 1
-text4 CODE 0 7AA 7AA 31 2 1
+text1 CODE 0 F9B F9B 1D 2 1
+text2 CODE 0 411 411 107 2 1
+text3 CODE 0 675 675 5B 2 1
+text4 CODE 0 7C4 7C4 31 2 1
 text5 CODE 0 102 102 19D 2 1
-text6 CODE 0 5E6 5E6 75 2 1
-text7 CODE 0 744 744 34 2 1
-text8 CODE 0 F8B F8B 18 2 1
-text9 CODE 0 6B6 6B6 58 2 1
-text10 CODE 0 F73 F73 18 2 1
-text11 CODE 0 F5B F5B 18 2 1
-text12 CODE 0 F43 F43 18 2 1
-text13 CODE 0 F2B F2B 18 2 1
+text6 CODE 0 601 601 74 2 1
+text7 CODE 0 75E 75E 34 2 1
+text8 CODE 0 F6A F6A 18 2 1
+text9 CODE 0 6D0 6D0 58 2 1
+text10 CODE 0 F52 F52 18 2 1
+text11 CODE 0 F3A F3A 18 2 1
+text12 CODE 0 F22 F22 18 2 1
+text13 CODE 0 F0A F0A 18 2 1
 text14 CODE 0 FD9 FD9 27 2 1
-text15 CODE 0 4FE 4FE E8 2 1
-text16 CODE 0 EE5 EE5 D 2 1
-text17 CODE 0 EF2 EF2 10 2 1
-text18 CODE 0 FA3 FA3 19 2 1
-text19 CODE 0 ED5 ED5 7 2 1
-text20 CODE 0 F02 F02 11 2 1
-text21 CODE 0 ECE ECE 7 2 1
-text22 CODE 0 EDC EDC 9 2 1
-text23 CODE 0 F13 F13 18 2 1
-text24 CODE 0 7DB 7DB 21 2 1
-idataCOMMON CODE 0 7FC 7FC 2 2 1
-maintext CODE 0 29F 29F 158 2 1
+text15 CODE 0 518 518 E9 2 1
+text16 CODE 0 EC4 EC4 D 2 1
+text17 CODE 0 ED1 ED1 10 2 1
+text18 CODE 0 F82 F82 19 2 1
+text19 CODE 0 EBD EBD 7 2 1
+text20 CODE 0 EE1 EE1 11 2 1
+text21 CODE 0 EB6 EB6 7 2 1
+text22 CODE 0 7F5 7F5 9 2 1
+text23 CODE 0 EF2 EF2 18 2 1
+text24 CODE 0 FB8 FB8 21 2 1
+idataCOMMON CODE 0 7FE 7FE 2 2 1
+maintext CODE 0 29F 29F 172 2 1
 cstackCOMMON COMMON 1 70 70 B 1 1
-cstackBANK0 BANK0 1 20 20 32 1 1
-inittext CODE 0 EC2 EC2 6 2 1
+cstackBANK0 BANK0 1 20 20 33 1 1
+inittext CODE 0 EAA EAA 6 2 1
 stringtext1 STRCODE 0 1000 1000 2 2 1
 stringtext2 STRCODE 0 1002 1002 2 2 1
 intentry CODE 0 4 4 BC 2 1
-bssBANK0 BANK0 1 52 52 16 1 1
+bssBANK0 BANK0 1 53 53 16 1 1
 bssBANK1 BANK1 1 D6 D6 1A 1 1
-idataBANK0 CODE 0 EC8 EC8 6 2 1
-idataBANK1 CODE 0 70E 70E 36 2 1
-idataBANK2 CODE 0 778 778 32 2 1
-dataBANK0 BANK0 1 68 68 6 1 1
+idataBANK0 CODE 0 EB0 EB0 6 2 1
+idataBANK1 CODE 0 728 728 36 2 1
+idataBANK2 CODE 0 792 792 32 2 1
+dataBANK0 BANK0 1 69 69 6 1 1
 dataBANK1 BANK1 1 A0 A0 36 1 1
 dataBANK2 BANK2 1 120 120 32 1 1
 dataCOMMON COMMON 1 7B 7B 2 1 1
-clrtext CODE 0 EBC EBC 6 2 1
+clrtext CODE 0 EA4 EA4 6 2 1
 config CONFIG 4 8007 8007 5 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -66,7 +66,7 @@ config CONFIG 4 8007 8007 5 2 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 6E-6F 1
+RAM 6F-6F 1
 RAM 152-16F 1
 RAM 1A0-1EF 1
 RAM 220-26F 1
@@ -78,7 +78,7 @@ RAM 4A0-4EF 1
 RAM 520-56F 1
 RAM 5A0-5EF 1
 RAM 620-64F 1
-BANK0 6E-6F 1
+BANK0 6F-6F 1
 BANK2 152-16F 1
 BANK3 1A0-1EF 1
 BANK4 220-26F 1
@@ -88,10 +88,10 @@ BANK7 3A0-3EF 1
 BANK8 420-46F 1
 BANK9 4A0-4EF 1
 CONST 2-3 2
-CONST 7FE-EBB 2
+CONST 800-EA3 2
 CONST 1004-1FFF 2
 ENTRY 2-3 2
-ENTRY 7FE-EBB 2
+ENTRY 800-EA3 2
 ENTRY 1004-1FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
@@ -117,7 +117,7 @@ SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 CODE 2-3 2
-CODE 7FE-EBB 2
+CODE 800-EA3 2
 CODE 1004-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -136,10 +136,10 @@ BIGRAM 2000-23EF 1
 COMMON 7D-7D 1
 EEDATA F000-F0FF 2
 STRCODE 2-3 2
-STRCODE 7FE-EBB 2
+STRCODE 800-EA3 2
 STRCODE 1004-1FFF 2
 STRING 2-3 2
-STRING 7FE-EBB 2
+STRING 800-EA3 2
 STRING 1004-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -155,58 +155,58 @@ STRING 1004-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Harvest-26.production.o
-C2 cinit CODE >6700:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-C2 cinit CODE >6703:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-C2 cinit CODE >6856:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-C5 cinit CODE >6857:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-C6 cinit CODE >6858:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-C9 cinit CODE >6859:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-CA cinit CODE >6863:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-CB cinit CODE >6864:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-CC cinit CODE >6865:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-CD cinit CODE >6866:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-CE cinit CODE >6867:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-CF cinit CODE >6868:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D0 cinit CODE >6869:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D1 cinit CODE >6870:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D2 cinit CODE >6871:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D3 cinit CODE >6872:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D6 cinit CODE >6876:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D7 cinit CODE >6877:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D8 cinit CODE >6878:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-D9 cinit CODE >6879:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-DA cinit CODE >6880:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-DB cinit CODE >6881:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-DC cinit CODE >6882:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-DD cinit CODE >6883:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-DE cinit CODE >6884:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-DF cinit CODE >6885:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E2 cinit CODE >6889:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E3 cinit CODE >6890:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E4 cinit CODE >6891:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E5 cinit CODE >6892:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E6 cinit CODE >6893:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E7 cinit CODE >6894:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E8 cinit CODE >6895:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-E9 cinit CODE >6896:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EA cinit CODE >6897:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EB cinit CODE >6898:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EE cinit CODE >6915:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EF cinit CODE >6916:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F0 cinit CODE >6917:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F1 cinit CODE >6918:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F2 cinit CODE >6919:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F3 cinit CODE >6920:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F6 cinit CODE >6924:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F7 cinit CODE >6925:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F8 cinit CODE >6926:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-F9 cinit CODE >6927:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-FA cinit CODE >6928:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-FB cinit CODE >6929:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-FE cinit CODE >6935:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-FE cinit CODE >6937:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-FF cinit CODE >6938:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-100 cinit CODE >6939:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
+C2 cinit CODE >6700:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+C2 cinit CODE >6703:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+C2 cinit CODE >6856:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+C5 cinit CODE >6857:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+C6 cinit CODE >6858:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+C9 cinit CODE >6859:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+CA cinit CODE >6863:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+CB cinit CODE >6864:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+CC cinit CODE >6865:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+CD cinit CODE >6866:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+CE cinit CODE >6867:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+CF cinit CODE >6868:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D0 cinit CODE >6869:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D1 cinit CODE >6870:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D2 cinit CODE >6871:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D3 cinit CODE >6872:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D6 cinit CODE >6876:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D7 cinit CODE >6877:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D8 cinit CODE >6878:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+D9 cinit CODE >6879:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+DA cinit CODE >6880:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+DB cinit CODE >6881:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+DC cinit CODE >6882:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+DD cinit CODE >6883:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+DE cinit CODE >6884:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+DF cinit CODE >6885:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E2 cinit CODE >6889:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E3 cinit CODE >6890:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E4 cinit CODE >6891:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E5 cinit CODE >6892:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E6 cinit CODE >6893:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E7 cinit CODE >6894:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E8 cinit CODE >6895:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+E9 cinit CODE >6896:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA cinit CODE >6897:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EB cinit CODE >6898:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EE cinit CODE >6915:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EF cinit CODE >6916:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F0 cinit CODE >6917:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F1 cinit CODE >6918:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F2 cinit CODE >6919:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F3 cinit CODE >6920:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F6 cinit CODE >6924:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F7 cinit CODE >6925:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F8 cinit CODE >6926:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+F9 cinit CODE >6927:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+FA cinit CODE >6928:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+FB cinit CODE >6929:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+FE cinit CODE >6935:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+FE cinit CODE >6937:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+FF cinit CODE >6938:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+100 cinit CODE >6939:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
 4 intentry CODE >69:C:\Users\w7yf6\Documents\Harvest-26\main.c
 A intentry CODE >71:C:\Users\w7yf6\Documents\Harvest-26\main.c
 F intentry CODE >72:C:\Users\w7yf6\Documents\Harvest-26\main.c
@@ -248,96 +248,97 @@ B3 intentry CODE >111:C:\Users\w7yf6\Documents\Harvest-26\main.c
 B6 intentry CODE >112:C:\Users\w7yf6\Documents\Harvest-26\main.c
 BA intentry CODE >113:C:\Users\w7yf6\Documents\Harvest-26\main.c
 BE intentry CODE >116:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7DB text24 CODE >11:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7DB text24 CODE >13:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7DE text24 CODE >14:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7E3 text24 CODE >15:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7E9 text24 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7F3 text24 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7F7 text24 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-7FB text24 CODE >18:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F13 text23 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F13 text23 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F21 text23 CODE >30:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F2A text23 CODE >31:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-EDC text22 CODE >53:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EDD text22 CODE >56:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EE0 text22 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EE4 text22 CODE >59:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-ECE text21 CODE >77:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-ECE text21 CODE >81:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-ED2 text21 CODE >83:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-ED4 text21 CODE >84:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F02 text20 CODE >86:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F03 text20 CODE >88:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F05 text20 CODE >89:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F0B text20 CODE >91:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F0F text20 CODE >92:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F11 text20 CODE >93:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F12 text20 CODE >94:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-ED5 text19 CODE >96:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-ED5 text19 CODE >98:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EDA text19 CODE >99:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EDB text19 CODE >101:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FA3 text18 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FA4 text18 CODE >63:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FA7 text18 CODE >65:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FA9 text18 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FAD text18 CODE >67:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FB1 text18 CODE >68:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FB3 text18 CODE >70:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-FBB text18 CODE >75:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EF2 text17 CODE >103:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EF3 text17 CODE >105:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EF8 text17 CODE >106:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EFB text17 CODE >107:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F01 text17 CODE >109:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EE5 text16 CODE >111:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EE5 text16 CODE >112:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EEB text16 CODE >113:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-EF1 text16 CODE >115:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-4FE text15 CODE >160:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-4FE text15 CODE >164:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-500 text15 CODE >165:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-502 text15 CODE >171:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-508 text15 CODE >176:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-50E text15 CODE >177:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-513 text15 CODE >178:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-519 text15 CODE >179:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-51F text15 CODE >180:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-525 text15 CODE >181:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-52B text15 CODE >183:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-531 text15 CODE >190:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-537 text15 CODE >191:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-53D text15 CODE >192:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-543 text15 CODE >194:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-546 text15 CODE >196:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-54C text15 CODE >198:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-54F text15 CODE >199:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-558 text15 CODE >200:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-562 text15 CODE >200:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-566 text15 CODE >200:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-56A text15 CODE >204:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-57C text15 CODE >208:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-582 text15 CODE >209:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-587 text15 CODE >211:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-58D text15 CODE >212:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-593 text15 CODE >214:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-596 text15 CODE >215:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-596 text15 CODE >217:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-59C text15 CODE >219:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-59F text15 CODE >220:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5A8 text15 CODE >221:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5B0 text15 CODE >221:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5B4 text15 CODE >221:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5B8 text15 CODE >223:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5C4 text15 CODE >223:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5C8 text15 CODE >225:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5D6 text15 CODE >226:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5D8 text15 CODE >227:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5DA text15 CODE >228:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5E3 text15 CODE >230:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-5E5 text15 CODE >233:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+FB8 text24 CODE >11:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FB8 text24 CODE >13:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FBB text24 CODE >14:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FC0 text24 CODE >15:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FC6 text24 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FD0 text24 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FD4 text24 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+FD8 text24 CODE >18:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+EF2 text23 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+EF2 text23 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F00 text23 CODE >30:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F09 text23 CODE >31:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+7F5 text22 CODE >53:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+7F6 text22 CODE >56:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+7F9 text22 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+7FD text22 CODE >59:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EB6 text21 CODE >77:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EB6 text21 CODE >81:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EBA text21 CODE >83:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EBC text21 CODE >84:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EE1 text20 CODE >86:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EE2 text20 CODE >88:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EE4 text20 CODE >89:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EEA text20 CODE >91:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EEE text20 CODE >92:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EF0 text20 CODE >93:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EF1 text20 CODE >94:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EBD text19 CODE >96:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EBD text19 CODE >98:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EC2 text19 CODE >99:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EC3 text19 CODE >101:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F82 text18 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F83 text18 CODE >63:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F86 text18 CODE >65:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F88 text18 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F8C text18 CODE >67:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F90 text18 CODE >68:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F92 text18 CODE >70:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+F9A text18 CODE >75:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+ED1 text17 CODE >103:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+ED2 text17 CODE >105:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+ED7 text17 CODE >106:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EDA text17 CODE >107:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EE0 text17 CODE >109:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EC4 text16 CODE >111:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+EC4 text16 CODE >112:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+ECA text16 CODE >113:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+ED0 text16 CODE >115:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+518 text15 CODE >160:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+518 text15 CODE >164:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+51A text15 CODE >165:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+51C text15 CODE >171:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+522 text15 CODE >176:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+528 text15 CODE >177:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+52D text15 CODE >178:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+533 text15 CODE >179:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+539 text15 CODE >180:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+53F text15 CODE >181:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+545 text15 CODE >183:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+54B text15 CODE >190:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+551 text15 CODE >191:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+557 text15 CODE >192:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+55D text15 CODE >194:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+560 text15 CODE >196:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+566 text15 CODE >198:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+569 text15 CODE >199:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+572 text15 CODE >200:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+57C text15 CODE >200:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+580 text15 CODE >200:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+584 text15 CODE >204:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+596 text15 CODE >208:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+59C text15 CODE >209:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5A1 text15 CODE >211:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5A7 text15 CODE >212:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5AD text15 CODE >214:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5B0 text15 CODE >215:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5B0 text15 CODE >217:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5B6 text15 CODE >219:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5B9 text15 CODE >220:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5C2 text15 CODE >221:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5CA text15 CODE >221:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5CE text15 CODE >221:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5D2 text15 CODE >223:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5DE text15 CODE >223:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5E2 text15 CODE >225:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5F0 text15 CODE >226:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5F2 text15 CODE >227:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5F4 text15 CODE >228:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5FD text15 CODE >232:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+5FF text15 CODE >234:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
+600 text15 CODE >235:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 FD9 text14 CODE >117:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 FD9 text14 CODE >121:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 FDB text14 CODE >125:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
@@ -359,87 +360,87 @@ FF8 text14 CODE >153:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 FFC text14 CODE >154:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 FFE text14 CODE >155:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
 FFF text14 CODE >157:C:\Users\w7yf6\Documents\Harvest-26\RFID.c
-F2B text13 CODE >33:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F2B text13 CODE >35:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F39 text13 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F42 text13 CODE >37:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F43 text12 CODE >13:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F43 text12 CODE >15:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F51 text12 CODE >16:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F5A text12 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F5B text11 CODE >19:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F5B text11 CODE >21:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F69 text11 CODE >22:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F72 text11 CODE >23:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F73 text10 CODE >7:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F73 text10 CODE >9:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F81 text10 CODE >10:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F8A text10 CODE >11:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6B6 text9 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6B6 text9 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6BC text9 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6C0 text9 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6C4 text9 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6CA text9 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6CE text9 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6D2 text9 CODE >31:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6D8 text9 CODE >33:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6DC text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6E2 text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6E6 text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6F0 text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6F4 text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6F8 text9 CODE >38:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6FB text9 CODE >39:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-6FC text9 CODE >40:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-702 text9 CODE >40:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-706 text9 CODE >40:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-70A text9 CODE >44:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-70D text9 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\laser.c
-F8B text8 CODE >20:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F8B text8 CODE >22:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-F99 text8 CODE >23:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-FA2 text8 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-744 text7 CODE >16:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-745 text7 CODE >20:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-74A text7 CODE >21:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-74D text7 CODE >22:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-74E text7 CODE >24:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-754 text7 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-757 text7 CODE >26:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-758 text7 CODE >28:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-75E text7 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-761 text7 CODE >32:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-769 text7 CODE >34:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-76B text7 CODE >35:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-76F text7 CODE >37:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-773 text7 CODE >38:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-777 text7 CODE >39:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-5E6 text6 CODE >42:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-5E8 text6 CODE >46:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-5F6 text6 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-5FF text6 CODE >50:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-60B text6 CODE >52:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-619 text6 CODE >53:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-61F text6 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-621 text6 CODE >55:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-623 text6 CODE >56:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-625 text6 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-627 text6 CODE >58:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-628 text6 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-62E text6 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-630 text6 CODE >62:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-632 text6 CODE >63:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-634 text6 CODE >64:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-636 text6 CODE >65:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-637 text6 CODE >67:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-63D text6 CODE >68:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-63F text6 CODE >69:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-641 text6 CODE >70:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-643 text6 CODE >71:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-645 text6 CODE >77:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-64E text6 CODE >78:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-65A text6 CODE >95:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+F0A text13 CODE >33:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F0A text13 CODE >35:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F18 text13 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F21 text13 CODE >37:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F22 text12 CODE >13:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F22 text12 CODE >15:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F30 text12 CODE >16:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F39 text12 CODE >17:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F3A text11 CODE >19:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F3A text11 CODE >21:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F48 text11 CODE >22:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F51 text11 CODE >23:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F52 text10 CODE >7:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F52 text10 CODE >9:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F60 text10 CODE >10:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F69 text10 CODE >11:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6D0 text9 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6D0 text9 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6D6 text9 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6DA text9 CODE >27:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6DE text9 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6E4 text9 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6E8 text9 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6EC text9 CODE >31:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6F2 text9 CODE >33:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6F6 text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+6FC text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+700 text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+70A text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+70E text9 CODE >36:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+712 text9 CODE >38:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+715 text9 CODE >39:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+716 text9 CODE >40:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+71C text9 CODE >40:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+720 text9 CODE >40:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+724 text9 CODE >44:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+727 text9 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\laser.c
+F6A text8 CODE >20:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F6A text8 CODE >22:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F78 text8 CODE >23:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F81 text8 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+75E text7 CODE >16:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+75F text7 CODE >20:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+764 text7 CODE >21:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+767 text7 CODE >22:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+768 text7 CODE >24:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+76E text7 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+771 text7 CODE >26:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+772 text7 CODE >28:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+778 text7 CODE >29:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+77B text7 CODE >32:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+783 text7 CODE >34:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+785 text7 CODE >35:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+789 text7 CODE >37:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+78D text7 CODE >38:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+791 text7 CODE >39:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+601 text6 CODE >42:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+603 text6 CODE >46:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+611 text6 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+61A text6 CODE >50:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+626 text6 CODE >52:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+634 text6 CODE >53:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+63A text6 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+63C text6 CODE >55:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+63E text6 CODE >56:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+640 text6 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+642 text6 CODE >58:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+643 text6 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+649 text6 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+64B text6 CODE >62:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+64D text6 CODE >63:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+64F text6 CODE >64:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+651 text6 CODE >65:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+652 text6 CODE >67:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+658 text6 CODE >68:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+65A text6 CODE >69:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+65C text6 CODE >70:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+65E text6 CODE >71:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+660 text6 CODE >77:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+669 text6 CODE >78:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
+674 text6 CODE >95:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 102 text5 CODE >99:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 102 text5 CODE >106:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 105 text5 CODE >107:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
@@ -508,103 +509,103 @@ FA2 text8 CODE >25:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
 298 text5 CODE >177:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 299 text5 CODE >180:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
 29E text5 CODE >192:C:\Users\w7yf6\Documents\Harvest-26\linefollower.c
-7AA text4 CODE >124:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7AA text4 CODE >126:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7AC text4 CODE >128:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7AE text4 CODE >130:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7B1 text4 CODE >131:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7B5 text4 CODE >132:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7C6 text4 CODE >134:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7C9 text4 CODE >135:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7CD text4 CODE >136:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7D9 text4 CODE >138:C:\Users\w7yf6\Documents\Harvest-26\main.c
-7DA text4 CODE >139:C:\Users\w7yf6\Documents\Harvest-26\main.c
-65B text3 CODE >5:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-65B text3 CODE >13:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-65C text3 CODE >14:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-660 text3 CODE >15:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-663 text3 CODE >15:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-665 text3 CODE >16:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-667 text3 CODE >18:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-66B text3 CODE >19:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-66E text3 CODE >19:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-670 text3 CODE >20:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-672 text3 CODE >22:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-674 text3 CODE >23:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-67A text3 CODE >24:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-67C text3 CODE >25:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-67D text3 CODE >26:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-682 text3 CODE >27:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-684 text3 CODE >25:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-688 text3 CODE >30:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-68D text3 CODE >31:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-68F text3 CODE >31:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-693 text3 CODE >31:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-697 text3 CODE >32:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-69B text3 CODE >33:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-69C text3 CODE >35:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-6A1 text3 CODE >36:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-6A7 text3 CODE >38:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-6AC text3 CODE >39:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-6AF text3 CODE >39:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-6B1 text3 CODE >40:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-6B5 text3 CODE >41:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
-3F7 text2 CODE >39:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-3F7 text2 CODE >41:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-3F7 text2 CODE >42:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-3FA text2 CODE >43:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-3FC text2 CODE >44:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-3FE text2 CODE >45:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-40C text2 CODE >46:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-426 text2 CODE >47:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-440 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-445 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-449 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-453 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-457 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-45F text2 CODE >49:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-465 text2 CODE >49:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-469 text2 CODE >49:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-46D text2 CODE >51:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-472 text2 CODE >52:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-478 text2 CODE >53:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-479 text2 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-47F text2 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-483 text2 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-487 text2 CODE >56:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-48C text2 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-492 text2 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-495 text2 CODE >58:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-495 text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-49B text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-49F text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4A9 text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4AD text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4B5 text2 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4BB text2 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4BF text2 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4C3 text2 CODE >63:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4C8 text2 CODE >64:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4CE text2 CODE >65:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4CF text2 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4D5 text2 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4D9 text2 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4DD text2 CODE >68:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4E2 text2 CODE >69:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4E8 text2 CODE >69:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4EB text2 CODE >70:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4EB text2 CODE >72:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4EE text2 CODE >73:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4F0 text2 CODE >74:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4F2 text2 CODE >75:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4F4 text2 CODE >77:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-4FD text2 CODE >78:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
-FBC text1 CODE >141:C:\Users\w7yf6\Documents\Harvest-26\main.c
-FBC text1 CODE >143:C:\Users\w7yf6\Documents\Harvest-26\main.c
-FCA text1 CODE >144:C:\Users\w7yf6\Documents\Harvest-26\main.c
-FCD text1 CODE >145:C:\Users\w7yf6\Documents\Harvest-26\main.c
-FCF text1 CODE >146:C:\Users\w7yf6\Documents\Harvest-26\main.c
-FD8 text1 CODE >147:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7C4 text4 CODE >124:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7C4 text4 CODE >126:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7C6 text4 CODE >128:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7C8 text4 CODE >130:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7CB text4 CODE >131:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7CF text4 CODE >132:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7E0 text4 CODE >134:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7E3 text4 CODE >135:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7E7 text4 CODE >136:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7F3 text4 CODE >138:C:\Users\w7yf6\Documents\Harvest-26\main.c
+7F4 text4 CODE >139:C:\Users\w7yf6\Documents\Harvest-26\main.c
+675 text3 CODE >5:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+675 text3 CODE >13:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+676 text3 CODE >14:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+67A text3 CODE >15:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+67D text3 CODE >15:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+67F text3 CODE >16:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+681 text3 CODE >18:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+685 text3 CODE >19:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+688 text3 CODE >19:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+68A text3 CODE >20:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+68C text3 CODE >22:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+68E text3 CODE >23:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+694 text3 CODE >24:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+696 text3 CODE >25:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+697 text3 CODE >26:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+69C text3 CODE >27:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+69E text3 CODE >25:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6A2 text3 CODE >30:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6A7 text3 CODE >31:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6A9 text3 CODE >31:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6AD text3 CODE >31:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6B1 text3 CODE >32:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6B5 text3 CODE >33:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6B6 text3 CODE >35:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6BB text3 CODE >36:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6C1 text3 CODE >38:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6C6 text3 CODE >39:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6C9 text3 CODE >39:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6CB text3 CODE >40:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+6CF text3 CODE >41:C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+411 text2 CODE >39:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+411 text2 CODE >41:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+411 text2 CODE >42:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+414 text2 CODE >43:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+416 text2 CODE >44:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+418 text2 CODE >45:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+426 text2 CODE >46:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+440 text2 CODE >47:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+45A text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+45F text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+463 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+46D text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+471 text2 CODE >48:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+479 text2 CODE >49:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+47F text2 CODE >49:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+483 text2 CODE >49:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+487 text2 CODE >51:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+48C text2 CODE >52:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+492 text2 CODE >53:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+493 text2 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+499 text2 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+49D text2 CODE >54:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4A1 text2 CODE >56:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4A6 text2 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4AC text2 CODE >57:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4AF text2 CODE >58:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4AF text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4B5 text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4B9 text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4C3 text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4C7 text2 CODE >60:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4CF text2 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4D5 text2 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4D9 text2 CODE >61:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4DD text2 CODE >63:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4E2 text2 CODE >64:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4E8 text2 CODE >65:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4E9 text2 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4EF text2 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4F3 text2 CODE >66:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4F7 text2 CODE >68:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+4FC text2 CODE >69:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+502 text2 CODE >69:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+505 text2 CODE >70:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+505 text2 CODE >72:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+508 text2 CODE >73:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+50A text2 CODE >74:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+50C text2 CODE >75:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+50E text2 CODE >77:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+517 text2 CODE >78:C:\Users\w7yf6\Documents\Harvest-26\misc_funcs.c
+F9B text1 CODE >141:C:\Users\w7yf6\Documents\Harvest-26\main.c
+F9B text1 CODE >143:C:\Users\w7yf6\Documents\Harvest-26\main.c
+FA9 text1 CODE >144:C:\Users\w7yf6\Documents\Harvest-26\main.c
+FAC text1 CODE >145:C:\Users\w7yf6\Documents\Harvest-26\main.c
+FAE text1 CODE >146:C:\Users\w7yf6\Documents\Harvest-26\main.c
+FB7 text1 CODE >147:C:\Users\w7yf6\Documents\Harvest-26\main.c
 29F maintext CODE >149:C:\Users\w7yf6\Documents\Harvest-26\main.c
 29F maintext CODE >151:C:\Users\w7yf6\Documents\Harvest-26\main.c
 2A1 maintext CODE >153:C:\Users\w7yf6\Documents\Harvest-26\main.c
@@ -678,39 +679,43 @@ FD8 text1 CODE >147:C:\Users\w7yf6\Documents\Harvest-26\main.c
 395 maintext CODE >264:C:\Users\w7yf6\Documents\Harvest-26\main.c
 396 maintext CODE >265:C:\Users\w7yf6\Documents\Harvest-26\main.c
 3A3 maintext CODE >266:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3A6 maintext CODE >267:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3A8 maintext CODE >268:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3AA maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3B0 maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3B4 maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3BE maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3C2 maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3CC maintext CODE >273:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3CD maintext CODE >274:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3DA maintext CODE >275:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3DD maintext CODE >276:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3E0 maintext CODE >277:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3E2 maintext CODE >278:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3E4 maintext CODE >281:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3EA maintext CODE >281:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3EE maintext CODE >281:C:\Users\w7yf6\Documents\Harvest-26\main.c
-3F2 maintext CODE >282:C:\Users\w7yf6\Documents\Harvest-26\main.c
-EBC clrtext CODE >6904:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EBC clrtext CODE >6905:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EBD clrtext CODE >6906:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EBD clrtext CODE >6907:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EBE clrtext CODE >6908:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EBF clrtext CODE >6909:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC0 clrtext CODE >6910:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC1 clrtext CODE >6911:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC2 inittext CODE >6845:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC2 inittext CODE >6846:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC3 inittext CODE >6847:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC3 inittext CODE >6848:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC4 inittext CODE >6849:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC5 inittext CODE >6850:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC6 inittext CODE >6851:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
-EC7 inittext CODE >6852:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1.s
+3A8 maintext CODE >267:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3A9 maintext CODE >268:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3AB maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3B1 maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3B5 maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3BF maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3C3 maintext CODE >272:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3CD maintext CODE >273:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3CE maintext CODE >274:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3DB maintext CODE >275:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3DE maintext CODE >278:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3E1 maintext CODE >279:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3ED maintext CODE >280:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3F1 maintext CODE >280:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3F7 maintext CODE >281:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3FA maintext CODE >282:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3FC maintext CODE >283:C:\Users\w7yf6\Documents\Harvest-26\main.c
+3FE maintext CODE >286:C:\Users\w7yf6\Documents\Harvest-26\main.c
+404 maintext CODE >286:C:\Users\w7yf6\Documents\Harvest-26\main.c
+408 maintext CODE >286:C:\Users\w7yf6\Documents\Harvest-26\main.c
+40C maintext CODE >287:C:\Users\w7yf6\Documents\Harvest-26\main.c
+EA4 clrtext CODE >6904:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA4 clrtext CODE >6905:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA5 clrtext CODE >6906:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA5 clrtext CODE >6907:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA6 clrtext CODE >6908:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA7 clrtext CODE >6909:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA8 clrtext CODE >6910:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EA9 clrtext CODE >6911:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAA inittext CODE >6845:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAA inittext CODE >6846:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAB inittext CODE >6847:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAB inittext CODE >6848:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAC inittext CODE >6849:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAD inittext CODE >6850:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAE inittext CODE >6851:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
+EAF inittext CODE >6852:C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_1.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -725,8 +730,8 @@ EC7 inittext CODE >6852:C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_1
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\Harvest-26.production.o
 ___awdiv@counter 75 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-__end_of_GetUID BCC 0 CODE 0 text15 dist/default/production\Harvest-26.production.o
-_ShootShield 1EE6 0 CODE 0 text10 dist/default/production\Harvest-26.production.o
+__end_of_GetUID C02 0 CODE 0 text15 dist/default/production\Harvest-26.production.o
+_ShootShield 1EA4 0 CODE 0 text10 dist/default/production\Harvest-26.production.o
 __LdataBANK0 0 0 ABS 0 dataBANK0 -
 __LdataBANK1 0 0 ABS 0 dataBANK1 -
 __LdataBANK2 0 0 ABS 0 dataBANK2 -
@@ -741,20 +746,20 @@ __HidataBANK1 0 0 ABS 0 idataBANK1 -
 __HidataBANK2 0 0 ABS 0 idataBANK2 -
 _SSP1STATbits 18F 0 ABS 0 - dist/default/production\Harvest-26.production.o
 runmotor@select 34 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
-_SPIWriteByte 1DB8 0 CODE 0 text22 dist/default/production\Harvest-26.production.o
+_SPIWriteByte FEA 0 CODE 0 text22 dist/default/production\Harvest-26.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __L__absolute__ 0 0 ABS 0 __absolute__ -
 __Hstrings 0 0 ABS 0 strings -
 _LATA 16 0 ABS 0 - dist/default/production\Harvest-26.production.o
-___sp 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
+___sp 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
 _main 53E 0 CODE 0 maintext dist/default/production\Harvest-26.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Harvest-26.production.o
-___stack_hi 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-___stack_lo 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-start 180 0 CODE 0 init C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
+___stack_hi 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+___stack_lo 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+start 180 0 CODE 0 init C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
 rd_adc@output 74 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-__end_of_ShootLaser E1C 0 CODE 0 text9 dist/default/production\Harvest-26.production.o
-_getfund F54 0 CODE 0 text4 dist/default/production\Harvest-26.production.o
+__end_of_ShootLaser E50 0 CODE 0 text9 dist/default/production\Harvest-26.production.o
+_getfund F88 0 CODE 0 text4 dist/default/production\Harvest-26.production.o
 ShootRepair@tosend 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 writeRegister@address 74 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
@@ -766,27 +771,27 @@ follow@left 3F 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.producti
 follow@stop 35 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 follow@wlvl 2004 0 STRCODE 0 stringtext2 dist/default/production\Harvest-26.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-_fund_freq 52 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_fund_freq 53 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
 readRegister@stuff 73 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-_shield_code_flag 67 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+_shield_code_flag 68 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 ShootAttack@F11739 BD 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
-_receive_flag 5A 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_receive_flag 5B 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Harvest-26.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 _RC1STAbits 11D 0 ABS 0 - dist/default/production\Harvest-26.production.o
 runmotor@stop 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 ___awdiv@sign 76 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
-__pidataCOMMON FF8 0 CODE 0 idataCOMMON dist/default/production\Harvest-26.production.o
-_SPIReadByte 1D9C 0 CODE 0 text21 dist/default/production\Harvest-26.production.o
-__end_of_SPIWriteByte 1DCA 0 CODE 0 text22 dist/default/production\Harvest-26.production.o
+__pidataCOMMON FFC 0 CODE 0 idataCOMMON dist/default/production\Harvest-26.production.o
+_SPIReadByte 1D6C 0 CODE 0 text21 dist/default/production\Harvest-26.production.o
+__end_of_SPIWriteByte FFC 0 CODE 0 text22 dist/default/production\Harvest-26.production.o
 _ADRESH 8D 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ADRESL 8C 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ANSELA F38 0 ABS 0 - dist/default/production\Harvest-26.production.o
@@ -794,21 +799,21 @@ _ANSELB F43 0 ABS 0 - dist/default/production\Harvest-26.production.o
 ___awdiv@dividend 73 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 __LdataCOMMON 0 0 ABS 0 dataCOMMON -
 main@message 47 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
-_writeRegister 1F46 0 CODE 0 text18 dist/default/production\Harvest-26.production.o
+_writeRegister 1F04 0 CODE 0 text18 dist/default/production\Harvest-26.production.o
 __end_offollow@blvl 2004 0 STRCODE 0 stringtext1 dist/default/production\Harvest-26.production.o
 __end_offollow@wlvl 2008 0 STRCODE 0 stringtext2 dist/default/production\Harvest-26.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 _BAUDCONbits 11F 0 ABS 0 - dist/default/production\Harvest-26.production.o
-_data_index 5E 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
-__end_of_ShootAttack 1EB6 0 CODE 0 text12 dist/default/production\Harvest-26.production.o
+_data_index 5F 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+__end_of_ShootAttack 1E74 0 CODE 0 text12 dist/default/production\Harvest-26.production.o
 ___awdiv@divisor 71 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-__end_of___awdiv D6C 0 CODE 0 text3 dist/default/production\Harvest-26.production.o
-_GetUID 9FC 0 CODE 0 text15 dist/default/production\Harvest-26.production.o
+__end_of___awdiv DA0 0 CODE 0 text3 dist/default/production\Harvest-26.production.o
+_GetUID A30 0 CODE 0 text15 dist/default/production\Harvest-26.production.o
 ?_rd_adc 71 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 sendit@it_size 72 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-___stackhi 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-___stacklo 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-_repair_code_flag 66 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+___stackhi 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+___stacklo 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+_repair_code_flag 67 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 GetInfoPCU@ask 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 __end_of_follow 53E 0 CODE 0 text5 dist/default/production\Harvest-26.production.o
 __LidataCOMMON 0 0 ABS 0 idataCOMMON -
@@ -818,13 +823,13 @@ _TRISBbits 12 0 ABS 0 - dist/default/production\Harvest-26.production.o
 writeRegister@controlByte 75 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 _TRISCbits 13 0 ABS 0 - dist/default/production\Harvest-26.production.o
 GetUID@buffbytes 3B 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
-_readRegister 1E04 0 CODE 0 text20 dist/default/production\Harvest-26.production.o
+_readRegister 1DC2 0 CODE 0 text20 dist/default/production\Harvest-26.production.o
 _RB3PPS F1B 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _RB5PPS F1D 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _RC1REG 119 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _RC6PPS F26 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ADREFbits 9A 0 ABS 0 - dist/default/production\Harvest-26.production.o
-clear_ram0 1D78 0 CODE 0 clrtext dist/default/production\Harvest-26.production.o
+clear_ram0 1D48 0 CODE 0 clrtext dist/default/production\Harvest-26.production.o
 GetUID@response 2D 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 _SPBRGH 11C 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _SPBRGL 11B 0 ABS 0 - dist/default/production\Harvest-26.production.o
@@ -832,13 +837,13 @@ __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.produ
 follow@right 41 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 _TX1REG 11A 0 ABS 0 - dist/default/production\Harvest-26.production.o
 GetUID@F11759 134 0 BANK2 1 dataBANK2 dist/default/production\Harvest-26.production.o
-__end_of_rdFIFO 1DB8 0 CODE 0 text19 dist/default/production\Harvest-26.production.o
-__end_of_rd_adc EF0 0 CODE 0 text7 dist/default/production\Harvest-26.production.o
-__end_of_ShootRepair 1EE6 0 CODE 0 text11 dist/default/production\Harvest-26.production.o
-ShootShield@F11736 68 0 BANK0 1 dataBANK0 dist/default/production\Harvest-26.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-__end_of_sendit FF8 0 CODE 0 text24 dist/default/production\Harvest-26.production.o
-__end_of_ShootShield 1F16 0 CODE 0 text10 dist/default/production\Harvest-26.production.o
+__end_of_rdFIFO 1D88 0 CODE 0 text19 dist/default/production\Harvest-26.production.o
+__end_of_rd_adc F24 0 CODE 0 text7 dist/default/production\Harvest-26.production.o
+__end_of_ShootRepair 1EA4 0 CODE 0 text11 dist/default/production\Harvest-26.production.o
+ShootShield@F11736 69 0 BANK0 1 dataBANK0 dist/default/production\Harvest-26.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+__end_of_sendit 1FB2 0 CODE 0 text24 dist/default/production\Harvest-26.production.o
+__end_of_ShootShield 1ED4 0 CODE 0 text10 dist/default/production\Harvest-26.production.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -873,7 +878,7 @@ __Hsfr29 0 0 ABS 0 sfr29 -
 __Hsfr30 0 0 ABS 0 sfr30 -
 __Hsfr31 0 0 ABS 0 sfr31 -
 __Hstack 0 0 STACK 2 stack -
-main@vra_flag 51 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
+main@vra_flag 52 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 GetInfoPCU@F11713 C4 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
 __Hbank10 0 0 ABS 0 bank10 -
 __Hbank11 0 0 ABS 0 bank11 -
@@ -899,11 +904,11 @@ __Hbank30 0 0 BANK30 1 bank30 -
 __Hbank31 0 0 BANK31 1 bank31 -
 __Hbigram 0 0 ABS 0 bigram -
 __Hmaintext 0 0 ABS 0 maintext -
-_SetPCUInfo 1E56 0 CODE 0 text13 dist/default/production\Harvest-26.production.o
+_SetPCUInfo 1E14 0 CODE 0 text13 dist/default/production\Harvest-26.production.o
 main@F11757 120 0 BANK2 1 dataBANK2 dist/default/production\Harvest-26.production.o
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 10018 0 CONFIG 4 config -
-__end_of_GetInfoController 1F46 0 CODE 0 text8 dist/default/production\Harvest-26.production.o
+__end_of_GetInfoController 1F04 0 CODE 0 text8 dist/default/production\Harvest-26.production.o
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -938,7 +943,7 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
-init_ram 1D84 0 CODE 0 inittext dist/default/production\Harvest-26.production.o
+init_ram 1D54 0 CODE 0 inittext dist/default/production\Harvest-26.production.o
 motor@F11724 13E 0 BANK2 1 dataBANK2 dist/default/production\Harvest-26.production.o
 GetUID@i 37 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 __Linittext 0 0 ABS 0 inittext -
@@ -984,35 +989,35 @@ GetUID@i_732 39 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.product
 int$flags 7E 0 ABS 0 - dist/default/production\Harvest-26.production.o
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 _ISR 8 0 CODE 0 intentry dist/default/production\Harvest-26.production.o
-_SWA 58 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
-_SWB 56 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
-_SWC 62 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
-_SWD 64 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
-_VRA 54 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_SWA 59 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_SWB 57 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_SWC 63 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_SWD 65 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_VRA 55 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 __S0 1004 0 ABS 0 - -
 __S1 152 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-__end_of_BitmaskOR 1E04 0 CODE 0 text17 dist/default/production\Harvest-26.production.o
+__end_of_BitmaskOR 1DC2 0 CODE 0 text17 dist/default/production\Harvest-26.production.o
 sendit@it 71 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-__end_of_readRegister 1E26 0 CODE 0 text20 dist/default/production\Harvest-26.production.o
-__end_of_writeRegister 1F78 0 CODE 0 text18 dist/default/production\Harvest-26.production.o
+__end_of_readRegister 1DE4 0 CODE 0 text20 dist/default/production\Harvest-26.production.o
+__end_of_writeRegister 1F36 0 CODE 0 text18 dist/default/production\Harvest-26.production.o
 _SPISetup 1FB2 0 CODE 0 text14 dist/default/production\Harvest-26.production.o
 _data_size 7B 0 COMMON 1 dataCOMMON dist/default/production\Harvest-26.production.o
-_data_type 60 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
-_GetInfoPCU 1E26 0 CODE 0 text23 dist/default/production\Harvest-26.production.o
+_data_type 61 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_GetInfoPCU 1DE4 0 CODE 0 text23 dist/default/production\Harvest-26.production.o
 __HidataCOMMON 0 0 ABS 0 idataCOMMON -
 sendfund@msg 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 _follow 204 0 CODE 0 text5 dist/default/production\Harvest-26.production.o
 __end_of_ISR 180 0 CODE 0 intentry dist/default/production\Harvest-26.production.o
-_BitmaskOR 1DE4 0 CODE 0 text17 dist/default/production\Harvest-26.production.o
+_BitmaskOR 1DA2 0 CODE 0 text17 dist/default/production\Harvest-26.production.o
 __end_of_SPISetup 2000 0 CODE 0 text14 dist/default/production\Harvest-26.production.o
 SPIWriteByte@data 71 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-__end_of_SetPCUInfo 1E86 0 CODE 0 text13 dist/default/production\Harvest-26.production.o
+__end_of_SetPCUInfo 1E44 0 CODE 0 text13 dist/default/production\Harvest-26.production.o
 __Lintentry 8 0 CODE 0 intentry -
 GetInfoController@F11710 CA 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
 BitmaskOR@preval 77 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-__pdataBANK0 68 0 BANK0 1 dataBANK0 dist/default/production\Harvest-26.production.o
+__pdataBANK0 69 0 BANK0 1 dataBANK0 dist/default/production\Harvest-26.production.o
 __pdataBANK1 A0 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
 __pdataBANK2 120 0 BANK2 1 dataBANK2 dist/default/production\Harvest-26.production.o
 ltemp0a 80 0 ABS 0 - dist/default/production\Harvest-26.production.o
@@ -1022,28 +1027,28 @@ ShootAttack@tosend 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.p
 __Lstringtext1 0 0 ABS 0 stringtext1 -
 __Lstringtext2 0 0 ABS 0 stringtext2 -
 GetUID@msg 23 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
-__end_of_SPIReadByte 1DAA 0 CODE 0 text21 dist/default/production\Harvest-26.production.o
-_runmotor BCC 0 CODE 0 text6 dist/default/production\Harvest-26.production.o
+__end_of_SPIReadByte 1D7A 0 CODE 0 text21 dist/default/production\Harvest-26.production.o
+_runmotor C02 0 CODE 0 text6 dist/default/production\Harvest-26.production.o
 _PIE3bits 719 0 ABS 0 - dist/default/production\Harvest-26.production.o
 runmotor@F11740 AA 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
 runmotor@F11742 A0 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
-__ptext10 1EE6 0 CODE 0 text10 dist/default/production\Harvest-26.production.o
-__ptext11 1EB6 0 CODE 0 text11 dist/default/production\Harvest-26.production.o
-__ptext12 1E86 0 CODE 0 text12 dist/default/production\Harvest-26.production.o
-__ptext13 1E56 0 CODE 0 text13 dist/default/production\Harvest-26.production.o
+__ptext10 1EA4 0 CODE 0 text10 dist/default/production\Harvest-26.production.o
+__ptext11 1E74 0 CODE 0 text11 dist/default/production\Harvest-26.production.o
+__ptext12 1E44 0 CODE 0 text12 dist/default/production\Harvest-26.production.o
+__ptext13 1E14 0 CODE 0 text13 dist/default/production\Harvest-26.production.o
 __ptext14 1FB2 0 CODE 0 text14 dist/default/production\Harvest-26.production.o
-__ptext15 9FC 0 CODE 0 text15 dist/default/production\Harvest-26.production.o
-__ptext16 1DCA 0 CODE 0 text16 dist/default/production\Harvest-26.production.o
-__ptext17 1DE4 0 CODE 0 text17 dist/default/production\Harvest-26.production.o
-__ptext18 1F46 0 CODE 0 text18 dist/default/production\Harvest-26.production.o
-__ptext19 1DAA 0 CODE 0 text19 dist/default/production\Harvest-26.production.o
-__ptext20 1E04 0 CODE 0 text20 dist/default/production\Harvest-26.production.o
-__ptext21 1D9C 0 CODE 0 text21 dist/default/production\Harvest-26.production.o
-__ptext22 1DB8 0 CODE 0 text22 dist/default/production\Harvest-26.production.o
-__ptext23 1E26 0 CODE 0 text23 dist/default/production\Harvest-26.production.o
-__ptext24 FB6 0 CODE 0 text24 dist/default/production\Harvest-26.production.o
-_GetInfoController 1F16 0 CODE 0 text8 dist/default/production\Harvest-26.production.o
-___awdiv CB6 0 CODE 0 text3 dist/default/production\Harvest-26.production.o
+__ptext15 A30 0 CODE 0 text15 dist/default/production\Harvest-26.production.o
+__ptext16 1D88 0 CODE 0 text16 dist/default/production\Harvest-26.production.o
+__ptext17 1DA2 0 CODE 0 text17 dist/default/production\Harvest-26.production.o
+__ptext18 1F04 0 CODE 0 text18 dist/default/production\Harvest-26.production.o
+__ptext19 1D7A 0 CODE 0 text19 dist/default/production\Harvest-26.production.o
+__ptext20 1DC2 0 CODE 0 text20 dist/default/production\Harvest-26.production.o
+__ptext21 1D6C 0 CODE 0 text21 dist/default/production\Harvest-26.production.o
+__ptext22 FEA 0 CODE 0 text22 dist/default/production\Harvest-26.production.o
+__ptext23 1DE4 0 CODE 0 text23 dist/default/production\Harvest-26.production.o
+__ptext24 1F70 0 CODE 0 text24 dist/default/production\Harvest-26.production.o
+_GetInfoController 1ED4 0 CODE 0 text8 dist/default/production\Harvest-26.production.o
+___awdiv CEA 0 CODE 0 text3 dist/default/production\Harvest-26.production.o
 __Lbank10 0 0 ABS 0 bank10 -
 __Lbank11 0 0 ABS 0 bank11 -
 __Lbank12 0 0 ABS 0 bank12 -
@@ -1068,17 +1073,17 @@ __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
 __pmaintext 53E 0 CODE 0 maintext dist/default/production\Harvest-26.production.o
 __Lbigram 0 0 ABS 0 bigram -
-__end_of_runmotor CB6 0 CODE 0 text6 dist/default/production\Harvest-26.production.o
+__end_of_runmotor CEA 0 CODE 0 text6 dist/default/production\Harvest-26.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
 __Hinittext 0 0 ABS 0 inittext -
 _LATAbits 16 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _LATCbits 18 0 ABS 0 - dist/default/production\Harvest-26.production.o
-_rdFIFO 1DAA 0 CODE 0 text19 dist/default/production\Harvest-26.production.o
-_rd_adc E88 0 CODE 0 text7 dist/default/production\Harvest-26.production.o
+_rdFIFO 1D7A 0 CODE 0 text19 dist/default/production\Harvest-26.production.o
+_rd_adc EBC 0 CODE 0 text7 dist/default/production\Harvest-26.production.o
 ShootRepair@F11742 D0 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
-__end_of_GetInfoPCU 1E56 0 CODE 0 text23 dist/default/production\Harvest-26.production.o
-_sendit FB6 0 CODE 0 text24 dist/default/production\Harvest-26.production.o
+__end_of_GetInfoPCU 1E14 0 CODE 0 text23 dist/default/production\Harvest-26.production.o
+_sendit 1F70 0 CODE 0 text24 dist/default/production\Harvest-26.production.o
 writeRegister@data 72 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 _SSP1DATPPS EC6 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ADCON0bits 93 0 ABS 0 - dist/default/production\Harvest-26.production.o
@@ -1089,14 +1094,14 @@ __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-_sendfund 1F78 0 CODE 0 text1 dist/default/production\Harvest-26.production.o
+_sendfund 1F36 0 CODE 0 text1 dist/default/production\Harvest-26.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 _PIR3bits 70F 0 ABS 0 - dist/default/production\Harvest-26.production.o
 __Lend_init 180 0 CODE 0 end_init -
-__end_of_getfund FB6 0 CODE 0 text4 dist/default/production\Harvest-26.production.o
+__end_of_getfund FEA 0 CODE 0 text4 dist/default/production\Harvest-26.production.o
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 end_of_initialization 1FC 0 CODE 0 cinit dist/default/production\Harvest-26.production.o
-__end_of_sendfund 1FB2 0 CODE 0 text1 dist/default/production\Harvest-26.production.o
+__end_of_sendfund 1F70 0 CODE 0 text1 dist/default/production\Harvest-26.production.o
 __Hintentry 180 0 CODE 0 intentry -
 _TX1STAbits 11E 0 ABS 0 - dist/default/production\Harvest-26.production.o
 __Lstrings 0 0 ABS 0 strings -
@@ -1108,34 +1113,34 @@ __Hreset_vec 4 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __HbssBANK1 0 0 ABS 0 bssBANK1 -
 sendfund@F11752 12A 0 BANK2 1 dataBANK2 dist/default/production\Harvest-26.production.o
-__ptext1 1F78 0 CODE 0 text1 dist/default/production\Harvest-26.production.o
-__ptext2 7EE 0 CODE 0 text2 dist/default/production\Harvest-26.production.o
-__ptext3 CB6 0 CODE 0 text3 dist/default/production\Harvest-26.production.o
-__ptext4 F54 0 CODE 0 text4 dist/default/production\Harvest-26.production.o
+__ptext1 1F36 0 CODE 0 text1 dist/default/production\Harvest-26.production.o
+__ptext2 822 0 CODE 0 text2 dist/default/production\Harvest-26.production.o
+__ptext3 CEA 0 CODE 0 text3 dist/default/production\Harvest-26.production.o
+__ptext4 F88 0 CODE 0 text4 dist/default/production\Harvest-26.production.o
 __ptext5 204 0 CODE 0 text5 dist/default/production\Harvest-26.production.o
-__ptext6 BCC 0 CODE 0 text6 dist/default/production\Harvest-26.production.o
-__ptext7 E88 0 CODE 0 text7 dist/default/production\Harvest-26.production.o
-__ptext8 1F16 0 CODE 0 text8 dist/default/production\Harvest-26.production.o
-__ptext9 D6C 0 CODE 0 text9 dist/default/production\Harvest-26.production.o
+__ptext6 C02 0 CODE 0 text6 dist/default/production\Harvest-26.production.o
+__ptext7 EBC 0 CODE 0 text7 dist/default/production\Harvest-26.production.o
+__ptext8 1ED4 0 CODE 0 text8 dist/default/production\Harvest-26.production.o
+__ptext9 DA0 0 CODE 0 text9 dist/default/production\Harvest-26.production.o
 runmotor@msg 2A 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __H__absolute__ 0 0 ABS 0 __absolute__ -
-_receive_ready 5C 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+_receive_ready 5D 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
 motor@ldirec 2C 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 __Hstringtext1 0 0 ABS 0 stringtext1 -
 __Hstringtext2 0 0 ABS 0 stringtext2 -
-___heap_hi 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-___heap_lo 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
+___heap_hi 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+___heap_lo 0 0 ABS 0 - C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
 ShootShield@tosend 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 __end_of__initialization 1FC 0 CODE 0 cinit dist/default/production\Harvest-26.production.o
-__end_of_tranceive 1DE4 0 CODE 0 text16 dist/default/production\Harvest-26.production.o
+__end_of_tranceive 1DA2 0 CODE 0 text16 dist/default/production\Harvest-26.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-_ShootAttack 1E86 0 CODE 0 text12 dist/default/production\Harvest-26.production.o
-__pidataBANK0 1D90 0 CODE 0 idataBANK0 dist/default/production\Harvest-26.production.o
-__pidataBANK1 E1C 0 CODE 0 idataBANK1 dist/default/production\Harvest-26.production.o
-__pidataBANK2 EF0 0 CODE 0 idataBANK2 dist/default/production\Harvest-26.production.o
+_ShootAttack 1E44 0 CODE 0 text12 dist/default/production\Harvest-26.production.o
+__pidataBANK0 1D60 0 CODE 0 idataBANK0 dist/default/production\Harvest-26.production.o
+__pidataBANK1 E50 0 CODE 0 idataBANK1 dist/default/production\Harvest-26.production.o
+__pidataBANK2 F24 0 CODE 0 idataBANK2 dist/default/production\Harvest-26.production.o
 SetPCUInfo@data 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 _SSP1CON1bits 190 0 ABS 0 - dist/default/production\Harvest-26.production.o
@@ -1146,32 +1151,33 @@ _SSP1ADD 18D 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _SSP1BUF 18C 0 ABS 0 - dist/default/production\Harvest-26.production.o
 rdFIFO@info 74 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
 __Hend_init 184 0 CODE 0 end_init -
-_tranceive 1DCA 0 CODE 0 text16 dist/default/production\Harvest-26.production.o
-__end_of_main 7EE 0 CODE 0 maintext dist/default/production\Harvest-26.production.o
+_tranceive 1D88 0 CODE 0 text16 dist/default/production\Harvest-26.production.o
+__end_of_main 822 0 CODE 0 maintext dist/default/production\Harvest-26.production.o
 motor@mly 30 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 motor@mry 2E 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 motor@msg 20 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
+main@checksum 51 0 BANK0 1 cstackBANK0 dist/default/production\Harvest-26.production.o
 _ADACQ 9D 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ADCLK 98 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ADPCH 9E 0 ABS 0 - dist/default/production\Harvest-26.production.o
-__end_of_motor 9FC 0 CODE 0 text2 dist/default/production\Harvest-26.production.o
+__end_of_motor A30 0 CODE 0 text2 dist/default/production\Harvest-26.production.o
 _RXPPS ECB 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _TRISA 11 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _TRISB 12 0 ABS 0 - dist/default/production\Harvest-26.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 motor@data 79 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
-_motor 7EE 0 CODE 0 text2 dist/default/production\Harvest-26.production.o
+_motor 822 0 CODE 0 text2 dist/default/production\Harvest-26.production.o
 SetPCUInfo@F11716 B4 0 BANK1 1 dataBANK1 dist/default/production\Harvest-26.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Harvest-26.production.o
-_ShootLaser D6C 0 CODE 0 text9 dist/default/production\Harvest-26.production.o
+_ShootLaser DA0 0 CODE 0 text9 dist/default/production\Harvest-26.production.o
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
 __HdataBANK1 0 0 ABS 0 dataBANK1 -
 __HdataBANK2 0 0 ABS 0 dataBANK2 -
 __initialization 184 0 CODE 0 cinit dist/default/production\Harvest-26.production.o
 btemp0 7E 0 ABS 0 - dist/default/production\Harvest-26.production.o
 btemp1 7F 0 ABS 0 - dist/default/production\Harvest-26.production.o
-__pbssBANK0 52 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
+__pbssBANK0 53 0 BANK0 1 bssBANK0 dist/default/production\Harvest-26.production.o
 __pbssBANK1 D6 0 BANK1 1 bssBANK1 dist/default/production\Harvest-26.production.o
 __pdataCOMMON 7B 0 COMMON 1 dataCOMMON dist/default/production\Harvest-26.production.o
 BitmaskOR@addr 79 0 COMMON 1 cstackCOMMON dist/default/production\Harvest-26.production.o
@@ -1181,9 +1187,9 @@ ttemp0a 7F 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ANSELAbits F38 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ANSELBbits F43 0 ABS 0 - dist/default/production\Harvest-26.production.o
 _ANSELCbits F4E 0 ABS 0 - dist/default/production\Harvest-26.production.o
-___int_stack_hi 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-___int_stack_lo 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAsnco.0\driver_tmp_15.o
-_ShootRepair 1EB6 0 CODE 0 text11 dist/default/production\Harvest-26.production.o
+___int_stack_hi 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+___int_stack_lo 0 0 STACK 2 stack C:\Users\w7yf6\AppData\Local\Temp\xcAs858.0\driver_tmp_15.o
+_ShootRepair 1E74 0 CODE 0 text11 dist/default/production\Harvest-26.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -1209,31 +1215,31 @@ _ShootRepair 1EB6 0 CODE 0 text11 dist/default/production\Harvest-26.production.
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text1 0 FBC 1F78 1D 2
-text8 0 F8B 1F16 18 2
-text10 0 F73 1EE6 18 2
-text11 0 F5B 1EB6 18 2
-text12 0 F43 1E86 18 2
-text13 0 F2B 1E56 18 2
+text1 0 F9B 1F36 1D 2
+text8 0 F6A 1ED4 18 2
+text10 0 F52 1EA4 18 2
+text11 0 F3A 1E74 18 2
+text12 0 F22 1E44 18 2
+text13 0 F0A 1E14 18 2
 text14 0 FD9 1FB2 27 2
-text16 0 EE5 1DCA D 2
-text17 0 EF2 1DE4 10 2
-text18 0 FA3 1F46 19 2
-text19 0 ED5 1DAA 7 2
-text20 0 F02 1E04 11 2
-text21 0 ECE 1D9C 7 2
-text22 0 EDC 1DB8 9 2
-text23 0 F13 1E26 18 2
+text16 0 EC4 1D88 D 2
+text17 0 ED1 1DA2 10 2
+text18 0 F82 1F04 19 2
+text19 0 EBD 1D7A 7 2
+text20 0 EE1 1DC2 11 2
+text21 0 EB6 1D6C 7 2
+text23 0 EF2 1DE4 18 2
+text24 0 FB8 1F70 21 2
 cstackCOMMON 1 70 70 D 1
-cstackBANK0 1 20 20 4E 1
-inittext 0 EC2 1D84 6 2
+cstackBANK0 1 20 20 4F 1
+inittext 0 EAA 1D54 6 2
 stringtext1 0 1000 2000 4 2
-intentry 0 4 8 7FA 2
+intentry 0 4 8 7FC 2
 reset_vec 0 0 0 2 2
-idataBANK0 0 EC8 1D90 6 2
+idataBANK0 0 EB0 1D60 6 2
 dataBANK1 1 A0 A0 50 1
 dataBANK2 1 120 120 32 1
-clrtext 0 EBC 1D78 6 2
+clrtext 0 EA4 1D48 6 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

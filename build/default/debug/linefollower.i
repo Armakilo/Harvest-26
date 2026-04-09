@@ -19828,7 +19828,7 @@ extern volatile uint8_t repair_code_flag;
 
 
 
-void GetUID();
+uint8_t GetUID();
 
 void SPISetup();
 
@@ -19898,30 +19898,30 @@ void runmotor(uint8_t select){
     char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
     if (select == 1){
         msg[6] = 1;
-        msg[7] = 80;
+        msg[7] = 95;
         msg[8] = 2;
-        msg[9] = 50;
+        msg[9] = 55;
     }
 
     else if (select == 2){
         msg[6] = 2;
-        msg[7] = 50;
+        msg[7] = 55;
         msg[8] = 1;
-        msg[9] = 80;
+        msg[9] = 95;
     }
 
     else if (select == 3){
         msg[6] = 1;
-        msg[7] = 50;
+        msg[7] = 47;
         msg[8] = 1;
-        msg[9] = 50;
+        msg[9] = 47;
     }
 
 
 
 
     sendit(msg, 10);
-    _delay((unsigned long)((220)*(32000000/4000.0)));
+    _delay((unsigned long)((250)*(32000000/4000.0)));
 # 94 "linefollower.c"
     return;
 }
@@ -19975,7 +19975,7 @@ void follow(){
 
         sendit(stop, 10);
 
-        _delay((unsigned long)((60)*(32000000/4000.0)));
+        _delay((unsigned long)((100)*(32000000/4000.0)));
 
 
         uint16_t left = rd_adc(1);
@@ -20013,12 +20013,5 @@ void follow(){
 
         }
         }
-
-        GetInfoController();
-
-
-
-
-
-
+# 192 "linefollower.c"
     }

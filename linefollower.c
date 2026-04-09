@@ -52,30 +52,30 @@ void runmotor(uint8_t select){ //Motor 1 -> Left motor
     char msg[] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x0, 0x0, 0x0};
     if (select == 1){ //go left
         msg[6] = 1;
-        msg[7] = 80;
+        msg[7] = 95;
         msg[8] = 2;
-        msg[9] = 50;
+        msg[9] = 55;
     }
     
     else if (select == 2){ // go right
         msg[6] = 2;
-        msg[7] = 50;
+        msg[7] = 55;
         msg[8] = 1;
-        msg[9] = 80;
+        msg[9] = 95;
     }
     
     else if (select == 3){ //go straight
         msg[6] = 1;
-        msg[7] = 50;
+        msg[7] = 47;
         msg[8] = 1;
-        msg[9] = 50;
+        msg[9] = 47;
     }
     
     
     
     
     sendit(msg, 10);
-    __delay_ms(220);
+    __delay_ms(250);
     
 //    if (select == 1){
 //        __delay_ms(150);
@@ -143,7 +143,7 @@ void follow(){
     
         sendit(stop, 10);
     
-        __delay_ms(60);
+        __delay_ms(100);
         
         
         uint16_t left = rd_adc(1);

@@ -19855,7 +19855,7 @@ extern volatile uint8_t repair_code_flag;
 
 
 
-void GetUID();
+uint8_t GetUID();
 
 void SPISetup();
 
@@ -19896,6 +19896,7 @@ volatile int SWD = 0;
 volatile uint8_t shield_code_flag = 0;
 volatile uint8_t repair_code_flag = 0;
 volatile int VRA = 0;
+volatile uint16_t fund_freq = 0;
 
 
 
@@ -19947,10 +19948,45 @@ void __attribute__((picinterrupt(("")))) ISR(void)
         }
     }
 }
-# 124 "main.c"
+
+
+
+
+
+
+
+void getfund()
+{
+    LATCbits.LATC3 = 0;
+
+    fund_freq = 0;
+
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
+
+    LATCbits.LATC3 = 1;
+    _delay((unsigned long)((5)*(32000000/4000.0)));
+    LATCbits.LATC3 = 0;
+
+    SSP1BUF = 0xff;
+    while(SSP1STATbits.BF == 0){};
+    fund_freq = fund_freq | ((uint16_t)SSP1BUF);
+
+    LATCbits.LATC3 = 1;
+}
+
+void sendfund()
+{
+    uint8_t msg[] = {0xFE, 0x19, 0x01, 0x0A, 0x04, 0x00, 2, 0, 0, 0};
+    msg[8] = fund_freq & 0xFF;
+    msg[9] = ((fund_freq & 0xFF00) >> 8);
+    sendit(msg, 10);
+}
+
 void main(void)
 {
-
+    uint8_t vra_flag = 0;
 
     TRISA = 0b00100000;
     ANSELA = 0;
@@ -19990,7 +20026,6 @@ void main(void)
 
 
     SPISetup();
-    GetUID();
 
     int msize = 10;
     char message[10] = {0xFE,0x19,0x01,0x06,0x04,0x00, 0x0, 0x40, 0x0, 0x40};
@@ -20055,13 +20090,41 @@ void main(void)
 
 
 
-        if(SWA >= 2000){
+        if(SWA > 1900){
             LATAbits.LATA2 = 1;
             _delay((unsigned long)((500)*(32000000/4000.0)));
             follow();
             LATAbits.LATA2 = 0;
+
         }
-# 255 "main.c"
+
+        if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){
+            LATAbits.LATA0 = 1;
+            _delay((unsigned long)((500)*(32000000/4000.0)));
+            volatile uint8_t checksum = GetUID();
+            LATAbits.LATA0 = 0;
+            vra_flag = 1;
+
+        }
+
+        if((SWB > 1900) && (VRA < 1500) && (vra_flag == 0) ){
+            LATAbits.LATA1 = 1;
+            _delay((unsigned long)((500)*(32000000/4000.0)));
+            getfund();
+
+            do{
+                getfund();
+                _delay((unsigned long)((50)*(32000000/4000.0)));
+            }while(fund_freq == 0x8F37);
+            sendfund();
+            LATAbits.LATA1 = 0;
+            vra_flag = 1;
+        }
+
+        if(SWB < 1100){
+            vra_flag = 0;
+        }
+
     }
 
 

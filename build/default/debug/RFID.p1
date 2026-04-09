@@ -2057,8 +2057,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1574 ]
 }
 "160
-[; ;RFID.c: 160: void GetUID(){
-[v _GetUID `(v ~T0 @X0 1 ef ]
+[; ;RFID.c: 160: uint8_t GetUID(){
+[v _GetUID `(uc ~T0 @X0 1 ef ]
 {
 [e :U _GetUID ]
 [f ]
@@ -2163,10 +2163,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;RFID.c: 217:         buffbytes = readRegister(0x0A);
 [e = _buffbytes ( _readRegister (1 -> -> 10 `i `uc ]
 "219
-[; ;RFID.c: 219:         for (int i = 1; i < buffbytes; i++){
+[; ;RFID.c: 219:         for (int i = 0; i <= buffbytes; i++){
 {
 [v _i `i ~T0 @X0 1 a ]
-[e = _i -> 1 `i ]
+[e = _i -> 0 `i ]
 [e $U 1587  ]
 [e :U 1584 ]
 {
@@ -2178,7 +2178,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e ++ _i -> 1 `i ]
 [e :U 1587 ]
-[e $ < _i -> _buffbytes `i 1584  ]
+[e $ <= _i -> _buffbytes `i 1584  ]
 [e :U 1585 ]
 }
 "223
@@ -2214,13 +2214,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "228
 [; ;RFID.c: 228:     sendit(msg, 10);
 [e ( _sendit (2 , -> &U _msg `*uc -> 10 `i ]
-"230
-[; ;RFID.c: 230:     LATAbits.LATA1 = 1;
-[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 "232
-[; ;RFID.c: 232:     return;
+[; ;RFID.c: 232:     LATAbits.LATA1 = 1;
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+"234
+[; ;RFID.c: 234:     return response[4];
+[e ) *U + &U _response * -> -> -> 4 `i `ui `ux -> -> # *U &U _response `ui `ux ]
 [e $UE 1575  ]
-"233
-[; ;RFID.c: 233: }
+"235
+[; ;RFID.c: 235: }
 [e :UE 1575 ]
 }

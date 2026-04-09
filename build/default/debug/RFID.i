@@ -19860,7 +19860,7 @@ extern volatile uint8_t repair_code_flag;
 
 
 
-void GetUID();
+uint8_t GetUID();
 
 void SPISetup();
 
@@ -19994,7 +19994,7 @@ void SPISetup()
 }
 
 
-void GetUID(){
+uint8_t GetUID(){
 
 
 
@@ -20053,7 +20053,7 @@ void GetUID(){
 
         buffbytes = readRegister(0x0A);
 
-        for (int i = 1; i < buffbytes; i++){
+        for (int i = 0; i <= buffbytes; i++){
           response[i] = rdFIFO();
         }
 
@@ -20064,7 +20064,9 @@ void GetUID(){
     msg[9] = response[2];
     sendit(msg, 10);
 
+
+
     LATAbits.LATA1 = 1;
 
-    return;
+    return response[4];
 }

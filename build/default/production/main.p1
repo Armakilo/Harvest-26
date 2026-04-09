@@ -246,8 +246,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./harvest.h: 74: void follow();
 [v _follow `(v ~T0 @X0 0 e? ]
 "52
-[; ;./harvest.h: 52: void GetUID();
-[v _GetUID `(v ~T0 @X0 0 e? ]
+[; ;./harvest.h: 52: uint8_t GetUID();
+[v _GetUID `(uc ~T0 @X0 0 e? ]
 "14 main.c
 [p x FEXTOSC  =  ECH     ]
 "15
@@ -2466,8 +2466,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 1603 ]
 "263
-[; ;main.c: 263:         if((SWB > 1900) && (VRA > 1500) && !(vra_flag)){
-[e $ ! && && > _SWB -> 1900 `i > _VRA -> 1500 `i ! != -> _vra_flag `i -> 0 `i 1604  ]
+[; ;main.c: 263:         if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){
+[e $ ! && && > _SWB -> 1900 `i > _VRA -> 1500 `i == -> _vra_flag `i -> 0 `i 1604  ]
 {
 "264
 [; ;main.c: 264:             LATAbits.LATA0 = 1;
@@ -2476,8 +2476,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 265:             _delay((unsigned long)((500)*(32000000/4000.0)));
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "266
-[; ;main.c: 266:             GetUID();
-[e ( _GetUID ..  ]
+[; ;main.c: 266:             volatile uint8_t checksum = GetUID();
+[v _checksum `Vuc ~T0 @X0 1 a ]
+[e = _checksum ( _GetUID ..  ]
 "267
 [; ;main.c: 267:             LATAbits.LATA0 = 0;
 [e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
@@ -2489,8 +2490,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 1604 ]
 "272
-[; ;main.c: 272:         if((SWB > 1900) && (VRA < 1500) && !(vra_flag) ){
-[e $ ! && && > _SWB -> 1900 `i < _VRA -> 1500 `i ! != -> _vra_flag `i -> 0 `i 1605  ]
+[; ;main.c: 272:         if((SWB > 1900) && (VRA < 1500) && (vra_flag == 0) ){
+[e $ ! && && > _SWB -> 1900 `i < _VRA -> 1500 `i == -> _vra_flag `i -> 0 `i 1605  ]
 {
 "273
 [; ;main.c: 273:             LATAbits.LATA1 = 1;
@@ -2501,40 +2502,55 @@ Version 4.0 HI-TECH Software Intermediate Code
 "275
 [; ;main.c: 275:             getfund();
 [e ( _getfund ..  ]
-"276
-[; ;main.c: 276:             sendfund();
-[e ( _sendfund ..  ]
 "277
-[; ;main.c: 277:             LATAbits.LATA1 = 0;
-[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 277:             do{
+[e :U 1608 ]
+{
 "278
-[; ;main.c: 278:             vra_flag = 1;
-[e = _vra_flag -> -> 1 `i `uc ]
+[; ;main.c: 278:                 getfund();
+[e ( _getfund ..  ]
 "279
-[; ;main.c: 279:         }
+[; ;main.c: 279:                 _delay((unsigned long)((50)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"280
+[; ;main.c: 280:             }while(fund_freq == 0x8F37);
+}
+[e $ == -> _fund_freq `ui -> 36663 `ui 1608  ]
+[e :U 1607 ]
+"281
+[; ;main.c: 281:             sendfund();
+[e ( _sendfund ..  ]
+"282
+[; ;main.c: 282:             LATAbits.LATA1 = 0;
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+"283
+[; ;main.c: 283:             vra_flag = 1;
+[e = _vra_flag -> -> 1 `i `uc ]
+"284
+[; ;main.c: 284:         }
 }
 [e :U 1605 ]
-"281
-[; ;main.c: 281:         if(SWB < 1100){
-[e $ ! < _SWB -> 1100 `i 1606  ]
+"286
+[; ;main.c: 286:         if(SWB < 1100){
+[e $ ! < _SWB -> 1100 `i 1609  ]
 {
-"282
-[; ;main.c: 282:             vra_flag = 0;
+"287
+[; ;main.c: 287:             vra_flag = 0;
 [e = _vra_flag -> -> 0 `i `uc ]
-"283
-[; ;main.c: 283:         }
+"288
+[; ;main.c: 288:         }
 }
-[e :U 1606 ]
-"285
-[; ;main.c: 285:     }
+[e :U 1609 ]
+"290
+[; ;main.c: 290:     }
 }
 [e :U 1587 ]
 [e $U 1588  ]
 [e :U 1589 ]
-"288
-[; ;main.c: 288:     return;
+"293
+[; ;main.c: 293:     return;
 [e $UE 1586  ]
-"289
-[; ;main.c: 289: }
+"294
+[; ;main.c: 294: }
 [e :UE 1586 ]
 }

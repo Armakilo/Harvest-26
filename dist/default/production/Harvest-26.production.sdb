@@ -62,7 +62,7 @@
 "117
 [v _SPISetup SPISetup `(v  1 e 1 0 ]
 "160
-[v _GetUID GetUID `(v  1 e 1 0 ]
+[v _GetUID GetUID `(uc  1 e 1 0 ]
 [s S961 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
@@ -464,13 +464,15 @@
 "149
 [v _main main `(v  1 e 1 0 ]
 {
+"266
+[v main@checksum checksum `VEuc  1 a 1 49 ]
 "193
 [v main@message message `[10]uc  1 a 10 39 ]
 "151
-[v main@vra_flag vra_flag `uc  1 a 1 49 ]
+[v main@vra_flag vra_flag `uc  1 a 1 50 ]
 "192
 [v main@F11757 F11757 `[10]uc  1 s 10 F11757 ]
-"289
+"294
 } 0
 "141
 [v _sendfund sendfund `(v  1 e 1 0 ]
@@ -622,7 +624,7 @@
 "157
 } 0
 "160
-[v _GetUID GetUID `(v  1 e 1 0 ]
+[v _GetUID GetUID `(uc  1 e 1 0 ]
 {
 "219
 [v GetUID@i_732 i `i  1 a 2 25 ]
@@ -636,7 +638,7 @@
 [v GetUID@msg msg `[10]uc  1 a 10 3 ]
 "223
 [v GetUID@F11759 F11759 `[10]uc  1 s 10 F11759 ]
-"233
+"235
 } 0
 "111
 [v _tranceive tranceive `(v  1 e 1 0 ]

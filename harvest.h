@@ -49,7 +49,7 @@ extern volatile uint8_t repair_code_flag;
 
 
 // Insert declarations
-void GetUID();
+uint8_t GetUID();
 
 void SPISetup();
 

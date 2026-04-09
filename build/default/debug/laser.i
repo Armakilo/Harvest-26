@@ -19823,7 +19823,7 @@ extern volatile uint8_t repair_code_flag;
 
 
 
-void GetUID();
+uint8_t GetUID();
 
 void SPISetup();
 

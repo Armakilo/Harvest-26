@@ -1757,14 +1757,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 54:         msg[6] = 1;
 [e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "55
-[; ;linefollower.c: 55:         msg[7] = 80;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 80 `i `uc ]
+[; ;linefollower.c: 55:         msg[7] = 95;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 95 `i `uc ]
 "56
 [; ;linefollower.c: 56:         msg[8] = 2;
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 2 `i `uc ]
 "57
-[; ;linefollower.c: 57:         msg[9] = 50;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 57:         msg[9] = 55;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 55 `i `uc ]
 "58
 [; ;linefollower.c: 58:     }
 }
@@ -1778,14 +1778,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 61:         msg[6] = 2;
 [e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 2 `i `uc ]
 "62
-[; ;linefollower.c: 62:         msg[7] = 50;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 62:         msg[7] = 55;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 55 `i `uc ]
 "63
 [; ;linefollower.c: 63:         msg[8] = 1;
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "64
-[; ;linefollower.c: 64:         msg[9] = 80;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 80 `i `uc ]
+[; ;linefollower.c: 64:         msg[9] = 95;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 95 `i `uc ]
 "65
 [; ;linefollower.c: 65:     }
 }
@@ -1799,14 +1799,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 68:         msg[6] = 1;
 [e = *U + &U _msg * -> -> -> 6 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "69
-[; ;linefollower.c: 69:         msg[7] = 50;
-[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 69:         msg[7] = 47;
+[e = *U + &U _msg * -> -> -> 7 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 47 `i `uc ]
 "70
 [; ;linefollower.c: 70:         msg[8] = 1;
 [e = *U + &U _msg * -> -> -> 8 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 1 `i `uc ]
 "71
-[; ;linefollower.c: 71:         msg[9] = 50;
-[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 50 `i `uc ]
+[; ;linefollower.c: 71:         msg[9] = 47;
+[e = *U + &U _msg * -> -> -> 9 `i `ui `ux -> -> # *U &U _msg `ui `ux -> -> 47 `i `uc ]
 "72
 [; ;linefollower.c: 72:     }
 }
@@ -1817,8 +1817,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 77:     sendit(msg, 10);
 [e ( _sendit (2 , &U _msg -> 10 `i ]
 "78
-[; ;linefollower.c: 78:     _delay((unsigned long)((220)*(32000000/4000.0)));
-[e ( __delay (1 -> * -> -> 220 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;linefollower.c: 78:     _delay((unsigned long)((250)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "94
 [; ;linefollower.c: 94:     return;
 [e $UE 1573  ]
@@ -1915,8 +1915,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;linefollower.c: 144:         sendit(stop, 10);
 [e ( _sendit (2 , &U _stop -> 10 `i ]
 "146
-[; ;linefollower.c: 146:         _delay((unsigned long)((60)*(32000000/4000.0)));
-[e ( __delay (1 -> * -> -> 60 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[; ;linefollower.c: 146:         _delay((unsigned long)((100)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
 "149
 [; ;linefollower.c: 149:         uint16_t left = rd_adc(1);
 [v _left `us ~T0 @X0 1 a ]
@@ -2009,9 +2009,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1580 ]
 [e $U 1581  ]
 [e :U 1582 ]
-"185
-[; ;linefollower.c: 185:         GetInfoController();
-[e ( _GetInfoController ..  ]
 "192
 [; ;linefollower.c: 192:     }
 [e :UE 1579 ]

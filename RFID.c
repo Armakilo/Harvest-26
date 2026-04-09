@@ -157,7 +157,7 @@ void SPISetup()
 }
 // we must scan the tag, and then send it back
 
-void GetUID(){//RFID_SPIsetup() { //might have to  
+uint8_t GetUID(){//RFID_SPIsetup() { //might have to  
     
     
      //setup status LED
@@ -227,7 +227,9 @@ void GetUID(){//RFID_SPIsetup() { //might have to
     msg[9] = response[2];
     sendit(msg, 10);   
     
+    
+    
     LATAbits.LATA1 = 1;
     
-    return;
+    return response[4];
 }
