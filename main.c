@@ -125,17 +125,19 @@ void getfund()
 {
     LATCbits.LATC3 = 0;
     
+    __delay_ms(10);
+    
     fund_freq = 0;
     
-    SSP1BUF = 0xff;
+    SSP1BUF = 0xfd;
     while(SSP1STATbits.BF == 0){};
     fund_freq = fund_freq | ((uint16_t)SSP1BUF << 8);
     
-    LATCbits.LATC3 = 1;
-    __delay_ms(5);
-    LATCbits.LATC3 = 0;
+//    LATCbits.LATC3 = 1;
+//    __delay_ms(5);
+//    LATCbits.LATC3 = 0;
     
-    SSP1BUF = 0xff;
+    SSP1BUF = 0xfd;
     while(SSP1STATbits.BF == 0){};
     fund_freq = fund_freq | ((uint16_t)SSP1BUF);
     
@@ -237,6 +239,7 @@ void main(void)
                 }
                 
                 GetInfoController();
+                
             }
             else if (receive_flag == 3)
             {
@@ -253,7 +256,7 @@ void main(void)
             }
         }
         
-        
+        SWD = ((control_data[21] << 8) + control_data[20]);
         
         
         if(SWA > 1900){
@@ -264,33 +267,34 @@ void main(void)
             
         }
         
-        if((SWB > 1900) && (VRA > 1500) && (vra_flag ==0)){ //VRA Left -> RFID
+        if((SWB > 1900)){ //VRA Left -> RFID
             LATAbits.LATA0 = 1;
-            __delay_ms(500);
+            
             volatile uint8_t checksum = GetUID();
+            __delay_ms(500);
             LATAbits.LATA0 = 0;
-            vra_flag = 1;
+            
+            
                     
         }
         
-        if((SWB > 1900) && (VRA < 1500) && (vra_flag == 0) ){ //check on the situation with what VRA reads, this is just a guess
+        if((SWD > 1900)){ //check on the situation with what VRA reads, this is just a guess
             LATAbits.LATA1 = 1;
-            __delay_ms(500);
+            
             getfund();
             
-            do{
-                getfund();
-                __delay_ms(50);
-            }while(fund_freq == 0x8F37);
+//            do{
+//                getfund();
+//                __delay_ms(50);
+//            }while(fund_freq == 0xFFFF);
             sendfund();
+            __delay_ms(1000);
             LATAbits.LATA1 = 0;
-            vra_flag = 1;
+            
+            
         }
      
-        if(SWB < 1100){
-            vra_flag = 0;
-        }
-    
+        
     }
     
     

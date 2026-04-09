@@ -2,18 +2,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "76 ./harvest.h
 [; ;./harvest.h: 76: void sendit(char it[], int it_size);
 [v _sendit `(v ~T0 @X0 0 ef2`*uc`i ]
-"46
-[; ;./harvest.h: 46: extern volatile int SWD;
-[v _SWD `Vi ~T0 @X0 0 e ]
 "45
 [; ;./harvest.h: 45: extern volatile int SWC;
 [v _SWC `Vi ~T0 @X0 0 e ]
 "47
 [; ;./harvest.h: 47: extern volatile uint8_t shield_code_flag;
 [v _shield_code_flag `Vuc ~T0 @X0 0 e ]
-"48
-[; ;./harvest.h: 48: extern volatile uint8_t repair_code_flag;
-[v _repair_code_flag `Vuc ~T0 @X0 0 e ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC16F1xxxx_DFP/1.19.363/xc8\pic\include\proc/pic16f18855.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1667,21 +1661,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _ShootLaser ]
 [f ]
-"27
-[; ;laser.c: 27:     if (SWD > 1600)
-[e $ ! > _SWD -> 1600 `i 1568  ]
-"28
-[; ;laser.c: 28:         {
-{
 "29
 [; ;laser.c: 29:             if (SWC > 1800)
-[e $ ! > _SWC -> 1800 `i 1569  ]
+[e $ ! > _SWC -> 1800 `i 1568  ]
 "30
 [; ;laser.c: 30:             {
 {
 "31
 [; ;laser.c: 31:                 if (!shield_code_flag)
-[e $ ! ! != -> _shield_code_flag `i -> 0 `i 1570  ]
+[e $ ! ! != -> _shield_code_flag `i -> 0 `i 1569  ]
 "32
 [; ;laser.c: 32:                 {
 {
@@ -1691,15 +1679,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;laser.c: 34:                 }
 }
-[e :U 1570 ]
+[e :U 1569 ]
 "35
 [; ;laser.c: 35:             }
 }
-[e $U 1571  ]
+[e $U 1570  ]
 "36
 [; ;laser.c: 36:             else if (SWC > 1300 && SWC < 1700)
-[e :U 1569 ]
-[e $ ! && > _SWC -> 1300 `i < _SWC -> 1700 `i 1572  ]
+[e :U 1568 ]
+[e $ ! && > _SWC -> 1300 `i < _SWC -> 1700 `i 1571  ]
 "37
 [; ;laser.c: 37:             {
 {
@@ -1709,38 +1697,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "39
 [; ;laser.c: 39:             }
 }
-[e $U 1573  ]
+[e $U 1572  ]
 "40
-[; ;laser.c: 40:             else if (SWC < 200)
-[e :U 1572 ]
-[e $ ! < _SWC -> 200 `i 1574  ]
+[; ;laser.c: 40:             else if (SWC < 1200)
+[e :U 1571 ]
+[e $ ! < _SWC -> 1200 `i 1573  ]
 "41
 [; ;laser.c: 41:             {
 {
-"42
-[; ;laser.c: 42:                 if (!repair_code_flag);
-[e $ ! ! != -> _repair_code_flag `i -> 0 `i 1575  ]
-[e :U 1575 ]
 "43
-[; ;laser.c: 43:                 {
-{
-"44
-[; ;laser.c: 44:                     ShootRepair();
-[e ( _ShootRepair ..  ]
-"45
-[; ;laser.c: 45:                 }
+[; ;laser.c: 43:             }
 }
-"46
-[; ;laser.c: 46:             }
-}
-[e :U 1574 ]
 [e :U 1573 ]
-[e :U 1571 ]
-"47
-[; ;laser.c: 47:         }
-}
-[e :U 1568 ]
-"48
-[; ;laser.c: 48: }
+[e :U 1572 ]
+[e :U 1570 ]
+"45
+[; ;laser.c: 45: }
 [e :UE 1567 ]
 }
